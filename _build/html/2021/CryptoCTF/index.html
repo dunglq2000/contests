@@ -1,0 +1,508 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="Google CTF 2021" href="../GoogleCTF/index.html"><link rel="prev" title="Các cuộc thi năm 2021" href="../index.html">
+        <link rel="prefetch" href="../../_static/rhine_lab.jpg" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Crypto CTF 2021 - Contests</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Contests</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/rhine_lab.jpg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Contests</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2020/index.html">Các cuộc thi năm 2020</a><input aria-label="Toggle navigation of Các cuộc thi năm 2020" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2020/midnightsun.html">Midnight Sun CTF 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020/nsucrypto/index.html">NSUCRYPTO 2020</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Các cuộc thi năm 2021</a><input aria-label="Toggle navigation of Các cuộc thi năm 2021" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Crypto CTF 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GoogleCTF/index.html">Google CTF 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nsucrypto/index.html">NSUCRYPTO 2021</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2022/index.html">Các cuộc thi năm 2022</a><input aria-label="Toggle navigation of Các cuộc thi năm 2022" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/downunderCTF/index.html">DownUnder CTF 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/nsucrypto.html">NSUCRYPTO 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/sekaiCTF/index.html">Sekai CTF 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/ISITDTUCTF/index.html">ISITDTU Quals 2022</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2023/index.html">Các cuộc thi năm 2023</a><input aria-label="Toggle navigation of Các cuộc thi năm 2023" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/nsucrypto/index.html">NSUCRYPTO 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/siberian-maths-contest/index.html">Siberian Mathematical Contest 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/internet-olympiad/index.html">Internet Olympiad 2023 (Vòng 3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/AmateursCTF/index.html">Amateurs CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/backdoorCTF.html">Backdoor CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/googleCTF.html">Google CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/diceCTF.html">Dice CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/UTCTF.html">UTCTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/wolvCTF.html">Wolv CTF 2023</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2024/index.html">Các cuộc thi năm 2024</a><input aria-label="Toggle navigation of Các cuộc thi năm 2024" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/nsucrypto/index.html">NSUCRYPTO 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/internet-olympiad/index.html">Internet Olympiad 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/0xL4ughCTF-2024/index.html">0xL4ugh CTF 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/ASISCTF-2024/index.html">ASIS CTF 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/TJCTF/index.html">TJCTF 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/cryptofox/index.html">CryptoFox 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/isitdtu.html">ISITDTU Quals 2024</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2025/index.html">Các cuộc thi năm 2025</a><input aria-label="Toggle navigation of Các cuộc thi năm 2025" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2025/cryptofox/index.html">CryptoFox 2025</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2025/tjctf.html">TJCTF 2025</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2025/olympiad-algebra.html">Семнадцатая студенческая олимпиада по алгебре</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2026/index.html">Các cuộc thi năm 2026</a><input aria-label="Toggle navigation of Các cuộc thi năm 2026" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2026/cryptofox/index.html">CryptoFox</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/2021/CryptoCTF/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="crypto-ctf-2021">
+<h1>Crypto CTF 2021<a class="headerlink" href="#crypto-ctf-2021" title="Link to this heading">¶</a></h1>
+<p>Chào mọi người, lại một mùa Crypto CTF nữa đã qua và lần này mình có khá khẩm hơn năm ngoái một chút, và sau đây là writeup các challenge mình đã làm được</p>
+<p>Source code đề và bài giải của mình ở <a class="reference external" href="https://github.com/dunglq2000/CTF/tree/master/2021/CryptoCTF">đây</a>.</p>
+<section id="farm">
+<h2>Farm<a class="headerlink" href="#farm" title="Link to this heading">¶</a></h2>
+<p>Đề bài cho mình <code class="docutils literal notranslate"><span class="pre">F</span></code> tạo các đa thức trên <span class="math notranslate nohighlight">\(\mathrm{GF}(2^6)\)</span>, <code class="docutils literal notranslate"><span class="pre">maptofarm</span></code> để lấy đa thức tương ứng với chỉ số của ký tự trong alphabet, và <code class="docutils literal notranslate"><span class="pre">encrypt</span></code> để mã hóa chuỗi base64, bằng cách là ký tự base64 <code class="docutils literal notranslate"><span class="pre">m</span></code> sẽ thành <code class="docutils literal notranslate"><span class="pre">ALPHABET[F.index(pkey</span> <span class="pre">*</span> <span class="pre">maptofarm(chr(m)))]</span></code>.</p>
+<p>Ok, vì <code class="docutils literal notranslate"><span class="pre">key</span></code> chỉ nằm trong <span class="math notranslate nohighlight">\(\mathrm{GF}(2^6)\)</span>, mình chỉ việc bruteforce thôi (nằm trong <span class="math notranslate nohighlight">\(\mathrm{GF}(2^6)\)</span> nên độ dài là <span class="math notranslate nohighlight">\(14\)</span> hay bao nhiêu cũng không quan trọng). Làm ngược lại quá trình mã hóa mình có flag.</p>
+</section>
+<section id="keybase">
+<h2>KeyBase<a class="headerlink" href="#keybase" title="Link to this heading">¶</a></h2>
+<p>Bài này cho mình một hệ thống sử dụng AES mode CBC (key và iv giống nhau suốt một phiên kết nối) để làm hai việc:</p>
+<ul class="simple">
+<li><p>đưa flag đã bị mã hóa;</p></li>
+<li><p>mã hóa một đoạn input <span class="math notranslate nohighlight">\(32\)</span> byte bất kì và trả lại key (dạng hex) với <span class="math notranslate nohighlight">\(2\)</span> byte cuối bị ẩn, và ciphertext với <span class="math notranslate nohighlight">\(14\)</span> byte ở giữa bị ẩn.</p></li>
+</ul>
+<p>Do mode CBC có tính chất <span class="math notranslate nohighlight">\(C_{i+1} = E_k(C_i \oplus P_{i+1})\)</span>, với <span class="math notranslate nohighlight">\(P_0 = iv\)</span>. Do đó nếu mình chọn <span class="math notranslate nohighlight">\(P\)</span> và <span class="math notranslate nohighlight">\(P'\)</span> là hai plaintext có <span class="math notranslate nohighlight">\(16\)</span> bytes đầu giống nhau còn <span class="math notranslate nohighlight">\(16\)</span> bytes cuối khác nhau thì mình có <span class="math notranslate nohighlight">\(C_1 = C_1' = E_k(iv \oplus P_1)\)</span> còn <span class="math notranslate nohighlight">\(C_2 = E_k(C_1 \oplus P_2)\)</span> và <span class="math notranslate nohighlight">\(C_2' = E_k(C_1' \oplus P_2')\)</span>.</p>
+<p>Từ đây mình có <span class="math notranslate nohighlight">\(C_1 \oplus P_2 \oplus C_1' \oplus P_2' = D_k(C_2) \oplus D_k(C_2')\)</span>, mà <span class="math notranslate nohighlight">\(C_1 = C_1'\)</span> rồi nên mình cần lấy ciphertext nào mà <span class="math notranslate nohighlight">\(16\)</span> bytes cuối không bị ẩn đi để có thể bruteforce <span class="math notranslate nohighlight">\(2\)</span> byte cuối của key và decrypt, tức là mình phải có <span class="math notranslate nohighlight">\(P_2 \oplus P_2' = D_k(C_2) \oplus D_k(C_2')\)</span>.</p>
+<p>Bây giờ tìm iv, mình chỉ cần đưa lên server <span class="math notranslate nohighlight">\(32\)</span> bytes <code class="docutils literal notranslate"><span class="pre">\0</span></code> là xong và cũng tương tự trên, chỉ lấy ciphertext nào mà <span class="math notranslate nohighlight">\(16\)</span> bytes cuối không bị ẩn. Vì <span class="math notranslate nohighlight">\(C_2 = E_k(C_1) = E_k(E_k(iv))\)</span> (do xor với dãy toàn <code class="docutils literal notranslate"><span class="pre">0</span></code>). Decrypt mình có lại iv.</p>
+<p>Giờ thì giải mã flag thôi.</p>
+</section>
+<section id="rima">
+<h2>Rima<a class="headerlink" href="#rima" title="Link to this heading">¶</a></h2>
+<p>Bài này không dùng biến chữ để chạy loop và dùng dấu gạch dưới của python nên lúc đầu mình thấy hơi rắc rối.</p>
+<p>Đầu tiên flag được chuyển sang dạng nhị phân và thêm 1 bit <code class="docutils literal notranslate"><span class="pre">0</span></code> ở đầu được dãy <span class="math notranslate nohighlight">\(f\)</span>. Kế tiếp với mỗi <span class="math notranslate nohighlight">\(i = 0, \ldots, \mathrm{len}(f) - 2\)</span> thì <span class="math notranslate nohighlight">\(f_i = f_i + f_{i+1}\)</span>.</p>
+<p>Kế tiếp hai số <span class="math notranslate nohighlight">\(a\)</span> và <span class="math notranslate nohighlight">\(b\)</span> được tạo là hai số nguyên tố kế tiếp tính từ <span class="math notranslate nohighlight">\(\mathrm{len}(f)\)</span> là độ dài <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Sau đó, <span class="math notranslate nohighlight">\(g\)</span> và <span class="math notranslate nohighlight">\(h\)</span> là hai list tạo ra từ việc lặp <span class="math notranslate nohighlight">\(f\)</span> lần lượt với <span class="math notranslate nohighlight">\(a\)</span> và <span class="math notranslate nohighlight">\(b\)</span> lần. Như vậy độ dài của <span class="math notranslate nohighlight">\(g\)</span> là <span class="math notranslate nohighlight">\(a \cdot \mathrm{len}(f)\)</span> và độ dài của <span class="math notranslate nohighlight">\(h\)</span> là <span class="math notranslate nohighlight">\(b \cdot \mathrm{len}(f)\)</span>.</p>
+<p>Tiếp theo, <span class="math notranslate nohighlight">\(c\)</span> là số nguyên tố kế tiếp tính từ <span class="math notranslate nohighlight">\(\mathrm{len}(f) \gg 2\)</span>. Thêm <span class="math notranslate nohighlight">\(c\)</span> bit <code class="docutils literal notranslate"><span class="pre">0</span></code> vào đầu <span class="math notranslate nohighlight">\(g\)</span> và thực hiện <span class="math notranslate nohighlight">\(g_i = g_i + g_{i+c}\)</span> với <span class="math notranslate nohighlight">\(i = 0, 1, \ldots, \mathrm{len}(f) - c - 1\)</span>. Làm tương tự với <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p>Cuối cùng là chuyển <span class="math notranslate nohighlight">\(g\)</span> và <span class="math notranslate nohighlight">\(h\)</span> sang số int base <span class="math notranslate nohighlight">\(5\)</span> và viết lên file dưới dạng byte. Nên đầu tiên mình sẽ làm ngược lại và tìm được <span class="math notranslate nohighlight">\(g\)</span> và <span class="math notranslate nohighlight">\(h\)</span>, sau đó mình bruteforce <span class="math notranslate nohighlight">\(\mathrm{len}(f)\)</span> để tìm <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> và <span class="math notranslate nohighlight">\(c\)</span> và xem thử bộ nào thỏa <span class="math notranslate nohighlight">\(a \cdot \mathrm{len}(f) + c = \mathrm{len}(g)\)</span> và <span class="math notranslate nohighlight">\(b \cdot \mathrm{len}(f) + c = \mathrm{len}(h)\)</span>.</p>
+<p>Sau đó là làm ngược lại quá trình, với <span class="math notranslate nohighlight">\(i = \mathrm{len}(f) - c - 1, \ldots, 0\)</span> thì <span class="math notranslate nohighlight">\(g_i = g_i - g_{i+c}\)</span>. Tương tự với <span class="math notranslate nohighlight">\(h\)</span>. Có thể kiểm chứng cách đúng nếu đầu <span class="math notranslate nohighlight">\(g\)</span> có đúng <span class="math notranslate nohighlight">\(c\)</span> số <code class="docutils literal notranslate"><span class="pre">0</span></code>. :)))</p>
+<p>Giờ thì, lấy <span class="math notranslate nohighlight">\(\mathrm{len}(f)\)</span> số đầu của <span class="math notranslate nohighlight">\(g\)</span> và tiếp tục làm ngược lại sẽ ra các bit của flag.</p>
+</section>
+<section id="maid">
+<h2>Maid<a class="headerlink" href="#maid" title="Link to this heading">¶</a></h2>
+<p>Ở bài này server cung cấp cho mình các chứng năng sau:</p>
+<ul class="simple">
+<li><p>encrypt một số bất kì không vượt quá <span class="math notranslate nohighlight">\(2^{2048 - 2}\)</span> bits;</p></li>
+<li><p>decrypt một số bất kì (hàm decrypt bị giấu đi);</p></li>
+<li><p>lấy flag bị mã hóa.</p></li>
+</ul>
+<p>Key là một cặp khóa công khai-bí mật <span class="math notranslate nohighlight">\((pubkey, privkey)\)</span>, trong đó <span class="math notranslate nohighlight">\(pubkey = p^2q\)</span> còn <span class="math notranslate nohighlight">\(privkey = p^2\)</span>, với <span class="math notranslate nohighlight">\(p\)</span> và <span class="math notranslate nohighlight">\(q\)</span> là hai số nguyên tố <span class="math notranslate nohighlight">\(1024\)</span> bits và đồng dư <span class="math notranslate nohighlight">\(3\)</span> modulo <span class="math notranslate nohighlight">\(4\)</span>.</p>
+<p>Hàm <code class="docutils literal notranslate"><span class="pre">encrypt</span></code> thực hiện mã hóa số <span class="math notranslate nohighlight">\(m\)</span> bằng cách trả về <span class="math notranslate nohighlight">\(m^2 \pmod{pubkey}\)</span>. Còn hàm <code class="docutils literal notranslate"><span class="pre">decrypt</span></code> thực hiện giải mã chỉ cần <span class="math notranslate nohighlight">\(privkey\)</span>.</p>
+<p>Kì cục …………..</p>
+<p>Thế quái nào …………..</p>
+<p>Mà <code class="docutils literal notranslate"><span class="pre">encrypt</span></code> cần cả <span class="math notranslate nohighlight">\(p\)</span> và <span class="math notranslate nohighlight">\(q\)</span> còn <code class="docutils literal notranslate"><span class="pre">decrypt</span></code> chỉ cần <span class="math notranslate nohighlight">\(p\)</span>?</p>
+<p>Thật ra là vì nếu <span class="math notranslate nohighlight">\(c \equiv m^2 \pmod{pubkey}\)</span> thì <span class="math notranslate nohighlight">\(c \equiv m^2 \pmod{p^2}\)</span>, như vậy giải thích cho việc <span class="math notranslate nohighlight">\(m\)</span> không được vượt quá <span class="math notranslate nohighlight">\(2048-2\)</span> bits và việc giải mã chỉ cần <span class="math notranslate nohighlight">\(p\)</span>. Như vậy cách attack của mình như sau:</p>
+<ol class="arabic simple">
+<li><p>Chọn ngẫu nhiên các ciphertext, gửi lên để server decrypt và nhận lại các plaintext tương ứng. Ta biết rằng <span class="math notranslate nohighlight">\(c \equiv m^2 \pmod{p^2}\)</span> nên <span class="math notranslate nohighlight">\(p^2 = \gcd(m_1^2 - c_1, m_2^2 - c_2)\)</span>, từ đó lấy căn bậc hai là có <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
+<li><p>Tiếp theo, chọn ngẫu nhiên các plaintext, gửi lên server encrypt và nhận lại ciphertext tươngg ứng. Do</p></li>
+</ol>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[c \equiv m^2 \pmod{pubkey} \equiv m^2 \pmod{p^2q},\]</div>
+</div>
+<ul class="simple">
+<li><p>khi đó <span class="math notranslate nohighlight">\(p^2q = \gcd(m_1^2 - c_1, m_2^2 - c_2)\)</span>. Việc này ngược lại quá trình trên vì như nãy mình đã nói, <code class="docutils literal notranslate"><span class="pre">encrypt</span></code> sử dụng <span class="math notranslate nohighlight">\(p^2q\)</span> còn <code class="docutils literal notranslate"><span class="pre">decrypt</span></code> thì chỉ cần <span class="math notranslate nohighlight">\(p^2\)</span>;</p></li>
+<li><p>và bây giờ <span class="math notranslate nohighlight">\(p\)</span> và <span class="math notranslate nohighlight">\(q\)</span> đã có đủ, ta decrypt và có flag thôi.</p></li>
+</ul>
+</section>
+<section id="tuti">
+<h2>Tuti<a class="headerlink" href="#tuti" title="Link to this heading">¶</a></h2>
+<p>Ở đây <span class="math notranslate nohighlight">\(x\)</span> và <span class="math notranslate nohighlight">\(y\)</span> là nửa đầu và nửa sau của flag, <span class="math notranslate nohighlight">\(k\)</span> là một số cho trước thỏa mãn</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[(x^2+1)(y^2+1)-2(x-y)(xy-1) = 4(k+xy).\]</div>
+</div>
+<p>Biến đổi một tí mình có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{array}{cccc}
+&amp; x^2 y^2 + x^2 + y^2 + 1 - 2(x-y)xy+2(x-y)-4xy &amp; = &amp; 4k \\
+\Leftrightarrow &amp; x^2 y^2 + (x^2 + y^2 + 1 + 2(x-y) - 2xy) - 2(x-y+1)xy &amp; = &amp; 4k \\
+\Leftrightarrow &amp; x^2 y^2 + (x-y+1)^2 - 2(x-y+1)xy &amp; = &amp; 4k \\
+\Leftrightarrow &amp; (xy - x + y - 1)^2 &amp; = &amp; 4k.
+    \end{array}\end{split}\]</div>
+</div>
+<p>Như vậy <span class="math notranslate nohighlight">\(xy-x+y-1=\sqrt{4k}\)</span> mà <span class="math notranslate nohighlight">\(xy-x+y-1=(x+1)(y-1)\)</span> nên mình chỉ cần factor số này là tìm được <span class="math notranslate nohighlight">\(x\)</span> và <span class="math notranslate nohighlight">\(y\)</span>. Do có thể có nhiều cách chọn nên mình tìm cái “hợp lí” nhất.</p>
+<p>Flag: <code class="docutils literal notranslate"><span class="pre">CCTF{S1mPL3_4Nd_N!cE_Diophantine_EqUa7I0nS!}</span></code>.</p>
+</section>
+<section id="improve">
+<h2>Improve<a class="headerlink" href="#improve" title="Link to this heading">¶</a></h2>
+<p>Ở bài này khá có khá nhiều thứ linh tinh nhưng chung quy lại là mình cần nhập vào hai số khác nhau <span class="math notranslate nohighlight">\(m_1\)</span> và <span class="math notranslate nohighlight">\(m_2\)</span> khác <span class="math notranslate nohighlight">\(n\)</span> sao cho kết quả hàm <code class="docutils literal notranslate"><span class="pre">improve</span></code> với hai số này là giống nhau.</p>
+<p>Các tham số sẽ là <span class="math notranslate nohighlight">\(n\)</span> làm chặn trên cho hai số nhập vào (không vượt quá <span class="math notranslate nohighlight">\(n^2\)</span>, và <span class="math notranslate nohighlight">\(f\)</span> có tính chất quan trọng là luôn chẵn, đây là tiền đề để mình giải bài này.</p>
+<p>Hàm <code class="docutils literal notranslate"><span class="pre">improve</span></code> mình để ý rằng <span class="math notranslate nohighlight">\(L\)</span> được tạo ra sau vài biến đổi từ <span class="math notranslate nohighlight">\(e = m^f \pmod{n^2}\)</span>, mà mình cần hai số <span class="math notranslate nohighlight">\(m\)</span> cho cùng <span class="math notranslate nohighlight">\(L\)</span>, vậy chỉ cần cho ra cùng <span class="math notranslate nohighlight">\(e\)</span> là xong. Như hồi nãy mình có đề cập là <span class="math notranslate nohighlight">\(f\)</span> luôn chẵn, vậy chỉ cần chọn <span class="math notranslate nohighlight">\(m\)</span> và <span class="math notranslate nohighlight">\(n^2-m\)</span> là xong. :))</p>
+<p>Flag: <code class="docutils literal notranslate"><span class="pre">CCTF{Phillip_N0W_4_pr0b4b1liStiC__aSymM3Tr1C__AlGOrithM!!}</span></code>.</p>
+</section>
+<section id="onlude">
+<h2>Onlude<a class="headerlink" href="#onlude" title="Link to this heading">¶</a></h2>
+<p>Bài này mình giải trước khi hết thời gian 1 tiếng và là bài cuối cùng mình giải được. Hàm <code class="docutils literal notranslate"><span class="pre">prepare</span></code> chuyển flag thành ma trận <span class="math notranslate nohighlight">\(A\)</span>, <code class="docutils literal notranslate"><span class="pre">key</span></code> là bộ ba ma trận <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(L\)</span> và <span class="math notranslate nohighlight">\(U\)</span>. Ma trận <span class="math notranslate nohighlight">\(S=L U\)</span>.</p>
+<p>Việc mã hóa như sau:</p>
+<ul class="simple">
+<li><p>với <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(L\)</span> và <span class="math notranslate nohighlight">\(U\)</span> như trên, tính <span class="math notranslate nohighlight">\(S = LU\)</span>;</p></li>
+<li><p>tính <span class="math notranslate nohighlight">\(X = A + R\)</span>, <span class="math notranslate nohighlight">\(Y = S X\)</span> và ciphertext là <span class="math notranslate nohighlight">\(E = L^{-1} Y\)</span>.</p></li>
+</ul>
+<p>Đề cho mình bốn ma trận:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E\)</span> là ciphertext, với một chút biến đổi mình có <span class="math notranslate nohighlight">\(E = U (A+R)\)</span>;</p></li>
+<li><p>ma trận <span class="math notranslate nohighlight">\(L U L\)</span>;</p></li>
+<li><p>ma trận</p></li>
+</ul>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[L^{-1} S^2 L = L^{-1} (LU)^2 L = L^{-1}LULUL=(UL)^2,\]</div>
+</div>
+<p>mình đặt là <span class="math notranslate nohighlight">\(T\)</span>;</p>
+<ul class="simple">
+<li><p>ma trận <span class="math notranslate nohighlight">\(R^{-1}S^8\)</span>, mình đặt là <span class="math notranslate nohighlight">\(W\)</span>.</p></li>
+</ul>
+<p>Lấy <span class="math notranslate nohighlight">\(LUL\)</span> nhân với <span class="math notranslate nohighlight">\(T\)</span> mình có <span class="math notranslate nohighlight">\(LUL \cdot (UL)^2 = L(UL)^3\)</span>.</p>
+<p>Khi đó</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[T^2 [L(UL)^3]^{-1} = (UL)^4 \cdot (UL)^{-3} \cdot L^{-1} = UL \cdot L^{-1} = U.\]</div>
+</div>
+<p>Vậy là mình có <span class="math notranslate nohighlight">\(U\)</span> rồi. :))</p>
+<p>Quay lại <span class="math notranslate nohighlight">\(E = U (A + R)\)</span>, khi đó <span class="math notranslate nohighlight">\(R = U^{-1} E - A\)</span>, nhân bên phải của hai vế với <span class="math notranslate nohighlight">\(W\)</span> thì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[R \cdot R^{-1} S^8 = (U^{-1} E - A) W = S^8 = (LU)^8.\]</div>
+</div>
+<p>Quay lại một chút,</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[(LUL) \cdot T^3 = (LUL) \cdot (L^{-1}S^6L) = (LU)^7 \cdot L,\]</div>
+</div>
+<p>suy ra <span class="math notranslate nohighlight">\((LUL) \cdot T^3 \cdot U = (LU)^8\)</span>.</p>
+<p>Từ đó mình dễ dàng tìm lại được <span class="math notranslate nohighlight">\(A = U^{-1}E - (LU)^8 W^{-1}\)</span>.</p>
+<p>Thực hiện tương tự hàm <code class="docutils literal notranslate"><span class="pre">prepare</span></code> mình có được flag.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../GoogleCTF/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Google CTF 2021</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Các cuộc thi năm 2021</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025-2026, Lê Quốc Dũng
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Crypto CTF 2021</a><ul>
+<li><a class="reference internal" href="#farm">Farm</a></li>
+<li><a class="reference internal" href="#keybase">KeyBase</a></li>
+<li><a class="reference internal" href="#rima">Rima</a></li>
+<li><a class="reference internal" href="#maid">Maid</a></li>
+<li><a class="reference internal" href="#tuti">Tuti</a></li>
+<li><a class="reference internal" href="#improve">Improve</a></li>
+<li><a class="reference internal" href="#onlude">Onlude</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"tex": {"macros": {"bm": ["{\\boldsymbol{#1}}", 1], "wt": "\\operatorname{wt}", "tr": "\\operatorname{tr}", "lcm": "\\mathrm{lcm}", "GL": "\\mathrm{GL}", "lex": "\\text{lex}", "grlex": "\\text{grlex}", "grevlex": "\\text{grevlex}", "CC": "\\mathbb{C}", "RR": "\\mathbb{R}", "QQ": "\\mathbb{Q}", "ZZ": "\\mathbb{Z}", "NN": "\\mathbb{N}", "FF": "\\mathbb{F}", "KK": "\\mathbb{K}"}}, "chtml": {"mtextInheritFont": "true"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+\documentclass[multi={quantikz},crop,preview]{standalone}
+
+\usepackage{quantikz}
+\usepackage{tikz}
+\usepackage{geometry}
+
+\begin{document}
+\begin{quantikz}[slice all]
+    \lstick{$\lvert z_2 \rangle$} & \ctrl{2} & & & & & & \targ{} & & \rstick[8]{$\psi$} \\
+    \lstick{$\lvert z_2 \rangle$} & & \ctrl{2} & & & & & & \targ{} & \\
+    \lstick{$\lvert z_1 \rangle$} & \targ{} & & \ctrl{2} & & & & & & \\
+    \lstick{$\lvert z_1 \rangle$} & & \targ{} & & \ctrl{2} & & & & & \\
+    \lstick{$\lvert z_4 \rangle$} & & & \targ{} & & \ctrl{2} & & & & \\
+    \lstick{$\lvert z_4 \rangle$} & & & & \targ{} & & \ctrl{2} & & & \\
+    \lstick{$\lvert z_3 \rangle$} & & & & & \targ{} & & \ctrl{-6} & & \\
+    \lstick{$\lvert z_3 \rangle$} & & & & & & \targ{} & & \ctrl{-6} &
+\end{quantikz}
+\end{document}

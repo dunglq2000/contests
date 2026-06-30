@@ -1,0 +1,1 @@
+Writeup ở [đây](https://dunglq2000.github.io/mathematics/ctf/2024/AmateursCTF-2023.html).

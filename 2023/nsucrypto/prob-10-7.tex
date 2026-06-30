@@ -1,0 +1,18 @@
+\documentclass[multi={quantikz},crop,preview]{standalone}
+
+\usepackage{quantikz}
+\usepackage{tikz}
+\usepackage{geometry}
+
+\begin{document}
+\begin{quantikz}
+    \lstick{$\lvert x_2 \rangle$} & \gate{H^{k_1}} & \rstick{$\lvert z_2 \rangle$} \\
+    \lstick{$\lvert x_2 \rangle$} & \gate{H^{k_1}} & \rstick{$\lvert z_2 \rangle$} \\
+    \lstick{$\lvert x_1 \rangle$} & \gate{H^{k_2}} & \rstick{$\lvert z_1 \rangle$} \\
+    \lstick{$\lvert x_1 \rangle$} & \gate{H^{k_2}} & \rstick{$\lvert z_1 \rangle$} \\
+    \lstick{$\lvert x_4 \rangle$} & \gate{H^{k_3}} & \rstick{$\lvert z_4 \rangle$} \\
+    \lstick{$\lvert x_4 \rangle$} & \gate{H^{k_3}} & \rstick{$\lvert z_4 \rangle$} \\
+    \lstick{$\lvert x_3 \rangle$} & \gate{H^{k_4}} & \rstick{$\lvert z_3 \rangle$} \\
+    \lstick{$\lvert x_3 \rangle$} & \gate{H^{k_4}} & \rstick{$\lvert z_3 \rangle$}
+\end{quantikz}
+\end{document}

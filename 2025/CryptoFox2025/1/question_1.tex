@@ -1,0 +1,160 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{minted}
+\usepackage{fontspec}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+
+\newfontfamily{\cyrillicfont}{CMU Serif}
+\setmainfont[Script=Cyrillic]{CMU Serif}
+\geometry{a4paper, top=2cm, left=2cm, bottom=2cm, right=1cm}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Страцица \thepage/\pageref{LastPage}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\begin{document}
+\begin{center}
+    \Huge\textbf{Задача 1. ``Задача о кривизне функции''}
+\end{center}
+
+Пусть $p$ - простое число, $p \geqslant 3$, $\ZZ_p = \{ 0, 1, \ldots, p - 1 \}$ - поле вычетов по модулю $p$, $\gamma = e^{\frac{2\pi i}{p}}$ - примитивный комплексный корень степени $p$ из единицы. Для отображения $f : \ZZ_p \to \{ 0, 1 \}$ и элемента $a \in \ZZ_p$ определим число
+
+\begin{equation*}
+    \nu_f(a) = \dfrac{1}{p} \sum_{x \in \ZZ_p} (-1)^{f(x)} \gamma^{-ax}.
+\end{equation*}
+
+Кривизной функции $f$ назовем величину $\sigma(f) = \displaystyle{\sum_{a \in \ZZ_p}} \lvert \nu_f(a) \rvert$.
+
+Докажите, что
+
+\begin{equation*}
+    1 \leqslant \sigma(f) < \sqrt{p},
+\end{equation*}
+
+причем нижняя оценка обращается в равенство тогда и только тогда, когда $f = const$.
+
+% По формуле Эйлера
+
+% \begin{equation*}
+%     \gamma = e^{\frac{2\pi i}{p}} = \cos\left(\frac{2 \pi}{p}\right) + i\sin\left(\frac{2\pi}{p}\right).
+% \end{equation*}
+
+% Тогда
+
+% \begin{align*}
+%     \gamma^{-ax} = & e^{\frac{-2\pi a x i}{p}} = \frac{1}{e^{\frac{2\pi a x}{p}}} = \dfrac{1}{\cos\left(\frac{2\pi a x}{p}\right) + i\sin\left(\frac{2\pi a x}{p}\right)} \\
+%     = & \dfrac{\cos\left(\frac{2\pi ax}{p}\right) - i\sin\left(\frac{2\pi ax}{p}\right)}{\left[\cos\left(\frac{2\pi a x}{p}\right) + i\sin\left(\frac{2\pi a x}{p}\right)\right] \cdot \left[\cos\left(\frac{2\pi ax}{p}\right) - i\sin\left(\frac{2\pi ax}{p}\right)\right]} \\
+%     = & \dfrac{\cos\left(\frac{2\pi ax}{p}\right) - i\sin\left(\frac{2\pi ax}{p}\right)}{\cos^2\left(\frac{2\pi ax}{p}\right) + \sin^2\left(\frac{2\pi ax}{p}\right)} \\
+%     = & \cos\left(\frac{2\pi ax}{p}\right) - i\sin\left(\frac{2\pi ax}{p}\right).
+% \end{align*}
+
+% Отсюда
+
+% \begin{align*}
+%     \lvert \nu_f(a) \rvert^2 = & \left| \frac{1}{p} \sum_{x \in \ZZ_p} (-1)^{f(x)} \left[\cos\left(\frac{2\pi ax}{p}\right) - i\sin\left(\frac{2\pi ax}{p}\right)\right] \right|^2 \\
+%     = & \left|\frac{1}{p}\sum_{x \in \ZZ_p}(-1)^{f(x)} \cos\left(\frac{2\pi ax}{p}\right) - \frac{i}{p}\sum_{x \in \ZZ_p} (-1)^{f(x)} \sin\left(\frac{2\pi ax}{p}\right)\right|^2 \\
+%     = & \frac{1}{p^2} \left[\sum_{x \in \ZZ_p} (-1)^{f(x)} \cos\left(\frac{2\pi ax}{p}\right)\right]^2 + \frac{1}{p^2} \left[\sum_{x \in \ZZ_p} (-1)^{f(x)} \sin\left(\frac{2\pi ax}{p}\right)\right]^2.
+% \end{align*}
+
+% Применим неравенство Коши для $u_x = (-1)^{f(x)}$ и $v_x = \cos\left(\frac{2\pi ax}{p}\right)$ для $x \in \ZZ_p$, получим
+
+% \begin{align*}
+%     \left[\sum_{x \in \ZZ_p} (-1)^{f(x)} \cos\left(\frac{2\pi ax}{p}\right)\right]^2 & \leqslant \left[\sum_{x \in \ZZ_p} \left((-1)^{f(x)}\right)^2\right] \cdot \left[\sum_{x \in \ZZ_p} \cos^2\left(\frac{2\pi ax}{p}\right)\right] \\
+%     & = p \left[\sum_{x \in \ZZ_p} \cos^2\left(\frac{2\pi ax}{p}\right)\right].
+% \end{align*}
+
+% Аналогично для выражения синуса
+
+% \begin{align*}
+%     \left[\sum_{x \in \ZZ_p} (-1)^{f(x)} \sin\left(\frac{2\pi ax}{p}\right)\right]^2 & \leqslant \left[\sum_{x \in \ZZ_p} \left((-1)^{f(x)}\right)^2\right] \cdot \left[\sum_{x \in \ZZ_p} \sin^2\left(\frac{2\pi ax}{p}\right)\right] \\
+%     & = p \left[\sum_{x \in \ZZ_p} \sin^2\left(\frac{2\pi ax}{p}\right)\right].
+% \end{align*}
+
+% Суммируем два неравенства и получим
+
+% \begin{align*}
+%     \frac{1}{p^2} \left[\sum_{x \in \ZZ_p} (-1)^{f(x)} \cos\left(\frac{2\pi ax}{p}\right)\right]^2 + \frac{1}{p^2} \left[\sum_{x \in \ZZ_p} (-1)^{f(x)} \sin\left(\frac{2\pi ax}{p}\right)\right]^2 \\
+%     \leqslant \frac{1}{p^2} \cdot p \left[\sum_{x \in \ZZ_p} \underbrace{\cos^2\left(\frac{2\pi ax}{p}\right) + \sin^2\left(\frac{2\pi ax}{p}\right)}_{1}\right] = \frac{1}{p^2} \cdot p \cdot p = 1.
+% \end{align*}
+
+% Это значит
+
+% \begin{equation*}
+%     \lvert \nu_f(a) \rvert^2 \leqslant 1 \Longleftrightarrow 0 \leqslant \lvert \nu_f(a) \rvert \leqslant 1
+% \end{equation*}
+
+% для всех $a \in \ZZ_p$.
+
+% Снова используем неравенство Коши и получим
+
+% \begin{align*}
+%     \left(\sum_{a \in \ZZ_p} \lvert \nu_f(a) \rvert\right)^2 \leqslant (1 + 1 + \cdots + 1) \left(\sum_{a \in \ZZ_p} \lvert \nu_f(a) \rvert^2\right) \leqslant p \cdot p.
+% \end{align*}
+
+Используем дискретное преобразование Форье. Пусть $u_x = (-1)^{f(x)}$ и $U_a = p \cdot \nu_f(a)$. Тогда
+
+\begin{equation*}
+    U_a = \sum_{x = 0}^{p-1} u_x \cdot e^{-2\pi i \frac{a}{p} x}
+\end{equation*}
+
+для $a = 0, 1, \ldots, p - 1$.
+
+Согласно обратному дискретному преобразованию Форье, получим
+
+\begin{equation*}
+    u_x = \frac{1}{p} \sum_{a = 0}^{p} U_a \cdot e^{2\pi i \frac{a}{p} x}
+\end{equation*}
+
+для $x = 0, 1, \ldots, p - 1$.
+
+Согласно теореме Парсеваля
+
+\begin{equation*}
+    \sum_{x = 0}^{p - 1} \lvert u_x \rvert^2 = \frac{1}{p} \sum_{a = 0}^{p - 1} \lvert U_a \rvert^2,
+\end{equation*}
+
+или
+
+\begin{equation*}
+    \sum_{x = 0}^{p - 1} \left|(-1)^{f(x)}\right|^2 = \frac{1}{p} \sum_{a=0}^{p-1} \left|p \cdot \nu_f(a)\right|^2 = \frac{1}{p} \sum_{a = 0}^{p - 1} p^2 \left|\nu_f(a)\right|^2 = p \sum_{a = 0}^{p - 1} \left|\nu_f(a)\right|^2 = p \sum_{a = 0}^{p - 1} \lvert \nu_f(a) \rvert^2.
+\end{equation*}
+
+Согласно неравенству Коши, это для двух любых векторов $\bm{s} = (s_1, \ldots, s_n)$ и $\bm{t} = (t_1, \ldots, t_n)$, у нас есть
+
+\begin{equation*}
+    (s_1 t_1 + s_2 t_2 + \cdots + s_n t_n)^2 \leqslant (s_1^2 + s_2^2 + \cdots + s_n^2)(t_1^2 + t_2^2 + \cdots + t_n^2).
+\end{equation*}
+
+Применим неравенство Коши для $s_i = 1$, $t_i = \lvert \nu_f(i) \rvert$ и получим
+
+\begin{align*}
+    p\sum_{a = 0}^{p - 1} \lvert \nu_f(a) \rvert^2 = (1 + 1 + \cdots + 1) \left(\sum_{a = 0}^{p = 1} \lvert\nu_f(a)\rvert^2\right) \geqslant \left(\sum_{a=0}^{p-1}\lvert \nu_f(a) \rvert\right)^2.
+\end{align*}
+
+Мы знаем, что $f: \ZZ_p \to \{ 0, 1 \}$, поэтому $(-1)^{f(x)} \in \{ -1, 1 \}$. Это следует $\left|(-1)^{f(x)}\right|^2 = 1$ для всех $x = 0, 1, \ldots, p - 1$.
+
+Отсюда получим
+
+\begin{equation*}
+    p = \sum_{x = 0}^{p - 1} \left|(-1)^{f(x)}\right|^2 = p\sum_{a = 0}^{p-1}\left|\nu_f(a)\right|^2 \geqslant \left(\sum_{a=0}^{p-1}\left|\nu_f(a)\right|\right)^2,
+\end{equation*}
+
+или
+
+\begin{equation*}
+    \sigma(f) = \sum_{a = 0}^{p - 1}\left|\nu_f(a)\right| \leqslant \sqrt{p}.
+\end{equation*}
+
+Легко видеть, для достижения равенства, $\left|\nu_f(a)\right| = const$ для всех $a = 0, 1, \ldots, p-1$, но это не может быть.
+
+Поэтому можем сказать, что
+
+\begin{equation*}
+    \sigma(f) < \sqrt{p}.
+\end{equation*}
+\end{document}

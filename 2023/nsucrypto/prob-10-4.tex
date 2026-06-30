@@ -1,0 +1,12 @@
+\documentclass[multi={quantikz},crop,preview]{standalone}
+
+\usepackage{quantikz}
+\usepackage{tikz}
+\usepackage{geometry}
+
+\begin{document}
+\begin{quantikz}[slice all]
+    \lstick{$\lvert x_1 \rangle$} & \targ{} & \ctrl{1} &\targ{} & \\
+    \lstick{$\lvert x_2 \rangle$} & \ctrl{-1} & \targ{} & \ctrl{-1} &
+\end{quantikz}
+\end{document}

@@ -1,0 +1,27 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{positioning}
+\begin{document}
+\begin{tikzpicture}
+    \node (x0) at (-2, 0) {};
+    \node (x2) at (2, 0) {};
+    \node[circle, draw] at(-2, -2) (y0) {$+$};
+    \node[rectangle, draw, minimum width=2cm, right=0.75cm of y0] (y1) {$S$};
+    \node at (2, -2) (y2) {};
+    \node[rectangle, draw, minimum width=2cm] (z0) at (-2, -4) {$S$};
+    \node[circle, draw] (z2) at (2, -4) {$+$};
+    \node (a0) at (-2, -6) {};
+    \node[rectangle, draw, minimum width=2cm] (a2) at (2, -6) {$S$};
+    \node (b0) at (-2, -8) {};
+    \node (b2) at (2, -8) {};
+
+    \draw[->] (x0.center) -- (y0);
+    \draw[->] (x2.center) -- (z2);
+    \draw[->] (y2.center) -- (y1);
+    \draw[->] (y1) -- (y0);
+    \draw[->] (y0) -- (z0);
+    \draw[->] (z0) -- (z2);
+    \draw[->] (z0) -- (b0.center);
+    \draw[->] (z2) -- (a2);
+    \draw[->] (a2) -- (b2.center);
+\end{tikzpicture}
+\end{document}

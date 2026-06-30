@@ -1,0 +1,1808 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="TJCTF 2025" href="../tjctf.html"><link rel="prev" title="Các cuộc thi năm 2025" href="../index.html">
+        <link rel="prefetch" href="../../_static/rhine_lab.jpg" as="image">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>CryptoFox 2025 - Contests</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyles.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Contests</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/rhine_lab.jpg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Contests</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2020/index.html">Các cuộc thi năm 2020</a><input aria-label="Toggle navigation of Các cuộc thi năm 2020" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2020/midnightsun.html">Midnight Sun CTF 2020</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2020/nsucrypto/index.html">NSUCRYPTO 2020</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2021/index.html">Các cuộc thi năm 2021</a><input aria-label="Toggle navigation of Các cuộc thi năm 2021" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2021/CryptoCTF/index.html">Crypto CTF 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2021/GoogleCTF/index.html">Google CTF 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2021/nsucrypto/index.html">NSUCRYPTO 2021</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2022/index.html">Các cuộc thi năm 2022</a><input aria-label="Toggle navigation of Các cuộc thi năm 2022" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/downunderCTF/index.html">DownUnder CTF 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/nsucrypto.html">NSUCRYPTO 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/sekaiCTF/index.html">Sekai CTF 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2022/ISITDTUCTF/index.html">ISITDTU Quals 2022</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2023/index.html">Các cuộc thi năm 2023</a><input aria-label="Toggle navigation of Các cuộc thi năm 2023" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/nsucrypto/index.html">NSUCRYPTO 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/siberian-maths-contest/index.html">Siberian Mathematical Contest 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/internet-olympiad/index.html">Internet Olympiad 2023 (Vòng 3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/AmateursCTF/index.html">Amateurs CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/backdoorCTF.html">Backdoor CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/googleCTF.html">Google CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/diceCTF.html">Dice CTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/UTCTF.html">UTCTF 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2023/wolvCTF.html">Wolv CTF 2023</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2024/index.html">Các cuộc thi năm 2024</a><input aria-label="Toggle navigation of Các cuộc thi năm 2024" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/nsucrypto/index.html">NSUCRYPTO 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/internet-olympiad/index.html">Internet Olympiad 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/0xL4ughCTF-2024/index.html">0xL4ugh CTF 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/ASISCTF-2024/index.html">ASIS CTF 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/TJCTF/index.html">TJCTF 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/cryptofox/index.html">CryptoFox 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2024/isitdtu.html">ISITDTU Quals 2024</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Các cuộc thi năm 2025</a><input aria-label="Toggle navigation of Các cuộc thi năm 2025" checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">CryptoFox 2025</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tjctf.html">TJCTF 2025</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../olympiad-algebra.html">Семнадцатая студенческая олимпиада по алгебре</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2026/index.html">Các cuộc thi năm 2026</a><input aria-label="Toggle navigation of Các cuộc thi năm 2026" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2026/cryptofox/index.html">CryptoFox</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../_sources/2025/cryptofox/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="cryptofox-2025">
+<h1>CryptoFox 2025<a class="headerlink" href="#cryptofox-2025" title="Link to this heading">¶</a></h1>
+<p>Olympiad mật mã và bảo mật thông tin CryptoFox 2025.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Số thứ tự</p></th>
+<th class="head"><p>Tên bài</p></th>
+<th class="head"><p>Tình trạng</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Хакерская атака</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Кривизна функции</p></td>
+<td><p>Giải một phần ý 1</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Странная вселенная</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Магическая шкатулка</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Разности для FOX128</p></td>
+<td><p>Hoàn thành ý 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Шифрование в RSA</p></td>
+<td><p>Hoàn thành</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Подозрительная фотография</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Замены и перестановки</p></td>
+<td><p>Hoàn thành</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Загадочная ошибка</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Генератор гаммы на основе XSL-схемы</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Регистровое преобразование</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Трудный PBKDF</p></td>
+<td><p>Chưa giải</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="gioi-thieu">
+<h2>Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Link to this heading">¶</a></h2>
+<p>Đầu tiên mình xin phép có một số ý kiến về việc trình bày đề thi. Đề thi có một điểm khá khó chịu là không được biên tập thống nhất. Mình hiểu rằng có nhiều người ra đề nhưng ít nhất cũng phải có người chịu trách nhiệm biên tập lại đề mỗi câu chứ. Kí hiệu ở mỗi câu mỗi khác nhau làm mất tính thống nhất của một cuộc thi. Ví dụ, ở câu 1 dùng <span class="math notranslate nohighlight">\(1 \leq \sigma(f)\)</span>, còn câu 2 dùng <span class="math notranslate nohighlight">\(\alpha, \beta \geqslant 0\)</span>, khác cách viết dấu bằng ở bất đẳng thức. Một ví dụ khác là kí hiệu trường hữu hạn, ở câu 1 dùng <span class="math notranslate nohighlight">\(\mathbb{Z}_p\)</span> nhưng câu 4 lại dùng <span class="math notranslate nohighlight">\(\mathbb{F}_{2^8}\)</span>. Trong trường hợp này mình nghĩ nên thống nhất dùng <span class="math notranslate nohighlight">\(\mathrm{GF}(p)\)</span> và <span class="math notranslate nohighlight">\(\mathrm{GF}(2^8)\)</span>, hoặc <span class="math notranslate nohighlight">\(\mathbb{F}_p\)</span> và <span class="math notranslate nohighlight">\(\mathbb{F}_{2^8}\)</span>, sẽ hợp lí hơn. Sự không thống nhất cuối cùng còn ở chỗ mỗi đề có font chữ, cỡ chữ khác nhau, thậm chí có đề đánh số trang nhưng có đề không. Vì lý do trên nên khi viết lại đề, mình sẽ thay đổi kí hiệu cho thống nhất.</p>
+<p>Về phần nội dung trong đề thì có 4 câu về reverse engineering (câu 0, câu 3, câu 6 và câu 8), còn lại 7 câu về mật mã. Các câu reverse engineering cũng là những thuật toán mật mã được giấu bên trong chương trình. Với kinh nghiệm hạn hẹp về reverse engineering thì mình không làm được những bài đó. =)))</p>
+</section>
+<section id="id1">
+<h2>Задача 0. Хакерская атака<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>Đây là một bài reverse engineering, và mình không biết làm. :)</p>
+</section>
+<section id="id2">
+<h2>Задача 1. Кривизна функции<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="cau-hoi">
+<h3>Câu hỏi<a class="headerlink" href="#cau-hoi" title="Link to this heading">¶</a></h3>
+<p>Đặt <span class="math notranslate nohighlight">\(p\)</span> là số nguyên tố, <span class="math notranslate nohighlight">\(p \geqslant 3\)</span>, <span class="math notranslate nohighlight">\(\mathbb{F}_p = \{ 0, 1, \ldots, p \}\)</span> là trường hữu hạn modulo <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(\gamma = e^{\frac{2\pi i}{p}}\)</span> là nghiệm phức primitive bậc <span class="math notranslate nohighlight">\(p\)</span> của <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Với ánh xạ <span class="math notranslate nohighlight">\(f: \mathbb{F}_p \to \{ 0, 1 \}\)</span> và với phần tử <span class="math notranslate nohighlight">\(a \in \mathbb{F}_p\)</span> ta định nghĩa số</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\nu_f(a) = \frac{1}{p}\sum_{x \in \mathbb{F}_p} (-1)^{f(x)} \gamma^{-ax}.\]</div>
+</div>
+<p>Ta định nghĩa curvature của hàm <span class="math notranslate nohighlight">\(f\)</span> là đại lượng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\sigma(f) = \sum_{a \in \mathbb{F}_p} \lvert \nu_f(a) \rvert.\]</div>
+</div>
+<ol class="arabic simple">
+<li><p>Chứng minh rằng</p></li>
+</ol>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[1 \leqslant \sigma(f) &lt; \sqrt{p},\]</div>
+</div>
+<p>và chặn dưới đạt dấu bằng khi và chỉ khi <span class="math notranslate nohighlight">\(f\)</span> là hàm hằng.</p>
+<ol class="arabic simple" start="2">
+<li><p>Chứng minh rằng, nếu <span class="math notranslate nohighlight">\(p = 2^{k+1} - 1\)</span> và ánh xạ <span class="math notranslate nohighlight">\(f_t\)</span>, với <span class="math notranslate nohighlight">\(t = 0, 1, \ldots, k\)</span>, biến đổi từng phần tử <span class="math notranslate nohighlight">\(x \in \mathbb{F}_p\)</span> theo nghĩa <span class="math notranslate nohighlight">\(f_t(x) = x_t \in \{ 0, 1 \}\)</span>, trong đó <span class="math notranslate nohighlight">\(x_t\)</span> là biểu diễn nhị phân của <span class="math notranslate nohighlight">\(x\)</span>, hay</p></li>
+</ol>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[x = x_0 + 2x_1 + \cdots + 2^k x_k,\]</div>
+</div>
+<p>thì ta có bất đẳng thức</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\sigma(f_t) &lt; \frac{4}{\pi} \ln p + \frac{9}{5}.\]</div>
+</div>
+<p>Gợi ý cho câu 2: sử dụng tổng Vinogradnova I.M. là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\sum_{h=0}^{p-1} \left|\sum_{j=0}^{N-1} \gamma^{hj}\right| &lt; \frac{2}{\pi} p \ln p + \frac{2}{5} p + N,\]</div>
+</div>
+<p>với mọi số tự nhiên <span class="math notranslate nohighlight">\(p\)</span> và <span class="math notranslate nohighlight">\(N\)</span>.</p>
+</section>
+<section id="todo-giai">
+<h3>[TODO] Giải<a class="headerlink" href="#todo-giai" title="Link to this heading">¶</a></h3>
+<p>Bài này mình giải được một phần câu 1.</p>
+<p>Sử dụng biến đổi Fourier rời rạc, đặt</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u_x = (-1)^{f(x)}, \quad x \in \mathbb{F}_p.\]</div>
+</div>
+<p>Đặt <span class="math notranslate nohighlight">\(U_a = p \cdot \nu_a(f)\)</span> thì ta có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[U_a = \sum_{x = 0}^{p - 1} u_x e^{-2\pi i\frac{a}{p} x}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(a = 0, 1, \ldots, p - 1\)</span>.</p>
+<p>Khi đó, theo biến đổi Fourier rời rạc ngược có thể thấy liên hệ giữa dãy <span class="math notranslate nohighlight">\(\{ u_ x \}\)</span> theo <span class="math notranslate nohighlight">\(\{ U_ a \}\)</span> là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[u_x = \frac{1}{p} \sum_{a = 0}^{p - 1} U_a \cdot e^{2\pi i \frac{x}{p} a}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(x = 0, 1, \ldots, p - 1\)</span>.</p>
+<p>Theo định lí Parceval thì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\sum_{x = 0}^{p - 1} \lvert u_x \rvert^2 = \frac{1}{p} \sum_{a = 0}^{p - 1} \lvert U_a \rvert^2,\]</div>
+</div>
+<p>hay</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\sum_{x = 0}^{p - 1} \left| (-1)^{f(x)} \right|^2 = \frac{1}{p} \sum_{a = 0}^{p - 1} \left|p \cdot \nu_f(a)\right|^2 = \frac{1}{p} \sum_{a = 0}^{p - 1} p^2 \left|\nu_f(a)\right|^2 = p \sum_{a = 0}^{p - 1} \left|\nu_f(a)\right|^2.\]</div>
+</div>
+<p>Sử dụng bất đẳng thức Cauchy, với hai vector bất kì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\bm{s} = (s_0, s_1, \ldots, s_{n-1}), \ \bm{t} = (t_0, t_1, \ldots, t_{n-1})\]</div>
+</div>
+<p>ta có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[(s_0 t_0 + s_1 t_1 + \cdots + s_{n-1} t_{n-1})^2 \leqslant (s_0^2 + s_1^2 + \cdots + s_{n-1}^2)(t_0^2 + t_1^2 + \cdots t_{n-1}^2).\]</div>
+</div>
+<p>Cho <span class="math notranslate nohighlight">\(s_i = 1\)</span> và <span class="math notranslate nohighlight">\(t_i = \left| \nu_f(i) \right|\)</span> với <span class="math notranslate nohighlight">\(i = 0, 1, \ldots, p - 1\)</span> ta có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[p \sum_{a = 0}^{p - 1} \left|\nu_f(a)\right|^2 = (1 + 1 + \cdots + 1)\left(\sum_{a = 0}^{p - 1} \left|\nu_f(a)\right|^2\right) \geqslant \left(\sum_{a = 0}^{p - 1}\left|\nu_f(a)\right|\right)^2.\]</div>
+</div>
+<p>Do <span class="math notranslate nohighlight">\(f: \mathbb{F}_p \to \{ 0, 1 \}\)</span> nên <span class="math notranslate nohighlight">\((-1)^{f(x)} \in \{ -1, 1 \}\)</span>, suy ra <span class="math notranslate nohighlight">\(\left|(-1)^{f(x)}\right|^2 = 1\)</span> với mọi <span class="math notranslate nohighlight">\(x = 0, 1, \ldots, p - 1\)</span>.</p>
+<p>Như vậy bất đẳng thức trên có thể thu được</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[p = \sum_{x = 0}^{p - 1} \left|(-1)^{f(x)}\right|^2 =p \sum_{a = 0}^{p - 1} \left|\nu_f(a)\right|^2 \geqslant \left(\sum_{a=0}^{p-1} \left| \nu_f(a) \right|\right)^2 = \left(\sigma(f)\right)^2,\]</div>
+</div>
+<p>tương đương với</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\sigma(f) \leqslant \sqrt{p}.\]</div>
+</div>
+<p>Dấu bằng xảy ra khi và chỉ khi <span class="math notranslate nohighlight">\(\left| \nu_f(a) \right|\)</span> là hằng số nhưng dễ thấy điều này không thể xảy ra. Do đó có thể kết luận</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\boxed{\sigma(f) &lt; \sqrt{p}.}\]</div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>Задача 2. Странная вселенная<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>Câu hỏi<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>Trong một vũ trụ lạ thường nọ, gọi là Strange Universe, chúng ta thực hiện các thí nghiệm quantum.</p>
+<p>Kết thúc một thí nghiệm, chúng ta nhận được toán tử quantum <span class="math notranslate nohighlight">\(A\)</span> và các trạng thái quantum <span class="math notranslate nohighlight">\(\lvert x \rangle\)</span> và <span class="math notranslate nohighlight">\(\lvert y \rangle\)</span>, ở đây</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[A(\alpha \lvert x \rangle + \beta \lvert y \rangle) \neq \alpha A(\lvert x \rangle) + \beta A(\lvert y \rangle)\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(\alpha, \beta \geqslant 0\)</span> và <span class="math notranslate nohighlight">\(\alpha + \beta = 1\)</span>. Chúng ta muốn tiếp tục thí nghiệm nhưng các thiết bị đã hỏng.</p>
+<p>Chúng ta sử dụng một kênh truyền quantum để trao đổi thông tin, và chúng ta cần trả lời các câu hỏi sau:</p>
+<ol class="arabic simple">
+<li><p>Trong Strange Universe, giao thức mật mã BB84 có không an toàn không? Nếu có thì điều kiện nào khiến việc này xảy ra?</p></li>
+<li><p>Trong Strange Universe, giao thức mật mã E91 có không an toàn không? Nếu có thì điều kiện nào khiến việc này xảy ra?</p></li>
+<li><p>Trong Strange Universe có tính chất thú vị nào khác của kênh truyền quantum không?</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>[TODO] Giải<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="id6">
+<h2>Задача 3. Магическая шкатулка<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>Lại một bài reverse engineering khác và mình cũng không làm ra.</p>
+</section>
+<section id="fox128">
+<h2>Задача 4. Разности для FOX128<a class="headerlink" href="#fox128" title="Link to this heading">¶</a></h2>
+<section id="id7">
+<h3>Câu hỏi<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>Grisha phát triển một thuật toán mã khối là FOX128.</p>
+<p>Đặt <span class="math notranslate nohighlight">\(V_{16}(2^8)\)</span> là không gian vector có số chiều bằng <span class="math notranslate nohighlight">\(16\)</span> trên trường <span class="math notranslate nohighlight">\(\mathbb{F}_{2^8}\)</span>.</p>
+<p>Đặt <span class="math notranslate nohighlight">\(S(X)\)</span> là nhóm symmetric, tác độ lên tập hữu hạn <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p><strong>Phép biến đổi không tuyến tính</strong> của FOX128 là hoán vị <span class="math notranslate nohighlight">\(\pi'\)</span>. Khi đó với</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\alpha = (\alpha_1, \alpha_2, \ldots, \alpha_{16}) \in V_{16}(2^8)\]</div>
+</div>
+<p>ta sẽ có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\pi'(\alpha) = (\pi(\alpha_1), \pi(\alpha_2), \ldots, \pi(\alpha_{16}))\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(\pi \in S(\mathbb{F}_{2^8})\)</span>.</p>
+<p>Hoán vị <span class="math notranslate nohighlight">\(\pi\)</span> có thể được viết dưới dạng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\pi'' = (\pi(0), \pi(1), \ldots, \pi(255))\]</div>
+</div>
+<p>như sau</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(252\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(238\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(221\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(17\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(207\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(110\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(49\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(22\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(251\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(196\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(250\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(218\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(35\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(197\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(77\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(233\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(119\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(240\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(219\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(147\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(46\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(153\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(186\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(23\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(54\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(241\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(187\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(20\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(205\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(95\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(193\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(249\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(24\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(101\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(90\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(226\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(92\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(239\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(33\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(129\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(28\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(60\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(66\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(139\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(142\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(79\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(132\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(174\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(227\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(106\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(143\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(160\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(237\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(152\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(127\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(212\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(211\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(31\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(235\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(52\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(44\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(81\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(234\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(200\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(72\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(171\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(242\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(42\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(104\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(162\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(253\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(58\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(206\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(204\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(181\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(112\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(86\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(118\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(18\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(191\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(114\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(19\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(71\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(156\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(183\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(93\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(135\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(21\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(161\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(150\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(41\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(16\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(123\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(154\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(199\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(243\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(145\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(120\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(111\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(157\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(158\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(178\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(177\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(50\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(117\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(25\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(61\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(255\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(53\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(138\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(126\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(109\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(84\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(198\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(128\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(195\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(189\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(87\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(223\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(245\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(36\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(169\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(62\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(168\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(67\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(201\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(215\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(121\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(214\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(246\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(124\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(34\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(185\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(224\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(236\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(222\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(122\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(148\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(176\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(188\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(220\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(232\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(80\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(78\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(51\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(74\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(167\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(151\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(96\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(115\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(30\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(98\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(68\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(26\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(184\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(56\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(130\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(159\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(38\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(65\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(173\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(69\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(70\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(146\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(39\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(94\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(85\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(47\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(140\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(163\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(165\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(125\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(105\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(213\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(149\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(59\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(88\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(179\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(64\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(134\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(172\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(29\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(247\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(48\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(55\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(107\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(228\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(136\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(217\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(231\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(137\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(225\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(27\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(131\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(73\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(76\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(63\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(248\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(254\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(141\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(83\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(170\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(144\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(202\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(216\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(133\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(97\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(32\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(113\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(103\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(164\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(45\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(43\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(91\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(203\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(155\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(37\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(208\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(190\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(229\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(108\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(82\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(89\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(166\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(116\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(210\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(230\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(244\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(180\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(192\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(209\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(102\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(175\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(194\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(57\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(75\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(99\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(182\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ở bảng trên, phần tử hàng <span class="math notranslate nohighlight">\(i\)</span> và cột <span class="math notranslate nohighlight">\(j\)</span> (<span class="math notranslate nohighlight">\(0 \leqslant i, j \leqslant 15\)</span>) là giá trị <span class="math notranslate nohighlight">\(\pi(16 i + j)\)</span>.</p>
+<p><strong>Phép biến đổi tuyến tính</strong> của phần tử <span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \ldots, \alpha_{16})\)</span> với <span class="math notranslate nohighlight">\(\alpha \in V_{16}(2^8)\)</span> được kí hiệu là <span class="math notranslate nohighlight">\(h\)</span>. Khi đó với phần tử <span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \ldots, \alpha_{16})\)</span> ta chuyển thành dạng ma trận</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix}
+    \alpha_1 &amp; \alpha_2 &amp; \alpha_3 &amp; \alpha_4 \\
+    \alpha_5 &amp; \alpha_6 &amp; \alpha_7 &amp; \alpha_8 \\
+    \alpha_9 &amp; \alpha_{10} &amp; \alpha_{11} &amp; \alpha_{12} \\
+    \alpha_{13} &amp; \alpha_{14} &amp; \alpha_{15} &amp; \alpha_{16} \\
+\end{pmatrix}.\end{split}\]</div>
+</div>
+<p>Khi đó <span class="math notranslate nohighlight">\(h(\alpha)\)</span> là ma trận <span class="math notranslate nohighlight">\(B\)</span>, được tính theo công thức:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \begin{pmatrix}
+    0 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 0
+\end{pmatrix} \cdot A,\end{split}\]</div>
+</div>
+<p>với phép cộng và nhân được thực hiện giống phép cộng và nhân trên các phần tử của trường.</p>
+<p><strong>Phép cộng với khóa</strong> <span class="math notranslate nohighlight">\(k\)</span> là ánh xạ có dạng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\nu_k(\alpha) = \alpha \oplus k,\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(\oplus\)</span> là toán tử cộng từng bit theo modulo <span class="math notranslate nohighlight">\(2\)</span> (phép XOR), và <span class="math notranslate nohighlight">\(\alpha, k \in V_{16}(2^8)\)</span>.</p>
+<p>Khi đó, hàm mã hóa đối với bản rõ <span class="math notranslate nohighlight">\(\alpha \in V_{16}(2^8)\)</span> có dạng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[g_{k_1 k_2}(\alpha) = \nu_{k_2} h \pi' v_{k_1} (\alpha).\]</div>
+</div>
+<p>Grisha sử dụng mode ECB để mã hóa từ <cite>ПРИВЕДЕНИЕ</cite>. Ở đây anh ấy dùng bảng sau để encode kí tự tiếng Nga sang phần tử thuộc <span class="math notranslate nohighlight">\(\mathbb{F}_{2^8}\)</span> và để gọn mình sẽ viết ở dạng thập phân.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>А</p></td>
+<td><p>У</p></td>
+<td><p>О</p></td>
+<td><p>И</p></td>
+<td><p>Э</p></td>
+<td><p>Ы</p></td>
+<td><p>Я</p></td>
+<td><p>Ю</p></td>
+<td><p>Е</p></td>
+<td><p>Ё</p></td>
+<td><p>Б</p></td>
+<td><p>В</p></td>
+<td><p>Г</p></td>
+<td><p>Д</p></td>
+<td><p>Ж</p></td>
+<td><p>З</p></td>
+<td><p>Й</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(16\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>К</p></td>
+<td><p>Л</p></td>
+<td><p>М</p></td>
+<td><p>Н</p></td>
+<td><p>П</p></td>
+<td><p>Р</p></td>
+<td><p>С</p></td>
+<td><p>Т</p></td>
+<td><p>Ф</p></td>
+<td><p>Х</p></td>
+<td><p>Ц</p></td>
+<td><p>Ч</p></td>
+<td><p>Ш</p></td>
+<td><p>Щ</p></td>
+<td><p>Ъ</p></td>
+<td><p>Ь</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(17\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(18\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(19\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(20\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(21\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(22\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(23\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(24\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(25\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(26\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(27\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(28\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(29\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(30\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(31\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(32\)</span></p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Khi sử dụng FOX128 cipher thì chúng ta sẽ thêm vào phía trước các số <span class="math notranslate nohighlight">\(0\)</span> cho đủ vector gồm <span class="math notranslate nohighlight">\(16\)</span> phần tử. Ví dụ sau khi encode thông điệp chúng ta có vector <span class="math notranslate nohighlight">\((25, 2, 17, 23)\)</span> thì chúng ta pad thành</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\alpha = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 2, 17, 23).\]</div>
+</div>
+<p>Chúng ta biết rằng khi mã hóa thông điệp <cite>ПРИВЕДЕНИЕ</cite>, ta thu được bản mã</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\beta_1 = (216, 121, 18, 144, 93, 121, 17, 11, 114, 81, 251, 135, 200, 53, 54, 79)\]</div>
+</div>
+<p>Sau đó Grisha mã hóa một thông điệp khác với cùng khóa con <span class="math notranslate nohighlight">\(k_1\)</span>, <span class="math notranslate nohighlight">\(k_2\)</span> như trên với những thông điệp có nghĩa khác nhau nhằm mục đích nghiên cứu sự phụ thuộc giữa các bản rõ với nhau và với bản mã. Khi đó, với một bản rõ nào đó Grisha đã mã hóa thành</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\beta_2 = (216, 121, 230, 68, 93, 121, 229, 223, 114, 81, 251, 83, 200, 53, 194, 79).\]</div>
+</div>
+<p>Grisha đã làm mất thí nghiệm của mình và không còn thông tin về khóa, cũng như bản rõ tương ứng với <span class="math notranslate nohighlight">\(\beta_2\)</span>. Hãy giúp anh ấy.</p>
+<ol class="arabic simple">
+<li><p>Khôi phục bản rõ tương ứng bản mã <span class="math notranslate nohighlight">\(\beta_2\)</span>.</p></li>
+<li><p>Đưa ra thuật toán tối ưu khôi phục lại <span class="math notranslate nohighlight">\(k_2\)</span> hoặc một phần của nó, nếu biết rằng khi tạo khóa con <span class="math notranslate nohighlight">\(k_2\)</span> chỉ sử dụng các nguyên âm.</p></li>
+</ol>
+</section>
+<section id="id8">
+<h3>[TODO] Giải<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>Mình giải được câu 1 và chưa kịp làm câu 2.</p>
+<p>Giả sử chúng ta mã hóa hai bản rõ <span class="math notranslate nohighlight">\(\bm{a}, \bm{a}' \in V_{16}(2^8)\)</span> với cùng khóa <span class="math notranslate nohighlight">\(\bm{k}_1\)</span> và <span class="math notranslate nohighlight">\(\bm{k}_2\)</span>.</p>
+<p>Đặt</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\bm{a} = (a_1, a_2 \ldots, a_{16}), \ \bm{a}' = (a_1', a_2', \ldots, a_{16}'),\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(a_i\)</span> và <span class="math notranslate nohighlight">\(a_i' \in \mathbb{F}_{2^8}\)</span>, <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, 16\)</span>.</p>
+<p>Đặt</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\bm{k}_1 = (k_{1, 1}, k_{1, 2}, \ldots, k_{1, 16}), \ \bm{k}_2 = (k_{2,1}, k_{2,2}, \ldots, k_{2, 16}),\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(k_{1, i}\)</span> và <span class="math notranslate nohighlight">\(k_{2, i} \in \mathbb{F}_{2^8}\)</span>, <span class="math notranslate nohighlight">\(i = 1, \ldots, 16\)</span>.</p>
+<p>Sau phép biến đổi <span class="math notranslate nohighlight">\(\nu_{\bm{k}_1}\)</span> ta được</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\nu_{\bm{k}_1}(\bm{a}) = (a_1 \oplus k_{1,1}, \ldots, a_{16} \oplus k_{1, 16}) = (b_1, \ldots, b_{16}), \\
+\nu_{\bm{k}_1}(\bm{a}') = (a_1' \oplus k_{1,1}, \ldots, a_{16}' \oplus k_{1, 16}) = (b_1', \ldots, b_{16}'),\end{split}\]</div>
+</div>
+<p>ở đây đặt <span class="math notranslate nohighlight">\(b_i = a_i \oplus k_{1, i}\)</span>, tương tụ <span class="math notranslate nohighlight">\(b_i' = a_i' \oplus k_{1, i}\)</span>.</p>
+<p>Sau phép biến đổi thứ hai <span class="math notranslate nohighlight">\(\pi'\)</span> ta có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\pi'(b_1, \ldots, b_{16}) = (c_1, \ldots, c_{16}), \\
+\pi'(b_1', \ldots, b_{16}') = (c_1', \ldots, c_{16}'),\end{split}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(c_i = \pi(b_i)\)</span> và <span class="math notranslate nohighlight">\(c_i' = \pi(b_i')\)</span>.</p>
+<p>Sau phép biến đổi tuyến tính <span class="math notranslate nohighlight">\(h\)</span> ta có</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[h(c_1, \ldots, c_{16}) = (d_1, \ldots, d_{16}), \quad h(c_1', \ldots, c_{16}') = (d_1', \ldots, d_{16}').\]</div>
+</div>
+<p>Cuối cùng, phép biến đổi <span class="math notranslate nohighlight">\(\nu_{\bm{k}_2}\)</span>:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\nu_{\bm{k}_2}(d_1, \ldots, d_{16}) = (d_1 \oplus k_{2, 1}, \ldots, d_{16} \oplus k_{2, 16}) = (e_1, \ldots, e_{16}), \\
+\nu_{\bm{k}_2}(d_1', \ldots, d_{16}') = (d_1' \oplus k_{2, 1}, \ldots, d_{16}' \oplus k_{2, 16}) = (e_1', \ldots, e_{16}').\end{split}\]</div>
+</div>
+<p>Lúc này bản mã chính là các vector <span class="math notranslate nohighlight">\((e_1, \ldots, e_{16})\)</span> và <span class="math notranslate nohighlight">\((e_1', \ldots, e_{16}')\)</span>.</p>
+<p>Nếu XOR hai bản mã với nhau thì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[(e_1 \oplus e_1', \ldots, e_{16} \oplus e_{16}') = (e_1, \ldots, e_{16}) \oplus (e_1', \ldots, e_{16}') = (d_1 \oplus d_1', \ldots, d_{16} \oplus d_{16}'),\]</div>
+</div>
+<p>nhưng <span class="math notranslate nohighlight">\(h\)</span> là phép biến đổi tuyến tính nên</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[(d_1 \oplus d_1', \ldots, d_{16} \oplus d_{16}') = h(c_1, \ldots, c_{16}) \oplus h(c_1', \ldots, c_{16}') = h(c_1 \oplus c_1', \ldots, c_{16} \oplus c_{16}').\]</div>
+</div>
+<p>Như vậy có thể nói rằng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[(e_1 \oplus e_1', \ldots, e_{16} \oplus e_{16}') = h(c_1 \oplus c_1', \ldots, c_{16} \oplus c_{16}').\]</div>
+</div>
+<p>Ma trận <span class="math notranslate nohighlight">\(H\)</span> và nghịch đảo của nó là như nhau, do đó có thể viết lại biểu thức trên thành</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[h(e_1 \oplus e_1', \ldots, e_{16} \oplus e_{16}') = (c_1 \oplus c_1', \ldots, c_{16} \oplus c_{16}').\]</div>
+</div>
+<p>Vì <span class="math notranslate nohighlight">\(c_i = \pi(a_i \oplus k_{1, i})\)</span> và <span class="math notranslate nohighlight">\(c_i' = \pi(a_i' \oplus k_{1, i})\)</span>, và ta tính được <span class="math notranslate nohighlight">\(h(e_1 \oplus e_1', \ldots, e_{16} \oplus e_{16}')\)</span> nên sẽ tìm được các phần tử <span class="math notranslate nohighlight">\(c_1 \oplus c_1'\)</span>, …, <span class="math notranslate nohighlight">\(c_{16} \oplus c_{16}'\)</span>.</p>
+<p>Lúc này ta thử các <span class="math notranslate nohighlight">\(k_{1, i}\)</span> với <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, 16\)</span> để xem <span class="math notranslate nohighlight">\(k_{1, i}\)</span> nào thỏa mãn</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[c_i \oplus c_i' = \pi(a_i \oplus k_{1, i}) \oplus \pi(a_i' \oplus k_{1, i})\]</div>
+</div>
+<p>với điều kiện là <span class="math notranslate nohighlight">\(0 \leqslant a_i' \leqslant 32\)</span> (theo bảng code bên trên).</p>
+<p>Chương trình giải mình để ở <a class="reference download internal" download="" href="../../_downloads/51855ab8bd1752e4ed179f4d5ecf0a32/solve_fox128_1.py"><code class="xref download docutils literal notranslate"><span class="pre">đây</span></code></a>.</p>
+<p>Theo kết quả chạy chương trình thì các vị trí <span class="math notranslate nohighlight">\(i\)</span> sau cho <span class="math notranslate nohighlight">\(a_i = a_i'\)</span>:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[i \in \{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14 \}.\]</div>
+</div>
+<p>Như vậy từ tiếng Nga chúng ta cần tìm có dạng <cite>ПРИВ_ДЕНИ_</cite>. Lưu ý rằng chúng ta đã bỏ các số <span class="math notranslate nohighlight">\(0\)</span> đứng trước trong quá trình decode.</p>
+<p>Ở đây, dễ thấy sau kí tự <cite>В</cite> phải là nguyên âm, tức là vị trí <span class="math notranslate nohighlight">\(i = 10\)</span>. Có hai ứng cử viên cho vị trí này là kí tự <cite>О</cite> (encode thành <span class="math notranslate nohighlight">\(2\)</span>) và <cite>И</cite> (encode thành <span class="math notranslate nohighlight">\(3\)</span>). Trong tiếng Nga có từ “привидение” nên ta sẽ chọn kí tự <cite>И</cite> cho <span class="math notranslate nohighlight">\(i = 10\)</span>.</p>
+<p>Vì “привидение” là từ giống trung nên kết thúc của nó (trong 6 cách) là “е”, “я”, “и” và “й”. Từ chương trình giải bên trên chỉ có kí tự <cite>Я</cite> là được chấp nhận.</p>
+<p>Như vậy, kết quả là <cite>ПРИВИДЕНИЯ</cite>.</p>
+</section>
+</section>
+<section id="rsa">
+<h2>Задача 5. Шифрование в RSA<a class="headerlink" href="#rsa" title="Link to this heading">¶</a></h2>
+<section id="id9">
+<h3>Câu hỏi<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>Ta sử dụng thuật toán RSA để mã hóa với tham số sau</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{cl}
+    n = &amp; 307113764813174451979648861837374183706400686964058131652523053759767112686 \\
+        &amp; 921105760986215994148574439656212523327564727423276973650662361700716117034 \\
+        &amp; 585310519473492500005549242633169443931102631059829073180528952729440631440 \\
+        &amp; 857431430574567858285873536218804878054530675205445624011186425555088867207 \\
+        &amp; 5353043 \\
+    e = &amp; 5.
+\end{array}\end{split}\]</div>
+</div>
+<p>Ta chặn được hai bản mã:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{cl}
+    c1 = &amp; 693089265758848025485688850665080349728312487495309688707596506807354538873 \\
+        &amp; 067996032536142769206361054315964464537700685311216289298705857554525830204 \\
+        &amp; 6252205886190035304282857903311014974554686997348541958002897243 \\
+    c2 = &amp; 693089265758848025485688850665080349728313078514173314915077310887781132564 \\
+        &amp; 247507141242724120234983668164062692763390490140270935400218398173406875322 \\
+        &amp; 8613850558221595769683504261263861404892836544032097068963073024.
+\end{array}\end{split}\]</div>
+</div>
+<p>Hãy giải mã các thông điệp, biết rằng bản rõ <span class="math notranslate nohighlight">\(m_1\)</span> và <span class="math notranslate nohighlight">\(m_2\)</span> có liên hệ <span class="math notranslate nohighlight">\(m_2 = m_1 + 1\)</span>.</p>
+</section>
+<section id="giai">
+<h3>Giải<a class="headerlink" href="#giai" title="Link to this heading">¶</a></h3>
+<p>Sử dụng Coppersmith attack ở file <a class="reference download internal" download="" href="../../_downloads/d0c175f4ea6ec9fae52e4227f4d15a6c/solve_rsa.py"><code class="xref download docutils literal notranslate"><span class="pre">solve_rsa.py</span></code></a>.</p>
+</section>
+</section>
+<section id="id10">
+<h2>Задача 6. Подозрительная фотография<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>Thêm một bài reverse engineering và lần này là Android. Mình chịu chết.</p>
+</section>
+<section id="id11">
+<h2>Задача 7. Замены и перестановки<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h3>Câu hỏi<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>Chúng ta chặn được một thông điệp mã hóa được truyền qua radio và lưu vào file <cite>ct.txt</cite>. Chúng ta cần biết thông điệp ban đầu là gì.</p>
+<p>Biết rằng thông điệp được mã hóa bằng mã dòng (stream cipher). Khóa là một dãy <span class="math notranslate nohighlight">\(\gamma_1\)</span>, <span class="math notranslate nohighlight">\(\gamma_2\)</span>, … được sinh ra từ một khóa ban đầu và đi qua thuật toán sinh khóa.</p>
+<p>Thuật toán sinh khóa nhận đầu vào là khóa <span class="math notranslate nohighlight">\(256\)</span> bits.</p>
+<p><span class="math notranslate nohighlight">\(256\)</span> bits đầu tiên nhận được từ việc mã hóa dãy các bytes <cite>0</cite> bằng thuật toán Skipjack với khóa <span class="math notranslate nohighlight">\(K_{root}\)</span> (<span class="math notranslate nohighlight">\(80\)</span> bits) và <span class="math notranslate nohighlight">\(IV\)</span> (<span class="math notranslate nohighlight">\(64\)</span> bits) là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[IV = \{ 0x43, 0x72, 0x79, 0x70, 0x74, 0x46, 0x6f, 0x78 \}.\]</div>
+</div>
+<p>Việc mã hóa được thực hiện bằng mode CFB, nghĩa là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_0 = \mathsf{Encrypt}_{cfb}(K_{root}, IV, [0x00] \cdot 32),\]</div>
+</div>
+<p>trong đó <span class="math notranslate nohighlight">\(K_{root} \in \{ 0, 1 \}^{80}\)</span>, <span class="math notranslate nohighlight">\(IV \in \{ 0, 1 \}^{64}\)</span>, và bản mã là <span class="math notranslate nohighlight">\(K_0 \in \{ 0, 1 \}^{256}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(256\)</span> bits tiếp theo được sinh bởi kết quả mã hóa bên trên, tức là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_1 = \mathsf{Encrypt}_{cfb}(K_{root}, IV, K_0).\]</div>
+</div>
+<p>Thực hiện tương tự như vậy ta có công thức tổng quát là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_i = \mathsf{Encrypt}_{cfb}(K_{root}, IV, K_{i-1}),\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(i \in \mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(K_i \in \{ 0, 1 \}^{256}\)</span>.</p>
+<p>Dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span> nhận được từ các giá trị <span class="math notranslate nohighlight">\(K_i\)</span> và <span class="math notranslate nohighlight">\(K_0\)</span>. Ở đây, <span class="math notranslate nohighlight">\(4\)</span> bits đầu tiên của dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span> nhận được từ <span class="math notranslate nohighlight">\(K_0\)</span> theo quy tắc</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\gamma_j = \begin{cases}
+    0 \ \text{nếu} \ K_0[j] = 0, \\
+    1 \ \text{trong trường hợp khác},
+\end{cases}\end{split}\]</div>
+</div>
+<p>trong đó <span class="math notranslate nohighlight">\(K_0[j]\)</span> là khối <span class="math notranslate nohighlight">\(64\)</span> bits thứ <span class="math notranslate nohighlight">\(i\)</span> của <span class="math notranslate nohighlight">\(K_0\)</span>, <span class="math notranslate nohighlight">\(\gamma_j \in \{ 0, 1 \}\)</span> với <span class="math notranslate nohighlight">\(j = 0, 1, 2, 3\)</span>.</p>
+<p>Các bit tiếp theo được sinh tương tự theo quy tắc</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\gamma_j = \begin{cases}
+    0 \ \text{nếu} \ K_{j / 4}[j \% 4] = 0, \\
+    1 \ \text{trong trường hợp khác},
+\end{cases}\end{split}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(a \% b\)</span> là số dư khi chia <span class="math notranslate nohighlight">\(a\)</span> cho <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(j \in \mathbb{N}\)</span>.</p>
+<p>Ví dụ ta có khóa</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}K_j = \{ \mathrm{0x0c}, \mathrm{0xea}, \mathrm{0x66}, \mathrm{0xe0}, \mathrm{0x96}, \mathrm{0xbd}, \mathrm{0xf1}, \mathrm{0xc0}, \\
+\mathrm{0x9c}, \mathrm{0xc2}, \mathrm{0xf1}, \mathrm{0x62}, \mathrm{0xa5}, \mathrm{0x44} ,\mathrm{0x1f}, \mathrm{0xb7}, \\
+\mathrm{0xdd}, \mathrm{0x4b}, \mathrm{0x2b}, \mathrm{0xbf}, \mathrm{0xd6}, \mathrm{0xd9}, \mathrm{0x64}, \mathrm{0x73}, \\
+\mathrm{0xb4}, \mathrm{0x97}, \mathrm{0x7b}, \mathrm{0x39}, \mathrm{0x06}, \mathrm{0x02}, \mathrm{0x4c}, \mathrm{0xb8} \}\end{split}\]</div>
+</div>
+<p>thì ta sẽ chia được thành <span class="math notranslate nohighlight">\(4\)</span> đoạn, mỗi đoạn <span class="math notranslate nohighlight">\(64\)</span> bits (hay <span class="math notranslate nohighlight">\(8\)</span> bytes) như sau</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}K_j[0] &amp; = \{ \mathrm{0x0c}, \mathrm{0xea}, \mathrm{0x66}, \mathrm{0xe0}, \mathrm{0x96}, \mathrm{0xbd}, \mathrm{0xf1}, \mathrm{0xc0} \}, \\
+K_j[1] &amp; = \{ \mathrm{0x9c}, \mathrm{0xc2}, \mathrm{0xf1}, \mathrm{0x62}, \mathrm{0xa5}, \mathrm{0x44}, \mathrm{0x1f}, \mathrm{0xb7} \}, \\
+K_j[2] &amp; = \{ \mathrm{0xdd}, \mathrm{0x4b}, \mathrm{0x2b}, \mathrm{0xbf}, \mathrm{0xd6}, \mathrm{0xd9}, \mathrm{0x64}, \mathrm{0x73} \}, \\
+K_j[3] &amp; = \{ \mathrm{0xb4}, \mathrm{0x97}, \mathrm{0x7b}, \mathrm{0x39}, \mathrm{0x06}, \mathrm{0x02}, \mathrm{0x4c}, \mathrm{0xb8} \}.\end{split}\]</div>
+</div>
+<p>Bản mã nhận được theo công thức</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[c_i = p_i \oplus \gamma_i\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(c_i, p_i \in \{ 0, 1 \}\)</span> và <span class="math notranslate nohighlight">\(i = 0, 1, 2, \ldots\)</span></p>
+<p>Hãy phân tích và khôi phục thông điệp ban đầu, và xác định họ của tác giả nếu biết file được encode bằng cp1251.</p>
+</section>
+<section id="id13">
+<h3>Giải<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>Thuật toán sinh khóa nhận đầu vào là khóa <span class="math notranslate nohighlight">\(256\)</span> bits.</p>
+<p><span class="math notranslate nohighlight">\(256\)</span> bits đầu tiên nhận được từ việc mã hóa dãy các bytes <cite>0</cite> bằng thuật toán Skipjack với khóa <span class="math notranslate nohighlight">\(K_{root}\)</span> (<span class="math notranslate nohighlight">\(80\)</span> bits) và <span class="math notranslate nohighlight">\(IV\)</span> (<span class="math notranslate nohighlight">\(64\)</span> bits) là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[IV = \{ 0x43,0x72,0x79,0x70,0x74,0x46,0x6f, 0x78 \}.\]</div>
+</div>
+<p>Việc mã hóa được thực hiện bằng mode CFB, nghĩa là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_0 = \mathsf{Encrypt}_{cfb}(K_{root}, IV, [0x00] \cdot 32),\]</div>
+</div>
+<p>trong đó <span class="math notranslate nohighlight">\(K_{root} \in \{ 0, 1 \}^{80}\)</span>, <span class="math notranslate nohighlight">\(IV \in \{ 0, 1 \}^{64}\)</span>, và bản mã là <span class="math notranslate nohighlight">\(K_0 \in \{ 0, 1 \}^{256}\)</span>.</p>
+<p>Đặt <span class="math notranslate nohighlight">\(\mathsf{Enc}(P)\)</span> là hàm mã hóa bản rõ <span class="math notranslate nohighlight">\(P\)</span> <span class="math notranslate nohighlight">\(64\)</span> bits bằng thuật toán Skipjack với khóa <span class="math notranslate nohighlight">\(K_{root}\)</span> <span class="math notranslate nohighlight">\(80\)</span> bits.</p>
+<p>Giả sử <span class="math notranslate nohighlight">\(K_0 = (K_0[0], K_0[1], K_0[2], K_0[3]) \in \{ 0, 1 \}^{256}\)</span>, với <span class="math notranslate nohighlight">\(K_0[j] \in \{ 0, 1 \}^{64}\)</span>, <span class="math notranslate nohighlight">\(j = 0, 1, 2, 3\)</span>. Theo mode CFB thì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}K_0[0] &amp; = \mathsf{Enc}(IV) \oplus ([0x00] \cdot 8) = \mathsf{Enc}(IV), \\
+K_0[1] &amp; = \mathsf{Enc}(K_0[0]) \oplus ([0x00] \cdot 8) = \mathsf{Enc}(K_0[0]), \\
+K_0[2] &amp; = \mathsf{Enc}(K_0[1]) \oplus ([0x00] \cdot 8) = \mathsf{Enc}(K_0[1]), \\
+K_0[3] &amp; = \mathsf{Enc}(K_0[2]) \oplus ([0x00] \cdot 8) = \mathsf{Enc}(K_0[2]).\end{split}\]</div>
+</div>
+<p><span class="math notranslate nohighlight">\(256\)</span> bits tiếp theo được tạo với cơ chế tương tự:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_1 = \mathsf{Encrypt}_{cfb}(K_{root}, IV, K_0).\]</div>
+</div>
+<p>Giả sử <span class="math notranslate nohighlight">\(K_1 = (K_1[0], K_1[1], K_1[2], K_1[3]) \in \{ 0, 1 \}^{256}\)</span> với <span class="math notranslate nohighlight">\(K_1[j] \in \{ 0, 1 \}^{64}\)</span>, <span class="math notranslate nohighlight">\(j = 0, 1, 2, 3\)</span>. Tương tự, theo mode CFB thì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}K_1[0] &amp; = \mathsf{Enc}(IV) \oplus K_0[0], \\
+K_1[1] &amp; = \mathsf{Enc}(K_0[0]) \oplus K_0[1], \\
+K_1[2] &amp; = \mathsf{Enc}(K_0[1]) \oplus K_0[2], \\
+K_1[3] &amp; = \mathsf{Enc}(K_0[2]) \oplus K_0[3].\end{split}\]</div>
+</div>
+<p>Tổng quát:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_i = \mathsf{Encrypt}_{cfb}(K_{root}, IV, K_{i-1}),\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(i \in \mathbb{N}\)</span> và <span class="math notranslate nohighlight">\(K_i \in \{ 0, 1 \}^{256}\)</span>.</p>
+<p>Giả sử</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[K_i = (K_i[0], K_i[1], K_i[2], K_i[3]) \in \{ 0, 1 \}^{256}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(K_i[j] \in \{ 0, 1 \}^{64}\)</span>, <span class="math notranslate nohighlight">\(j = 0, 1, 2, 3\)</span>.</p>
+<p>Theo mode CFB thì</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}K_i[0] &amp; = \mathsf{Enc}(IV) \oplus K_{i-1}[0], \\
+K_i[1] &amp; = \mathsf{Enc}(K_0[0]) \oplus K_{i-1}[1], \\
+K_i[2] &amp; = \mathsf{Enc}(K_0[1]) \oplus K_{i-1}[2], \\
+K_i[3] &amp; = \mathsf{Enc}(K_0[2]) \oplus K_{i-1}[3].\end{split}\]</div>
+</div>
+<p>Dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span> nhận được từ các giá trị <span class="math notranslate nohighlight">\(K_i\)</span> và <span class="math notranslate nohighlight">\(K_0\)</span>. Ở đây, <span class="math notranslate nohighlight">\(4\)</span> bits đầu tiên của dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span> nhận được từ <span class="math notranslate nohighlight">\(K_0\)</span> theo quy tắc</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\gamma_j = \begin{cases}
+    0 \ \text{nếu} \ K_0[j] = 0, \\
+    1 \ \text{trong trường hợp khác},
+\end{cases}\end{split}\]</div>
+</div>
+<p>trong đó <span class="math notranslate nohighlight">\(K_0[j]\)</span> là khối <span class="math notranslate nohighlight">\(64\)</span> bits thứ <span class="math notranslate nohighlight">\(i\)</span> của <span class="math notranslate nohighlight">\(K_0\)</span>, <span class="math notranslate nohighlight">\(\gamma_j \in \{ 0, 1 \}\)</span> với <span class="math notranslate nohighlight">\(j = 0, 1, 2, 3\)</span>.</p>
+<p>Các bit tiếp theo được sinh tương tự theo quy tắc</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}\gamma_j = \begin{cases}
+    0 \ \text{nếu} \ K_{j / 4}[j \% 4] = 0, \\
+    1 \ \text{trong trường hợp khác},
+\end{cases}\end{split}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(a \% b\)</span> là số dư khi chia <span class="math notranslate nohighlight">\(a\)</span> cho <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(j \in \mathbb{N}\)</span>.</p>
+<p>Chúng ta sẽ tìm quy luật đối với dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span>:</p>
+<p>Ta cần file <a class="reference download internal" download="" href="../../_downloads/bc2a129036f309389b9379c9671bba96/skipjack.py"><code class="xref download docutils literal notranslate"><span class="pre">problem-7/skipjack.py</span></code></a> để thực hiện thuật toán Skipjack.</p>
+<p>Tiếp theo, chúng ta thử mã hóa với <span class="math notranslate nohighlight">\(K_{root}\)</span> bất kì để quan sát xem có quy luật nào cho <span class="math notranslate nohighlight">\(K_i\)</span> không với file <a class="reference download internal" download="" href="../../_downloads/34bfee54612c6674ab3a468aae39821b/find_rules.py"><code class="xref download docutils literal notranslate"><span class="pre">problem-7/find_rules.py</span></code></a>.</p>
+<p>Dễ thấy bản mã (dạng hex) có dạng sau:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">47122</span><span class="n">ce9d3b7983a</span> <span class="mi">02</span><span class="n">fd48e270666df7</span> <span class="mi">28</span><span class="n">a8d35b20fbd167</span>
+<span class="mi">0000000000000000</span> <span class="n">c4a1be9a50040a49</span> <span class="n">a266cc2ec5ada370</span> <span class="mi">59</span><span class="n">c24fdb72f24d49</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">83</span><span class="n">b3927383b39273</span> <span class="mi">1374429</span><span class="n">b74bf2dc5</span> <span class="n">b2e5c38addfd9bbc</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">90</span><span class="n">c7d0e8f70cbfb6</span> <span class="n">b4975af551b93659</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">47122</span><span class="n">ce9d3b7983a</span> <span class="mi">923</span><span class="n">a980a876ad241</span> <span class="n">f786cb6cd09fa275</span>
+<span class="mi">0000000000000000</span> <span class="n">c4a1be9a50040a49</span> <span class="mi">32</span><span class="n">a11cc632a11cc6</span> <span class="n">a16a8af18673e3e8</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">83</span><span class="n">b3927383b39273</span> <span class="mi">83</span><span class="n">b3927383b39273</span> <span class="mi">1078044437616</span><span class="n">d5d</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">93</span><span class="n">cb9637b4d2ff2e</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">47122</span><span class="n">ce9d3b7983a</span> <span class="mi">02</span><span class="n">fd48e270666df7</span> <span class="n">bb63456c94292e49</span>
+<span class="mi">0000000000000000</span> <span class="n">c4a1be9a50040a49</span> <span class="n">a266cc2ec5ada370</span> <span class="n">ca09d9ecc620b267</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">83</span><span class="n">b3927383b39273</span> <span class="mi">1374429</span><span class="n">b74bf2dc5</span> <span class="mf">212e55</span><span class="n">bd692f6492</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">90</span><span class="n">c7d0e8f70cbfb6</span> <span class="mi">275</span><span class="n">cccc2e56bc977</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">47122</span><span class="n">ce9d3b7983a</span> <span class="mi">923</span><span class="n">a980a876ad241</span> <span class="mi">644</span><span class="n">d5d5b644d5d5b</span>
+<span class="mi">0000000000000000</span> <span class="n">c4a1be9a50040a49</span> <span class="mi">32</span><span class="n">a11cc632a11cc6</span> <span class="mi">32</span><span class="n">a11cc632a11cc6</span>
+<span class="mi">0</span><span class="n">d16dceddfc805c1</span> <span class="mi">83</span><span class="n">b3927383b39273</span> <span class="mi">83</span><span class="n">b3927383b39273</span> <span class="mi">83</span><span class="n">b3927383b39273</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span>
+</pre></div>
+</div>
+<p>Ta chỉ quan tâm các khối <span class="math notranslate nohighlight">\(64\)</span> bits toàn các byte <cite>0</cite> nên bản mã dạng hex trên tương đương với</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span> <span class="o">----------------</span>
+<span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span> <span class="mi">0000000000000000</span>
+</pre></div>
+</div>
+<p>Ở đây, <code class="docutils literal notranslate"><span class="pre">----------------</span></code> là khối khác <span class="math notranslate nohighlight">\(0\)</span>. Thử mã hóa nhiều lần vói <span class="math notranslate nohighlight">\(K_{root}\)</span> khác nhau thì ta thấy bản mã đều có dạng chung như trên.</p>
+<p>Từ đó có thể nói dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span> không phụ thuộc vào khóa. Lúc này ta có thể sử dụng <span class="math notranslate nohighlight">\(K_{root}\)</span> tùy ý và sinh ra dãy <span class="math notranslate nohighlight">\(\{ \gamma_n \}\)</span>.</p>
+<p>File giải mã là <a class="reference download internal" download="" href="../../_downloads/790999c6596feccab5101e5f31496079/solve.py"><code class="xref download docutils literal notranslate"><span class="pre">problem-7/solve.py</span></code></a>.</p>
+<p>Kết quả giải mã là</p>
+<blockquote>
+<div><p>EVALUATION OF THE SITUATION UNTIL NOW IT HAD TO BE EXPECTED THAT THE ENEMY WOULD TRY TO CROSS THE DANUBE WITH THE TROOPS ASSEMBLING AT VIDIN LOMPALANKA AND NEAR DRUTSCHUK WITH THE GOAL TO CUT OFF THE RAILWAYS BETWEEN ORSOVA AND CRAIOVA AND TO PUSH FORWARD TO BUCHAREST SINCE NOVEMBER 1 1918 IT APPEARS THAT THE SERBIAN ARMIES TOGETHER WITH THREE FRENCH DIVISIONS AREENGAGED IN AN ADVANCE TOWARD BELGRADE SEMENDRIA AND THE INTENDED ATTACK AT VIDI AND LOM PALANKA SEEMS TO HAVE BEEN ABANDONED IT HAS TO BE EXPECTED THE DEPLOYMENT OF STRONGER FORCES AT THE DANUBE SOUTH OF SVISTOVRUSTSCHUK SPECIALLY AFTER THE PEACE AGREEMENT OF TURKEY HENCE IT IS MOST LIKELY THAT THE SERBIAN ARMIES REINFORCED BY THE FRENCH INTEND TO CROSS THE DANUBE NEAR BELGRADE SEMENDIA AND THE INTO SOUTHERN REPEAT SOUTHERN HUNGARY WHILE THE TASK OF THE FRENCH ARMY MARCHING SOUTH OF SVISTOV RUTSCHUK REMAINS THE OFFENSIVE TOWARD BUCHAREST IN CONJUNCTION WITH THIS OPERATION IT CANNOT BE RULED OUT THAT THE ROMANIAN FORCES COMING FROM MOLDAVIA OVER THE PASSES OF TOELGYESGIMES AND OITOS WILL INVADE TRANSYLVANIA THUS THE LINES OF COMMUNICATIONS IN THE REAR OF THE OCCUPATION ARMY WHICH HAVE UP TO NOW AS A RESULT OF IS THREATENED WITH ATTACK AND THE FURTHER OCCUPATION OF THE WALL ACHIAAS LAID DOWN IN ORDER FROM OKHEAD QUARTERS 2RMNR11161 WITHOUT DOUBT AND WITH REGARD TO THE AMMUNITION FOOD AND THE COAL STOCK SIT IS UNFEASIBLE IF THE GENERAL ARM ISTICE DOES NOT BECOME EFFECTIVE IN THE FORESEEABLE FUTURE IT IS SUGGESTED THAT THE OCCUPATION ARMY BE WITHDRAWN ATONCE FROM ROMANIA AND TOGETHER WITH THE GERMAN UNITS OF THE FIRST ARMY TO START THE MARCH TOUPPERSILES IA THROUGH HUNGARY APPROVAL IS REQUESTED SIGNED KMIAGROP</p>
+</div></blockquote>
+</section>
+</section>
+<section id="id14">
+<h2>Задача 8. Загадочная ошибка<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<p>Thêm một bài reverse engineering C++. Bài này có dùng thêm OpenSSL nhưng mình vẫn không biết làm.</p>
+</section>
+<section id="xsl">
+<h2>Задача 9. Генератор гаммы на основе XSL-схемы<a class="headerlink" href="#xsl" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h3>Câu hỏi<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>Chúng ta tạo thuật toán sinh khóa cho mã dòng</p>
+<ol class="arabic simple">
+<li><p>Hàm sinh của khóa là ánh xạ <span class="math notranslate nohighlight">\(F: \mathbb{F}_2^{64} \to \mathbb{F}_2^{64}\)</span>, được xây dựng dựa trên mô hình XSL, rất phổ biến trong việc thiết kế mã khối.</p></li>
+<li><p>Phép biến đổi không tuyến tính là S-box, dựa trên ánh xạ <span class="math notranslate nohighlight">\(S: \mathbb{F}_2^8 \to \mathbb{F}_2^8\)</span>. S-box có thể biểu diễn qua hoán vị sau</p></li>
+</ol>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(208\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(222\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(234\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(63\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(49\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(228\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(31\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(202\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(196\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(17\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(37\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(240\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(254\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(43\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(117\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(160\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(174\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(123\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(79\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(154\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(148\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(65\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(186\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(111\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(97\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(180\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(128\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(85\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(91\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(142\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(239\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(58\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(52\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(225\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(213\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(219\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(32\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(245\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(251\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(46\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(26\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(207\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(193\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(20\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(74\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(159\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(145\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(68\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(112\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(165\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(171\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(126\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(133\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(80\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(94\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(139\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(191\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(106\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(100\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(177\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(242\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(39\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(41\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(252\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(200\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(29\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(19\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(198\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(61\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(232\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(230\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(51\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(210\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(220\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(87\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(130\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(140\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(89\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(109\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(184\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(182\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(99\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(152\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(77\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(67\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(150\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(162\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(119\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(121\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(172\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(205\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(24\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(22\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(195\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(247\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(34\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(44\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(249\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(215\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(217\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(56\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(237\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(227\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(54\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(7\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(104\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(189\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(179\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(102\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(82\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(135\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(137\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(92\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(167\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(114\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(124\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(169\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(157\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(72\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(70\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(147\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(188\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(105\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(103\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(178\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(134\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(83\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(93\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(136\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(115\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(166\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(168\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(125\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(73\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(156\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(146\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(71\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(9\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(25\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(204\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(194\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(23\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(35\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(246\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(248\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(45\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(214\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(216\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(236\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(57\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(55\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(226\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(131\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(86\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(88\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(141\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(185\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(108\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(98\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(183\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(76\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(153\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(151\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(66\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(118\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(163\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(173\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(120\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(11\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(38\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(243\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(253\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(28\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(201\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(199\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(18\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(233\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(60\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(50\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(231\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(211\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(221\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(12\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(158\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(75\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(69\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(144\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(164\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(113\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(127\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(170\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(81\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(132\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(138\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(95\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(107\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(190\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(176\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(101\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(13\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(59\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(238\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(224\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(53\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(212\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(218\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(244\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(33\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(47\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(250\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(206\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(27\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(21\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(192\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(161\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(116\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(122\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(175\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(155\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(78\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(64\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(149\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(110\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(187\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(181\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(96\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(84\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(129\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(143\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(90\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(15\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(209\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(223\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(62\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(235\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(229\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(48\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(203\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(30\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(16\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(197\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(241\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(36\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(42\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(255\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ở bảng trên, phần tử ở hàng <span class="math notranslate nohighlight">\(i\)</span> và cột <span class="math notranslate nohighlight">\(j\)</span> (<span class="math notranslate nohighlight">\(0 \leqslant i, j \leqslant 15\)</span>) là giá trị S-box của <span class="math notranslate nohighlight">\(16i + j\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Biến đổi tuyến tính <span class="math notranslate nohighlight">\(L\)</span> dựa trên LFSR, nghĩa là <span class="math notranslate nohighlight">\(L: \mathbb{F}_2^{64} \to \mathbb{F}_2^{64}\)</span> với hệ số của đa thức đặc trưng được viết dưới dạng <cite>0x12a9d9b8c0edf6e79</cite> (ở đây bit cao là hệ số của hạng tử bậc cao, most significant bit). Ở mỗi vòng, thanh ghi sẽ được khai báo bởi một trong các hằng số của vòng và đi qua <span class="math notranslate nohighlight">\(64\)</span> vòng.</p></li>
+</ol>
+<p>Như vậy, quá trình sinh khóa có dạng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[k^{(i)} = S(k^{(i-1)}) \oplus L^{64}(C^{(i)}),\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(k^{(i - 1)}\)</span> là khóa được sinh trước đó, <span class="math notranslate nohighlight">\(k^{(0)}\)</span> là khóa đầu vào để sinh toàn bộ dãy khóa, và <span class="math notranslate nohighlight">\(C^{(i)}\)</span> là hằng số của vòng, gồm</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0x6ea276726c487ab8</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x5d27bd10dd849401</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xdc87ece4d890f4b3</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xba4eb92079cbeb02</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xb2259a96b4d88e0b</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xe7690430a44f7f03</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x7bcd1b0b73e32ba5</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xb79cb140f2551504</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x156f6d791fab511d</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xeabb0c502fd18105</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xa74af7efab73df16</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x0dd208608b9efe06</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xc9e8819dc73ba5ae</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x50f5b570561a6a07</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xf6593616e6055689</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0xadfba18027aa2a08</span></code>.</p></li>
+</ul>
+<p>Phương trình mã hóa có dạng</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[y^{(i)} = x^{(i)} \oplus k^{(i)}\]</div>
+</div>
+<p>với <span class="math notranslate nohighlight">\(y^{(i)}, x^{(i)} \in \mathbb{F}_2^{64}\)</span>.</p>
+<p>Người truyền tin muốn kiểm tra độ an toàn của thuật toán sinh khóa. Anh ta mã hóa một phần của đoạn văn đầu trong tiểu thuyết “Alice in Wonderland” (tiếng Anh) và thu được bản mã là</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3291999942924</span><span class="n">df2eb53323558623a949f5d90c4ba2cf0d9883c21ee0fcd8e5348de9d8fecee8b55693a5682396c33b57cdcaa6946fdfe5c50660656cfb03fbfa682db7f20837e3d406340ebf301b8223a7ada2820b5e15756ab0f54e2af8008f181e474757afbdfaf65525e88dadce723653bfc35398852d3e82cfb4815f3f6</span>
+</pre></div>
+</div>
+<p>Nhiệm vụ của bạn là phân tích thuật toán mã hóa và nếu có lỗ hổng, hãy khai thác nó và tìm khóa mã hóa.</p>
+</section>
+<section id="id16">
+<h3>[TODO] Giải<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="id17">
+<h2>Задача 10. Регистровое преобразование<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h3>Câu hỏi<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>Eva chặn được một đoạn gamma được sinh dựa trên shift register (xem chi tiết ở file <a class="reference download internal" download="" href="../../_downloads/2a26783b00d1edccd73bdb2495169f3e/PQR.py"><code class="xref download docutils literal notranslate"><span class="pre">problem-10/PQR.py</span></code></a>):</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\gamma = 01000000000000010100100001101000111101100010001111.\]</div>
+</div>
+<p>Hãy tìm giá trị register ban đầu.</p>
+</section>
+<section id="id19">
+<h3>[TODO] Giải<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="pbkdf">
+<h2>Задача 11. Трудный PBKDF<a class="headerlink" href="#pbkdf" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h3>Câu hỏi<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>Việc trao đổi file diễn ra trên kênh truyền. Để mã hóa file chúng ta dùng thuật toán sau dựa trên mật khẩu.</p>
+<p>Đầu vào là mật khẩu <span class="math notranslate nohighlight">\(password\)</span> gồm <span class="math notranslate nohighlight">\(4\)</span> chữ số thập phân, và thông điệp <span class="math notranslate nohighlight">\(pt\)</span>.</p>
+<p>Ta tính khóa <span class="math notranslate nohighlight">\(key = \mathsf{SHA256}(password)\)</span> và initial vector là</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[IV = \mathsf{PBKDF-HMAC-SHA256}(salt, 2^{30}, 128).\]</div>
+</div>
+<p>Sử dụng thuật toán mã khối AES256 với mode CBC và khóa <span class="math notranslate nohighlight">\(key\)</span>, initial vector <span class="math notranslate nohighlight">\(IV\)</span>, và padding bằng PKCS#7.</p>
+<p>Chúng ta có một số file đã bị mã hóa. Biết rằng, qua kênh truyền có thể có nhiễu nên file có thể chứa một số bytes đã bị hỏng. Một trong số đó chứa flag, hãy tìm nó.</p>
+</section>
+<section id="id21">
+<h3>[TODO] Giải<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+</section>
+</section>
+<section id="ket-luan">
+<h2>Kết luận<a class="headerlink" href="#ket-luan" title="Link to this heading">¶</a></h2>
+<p>Để viết sau.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../tjctf.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">TJCTF 2025</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Các cuộc thi năm 2025</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025-2026, Lê Quốc Dũng
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">CryptoFox 2025</a><ul>
+<li><a class="reference internal" href="#gioi-thieu">Giới thiệu</a></li>
+<li><a class="reference internal" href="#id1">Задача 0. Хакерская атака</a></li>
+<li><a class="reference internal" href="#id2">Задача 1. Кривизна функции</a><ul>
+<li><a class="reference internal" href="#cau-hoi">Câu hỏi</a></li>
+<li><a class="reference internal" href="#todo-giai">[TODO] Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">Задача 2. Странная вселенная</a><ul>
+<li><a class="reference internal" href="#id4">Câu hỏi</a></li>
+<li><a class="reference internal" href="#id5">[TODO] Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">Задача 3. Магическая шкатулка</a></li>
+<li><a class="reference internal" href="#fox128">Задача 4. Разности для FOX128</a><ul>
+<li><a class="reference internal" href="#id7">Câu hỏi</a></li>
+<li><a class="reference internal" href="#id8">[TODO] Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rsa">Задача 5. Шифрование в RSA</a><ul>
+<li><a class="reference internal" href="#id9">Câu hỏi</a></li>
+<li><a class="reference internal" href="#giai">Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">Задача 6. Подозрительная фотография</a></li>
+<li><a class="reference internal" href="#id11">Задача 7. Замены и перестановки</a><ul>
+<li><a class="reference internal" href="#id12">Câu hỏi</a></li>
+<li><a class="reference internal" href="#id13">Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">Задача 8. Загадочная ошибка</a></li>
+<li><a class="reference internal" href="#xsl">Задача 9. Генератор гаммы на основе XSL-схемы</a><ul>
+<li><a class="reference internal" href="#id15">Câu hỏi</a></li>
+<li><a class="reference internal" href="#id16">[TODO] Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">Задача 10. Регистровое преобразование</a><ul>
+<li><a class="reference internal" href="#id18">Câu hỏi</a></li>
+<li><a class="reference internal" href="#id19">[TODO] Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pbkdf">Задача 11. Трудный PBKDF</a><ul>
+<li><a class="reference internal" href="#id20">Câu hỏi</a></li>
+<li><a class="reference internal" href="#id21">[TODO] Giải</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ket-luan">Kết luận</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"tex": {"macros": {"bm": ["{\\boldsymbol{#1}}", 1], "wt": "\\operatorname{wt}", "tr": "\\operatorname{tr}", "lcm": "\\mathrm{lcm}", "GL": "\\mathrm{GL}", "lex": "\\text{lex}", "grlex": "\\text{grlex}", "grevlex": "\\text{grevlex}", "CC": "\\mathbb{C}", "RR": "\\mathbb{R}", "QQ": "\\mathbb{Q}", "ZZ": "\\mathbb{Z}", "NN": "\\mathbb{N}", "FF": "\\mathbb{F}", "KK": "\\mathbb{K}"}}, "chtml": {"mtextInheritFont": "true"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    </body>
+</html>
