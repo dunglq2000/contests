@@ -4,5 +4,5 @@ Các cuộc thi năm 2020
 .. toctree:: 
    :maxdepth: 1
 
-   midnightsun
+   MidnightsunCTF/index
    nsucrypto/index
