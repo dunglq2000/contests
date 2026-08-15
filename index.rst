@@ -1,5 +1,5 @@
-Lời giải cho những vấn đề
-=========================
+Đề thi và lời giải các cuộc thi
+===============================
 
 
 .. toctree::
@@ -14,6 +14,14 @@ Lời giải cho những vấn đề
    2025/index
    2026/index
    cryptohack/index
+
+Đáp án bài tập trong sách
+=========================
+
+.. toctree::
+   :maxdepth: 2
+
+   solutions/index
 
 .. bibliography:: 
    :style: unsrt
