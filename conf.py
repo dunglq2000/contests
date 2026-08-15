@@ -6,9 +6,15 @@ version = "1.0"
 extensions = [
     'sphinx_togglebutton', 
     'sphinx_design', 
+    'sphinx_book_theme', 
     'sphinx_proof', 
     'sphinxcontrib.bibtex',
+    'sphinx.ext.graphviz'
 ]
+
+disqus_shortname = "math-book"
+
+language = "vi"
 
 proof_minimal_theme = True
 
@@ -30,6 +36,7 @@ mathjax3_config = {
             "bm": ['{\\boldsymbol{#1}}',1],
             "wt": r'\operatorname{wt}',
             "tr": r'\operatorname{tr}',
+            "rank": r'\operatorname{rank}',
             "lcm": r"\mathrm{lcm}",
             "GL": r"\mathrm{GL}",
             "lex": r"\text{lex}",
@@ -56,33 +63,6 @@ numfig_format = {
 
 numfig = True
 pygments_style = "default"
-
-latex_engine = 'lualatex'
-latex_elements = {
-    'passoptionstopackages': r'''
-\PassOptionsToPackage{svgnames}{xcolor}
-''',
-    'fontpkg': r'''
-\setmainfont{CMU Serif}
-\setsansfont{CMU Sans Serif}
-''',
-    'preamble': r'''
-\usepackage[titles]{tocloft}
-\usepackage{amsmath, amsfonts, amssymb}
-\usepackage{bm}
-\usepackage{cancel}
-\usepackage{float}
-\cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
-\setlength{\cftchapnumwidth}{0.75cm}
-\setlength{\cftsecindent}{\cftchapnumwidth}
-\setlength{\cftsecnumwidth}{1.25cm}
-''',
-    'sphinxsetup': 'TitleColor=DarkGoldenrod',
-    'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
-    'makeindex': '',
-    'printindex': '',
-    'figure_align': r'H',
-}
 
 exclude_patterns = [
     '_build', 'Thumbs.db', '.DS_Store', # default

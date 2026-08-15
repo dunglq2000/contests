@@ -1,0 +1,23 @@
+p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+figcaption p {
+    text-align: center;
+    hyphens: none;
+}
+
+.centered-table th p {
+    text-align: center !important;
+}
+
+.centered-table td p {
+    text-align: center !important;
+}
+
+body {
+    --font-size: 12pt;
+    --admonition-font-size: var(--font-size);
+    --admonition-title-font-size: var(--font-size);
+}

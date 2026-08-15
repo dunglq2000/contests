@@ -13,6 +13,7 @@ Lời giải cho những vấn đề
    2024/index
    2025/index
    2026/index
+   cryptohack/index
 
 .. bibliography:: 
    :style: unsrt
