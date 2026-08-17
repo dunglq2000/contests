@@ -34,8 +34,8 @@ Lưu ý rằng do ta giả sử bit đầu là :math:`0`, nên nếu bit đầu 
 
 Mã nguồn lời giải được lưu tại :download:`solve.py <glitch_in_the_matrix/solve.py>`.
 
-Chạy thử trên máy cục bộ
-=======================
+Chạy thử trên local
+===================
 
 Các bước chạy lại thử thách ``Glitch in the matrix`` trên máy cục bộ:
 

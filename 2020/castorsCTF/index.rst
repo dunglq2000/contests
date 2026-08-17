@@ -7,7 +7,7 @@ Cryptography
 ------------
 
 Goose chase
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Đề bài cho ta 2 tấm hình và ở 2 tấm hình này có 1 khu vực bị "nhòe". Dựa vào 1 số kinh nghiệm trước đây ta đoán rằng khu vực đó đã bị xor với 1 key nào đó nên ta không thể xem được. Do đó ta xor 2 tấm hình lại bằng đoạn code như sau
 
@@ -35,21 +35,22 @@ Goose chase
    newImg.save("answer.png")
 
 Kết quả:
+
 .. image:: answer.png
    :alt: goose
 
 Jigglypuff's Song
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 .. image:: chal.png
    :alt: jiggly
 
 Bài này ban đầu ta đã nghi nghi về tấm hình rồi và đề cũng gợi ý là MSB nhưng ta hơi *bối rối* và phải nhờ đồng đội support. Challenge này chỉ đơn giản là lấy MSB (most significant bit) của tấm hình. Ở đây ta dùng **StegSolve**, tích vào channel R, G, B đều là 7. Message sẽ nằm trong đoạn text đó.
 
-**Cờ:** castorsCTF{r1ck_r0ll_w1ll_n3v3r_ d3s3rt_y0uuuu}
+**Cờ:** ``castorsCTF{r1ck_r0ll_w1ll_n3v3r_d3s3rt_y0uuuu}``
 
 Bagel Bytes
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 **nc chals20.cybercastors.com 14420**
 
@@ -101,7 +102,7 @@ Và quan trọng nhất, AES dùng mode **ECB**. Tới đây ta chỉ cần vi�
 **Cờ:** castorsCTF{I_L1k3_muh_b4G3l5_3x7r4_cr15pY}
 
 Two Paths
-~~~~~~~~~
+^^^^^^^^^
 
 .. image:: two-paths.png
    :alt: two-paths
@@ -131,7 +132,7 @@ Chắc flag ở đây Mở ra thì ............. 1 đống :( Nhưng ta đã tì
 **Cờ:** castorsCTF{sancocho_flag_qjzmlpg}
 
 Amazon
-~~~~~~
+^^^^^^
 
 Bài này khá ......... thú vị (đối với ta) vì ít khi ta làm mấy dạng đoán mò như vầy
 
@@ -181,7 +182,7 @@ Tới đây thì ta mới hiểu *ciphertext = (số nguyên tố kế số nguy
 **Cờ:** castorsCTF{N0_End_T0d4y_F0r_L0v3_I5_X3n0n}
 
 Magic School Bus
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 nc chals20.cybercastors.com 14421
 
@@ -192,7 +193,7 @@ NHƯNG! Nếu nó đã hoán vị theo quy tắc nào đó thì chỉ cần ta d
 **Cờ:** CASTORSCTF{R3C0N4ISSANCE_IS_K3Y_TO_S0LV1NG_MYS73R1E5}
 
 One Trick Pony
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 nc chals20.cybercastors.com 14422
 
@@ -228,7 +229,7 @@ Forensic
 --------
 
 Manipulation
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 File ở `đây <pooh.jpg>`_
 
@@ -247,7 +248,7 @@ Coding
 ------
 
 Arithmetics
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Bài này nói chung để .......... giải trí và cho điểm chỉ cần filter toán hạng 1, toán tử, toán hạng 2 rồi tính thôi
 
@@ -294,10 +295,3 @@ Bài này nói chung để .......... giải trí và cho điểm chỉ cần fi
 
 Ngoài ra ta còn làm 1 bài misc là **Gif**, 5 bài reverse ít điểm nhất thôi nên ta không viết ra ở đây để đỡ mất thời gian. Cũng không quá khó, người đọc có thể thử.
 
-Flag cho các bài:
-
-- **Gif**: castorsCTF{omgsofunnylol}
-- **XoR**: castorsCTF{x0rr1n6_w17h_4_7w157}
-- **reverse-me**: castorsCTF{r3v3r51n6_15_fun}
-- **Stacking**: castorsCTF{w3lc0m3_70_70_r3v3r23_3n61n33r1n6}
-- **Vault1**: castorsCTF{r1cK_D1e_R1cKp3aT_x0r}

@@ -7,7 +7,7 @@ Sunshine CTF 2020
 Giải này chỉ có 1 bài crypto, và đây là bài viết của ta:
 
 Magically Delicious
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 **Mô tả**
 
@@ -25,7 +25,7 @@ Ta thống kê thấy ở đây có 8 loại emojis khác nhau, và được ph�
 -------------
 
 Hotel Door Puzzle
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 **Mô tả**:
 
@@ -75,7 +75,7 @@ Code exploit ở `chall00.py <chall00.py>`_
 Flag: **sun{burn-it-down-6208bbc96c9ffce4}**
 
 speedrun-01
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 **Mô tả**
 
@@ -100,7 +100,7 @@ Code exploit ở `chall01.py <chall01.py>`_
 Flag: **sun{eternal-rest-6a5ee49d943a053a}**
 
 speedrun-02
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 **Mô tả**
 
@@ -122,7 +122,7 @@ Code exploit ở `chall02.py <chall02.py>`_
 Flag: **sun{warmness-on-the-soul-3b6aad1d8bb54732}**
 
 speedrun-04
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 **Mô tả**
 
@@ -142,7 +142,7 @@ Code exploit ở `chall04.py <chall04.py>`_
 Flag: **sun{critical-acclaim-96cfde3d068e77bf}**
 
 speedrun-05
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 **Mô tả**
 

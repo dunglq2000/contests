@@ -32,6 +32,7 @@ Cách tính nghiệm của hệ thặng dư trên như sau:
 - Lấy căn bậc 3 ta có kết quả
 
 **Hàm tính nghiệm của hệ thặng dư**
+
 .. code-block:: python
 
    def solve_crt(t, n):
@@ -46,6 +47,7 @@ Cách tính nghiệm của hệ thặng dư trên như sau:
        return x % N
 
 **Lấy căn bậc 3**:
+
 .. code-block:: python
 
    #from http://python.6.x6.nabble.com/cube-root-tp1733498p1733529.html
@@ -60,6 +62,7 @@ Cách tính nghiệm của hệ thặng dư trên như sau:
        return y
 
 **Giải**:
+
 .. code-block:: python
 
    n1 = 7156756869076785933541721538001332468058823716463367176522928415602207483494410804148006276542112924303341451770810669016327730854877940615498537882480613
