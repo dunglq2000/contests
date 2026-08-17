@@ -28,7 +28,7 @@ Provably Secure 1/2
                 r_prime = strxor(r, msg)
                 ct0 = pk0.encrypt(r, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
                                     algorithm=hashes.SHA256(), label=None))
-                ct1 = pk1.encrypt(r_prime, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), 
+                ct1 = pk1.encrypt(r_prime, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
                                     algorithm=hashes.SHA256(), label=None))
                 return ct0.hex() + ct1.hex()
 
@@ -61,7 +61,7 @@ Provably Secure 1/2
                     seen_ct = set()
                     en_count = 0
                     de_count = 0
-                    
+
                     while True:
                         choice = int(input("Action: "))
                         if choice == 0:
@@ -86,7 +86,7 @@ Provably Secure 1/2
                             ct = encrypt(pk0, pk1, msg)
                             seen_ct.add(ct)
                             print(ct)
-                        
+
                         elif choice == 2:
                             de_count += 1
                             if (de_count > 8):
@@ -107,10 +107,10 @@ Provably Secure 1/2
 Chúng ta có 3 lựa chọn (cho đường đời) như sau:
 
 * ``Solve``: chỉ ra :math:`m_{bit}` là :math:`0` hay :math:`1`, nếu đúng thì vượt :math:`1` ải, vượt thành công :math:`128` ải thì qua môn!!!;
-* ``Query Encryption``: ở mỗi round server tạo hai key RSA để mình dùng. Mình cần nhập hai message có độ dài :math:`16` byte và gửi lên server. Dựa vào bit random :math:`m_{bit}` mà server sẽ encrypt :math:`m_0` hay :math:`m_1`. Server trả về ciphertext tương ứng (hai ciphertext với tổng độ dài :math:`512` byte);
-* ``Query Decryption``: để decrypt mình cần gửi lên server ciphertext :math:`512` byte và chỉ được decrypt mỗi ciphertext một lần.
+* ``Query Encryption``: ở mỗi round server tạo hai key RSA để ta dùng. Ta cần nhập hai message có độ dài :math:`16` byte và gửi lên server. Dựa vào bit random :math:`m_{bit}` mà server sẽ encrypt :math:`m_0` hay :math:`m_1`. Server trả về ciphertext tương ứng (hai ciphertext với tổng độ dài :math:`512` byte);
+* ``Query Decryption``: để decrypt ta cần gửi lên server ciphertext :math:`512` byte và chỉ được decrypt mỗi ciphertext một lần.
 
-**NOTE**: mình chỉ được encrypt và decrypt :math:`8` lần mỗi loại.
+**Lưu ý**: ta chỉ được encrypt và decrypt :math:`8` lần mỗi loại.
 
 Hàm encrypt làm việc như sau:
 
@@ -122,14 +122,14 @@ Hàm encrypt làm việc như sau:
 
 Hàm decrypt làm ngược lại và ở kết quả cuối thì xor hai plaintext lại (:math:`msg = r\_prime \oplus r`).
 
-Đề chỉ cho hai public key, mình thì thích private key hơn. :))
+Đề chỉ cho hai public key, ta thì thích private key hơn.
 
-Mình nhận ra một điều, giả sử ciphertext của mình là :math:`\text{ENC}(r, pk_0)` và :math:`\text{ENC}(r\_prime = r \oplus msg, pk_1)` thì nếu mình gửi hai lần decrypt với các ciphertext:
+Ta nhận ra một điều, giả sử ciphertext của ta là :math:`\text{ENC}(r, pk_0)` và :math:`\text{ENC}(r\_prime = r \oplus msg, pk_1)` thì nếu ta gửi hai lần decrypt với các ciphertext:
 
 * :math:`\text{ENC}(r, pk_0)` và :math:`\text{ENC}(00^{16}, pk_1)` thì kết quả trả về là :math:`r \oplus 00^{16} = r`;
 * :math:`\text{ENC}(00^{16}, pk_0)` và :math:`\text{ENC}(r\_prime = r \oplus msg, pk_1)` thì kết quả trả về là :math:`00^{16} \oplus r \oplus msg = r \oplus msg`.
 
-Khi đó mình xor hai plaintext này lại là được :math:`msg` và so sánh xem nó trùng với :math:`m_0` hay :math:`m_1` mình gửi lên server ban đầu.
+Khi đó ta xor hai plaintext này lại là được :math:`msg` và so sánh xem nó trùng với :math:`m_0` hay :math:`m_1` ta gửi lên server ban đầu.
 
 .. only:: html
 
@@ -212,7 +212,7 @@ Khi đó mình xor hai plaintext này lại là được :math:`msg` và so sán
 
             r.close()
 
-**NOTE**: thật ra ở bài 1 không có công đoạn kiểm tra ciphertext không nằm trong ciphertext có sẵn nên mình chỉ cần gửi lên ciphertext vừa được encrypt là ra. Code trên được dùng để giải cả hai bài Provably Secure 1/2.
+**Lưu ý**: thật ra ở bài 1 không có công đoạn kiểm tra ciphertext không nằm trong ciphertext có sẵn nên ta chỉ cần gửi lên ciphertext vừa được encrypt là ra. Code trên được dùng để giải cả hai bài Provably Secure 1/2.
 
 Flag **Provably Secure**: ``dice{yeah_I_lost_like_10_points_on_that_proof_lmao}``.
 
@@ -227,7 +227,7 @@ BBBB
         :class: dropdown
 
         .. code-block:: python
-                
+
             #!/usr/local/bin/python
             from Crypto.Util.number import bytes_to_long, getPrime
             from random import randint
@@ -299,17 +299,17 @@ BBBB
             if __name__ == "__main__":
                 main()
 
-Bài này khoai thật sự. :))))
+Bài này khoai thật sự.
 
 Bài này giống một phần bài `BBB <https://ctftime.org/task/23982>`_ của giải SECCON nhưng có chút khác bọt.
 
-Đề cho mình một số nguyên tố :math:`p` :math:`512` bit và số :math:`b` nhỏ hơn :math:`p`. Mình cần nhập số :math:`a` và từ đó các số mũ :math:`e` dùng trong RSA sẽ được tạo bởi hàm ``rng``.
+Đề cho ta một số nguyên tố :math:`p` :math:`512` bit và số :math:`b` nhỏ hơn :math:`p`. Ta cần nhập số :math:`a` và từ đó các số mũ :math:`e` dùng trong RSA sẽ được tạo bởi hàm ``rng``.
 
 Dựa trên bài của giải SECCON, chiến thuật làm bài này là cố gắng khiến hàm `rng` tạo nhiều :math:`e=11` nhất có thể (ở bài này sẽ là :math:`3` vì rất khó lấy đủ :math:`5`).
 
 Điểm khó của bài này là hàm ``rng`` tuyến tính, nghĩa là với mỗi output chỉ tìm được đúng một input. Tuy nhiên chúng ta có thể tìm ``rng`` sao cho các input tạo thành vòng, nói cách khác là:
 
-.. math:: 
+.. math::
     :nowrap:
 
     \begin{align*}
@@ -320,11 +320,11 @@ Dựa trên bài của giải SECCON, chiến thuật làm bài này là cố g�
         a X_{i+4} + b & \equiv X_{i} & \pmod p
     \end{align*}
 
-Ở đây :math:`X_{i} = X_{i+5}`, tức là sau :math:`5` lần thì các giá trị :math:`X_i` lặp lại và mình sẽ tìm :math:`a` thỏa mãn đống này.
+Ở đây :math:`X_{i} = X_{i+5}`, tức là sau :math:`5` lần thì các giá trị :math:`X_i` lặp lại và ta sẽ tìm :math:`a` thỏa mãn đống này.
 
-Trừ phương trình dưới cho phương trình trên vế theo vế, mình có:
+Trừ phương trình dưới cho phương trình trên vế theo vế, ta có:
 
-.. math:: 
+.. math::
     :nowrap:
 
     \begin{align*}
@@ -337,17 +337,17 @@ Trừ phương trình dưới cho phương trình trên vế theo vế, mình c�
 
 Như vậy :math:`a^5 \equiv 1 \pmod p`. Nếu phương trình này có nghiệm khác :math:`1` thì ta chọn làm tham số :math:`a`.
 
-Tiếp theo, mình cần :math:`e=11` nằm trong vòng lặp này nên mình cứ chọn :math:`X_0 = e = 11` rồi theo trình tự :math:`X_{i+1} = a X_i + b \pmod p` thôi.
+Tiếp theo, ta cần :math:`e=11` nằm trong vòng lặp này nên ta cứ chọn :math:`X_0 = e = 11` rồi theo trình tự :math:`X_{i+1} = a X_i + b \pmod p` thôi.
 
 Câu hỏi là tại sao lại cần tới :math:`3` bộ có :math:`e=11` mà không phải :math:`2`?
 
-Vì với mỗi public key :math:`2048` bit, phương pháp Coppersmith sẽ hoạt động hiệu quả khi :math:`(2048 * T) \times (1/11 - \varepsilon) \approx 8 \times (L + 4)` với :math:`L` là độ dài flag (tối đa là :math:`49`) và :math:`4` byte random. Như vậy khi :math:`T = 3` thì :math:`\varepsilon > 0` là điều mình cần nhắm tới. Mình tham khảo ở `hastads <https://crypto.stackexchange.com/questions/95065/breaking-rsa-with-linear-padding-using-hastads-attack-with-e-11>`_.
+Vì với mỗi public key :math:`2048` bit, phương pháp Coppersmith sẽ hoạt động hiệu quả khi :math:`(2048 * T) \times (1/11 - \varepsilon) \approx 8 \times (L + 4)` với :math:`L` là độ dài flag (tối đa là :math:`49`) và :math:`4` byte random. Như vậy khi :math:`T = 3` thì :math:`\varepsilon > 0` là điều ta cần nhắm tới. Ta tham khảo ở `hastads <https://crypto.stackexchange.com/questions/95065/breaking-rsa-with-linear-padding-using-hastads-attack-with-e-11>`_.
 
 Cuối cùng, sử dụng CRT và hastad attack (ví dụ như ở `github <https://github.com/0n5/CTF-Crypto/blob/master/RSA/hastads.sage>`_) để giải.
 
-Mình cần lưu ý rằng mình đã biết :math:`5` byte đầu của flag là ``dice{`` nên mình có thể giảm độ dài flag cần tìm xuống, từ đó Coppersmith sẽ hiệu quả hơn.
+Ta cần lưu ý rằng ta đã biết :math:`5` byte đầu của flag là ``dice{`` nên ta có thể giảm độ dài flag cần tìm xuống, từ đó Coppersmith sẽ hiệu quả hơn.
 
-Mỗi phương trình của mình có dạng :math:`(\text{FLAG} \cdot 256^{16} + r_i)^e = c_i \pmod{n_i}` mà FLAG có :math:`5` byte đầu là ``dice{`` nên mình có thể gọi ``C = bytes_to_long(b"dice{") << (8 * (L + 4 + 16))``. Phương trình trở thành 
+Mỗi phương trình của ta có dạng :math:`(\text{FLAG} \cdot 256^{16} + r_i)^e = c_i \pmod{n_i}` mà FLAG có :math:`5` byte đầu là ``dice{`` nên ta có thể gọi ``C = bytes_to_long(b"dice{") << (8 * (L + 4 + 16))``. Phương trình trở thành
 
 .. math:: (\text{FLAG}' \cdot 256^{16} + C + r_i)^e = c_i \pmod{n_i}.
 
@@ -383,7 +383,7 @@ Mỗi phương trình của mình có dạng :math:`(\text{FLAG} \cdot 256^{16} 
                         continue
                     assert rng(a, seeds[-1], b, p) == seeds[0]
                     return a, seeds
-                
+
                 return None, None
 
             def solve(L):
@@ -451,4 +451,4 @@ Mỗi phương trình của mình có dạng :math:`(\text{FLAG} \cdot 256^{16} 
                     m = long_to_bytes(root)
                     print(m)
 
-**NOTE**: việc chọn beta và epsilon khá khó nhằn, công thức trong code là từ writeup người giải ra, và không phải lúc nào cũng có :math:`a` thỏa cũng như đủ :math:`3` bộ có :math:`e = 11`.
+**Lưu ý**: việc chọn beta và epsilon khá khó nhằn, công thức trong code là từ bài viết người giải ra, và không phải lúc nào cũng có :math:`a` thỏa cũng như đủ :math:`3` bộ có :math:`e = 11`.

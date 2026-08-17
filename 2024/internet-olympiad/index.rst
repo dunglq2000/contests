@@ -38,17 +38,17 @@ Cho :math:`x, y` là các số thực thỏa :math:`x^2 + y^2 + xy = x + y`. Tì
 Lời giải
 ^^^^^^^^^^^
 
-Thầy mình bảo đây là dạng bậc hai nên có thể biến đổi để thành phương trình ellipse. Ở đây mình giải theo cách của mình.
+Thầy ta bảo đây là dạng bậc hai nên có thể biến đổi để thành phương trình ellipse. Ở đây ta giải theo cách của ta.
 
 Ta có
 
-.. math:: 
+.. math::
 
    x^2 + y^2 + xy &= x + y \\
    2x^2 + 2y^2 + 2xy &= 2x + 2y \\
    x^2 + y^2 &= -(x+y)^2 + 2(x+y) = -t^2 + 2t = f(t)
 
-Ta có :math:`f'(t) = -2t + 2`, :math:`f'(t) = 0 \Leftrightarrow t = 1`. 
+Ta có :math:`f'(t) = -2t + 2`, :math:`f'(t) = 0 \Leftrightarrow t = 1`.
 
 Do đó :math:`f(t)_{\max} = f(1) = 1`.
 
@@ -65,7 +65,7 @@ Lời giải
 
 Ta biến đổi
 
-.. math:: 
+.. math::
 
    P(x) = x^4 - 4x^2 - x + 1 = (x^2-1)^2 - x(2x+1).
 
@@ -81,7 +81,7 @@ Bài 10
 
 Cho hàm số
 
-.. math:: 
+.. math::
 
    f(x) = \frac{4x - 3}{(x+2)(x+2^2) \ldots (x+2^{2023})}
 
@@ -90,9 +90,9 @@ Gọi :math:`M` là đạo hàm của :math:`f(x)` tại :math:`x_0 = 0`. Tính 
 Lời giải
 ^^^^^^^^^^^
 
-Đặt :math:`f(x) = \dfrac{4x-3}{g(x)}` thì 
+Đặt :math:`f(x) = \dfrac{4x-3}{g(x)}` thì
 
-.. math:: 
+.. math::
 
    f'(x) = \dfrac{4 g(x) - (4x - 3) g'(x)}{g^2(x)}.
 
@@ -104,7 +104,7 @@ Do
 
 ta lấy log hai vế thì được
 
-.. math:: 
+.. math::
 
    \ln g = \sum_{i=1}^{2023} \ln (x + 2^i)
 
@@ -156,7 +156,7 @@ Lời giải
 Bài 3
 --------------
 
-Chả hiểu đề nói gì @@@
+Chưa có lời giải.
 
 Bài 4
 --------------

@@ -4,15 +4,15 @@ Wolv CTF 2023
 keyexchange
 ===========
 
-**Description**: Diffie-Hellman is secure right
+**Mô tả**: Diffie-Hellman is secure right
 
 .. only:: html
 
     .. admonition:: chall.py
         :class: dropdown
-            
+
         .. code-block:: python
-    
+
             #!/opt/homebrew/bin/python3
 
             from Crypto.Util.strxor import strxor
@@ -36,18 +36,18 @@ keyexchange
             enc = strxor(flag + b'\x00' * (len(key) - len(flag)), key)
             print(enc.hex())
 
-Với ba số nguyên tố :math:`n`, :math:`s`, :math:`a`, server gửi mình số :math:`s^a \pmod n`. Mình cần nhập số :math:`b` và server trả về :math:`(s^a)^b \pmod n`. Mình chỉ cần chọn :math:`b=1` là ``secret_key`` sẽ là số :math:`s^a \pmod n` được nhận lúc nãy. Từ đó decrypt ra flag.
+Với ba số nguyên tố :math:`n`, :math:`s`, :math:`a`, server gửi ta số :math:`s^a \pmod n`. Ta cần nhập số :math:`b` và server trả về :math:`(s^a)^b \pmod n`. Ta chỉ cần chọn :math:`b=1` là ``secret_key`` sẽ là số :math:`s^a \pmod n` được nhận lúc nãy. Từ đó decrypt ra flag.
 
 Z2kDH
 =====
 
-**Description**: Sick of how slow it is to take the modulus of a large prime number? Tired of performing exponentiation over some weird group like ed25519? Just use the integers mod 2^k group with the unit g = 5! Efficient, reliable, doesn't require any hard math!
+**Mô tả**: Sick of how slow it is to take the modulus of a large prime number? Tired of performing exponentiation over some weird group like ed25519? Just use the integers mod 2^k group with the unit g = 5! Efficient, reliable, doesn't require any hard math!
 
 .. only:: html
 
     .. admonition:: chall.py
         :class: dropdown
-        
+
         .. code-block:: python
 
             #!/usr/bin/python3
@@ -88,14 +88,14 @@ Z2kDH
 
 Với output là
 
-.. code-block:: 
+.. code-block::
 
     99edb8ed8892c664350acbd5d35346b9b77dedfae758190cd0544f2ea7312e81
     40716941a673bbda0cc8f67fdf89cd1cfcf22a92fe509411d5fd37d4cb926afd
 
 Gọi :math:`a`, :math:`b` lần lượt là private key của Alice và Bob. Khi đó output trên tương đương với :math:`(g^a \bmod p) // 4` và :math:`(g^b \bmod p) // 4` với :math:`p = 2^{258}`.
 
-Như vậy mình cần bruteforce 2 bit cuối của mỗi public key và từ đó tìm ra private key của từng người. Cuối cùng thế vào hàm ``Z2kDH_exchange`` để tìm shared key là flag.
+Như vậy ta cần duyệt vét cạn 2 bit cuối của mỗi public key và từ đó tìm ra private key của từng người. Cuối cùng thế vào hàm ``Z2kDH_exchange`` để tìm shared key là flag.
 
 .. only:: html
 
@@ -148,13 +148,13 @@ Như vậy mình cần bruteforce 2 bit cuối của mỗi public key và từ �
 Galois-t is this?
 =================
 
-**Description**: I'm expecting a super secret message... If you can give it to me, I'll give you a flag!
+**Mô tả**: I'm expecting a super secret message... If you can give it to me, I'll give you a flag!
 
 .. only:: html
 
     .. admonition:: server.py
         :class: dropdown
-        
+
         .. code-block:: python
 
             #!/usr/bin/python3
@@ -241,11 +241,11 @@ Galois-t is this?
                     ct += strxor(
                         enc[i * AES_BLOCK_SIZE: (i+1) * AES_BLOCK_SIZE],
                         pt[(i-1) * AES_BLOCK_SIZE: i * AES_BLOCK_SIZE])
-                    
+
                 authTag = strxor(
                     enc[:AES_BLOCK_SIZE],
                     long_to_bytes(GHASH(bytes_to_long(hkey), header, ct)))
-                
+
                 return ct.hex(), authTag.hex()
 
             def decrypt(nonce, ct, tag):
@@ -273,7 +273,7 @@ Galois-t is this?
                     pt += strxor(
                         enc[i * AES_BLOCK_SIZE: (i+1) * AES_BLOCK_SIZE],
                         ct[(i-1) * AES_BLOCK_SIZE: i * AES_BLOCK_SIZE])
-                    
+
                 authTag = strxor(
                     enc[:AES_BLOCK_SIZE],
                     long_to_bytes(GHASH(bytes_to_long(hkey), header, ct)))
@@ -302,7 +302,7 @@ Galois-t is this?
                             nonce = input("IV (hex) > ")
                             pt = input("Plaintext (hex) > ")
                             ct, tag = encrypt(nonce, pt)
-                            
+
                             print("CT: ", ct)
                             print("TAG: ", tag)
                         case "2":
@@ -315,35 +315,35 @@ Galois-t is this?
                             print("Bye!")
                             exit(0)
                 print("I know encryption is fun, but you can't just keep doing it...")
-                    
+
             if __name__ == "__main__":
                 main()
 
-Bài này thực chất là tính tag trong mode GCM của AES. Các bạn có thể xem thêm về mode CTR và GCM trong bài tìm hiểu lại Google CTF 2020 của mình (bài Pythia).
+Bài này thực chất là tính tag trong mode GCM của AES. Người đọc có thể xem thêm về mode CTR và GCM trong bài tìm hiểu lại Google CTF 2020 của ta (bài Pythia).
 
 Trong bài này chúng ta có ba lần request với ba nonce khác nhau để encrypt hoặc decrypt.
 
-Xét hàm ``incr`` mình thấy counter thực hiện cộng lên 1 ở mỗi bước.
+Xét hàm ``incr`` ta thấy counter thực hiện cộng lên 1 ở mỗi bước.
 
-Nếu mình bắt đầu từ :math:`\mathrm{nonce} = 0`, với ba block plaintext :math:`P_1`, :math:`P_2`, :math:`P_3` thì ciphertext tương ứng sẽ như sau.
+Nếu ta bắt đầu từ :math:`\mathrm{nonce} = 0`, với ba block plaintext :math:`P_1`, :math:`P_2`, :math:`P_3` thì ciphertext tương ứng sẽ như sau.
 
 .. figure:: wolv1.jpg
 
-Tại sao mình cần ba block plaintext trong khi ``message`` của mình là hai block (:math:`32` byte)? Vì ý tưởng của mình khi decrypt là gửi :math:`\mathrm{nonce}=1` lên, khi đó các giá trị trung gian (AES của counter) giữ nguyên với lúc encrypt.
+Tại sao ta cần ba block plaintext trong khi ``message`` của ta là hai block (:math:`32` byte)? Vì ý tưởng của ta khi decrypt là gửi :math:`\mathrm{nonce}=1` lên, khi đó các giá trị trung gian (AES của counter) giữ nguyên với lúc encrypt.
 
 .. figure:: wolv2.jpg
 
-Lưu ý rằng ở hình 1, mình encrypt với :math:`P = 0` và :math:`\mathrm{nonce} = 0` nên mình sẽ có :math:`C_i = u_i`. Ở hình 2 mình có :math:`P'_i \oplus C'_i = P_{i+1} \oplus C_{i+1} = C_{i+1}`, nên mình sẽ tìm được :math:`C'_i` ứng với :math:`P'_i` là message (:math:`C'_i = P'_i \oplus C_{i+1}`).
+Lưu ý rằng ở hình 1, ta encrypt với :math:`P = 0` và :math:`\mathrm{nonce} = 0` nên ta sẽ có :math:`C_i = u_i`. Ở hình 2 ta có :math:`P'_i \oplus C'_i = P_{i+1} \oplus C_{i+1} = C_{i+1}`, nên ta sẽ tìm được :math:`C'_i` ứng với :math:`P'_i` là message (:math:`C'_i = P'_i \oplus C_{i+1}`).
 
 Vậy còn bước authentication?
 
 Nhắc lại về cách tính tag. Trong :math:`\mathrm{GF}(2^{128})`, giả sử với các ciphertext :math:`C_1`, :math:`C_2`, ..., :math:`C_{n}`, với :math:`H = \text{AES}_K(0^{128})`, :math:`L = \mathrm{len}(A) || \mathrm{len}(C)` và :math:`I = \text{AES}_K (J_0)` với :math:`J_0` là nơi bắt đầu counter.
 
-Ở đây :math:`n = 2`, nghĩa là mình cần tìm :math:`T = C_1 H^4 + C_2 H^3 + A H^2 + L H + I` với :math:`A` là associated data (ở trong bài là header).
+Ở đây :math:`n = 2`, nghĩa là ta cần tìm :math:`T = C_1 H^4 + C_2 H^3 + A H^2 + L H + I` với :math:`A` là associated data (ở trong bài là header).
 
-Ở đây chúng ta đã có :math:`C'_1`, :math:`C'_2`, :math:`A`, :math:`L`, :math:`I` (:math:`I` chính là :math:`C_1`, các bạn thấy không? :v), vậy còn :math:`H`?
+Ở đây chúng ta đã có :math:`C'_1`, :math:`C'_2`, :math:`A`, :math:`L`, :math:`I` (:math:`I` chính là :math:`C_1`, người đọc thấy không?), vậy còn :math:`H`?
 
-Tới đây mình encrypt với :math:`\mathrm{nonce}=2` và ciphertext là chuỗi rỗng. Khi đó tag của mình là :math:`T'' = A H^2 + L'' H + I`, nhưng :math:`A` đã bị pad bởi mấy số `0` ở cuối nên phép nhân `H_mult` luôn cho ra :math:`0`, do đó :math:`T'' = L'' H + I` (:math:`L'` là vì lúc này :math:`\mathrm{len}(C) = 0`). Như vậy mình có thể tìm :math:`H` rồi.
+Tới đây ta encrypt với :math:`\mathrm{nonce}=2` và ciphertext là chuỗi rỗng. Khi đó tag của ta là :math:`T'' = A H^2 + L'' H + I`, nhưng :math:`A` đã bị pad bởi mấy số `0` ở cuối nên phép nhân `H_mult` luôn cho ra :math:`0`, do đó :math:`T'' = L'' H + I` (:math:`L'` là vì lúc này :math:`\mathrm{len}(C) = 0`). Như vậy ta có thể tìm :math:`H` rồi.
 
 Như vậy quy trình giải bài này là:
 
@@ -352,13 +352,13 @@ Như vậy quy trình giải bài này là:
 * tính :math:`H` từ đó tính tag khi :math:`\mathrm{nonce} = 1`;
 * decrypt với :math:`C = \text{message}` và :math:`\mathrm{nonce} = 1`.
 
-Cám ơn các bạn đã đọc writeup của mình.
+ bài viết của ta.
 
 .. only:: html
 
     .. admonition:: solve.py
         :class: dropdown
-        
+
         .. code-block:: python
 
             from sage.all import *
@@ -445,7 +445,7 @@ Cám ơn các bạn đã đọc writeup của mình.
                     pt += strxor(
                         enc[i * AES_BLOCK_SIZE: (i+1) * AES_BLOCK_SIZE],
                         ct[(i-1) * AES_BLOCK_SIZE: i * AES_BLOCK_SIZE])
-                    
+
                 authTag = strxor(
                     enc[:AES_BLOCK_SIZE],
                     long_to_bytes(GHASH(bytes_to_long(hkey), header, ct)))
@@ -517,9 +517,9 @@ Cám ơn các bạn đã đọc writeup của mình.
                 tag = pol_to_byte(tag)
                 '''
 
-                tag = strxor(ct0[:16], 
+                tag = strxor(ct0[:16],
                             long_to_bytes(GHASH(bytes_to_long(H), header, ctx)))
-                
+
                 if decrypt(H, ctx, tag):
                     print("Found")
 

@@ -24,7 +24,7 @@ PRSA
         n = sum(int(bit) * y ** (len(bin(bytes_to_long(message))[2:]) - 1 - i) for i, bit in enumerate(bin(bytes_to_long(message))[2:]))
 
         e = 2 ** 256
-        c = n ** e 
+        c = n ** e
 
         print(e) ## to be given to the user
         print(c) ## to be given to the user
@@ -32,7 +32,7 @@ PRSA
 
 Trong bài này chúng ta có đa thức modulo :math:`p(x) \cdot q(x)`. Flag được biến đổi thành dãy nhị phân và là hệ số cho đa thức :math:`n(x) \bmod{p(x) \cdot q(x)}`. Ciphertext khi đó là :math:`n(x)^e \bmod{p(x) \cdot q(x)}`.
 
-Chúng ta làm tương tự RSA, factor modulus. Tiếp theo, gọi :math:`d_p = \deg p(x)` thì số phần tử khác 0 trong :math:`\mathrm{GF} (2^{d_p})` là :math:`2^{d_p} - 1`. Tương tự cho :math:`q(x)` số phần tử khác :math:`0` là :math:`2^{d_q} - 1`. Do đó mình tính nghịch đảo của :math:`e = 2^{256}` trong modulus :math:`(2^{d_p} - 1) \cdot (2^{d_q} - 1)`.
+Chúng ta làm tương tự RSA, factor modulus. Tiếp theo, gọi :math:`d_p = \deg p(x)` thì số phần tử khác 0 trong :math:`\mathrm{GF} (2^{d_p})` là :math:`2^{d_p} - 1`. Tương tự cho :math:`q(x)` số phần tử khác :math:`0` là :math:`2^{d_q} - 1`. Do đó ta tính nghịch đảo của :math:`e = 2^{256}` trong modulus :math:`(2^{d_p} - 1) \cdot (2^{d_q} - 1)`.
 
 .. only:: html
 
@@ -94,9 +94,9 @@ Knapsack
         f.write(f'numbers: {str(arr)[1:-1]}\nsum: {s}\n')
         f.close()
 
-Đề bài cho mình một mảng `arr` và tùy vào bit của `secret` mà cộng `arr` vào :math:`s` hoặc không. Điều này gợi nhớ về sử dụng lattice để giải bài toán knapsack. Mình tham khảo trong quyển *An introduction to mathematical cryptography* và xây dựng lattice như sau:
+Đề bài cho ta một mảng `arr` và tùy vào bit của `secret` mà cộng `arr` vào :math:`s` hoặc không. Điều này gợi nhớ về sử dụng lattice để giải bài toán knapsack. Ta tham khảo trong quyển *An introduction to mathematical cryptography* và xây dựng lattice như sau:
 
-.. math:: 
+.. math::
 
     A_{M, S} = \begin{pmatrix}
         2 & 0 & 0 & \cdots & 0 & a_0 \\
@@ -109,7 +109,7 @@ Knapsack
 
 Sử dụng thuật toán BKZ trên ma trận :math:`A_{M, S}` trên được dòng đầu là :math:`\bar{n}`, nhân :math:`\bar{n}` với :math:`A_{M, S}^{-1}` ta được flag.
 
-**Note**: thuật toán LLL không hiệu quả ở đây còn thuật toán BKZ được sử dụng là do BKZ tốt hơn trong việc giải SVP nhưng chạy lâu hơn (theo giải thích của 1 bạn trong discord giải).
+**Lưu ý**: thuật toán LLL không hiệu quả ở đây còn thuật toán BKZ được sử dụng là do BKZ tốt hơn trong việc giải SVP nhưng chạy lâu hơn (theo giải thích của 1 bạn trong discord giải).
 
 .. only:: html
 
@@ -163,7 +163,7 @@ Curvy Curves
         D = 136449572493235894105040063345648963382768741227829225155873529439788000141924302071247144068377223170502438469323595278711906213653227972959011573520003821372215616761555719247287249928879121278574549473346526897917771460153933981713383608662604675157541813068900456012262173614716378648849079776150946352466
 
         # redacted
-        p = "REDACTED" 
+        p = "REDACTED"
         q = "REDACTED"
 
         # n = p*q
@@ -214,7 +214,7 @@ Curvy Curves
         print(C)
         # Cx = 10800064805285540717966506671755608695842888167470823375167618999987859282439818341340065691157186820773262778917703163576074192246707402694994764789796637450974439232033955461105503709247073521710698748730331929281150539060841390912041191898310821665024428887410019391364779755961320507576829130434805472435025, Cy = 2768587745458504508888671295007858261576650648888677215556202595582810243646501012099700700934297424175692110043143649129142339125437893189997882008360626232164112542648695106763870768328088062485508904856696799117514392142656010321241751972060171400632856162388575536779942744760787860721273632723718380811912
 
-Ở bài này cần factor :math:`n` là có thể giải ra. Tuy nhiên việc factor khá khó và sau giải mình mới biết là sử dụng phương pháp William :math:`p+1`. NHƯNG, một mạnh thường quân nào đó đã factor ra và mình chỉ lấy từ factordb về (vào ngày thứ 2 của CTF) và giải ra.
+Ở bài này cần factor :math:`n` là có thể giải ra. Tuy nhiên việc factor khá khó và sau giải ta mới biết là sử dụng phương pháp William :math:`p+1`. NHƯNG, một mạnh thường quân nào đó đã factor ra và ta chỉ lấy từ factordb về (vào ngày thứ 2 của CTF) và giải ra.
 
 Trong bài này thực hiện việc cộng các điểm theo công thức sau. Gọi :math:`P = (x_P, y_P)` và :math:`Q = (x_Q, y_Q)` là tọa độ điểm :math:`P` và :math:`Q`. Khi đó phép cộng :math:`R = P + Q` là:
 
@@ -222,9 +222,9 @@ Trong bài này thực hiện việc cộng các điểm theo công thức sau. 
 
 .. math:: y_R = x_1 \cdot y_2 + x_2 \cdot y_1 \bmod n
 
-Mình viết dưới dạng ma trận:
+Ta viết dưới dạng ma trận:
 
-.. math:: 
+.. math::
 
     \begin{pmatrix}
         x_P & D \cdot y_P \\ y_P & x_P
@@ -234,9 +234,9 @@ Mình viết dưới dạng ma trận:
         x_R & D \cdot y_R \\ y_R & x_R
     \end{pmatrix}
 
-Khi đó mình ghi lại ma trận :math:`M = \begin{pmatrix} x & D \cdot y \\ y & x \end{pmatrix}` và ciphertext là :math:`C = M^e = \begin{pmatrix} Cx & D \cdot Cy \\ Cy & Cx \end{pmatrix}`.
+Khi đó ta ghi lại ma trận :math:`M = \begin{pmatrix} x & D \cdot y \\ y & x \end{pmatrix}` và ciphertext là :math:`C = M^e = \begin{pmatrix} Cx & D \cdot Cy \\ Cy & Cx \end{pmatrix}`.
 
-Phần này giống với RSA, mình cần tìm order của nhóm các điểm thỏa mãn :math:`x^2 - D \cdot y^2 \equiv 1 \pmod n` (điều kiện này ở hàm `get_point`). Order của nhóm này là :math:`(p+1) \cdot (q+1)` nên ta chỉ cần tính :math:`d = e^{-1} \bmod{(p+1) \cdot (q+1)}` và :math:`M = C^d`. Flag là tọa độ :math:`x` của :math:`M`.
+Phần này giống với RSA, ta cần tìm order của nhóm các điểm thỏa mãn :math:`x^2 - D \cdot y^2 \equiv 1 \pmod n` (điều kiện này ở hàm `get_point`). Order của nhóm này là :math:`(p+1) \cdot (q+1)` nên ta chỉ cần tính :math:`d = e^{-1} \bmod{(p+1) \cdot (q+1)}` và :math:`M = C^d`. Flag là tọa độ :math:`x` của :math:`M`.
 
 .. only:: html
 
@@ -272,7 +272,7 @@ Safe Curvy Curve
 .. only:: html
 
     .. code-block:: python
-            
+
         from Crypto.Util.number import getPrime, getRandomNBitInteger, bytes_to_long, long_to_bytes
         from sage.all import *
 
@@ -358,9 +358,9 @@ Secure Matrix Transmissions
 ===========================
 
 .. only:: html
-        
+
     .. code-block:: python
-            
+
         from sage.all import *
         from Crypto.Util.number import bytes_to_long, long_to_bytes
         from Crypto.Cipher import AES
@@ -419,7 +419,7 @@ Secure Matrix Transmissions
             return temp
 
         def gen_params():
-            
+
             A = matrix(gl.random_element())
             B = matrix(gl.random_element())
 
@@ -427,7 +427,7 @@ Secure Matrix Transmissions
                 A = matrix(gl.random_element())
                 B = matrix(gl.random_element())
 
-            f.write(f"A = \n{A}\n")   ## intercepted successfully!  
+            f.write(f"A = \n{A}\n")   ## intercepted successfully!
             f.write(f"B = \n{B}\n")   ## intercepted successfully!
 
             return A, B
@@ -457,7 +457,7 @@ Secure Matrix Transmissions
         key_a = b_ + a
 
         ## Sends to Bob
-        ct1 = encrypt(b'send me the flag', key_a)  
+        ct1 = encrypt(b'send me the flag', key_a)
         f.write(f"ct1 = {ct1}\n")   ## intercepted successfully!
 
         ## for Bob
@@ -475,27 +475,27 @@ Secure Matrix Transmissions
 - Sinh một ma trận `secret` trong :math:`\mathrm{GL} (6, \mathbb{F}_p)`, đặt là :math:`S`
 - Sinh hai ma trận public :math:`A` và :math:`B`
 
-Khi đó, Alice tạo khóa bí mật là ma trận chéo :math:`a`, và tính 
+Khi đó, Alice tạo khóa bí mật là ma trận chéo :math:`a`, và tính
 
 .. math:: u = S^{-1} \cdot A \cdot S \cdot a \cdot S^{-1} \cdot A^{-1} \cdot S
 
-Tương tự, Bob tạo khóa bí mật là ma trận chéo :math:`b`, và tính 
+Tương tự, Bob tạo khóa bí mật là ma trận chéo :math:`b`, và tính
 
 .. math:: v = S^{-1} \cdot B \cdot S \cdot b \cdot S^{-1} \cdot B^{-1} \cdot S
 
 Khóa chung được tính là
 
-.. math:: 
+.. math::
 
     & S \cdot A^{-1} \cdot S \cdot u \cdot S^{-1} \cdot A \cdot S + b \\ = & S \cdot A^{-1} \cdot S \cdot (S^{-1} \cdot A \cdot S \cdot a \cdot S^{-1} \cdot A^{-1} \cdot S) \cdot S^{-1} \cdot A \cdot S + b \\ = & a + b
 
-Mình nhận thấy rằng
+Ta nhận thấy rằng
 
 .. math:: u = (S^{-1} \cdot A \cdot S) \cdot a \cdot (S^{-1} \cdot A \cdot S)^{-1}
 
-với :math:`a` là ma trận chéo. Như vậy :math:`a` là một chéo hóa của :math:`u` nên mình chỉ cần chéo hóa :math:`u` là tìm được :math:`a`. Tương tự, chéo hóa :math:`v` sẽ tìm được :math:`b`.
+với :math:`a` là ma trận chéo. Như vậy :math:`a` là một chéo hóa của :math:`u` nên ta chỉ cần chéo hóa :math:`u` là tìm được :math:`a`. Tương tự, chéo hóa :math:`v` sẽ tìm được :math:`b`.
 
-Vấn đề ở đây là việc sắp xếp các trị riêng trên các cột của :math:`a`. Do đó mình brute tất cả các cách xếp 6 trị riêng của :math:`u` lên :math:`a`. Tương tự cho 6! hoán vị các trị riêng của :math:`v` lên :math:`b`.
+Vấn đề ở đây là việc sắp xếp các trị riêng trên các cột của :math:`a`. Do đó ta brute tất cả các cách xếp 6 trị riêng của :math:`u` lên :math:`a`. Tương tự cho 6! hoán vị các trị riêng của :math:`v` lên :math:`b`.
 
 .. only:: html
 
@@ -604,7 +604,7 @@ Vấn đề ở đây là việc sắp xếp các trị riêng trên các cột 
                 except:
                     pass
 
-        # b'flag{In53cUr3_K3Y_3xch4ng3_0n_n0n-4b3L14n_gR0up5!!}'   
+        # b'flag{In53cUr3_K3Y_3xch4ng3_0n_n0n-4b3L14n_gR0up5!!}'
 
 Rebellious
 ==========
@@ -612,7 +612,7 @@ Rebellious
 .. only:: html
 
     .. code-block:: python
-            
+
         from sage.all import *
         from Crypto.Util.number import *
         import random
@@ -667,10 +667,10 @@ Bài này thuộc dạng discrete logarithm. Với hai điểm :math:`P = (x_P, 
 
 .. math:: y_R = a^{-1} \cdot (x_P \cdot y_Q + y_P \cdot x_Q) \bmod p
 
-Nếu mình viết dưới dạng ma trận thì phép nhân cho kết quả sau:
+Nếu ta viết dưới dạng ma trận thì phép nhân cho kết quả sau:
 
-.. math:: 
-    
+.. math::
+
     \begin{pmatrix}
         x_P & -y_P \cdot a^2 \cdot b^{-2} \\ y_P & x_P
     \end{pmatrix} \cdot \begin{pmatrix}
@@ -687,12 +687,12 @@ Nếu mình viết dưới dạng ma trận thì phép nhân cho kết quả sau
 
 và :math:`N = a \cdot \begin{pmatrix} x_2 & -y_2 \cdot a^2 \cdot b^{-2} \\ y_2 & x_2 \end{pmatrix}` thì việc giải bài toán tương đương với :math:`M^k = N`.
 
-Mình chéo hóa ma trận :math:`M = P \cdot D \cdot P^{-1}`. Khi đó :math:`D^k = P^{-1} \cdot N \cdot P`. Do :math:`D` là ma trận chéo nên việc giải bài toán trên tương đương discrete logarithm trên :math:`\mathrm{GF} (p)`: :math:`D_{0, 0}^k = (P^{-1} \cdot N \cdot P)_{0, 0} \pmod p`.
+Ta chéo hóa ma trận :math:`M = P \cdot D \cdot P^{-1}`. Khi đó :math:`D^k = P^{-1} \cdot N \cdot P`. Do :math:`D` là ma trận chéo nên việc giải bài toán trên tương đương discrete logarithm trên :math:`\mathrm{GF} (p)`: :math:`D_{0, 0}^k = (P^{-1} \cdot N \cdot P)_{0, 0} \pmod p`.
 
 .. only:: html
 
     .. code-block:: python
-            
+
         from sage.all import *
         from Crypto.Util.number import long_to_bytes
 
@@ -714,7 +714,7 @@ Mình chéo hóa ma trận :math:`M = P \cdot D \cdot P^{-1}`. Khi đó :math:`D
 
             def one(self):
                 return Point0(a, 0)
-            
+
         class Point(Point0):
             def __init__(self, x, y):
                 super().__init__(x, y)
@@ -763,7 +763,7 @@ Secure Matrix Transmissions v2
 .. only:: html
 
     .. code-block:: python
-            
+
         from sage.all import *
         from Crypto.Util.number import bytes_to_long, long_to_bytes
         from Crypto.Cipher import AES
@@ -813,7 +813,7 @@ Secure Matrix Transmissions v2
             return unpad(flag, AES.block_size)
 
         def gen_params():
-            
+
             a = matrix(gl.random_element())
             b = matrix(gl.random_element())
             w = matrix(gl.random_element())
@@ -823,7 +823,7 @@ Secure Matrix Transmissions v2
                 b = matrix(gl.random_element())
                 w = matrix(gl.random_element())
 
-            f.write(f"a = \n{a}\n")   ## intercepted successfully!  
+            f.write(f"a = \n{a}\n")   ## intercepted successfully!
             f.write(f"b = \n{b}\n")   ## intercepted successfully!
             f.write(f"w = \n{w}\n")   ## intercepted successfully!
 
@@ -852,7 +852,7 @@ Secure Matrix Transmissions v2
         Kb = a ** r * u * b ** s
 
         ## Sends to Bob
-        ct1 = encrypt(b'send me the new flag please', Ka)  
+        ct1 = encrypt(b'send me the new flag please', Ka)
         f.write(f"ct1 = {ct1}\n")   ## intercepted successfully!
 
         f.write(f"{decrypt(ct1, Kb).decode()}\n")
@@ -864,7 +864,7 @@ Secure Matrix Transmissions v2
         ## Read the Flag
         # f.write(decrypt(ct2, Ka).decode())
 
-Bài này mình không giải ra trong CTF. Nhìn lướt qua thì khá giống bài Secure_Matrix_Transmissions ở trên nhưng đời không như mơ :))))
+Bài này ta không giải ra trong CTF. Nhìn lướt qua thì khá giống bài Secure_Matrix_Transmissions ở trên nhưng đời không như mơ
 
 Bài này đề tạo ba ma trận trong :math:`GL(6, \mathbb{F}_p)` là :math:`a`, :math:`b` và :math:`w`.
 
@@ -876,26 +876,26 @@ Khóa chung là :math:`a^{n + r} \cdot w \cdot b^{m + s}` và được dùng cho
 
 Đối với các bài dạng lũy thừa ma trận thì cách hay được dùng là chéo hóa. Tuy nhiên các ma trận :math:`a` và :math:`b` không có đủ 6 trị riêng trong :math:`\mathrm{GF} (p)`. Do đó chúng ta cần mở rộng ra một trường lớn hơn chứa tất cả các trị riêng của :math:`a` và :math:`b`.
 
-Điều này có nghĩa là, ví dụ mình xét đa thức có hệ số thực là :math:`f(x) = x^2 + 1 = 0`. Các hệ số của :math:`f(x)` nằm trong trường :math:`\mathbb{R}`, tuy nhiên các nghiệm của nó lại nằm trong trường :math:`\mathbb{C}` chứa :math:`\mathbb{R}`.
+Điều này có nghĩa là, ví dụ ta xét đa thức có hệ số thực là :math:`f(x) = x^2 + 1 = 0`. Các hệ số của :math:`f(x)` nằm trong trường :math:`\mathbb{R}`, tuy nhiên các nghiệm của nó lại nằm trong trường :math:`\mathbb{C}` chứa :math:`\mathbb{R}`.
 
-Tương tự ở bài này, phương trình đặc trưng là một đa thức bậc 6 với hệ số trong :math:`\mathrm{GF} (p)`. Như vậy các trị riêng của nó phải nằm trong một trường nào đó chứa :math:`\mathrm{GF} (p)`. Mình chọn :math:`\mathrm{GF} (p^{10})` với đa thức tối giản bất kì (nào cũng ra).
+Tương tự ở bài này, phương trình đặc trưng là một đa thức bậc 6 với hệ số trong :math:`\mathrm{GF} (p)`. Như vậy các trị riêng của nó phải nằm trong một trường nào đó chứa :math:`\mathrm{GF} (p)`. Ta chọn :math:`\mathrm{GF} (p^{10})` với đa thức tối giản bất kì (nào cũng ra).
 
-Khi đó, mình chéo hóa được :math:`a = P^{-1} \cdot c \cdot P` và :math:`b = Q^{-1} \cdot d \cdot Q`. Thay vào :math:`u` mình có
+Khi đó, ta chéo hóa được :math:`a = P^{-1} \cdot c \cdot P` và :math:`b = Q^{-1} \cdot d \cdot Q`. Thay vào :math:`u` ta có
 
 .. math:: u = a^n \cdot w \cdot b^m = P^{-1} \cdot c^n \cdot P \cdot w \cdot Q^{-1} \cdot d^m \cdot Q,
 
-tương đương với 
+tương đương với
 
 .. math:: P \cdot u \cdot Q^{-1} = c^n \cdot (P \cdot w \cdot Q^{-1}) \cdot d^m
 
-Đặt :math:`U = P \cdot u \cdot Q^{-1}` và :math:`W = P \cdot w \cdot Q^{-1}`. Nếu mình gọi :math:`c_0, c_1, \ldots, c_5` là các trị riêng của :math:`a`, tương tự :math:`d_0, d_1, \ldots, d_5` là các trị riêng của :math:`b` thì phương trình trên tương đương:
+Đặt :math:`U = P \cdot u \cdot Q^{-1}` và :math:`W = P \cdot w \cdot Q^{-1}`. Nếu ta gọi :math:`c_0, c_1, \ldots, c_5` là các trị riêng của :math:`a`, tương tự :math:`d_0, d_1, \ldots, d_5` là các trị riêng của :math:`b` thì phương trình trên tương đương:
 
-.. math:: 
-    
+.. math::
+
     \begin{bmatrix}
         c_0^n & & \\
         & \ddots & \\
-        & & c_5^n 
+        & & c_5^n
     \end{bmatrix} \cdot \begin{bmatrix}
         W_{00} & & \\
         & \ddots & \\
@@ -910,11 +910,11 @@ tương đương với
         & & U_{55}
     \end{bmatrix}
 
-Mình thấy tương đương rằng :math:`c_0^n \cdot W_{00} \cdot d_0^m = U_{00}` và :math:`c_1^n \cdot W_{10} \cdot d_0^m = U_{10}`. Suy ra
+Ta thấy tương đương rằng :math:`c_0^n \cdot W_{00} \cdot d_0^m = U_{00}` và :math:`c_1^n \cdot W_{10} \cdot d_0^m = U_{10}`. Suy ra
 
 .. math:: \dfrac{c_1^n}{c_0^n} \cdot \dfrac{W_{10}}{W_{00}} = \dfrac{U_{10}}{U_{00}} \pmod p
 
-Tổng quát hơn thì 
+Tổng quát hơn thì
 
 .. math:: \left(\dfrac{c_i}{c_0}\right)^n = \dfrac{U_{i0}}{U_{00}} \cdot \dfrac{W_{00}}{W_{i0}} \pmod p, \quad 1 \leqslant i \leqslant 5
 
@@ -922,14 +922,14 @@ Tương tự cho :math:`d_i` ta có
 
 .. math:: \left(\dfrac{d_i}{d_0}\right)^m = \dfrac{U_{0i}}{U_{00}} \cdot \dfrac{W_{00}}{W_{0i}} \pmod p, \quad 1 \leqslant i \leqslant 5
 
-Như vậy mình có thể tính được :math:`\left(\dfrac{c_i}{c_0}\right)^n` và :math:`\left(\dfrac{d_i}{d_0}\right)^m`. Mình viết lại phép nhân ma trận trên thành:
+Như vậy ta có thể tính được :math:`\left(\dfrac{c_i}{c_0}\right)^n` và :math:`\left(\dfrac{d_i}{d_0}\right)^m`. Ta viết lại phép nhân ma trận trên thành:
 
-.. math:: 
+.. math::
 
     c_0^n \cdot \begin{bmatrix}
         1 & & \\
         & \ddots & \\
-        & & (c_5 / c_0)^n 
+        & & (c_5 / c_0)^n
     \end{bmatrix} \cdot \begin{bmatrix}
         W_{00} & & \\
         & \ddots & \\
@@ -944,15 +944,15 @@ Như vậy mình có thể tính được :math:`\left(\dfrac{c_i}{c_0}\right)^n
         & & U_{55}
     \end{bmatrix}
 
-Đặt 
+Đặt
 
 .. math:: W_1 = \begin{bmatrix} 1 & & \\ & \ddots & \\ & & (c_5 / c_0)^n \end{bmatrix} \cdot \begin{bmatrix} W_{00} & & \\ & \ddots & \\ & & W_{55} \end{bmatrix} \cdot \begin{bmatrix} 1 & & \\ & \ddots & \\ & & (d_5 / d_0)^m \end{bmatrix}
 
 thì :math:`c_0^n \cdot d_0^m \cdot W_1 = U`. Vế trái là số nhân với ma trận, do đó ta có thể lấy bất kì vị trí tương ứng của :math:`U` và :math:`W_1` để tính :math:`c_0^n \cdot d_0^m`.
 
-Thực hiện tương tự cho ma trận :math:`V` mình cũng tính được :math:`c_0^r \cdot d_0^s`. Suy ra
+Thực hiện tương tự cho ma trận :math:`V` ta cũng tính được :math:`c_0^r \cdot d_0^s`. Suy ra
 
-.. math:: 
+.. math::
 
     K = & a^{n+r} \cdot w \cdot b^{m+s} = P^{-1} \cdot c^{n+r} \cdot P \cdot w \cdot Q^{-1} \cdot d^{m+s} \cdot Q \\ = & P^{-1} \cdot c^n \cdot c^r \cdot W \cdot d^m \cdot d^s \cdot Q \\ = & P^{-1} \cdot \begin{bmatrix}
         c_0^n & & \\ & \ddots & \\ & & c_5^n
@@ -972,12 +972,12 @@ Thực hiện tương tự cho ma trận :math:`V` mình cũng tính được :m
         1 & & \\ & \ddots & \\ & & (d_5 / d_0)^s
     \end{bmatrix} \cdot Q
 
-Ở đây mình có thể tính tất cả thành phần :math:`c_0^n \cdot d_0^m`, :math:`c_0^r \cdot d_0^s`, và các ma trận. Từ đó mình có thể tìm được ma trận :math:`K` và dùng nó để lấy flag.
+Ở đây ta có thể tính tất cả thành phần :math:`c_0^n \cdot d_0^m`, :math:`c_0^r \cdot d_0^s`, và các ma trận. Từ đó ta có thể tìm được ma trận :math:`K` và dùng nó để lấy flag.
 
 .. only:: html
 
     .. code-block:: python
-            
+
         from sage.all import *
         from Crypto.Util.number import bytes_to_long, long_to_bytes
         from Crypto.Cipher import AES

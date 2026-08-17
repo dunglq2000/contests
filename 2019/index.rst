@@ -1,7 +1,7 @@
 Các cuộc thi năm 2019
 #####################
 
-.. toctree:: 
+.. toctree::
    :maxdepth: 1
 
    AceBear/index

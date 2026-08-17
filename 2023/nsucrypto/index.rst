@@ -24,9 +24,9 @@ Giải
 
 Theo thống kê các bigram xuất hiện nhiều nhất trong ciphertext và trong plaintext sẽ khớp nhau. Do đó có thể thấy "TH" mã hóa thành ":math:`\beta\gamma`" và "HE" mã hóa thành "LC". Như vậy ta có hệ phương trình
 
-.. math:: 
+.. math::
 
-    812 = a \cdot 558 + b \pmod{841} \\ 
+    812 = a \cdot 558 + b \pmod{841} \\
     321 = a \cdot 207 + b \pmod{841}
 
 Giải hệ ta có :math:`a = 15`, :math:`b = 10`. Đây là key.
@@ -58,7 +58,7 @@ Bắt đầu với dãy Euler
 
 Đây là dãy các số nguyên tố với :math:`n=0, 1, \ldots, 39` và :math:`f(40)` là hợp số. Như vậy đây là dãy nguyên tố độ dài 40.
 
-Và tất nhiên, dãy "ai cũng biết" thì chỉ được 2 điểm thôi. =(((
+Dãy hiển nhiên này chỉ đáp ứng một phần yêu cầu và được chấm :math:`2` điểm.
 
 .. [#wolfram] https://mathworld.wolfram.com/Prime-GeneratingPolynomial.html
 
@@ -86,7 +86,7 @@ Bài báo có thể được tóm gọn như sau. Xét đa thức
 
 .. math:: F(x) = 1 + \left| \sum_{n=0}^{M} \frac{a_n}{x - n} \prod_{j = 0}^{M} (x - j) \right|
 
-sẽ sinh ra các số nguyên tố với mọi :math:`x \in [0, M]` nếu và chỉ nếu :math:`a_n` phân biệt và :math:`(a_n \cdot M! + 1)` là các số nguyên tố. Như vậy ta có một thuật toán đơn giản để bruteforce các đa thức trên.
+sẽ sinh ra các số nguyên tố với mọi :math:`x \in [0, M]` nếu và chỉ nếu :math:`a_n` phân biệt và :math:`(a_n \cdot M! + 1)` là các số nguyên tố. Như vậy ta có một thuật toán đơn giản để duyệt vét cạn các đa thức trên.
 
 .. prf:algorithm:: Thuật toán sinh dãy nguyên tố độ dài :math:`M`
     :label: nsu23-algo-primes
@@ -98,14 +98,14 @@ sẽ sinh ra các số nguyên tố với mọi :math:`x \in [0, M]` nếu và c
     1. coeffs = [ ] chứa các số hạng :math:`a_n`
     2. :math:`an \gets 1`
     3. While chưa đủ :math:`M+1` số hạng trong coeffs
-    
+
        1. If :math:`(an \cdot M! + 1)` là số nguyên tố
-       
+
           1. kết nạp :math:`an` vào dãy coeffs
-       
+
        2. EndIf
        3. :math:`an \gets an + 1`
-    
+
     4. EndWhile
 
 Mixed hashes
@@ -125,23 +125,23 @@ Bob chuẩn bị :math:`8` ảnh (trong file đính kèm) mà không có header.
 Giải
 --------
 
-Bài này là bài 3 ở round 1 và round 2. Trong thời gian 2 round mình đều giải ra (round 2 chi tiết hơn và trình bày đẹp hơn :v).
+Bài này là bài 3 ở round 1 và round 2. Trong thời gian 2 round ta đều giải ra (round 2 chi tiết hơn và trình bày đẹp hơn).
 
-Đề cho một file mẫu là mikky.ppm. Khi phân tích file này mình thấy rằng, nếu gọi :math:`w` và :math:`h` là độ rộng và độ cao của ảnh (lấy từ header) thì độ dài file không có header là :math:`3 \cdot w \cdot h`.
+Đề cho một file mẫu là mikky.ppm. Khi phân tích file này ta thấy rằng, nếu gọi :math:`w` và :math:`h` là độ rộng và độ cao của ảnh (lấy từ header) thì độ dài file không có header là :math:`3 \cdot w \cdot h`.
 
 Sau khi encrypt bằng thuật toán mã hóa khối với ECB mode, độ dài sẽ là :math:`3 \cdot w \cdot h + pd`, trong đó :math:`pd` là padding. Theo thuật toán PRESENT thì :math:`0 \leqslant pd \leqslant 8`.
 
-Với dự đoán rằng :math:`w \approx h`, mình lấy căn bậc hai của độ dài các filel đề cho, và đưa ra dự đoán :math:`w, h \in [400, 600]`. Nếu sai thì mình tăng độ rộng khoảng này thôi.
+Với dự đoán rằng :math:`w \approx h`, ta lấy căn bậc hai của độ dài các filel đề cho, và đưa ra dự đoán :math:`w, h \in [400, 600]`. Nếu sai thì ta tăng độ rộng khoảng này thôi.
 
-Tiếp theo, bruteforce :math:`w` và :math:`h` trong khoảng này, cho tới khi hash "P6 :math:`x` :math:`y` 255" xuất hiện trong số các hash trên, và
+Tiếp theo, duyệt vét cạn :math:`w` và :math:`h` trong khoảng này, cho tới khi hash "P6 :math:`x` :math:`y` 255" xuất hiện trong số các hash trên, và
 
 .. math:: 0 \leqslant \text{len} (ciphertext) - 3 * w * h \leqslant 8
 
-thì mình lấy :math:`w` và :math:`h` này. Thế là mình có header.
+thì ta lấy :math:`w` và :math:`h` này. Thế là ta có header.
 
-Do cả :math:`8` file được encrypt bởi cùng một key PRESENT, và key có :math:`80` bit tương ứng :math:`10` bytes, hay :math:`10` ký tự, nhìn đề mình nhận thấy có chuỗi ``P6 X Y 255`` là hợp lý. Như vậy key cho PRESENT là chuỗi ``P6 X Y 255``.
+Do cả :math:`8` file được encrypt bởi cùng một key PRESENT, và key có :math:`80` bit tương ứng :math:`10` bytes, hay :math:`10` ký tự, nhìn đề ta nhận thấy có chuỗi ``P6 X Y 255`` là hợp lý. Như vậy key cho PRESENT là chuỗi ``P6 X Y 255``.
 
-Cuối cùng, mình giải mã lần lượt từng file với key trên, ghép header tương ứng vào, như vậy là mình giải mã được tất cả file rồi.
+Cuối cùng, ta giải mã lần lượt từng file với key trên, ghép header tương ứng vào, như vậy là ta giải mã được tất cả file rồi.
 
 Bài này được 5/6 điểm vì không nộp code tính toán header, mất điểm vì chủ quan.
 
@@ -161,18 +161,18 @@ Chứng minh hoặc phản bác giả thuyết sau cho ít nhất một giá tr�
 
 - với mọi :math:`\bm{x} \in \mathbb{F}_2^n`
 
-.. math:: 
+.. math::
 
     f(f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{2^{n/2}}(\bm{x})) = 0;
 
 - với mọi :math:`\bm{y} \in \mathbb{F}_2^{2^{n/2}}`, giá trị :math:`f(\bm{y})` có thể tính với không quá :math:`2^{n/2}` phép cộng và phép nhân modulo 2.
 
-.. prf:example:: 
+.. prf:example::
     :label: nsu23-col-funcs
 
     Với :math:`m=1` thì :math:`n=2` và ta xây dựng ma trận :math:`4 \times 8`. Xét các hàm boolean vectorial one-to-one :math:`G_1, G_2, G_3, G_4` từ :math:`\mathbb{F}_2^n` tới :math:`\mathbb{F}_2^n` xác định bởi các giá trị :math:`(0, 1, 2, 3)`, :math:`(0, 2, 1, 3)`, :math:`(0, 3, 1, 2)` và :math:`(3, 2, 1, 0)`. Khi đó ma trận là
 
-    .. math:: 
+    .. math::
 
         \begin{pmatrix}
             0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \\
@@ -190,11 +190,11 @@ Chứng minh hoặc phản bác giả thuyết sau cho ít nhất một giá tr�
 Giải
 --------
 
-Cách giải của mình không đúng hoàn toàn nên chỉ được 1/8. Dưới đây trình bày cách giải của đội Robin Jadoul, Jack Pope và Esrever Yu được 8/8 điểm.
+Cách giải của ta không đúng hoàn toàn nên chỉ được 1/8. Dưới đây trình bày cách giải của đội Robin Jadoul, Jack Pope và Esrever Yu được 8/8 điểm.
 
 Giả thuyết trong đề bài đúng với :math:`m` lớn. Ý tưởng chính là chúng ta cố định các cột sẽ chọn, có một số lượng lũy thừa các hàm :math:`f` (rất rất lớn) nhưng chỉ có số lượng đa thức các hàng (ít lớn hơn), do đó chúng ta có thể chọn hàm :math:`f` triệt tiêu tất cả hàng.
 
-.. prf:theorem:: 
+.. prf:theorem::
     :label: nsu23-thm-col-funcs
 
     Cho ma trận binary :math:`M` kích thước :math:`2^n \times n 2^n`. Với :math:`n+1` column functions bất kì, tồn tại một hàm nonzero :math:`f: \mathbb{F}_2^{n+1} \to \mathbb{F}_2` triệt tiêu trên các column functions và sử dụng nhiều nhất :math:`2n + 1` toán tử cộng và nhân.
@@ -204,13 +204,13 @@ Giả thuyết trong đề bài đúng với :math:`m` lớn. Ý tưởng chính
 
     Gọi :math:`f_1, f_2, \ldots, f_{n+1}` là các column functions. Đặt
 
-    .. math:: 
+    .. math::
         S = \{ (f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{n+1}(\bm{x})) \in \mathbb{F}_2^{n+1} : \bm{x} \in \mathbb{F}_2^n \}
 
 
     là tập hợp các bộ giá trị từ các column functions. Vì :math:`\lvert S \rvert < \lvert \mathbb{F}_2^{n+1} \rvert`, ta có thể chọn vector :math:`\bm{z} = (z_1, \ldots, z_{n+1}) \in \mathbb{F}_2^{n+1} \setminus S`. Từ đây ta định nghĩa hàm :math:`f` là
 
-    .. math:: 
+    .. math::
         f(x_1, \ldots, x_{n+1}) = (x_1 \oplus (z_1 \oplus 1)) \cdot (x_2 \oplus (z_2 \oplus 1)) \cdots (x_{n+1} \oplus (z_{n+1} \oplus 1))
 
 
@@ -218,9 +218,9 @@ Giả thuyết trong đề bài đúng với :math:`m` lớn. Ý tưởng chính
 
     Đối với số lượng phép tính, với mọi :math:`i`, :math:`z_i \oplus 1` là hằng số nên ta không xét đến khi tính số lượng phép tính cho hàm :math:`f`. Dựa trên vector :math:`\bm{z}`, có tối đa :math:`n+1` phép cộng (tương ứng :math:`x_i \oplus (z_i \oplus 1)`) và :math:`n` phép nhân :math:`n+1` hạng tử với nhau. Vì vậy số phép tính tối đa là :math:`2n+1`.
 
-.. prf:corollary:: 
+.. prf:corollary::
     :label: nsu23-cor-col-funcs
-    
+
     Giả thuyết trên đúng với mọi :math:`m \geqslant 4`.
 
 .. admonition:: Chứng minh
@@ -233,9 +233,9 @@ Giả thuyết trong đề bài đúng với :math:`m` lớn. Ý tưởng chính
 Bình luận
 ----------
 
-Về tổng thể cách giải của team kia hợp lý trừ phần mình đánh dấu, chưa hiểu lắm khi :math:`\bm{z}` là input nghĩa là sao.
+Về tổng thể cách giải của team kia hợp lý trừ phần ta đánh dấu, chưa hiểu lắm khi :math:`\bm{z}` là input nghĩa là sao.
 
-Thêm nữa, chưa có cơ sở để nghĩ ra bài giải này. Có vẻ như Esrever đã rất căng não để giải ra. :)))
+Thêm nữa, chưa có cơ sở để nghĩ ra bài giải này. Có vẻ như Esrever đã rất căng não để giải ra.
 
 **UPDATE.** Ý nghĩa của phần đánh dấu (?) là do phép tính
 
@@ -269,7 +269,7 @@ Số chẵn kết thúc bởi :math:`0`, :math:`2`, :math:`4`, :math:`6`, :math:
 An aggregated signature
 =======================
 
-Bài này không biết làm. :(((
+Bài này chưa có lời giải.
 
 Đề bài
 --------
@@ -288,7 +288,7 @@ Yêu cầu là cần xây dựng mô hình chữ ký thỏa mãn các yêu cầu
 A unique coding
 =======================
 
-Bài này khi nhìn đề thì "có vẻ" câu hỏi Q2 là trường hợp nhỏ hơn của Q1. Mình giải Q2 (không chắc đúng hoàn toàn) nên lời giải sau đây áp dụng cho cả Q1 và Q2.
+Bài này khi nhìn đề thì "có vẻ" câu hỏi Q2 là trường hợp nhỏ hơn của Q1. Ta giải Q2 (không chắc đúng hoàn toàn) nên lời giải sau đây áp dụng cho cả Q1 và Q2.
 
 Đề bài
 --------
@@ -316,11 +316,11 @@ Chúng ta quan tâm tới các trường hợp code :math:`\mathcal{C}` khiến 
 Giải
 --------
 
-Đầu tiên mình có nhận xét (khá rõ ràng) sau đây:
+Đầu tiên ta có nhận xét (khá rõ ràng) sau đây:
 
-.. prf:remark:: 
+.. prf:remark::
     :label: nsu23-rmk-code
-    
+
     Với mọi :math:`n`, code :math:`\mathcal{C} \equiv \mathbb{F}_2^n` thỏa mãn tính chất trên.
 
 Chúng ta có thể thấy rằng với mọi :math:`\bm{y} \in \mathbb{F}_2^n` nhận được thì sẽ decode thành chính nó trong :math:`\mathcal{C}`.
@@ -333,7 +333,7 @@ Nói cách khác, code :math:`\mathcal{C}` là tập hợp
 
 .. math:: \mathcal{C} = \{ \bm{x} = (0, x_1, x_2, \ldots, x_{n-1}): x_i \in \mathbb{F}_2 \}.
 
-Code :math:`\mathcal{C}` này thỏa mãn tính chất trên và mình sẽ chứng minh ngay sau đây.
+Code :math:`\mathcal{C}` này thỏa mãn tính chất trên và ta sẽ chứng minh ngay sau đây.
 
 .. admonition:: Chứng minh
     :class: danger, dropdown
@@ -343,20 +343,20 @@ Code :math:`\mathcal{C}` này thỏa mãn tính chất trên và mình sẽ ch�
     - nếu :math:`\bm{y} = (0, y_1, y_2, \ldots, y_{n-1})`, hay nói cách khác biểu diễn thập phân của :math:`\bm{y}` là từ :math:`0` tới :math:`2^{n-1} - 1`, thì :math:`\bm{y}` được decode thành chính nó trong :math:`\mathcal{C}`. Khi này :math:`d_{\bm{y}} = 0` nhỏ nhất và không có vector nào khác cho Hamming weight bằng :math:`0` trừ chính nó.
     - nếu :math:`\bm{y} = (1, y_1, y_2, \ldots, y_{n-1})`, hay nói cách khác biểu diễn thập phân của :math:`\bm{y}` là từ :math:`2^{n-1}` tới :math:`2^n - 1`, thì :math:`\bm{y}` được decode thành :math:`\bm{x} = (0, y_1, y_2, \ldots, y_{n-1})` trong :math:`\mathcal{C}`. Khi này :math:`d_{\bm{y}} = 1` nhỏ nhất vì khác mỗi bit đầu tiên và cũng không có vector nào khác cho Hamming weight bằng :math:`1`.
 
-Tiếp theo, mình viết các vector trong :math:`\mathcal{C}` thành các hàng của 1 ma trận :math:`2^{n-1} \times n`. Gọi :math:`A` là ma trận hoán vị các cột của ma trận :math:`2^{n-1} \times n` đó. Khi đó :math:`A` là ma trận có tính chất: trên mỗi hàng và trên mỗi cột có đúng một phần tử (bằng 1) và ma trận :math:`A` khả nghịch. Ví dụ, với :math:`n=4`, ma trận để hoán vị cột 2 với cột 4 là :math:`\begin{pmatrix}1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}`.
+Tiếp theo, ta viết các vector trong :math:`\mathcal{C}` thành các hàng của 1 ma trận :math:`2^{n-1} \times n`. Gọi :math:`A` là ma trận hoán vị các cột của ma trận :math:`2^{n-1} \times n` đó. Khi đó :math:`A` là ma trận có tính chất: trên mỗi hàng và trên mỗi cột có đúng một phần tử (bằng 1) và ma trận :math:`A` khả nghịch. Ví dụ, với :math:`n=4`, ma trận để hoán vị cột 2 với cột 4 là :math:`\begin{pmatrix}1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}`.
 
-Khi đó, nếu mình nhân ma trận :math:`2^{n-1} \times n` của code :math:`\mathcal{C}` với bất kì ma trận :math:`A` nào như vậy thì code :math:`\mathcal{C}'` nhận được cũng thỏa mãn tính chất trên.
+Khi đó, nếu ta nhân ma trận :math:`2^{n-1} \times n` của code :math:`\mathcal{C}` với bất kì ma trận :math:`A` nào như vậy thì code :math:`\mathcal{C}'` nhận được cũng thỏa mãn tính chất trên.
 
 .. prf:example::
     :label: nsu23-exp-code
 
     Với :math:`n=4` thì code :math:`\mathcal{C}` gồm các vector
-        
+
     .. math:: \mathcal{C} = \{ 0000, 0001, 0010, 0011, 0100, 0101, 0110, 0111 \}.
 
 Với ma trận :math:`A` hoán vị cột 2 và 4 như trên ta có
 
-.. math:: 
+.. math::
 
     \begin{pmatrix}
         0 & 0 & 0 & 0 \\
@@ -366,45 +366,45 @@ Với ma trận :math:`A` hoán vị cột 2 và 4 như trên ta có
         0 & 1 & 0 & 0 \\
         0 & 1 & 0 & 1 \\
         0 & 1 & 1 & 0 \\
-        0 & 1 & 1 & 1 
-    \end{pmatrix} \cdot 
+        0 & 1 & 1 & 1
+    \end{pmatrix} \cdot
     \begin{pmatrix}
         1 & 0 & 0 & 0 \\
-        0 & 0 & 0 & 1 \\ 
-        0 & 0 & 1 & 0 \\ 
-        0 & 1 & 0 & 0 
-    \end{pmatrix} = 
-    \begin{pmatrix} 
-        0 & 0 & 0 & 0 \\ 
-        0 & 1 & 0 & 0 \\ 
-        0 & 0 & 1 & 0 \\ 
-        0 & 1 & 1 & 0 \\ 
-        0 & 0 & 0 & 1 \\ 
-        0 & 1 & 0 & 1 \\ 
-        0 & 0 & 1 & 1 \\ 
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0
+    \end{pmatrix} =
+    \begin{pmatrix}
+        0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 1 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 1 \\
         0 & 1 & 1 & 1
     \end{pmatrix} = \mathcal{C}'.
 
-Bây giờ mình sẽ chứng minh rằng với mọi ma trận :math:`A` hoán vị các cột như vậy thì code :math:`\mathcal{C}'` cũng thỏa mãn tính chất.
+Bây giờ ta sẽ chứng minh rằng với mọi ma trận :math:`A` hoán vị các cột như vậy thì code :math:`\mathcal{C}'` cũng thỏa mãn tính chất.
 
 .. admonition:: Chứng minh
     :class: danger, dropdown
 
     Đặt
 
-    .. math:: 
+    .. math::
         \mathcal{C} = \{ (0, x_1, x_2, \ldots, x_{n-1}), x_i \in \mathbb{F}_2 \}.
 
     Gọi :math:`A` là ma trận hoán vị cột kích thước :math:`n \times n`. Khi đó ánh xạ
 
-    .. math:: 
+    .. math::
         A: \mathbb{F}_2^n \to \mathbb{F}_2^n, \quad \bm{y} \to \bm{y} \cdot A
 
     là song ánh do :math:`A` là ma trận khả nghịch. Khi đó xét code
 
     .. math:: \mathcal{C}' = \{ \bm{x} \cdot A: \bm{x} \in \mathcal{C} \}.
 
-    Mình vẫn có hai trường hợp.
+    Ta vẫn có hai trường hợp.
 
     **Trường hợp 1.** Với :math:`\bm{y} = (0, y_1, y_2, \ldots, y_{n-1}) \in \mathbb{F}_2^n` từ :math:`0` tới :math:`2^{n-1}-1` như trên. Xét :math:`\bm{y}' = \bm{y} \cdot A`.
 
@@ -447,12 +447,12 @@ Sau đó chúng ta lại áp dụng phép nhân với ma trận hoán vị cột
 
 Vấn đề ở đây là, những code :math:`\mathcal{C}` như vậy là không gian vector sinh bởi :math:`i` vector (:math:`0 \leqslant i \leqslant n`) trong các vector sau:
 
-.. math:: 
+.. math::
 
-    \bm{v}_1 & = (1, 0, 0, \ldots, 0, 0) \\ 
-    \bm{v}_2 & = (0, 1, 0, \ldots, 0, 0) \\ 
-    \bm{v}_3 & = (0, 0, 1, \ldots, 0, 0) \\ 
-    \cdots & = \cdots \\ 
+    \bm{v}_1 & = (1, 0, 0, \ldots, 0, 0) \\
+    \bm{v}_2 & = (0, 1, 0, \ldots, 0, 0) \\
+    \bm{v}_3 & = (0, 0, 1, \ldots, 0, 0) \\
+    \cdots & = \cdots \\
     \bm{v}_n & = (0, 0, 0, \ldots, 0, 1).
 
 Số cách chọn :math:`i` vector từ :math:`n` vector là
@@ -466,8 +466,8 @@ Nói cách khác có :math:`2^n` code :math:`\mathcal{C}` thỏa tính chất đ
 
     Với :math:`n=3` thì các code sau thỏa mãn tính chất
 
-    .. math:: 
-        
+    .. math::
+
         & \mathcal{C}_1 = \{ 000 \}, \\
         & \mathcal{C}_2 = \{ 000, 001 \}, \\
         & \mathcal{C}_3 = \{ 000, 010 \}, \\
@@ -482,12 +482,12 @@ Bình luận
 
 Đối với Q1 có thể thấy rằng bất cứ code nào chỉ chứa đúng một vector sẽ thỏa mãn điều kiện. Lý do là vì bất cứ :math:`\bm{y}` nào được gửi tới cũng sẽ decode ra vector đó.
 
-Bài này mình được 6/12 điểm vì đưa ra cách xây dựng tốt, trình bày đẹp.
+Bài này ta được 6/12 điểm vì đưa ra cách xây dựng tốt, trình bày đẹp.
 
 Algebraic cryptanalysis
 =======================
 
-Bài này là bài 7 ở round 1 và là bài 8 ở round 2. Bài này mình giải khá qua loa ở round 1 và được giải đầy đủ, rõ ràng hơn bởi người đồng đội vip pro Chương ở round 2.
+Bài này xuất hiện dưới số thứ tự 7 ở vòng 1 và số thứ tự 8 ở vòng 2. Lời giải ở vòng 1 còn sơ lược; lời giải đầy đủ hơn ở vòng 2 do thành viên Chương thực hiện.
 
 Đề bài
 --------
@@ -508,13 +508,13 @@ Giải
 
 Độ dài :math:`K` là :math:`8` bit, nếu chúng ta brutefore :math:`K = (k_1, \ldots, k_8)` rồi sinh ra 1208 bit :math:`\gamma` theo quy tắc trên và so sánh xem :math:`\gamma_{1201}, \ldots, \gamma_{1208}` nào khớp với :math:`8` bit trên thì ta có thể biết được :math:`K` ban đầu là gì.
 
-Và, bất ngờ chưa, có tới hai trường hợp :math:`K` thỏa mãn :v :v
+Và, bất ngờ chưa, có tới hai trường hợp :math:`K` thỏa mãn
 
 Bây giờ thì chúng ta cần xem xem tại sao lại có hai trường hợp thỏa mãn.
 
 Cùng nhau khai triển :math:`\beta_{n+1}, \ldots, \beta_{n+8}` theo :math:`(\beta_{n-7}, \ldots, \beta_n)` nào.
 
-.. math:: 
+.. math::
 
     & \beta_{n+1} = \beta_{n} \oplus \beta_{n-7} \\
     & \beta_{n+2} = \beta_{n+1} \oplus \beta_{n-6} = \beta_n \oplus \beta_{n-7} \oplus \beta_{n-6} \\
@@ -527,7 +527,7 @@ Cùng nhau khai triển :math:`\beta_{n+1}, \ldots, \beta_{n+8}` theo :math:`(\b
 
 Nếu viết ở dạng phép nhân ma trận modulo 2 ta có
 
-.. math:: 
+.. math::
 
     \begin{pmatrix}
         \beta_{n+1} \\ \beta_{n+2} \\ \beta_{n+3} \\ \beta_{n+4} \\ \beta_{n+5} \\ \beta_{n+6} \\ \beta_{n+7} \\ \beta_{n+8}
@@ -548,7 +548,7 @@ Ma trận to to kia là ma trận khả nghịch. Do đó, nếu chúng ta có c
 
 Tiếp theo, cũng tương tự, chúng ta biểu diễn dãy :math:`\gamma` theo :math:`\beta`..
 
-.. math:: 
+.. math::
 
     & \gamma_{n+1} = \beta_{n+1} \cdot \beta_{n+3} \oplus \beta_{n+8} \\
     & \gamma_{n+2} = \beta_{n+2} \cdot \beta_{n+4} \oplus \beta_{n+1} \oplus \beta_{n+8} \\
@@ -561,7 +561,7 @@ Tiếp theo, cũng tương tự, chúng ta biểu diễn dãy :math:`\gamma` the
 
 **Trường hợp 1.** :math:`\beta_{n+1} = 0`. Khi đó từ :math:`\gamma_{1201}` tới :math:`\gamma_{1208}` tương đương với hệ phương trình
 
-.. math:: 
+.. math::
 
     0 & = \beta_{n+8} \\
     0 & = \beta_{n+2} \cdot \beta_{n+4} \\
@@ -583,7 +583,7 @@ Bài này bạn Chương được 4/4 điểm. Good job nigga. ^)^
 Finite-state machines
 =======================
 
-Bài này không biết làm!!!
+Bài này chưa có lời giải.
 
 Đề bài
 --------
@@ -626,7 +626,7 @@ có :math:`t - 1` tranposition. Nói cách khác đây là hoán vị lẻ vì :
 
 Như vậy để chu trình đạt chu kỳ tối đa thì nó phải là hoán vị lẻ, mâu thuẫn với phân tích ở trên :math:`g_2` sẽ sinh ra dãy là hoán vị chẵn.
 
-Trong cách giải này có hai chỗ mình không biết thầy lấy đâu ra: tại sao :math:`g_2` cân bằng thì cả :math:`g_2(0, \bm{x})` và :math:`g_2(1, \bm{x})` đều phải có số chẵn phần tử mà không phải là đều có số lẻ? Liên hệ giữa trọng số hàm bool và hoán vị chẵn/lẻ là gì?
+Trong cách giải này có hai chỗ ta không biết thầy lấy đâu ra: tại sao :math:`g_2` cân bằng thì cả :math:`g_2(0, \bm{x})` và :math:`g_2(1, \bm{x})` đều phải có số chẵn phần tử mà không phải là đều có số lẻ? Liên hệ giữa trọng số hàm bool và hoán vị chẵn/lẻ là gì?
 
 Quantum encryption
 =======================
@@ -673,7 +673,7 @@ Chúng ta xét dây 1 và 4 của mạch (tương tự cho dây 2 và 3). Áp d�
 
     Dây 2 và dây 3
 
-Nói cách khác là đảo bit. :v
+Nói cách khác là đảo bit.
 
 Tương tự cho các cặp dây (5, 8) và (6, 7). Do đó khi tới trước các cổng Hadamard thì thứ tự các qubit từ trên xuống dưới là hình sau.
 
@@ -681,7 +681,7 @@ Tương tự cho các cặp dây (5, 8) và (6, 7). Do đó khi tới trước c
 
     Qubits trước Hadamard
 
-Mạch ở dây 1 và 2 đều có dạng :math:`\lvert x_2 \rangle` đi qua :math:`H^{k_1}` nên sau khi qua cổng mình đặt :math:`\lvert z_2 \rangle = H^{k_1} \lvert x_2 \rangle`.
+Mạch ở dây 1 và 2 đều có dạng :math:`\lvert x_2 \rangle` đi qua :math:`H^{k_1}` nên sau khi qua cổng ta đặt :math:`\lvert z_2 \rangle = H^{k_1} \lvert x_2 \rangle`.
 
 Tương tự, :math:`\lvert z_1 \rangle = H^{k_2} \lvert x_1 \rangle` cho dây 3 và 4, :math:`\lvert z_4 \rangle = H^{k_3} \lvert x_4 \rangle` cho dây 5 và 6, :math:`\lvert z_3 \rangle = H^{k_4} \lvert x_3 \rangle` cho dây 7 và 8.
 
@@ -695,11 +695,11 @@ Mạch sau khi đi qua Hadamard có dạng
 
 Bây giờ chúng ta quay lại toán tử CNOT. Ma trận tương ứng của toán tử CNOT là :math:`\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}`. Kết quả sau khi thực hiện toán tử CNOT là hệ số trước :math:`\lvert 00 \rangle` và :math:`\lvert 01 \rangle` giữ nguyên, còn hệ số trước :math:`\lvert 10 \rangle` và :math:`\lvert 11 \rangle` đổi chỗ cho nhau.
 
-Đối với 3 qubit, mình **dự đoán** tương tự. 
+Đối với 3 qubit, ta **dự đoán** tương tự.
 
-Ở cổng CNOT đầu tiên, dây 1 control dây 3. Nếu mình chỉ xét 3 dây đầu thì tích các qubit gồm :math:`\lvert 000 \rangle`, :math:`\lvert 001 \rangle`, :math:`\lvert 010 \rangle`, :math:`\lvert 011 \rangle`, :math:`\lvert 100 \rangle`, :math:`\lvert 101 \rangle`, :math:`\lvert 110 \rangle`, :math:`\lvert 111 \rangle`. 
+Ở cổng CNOT đầu tiên, dây 1 control dây 3. Nếu ta chỉ xét 3 dây đầu thì tích các qubit gồm :math:`\lvert 000 \rangle`, :math:`\lvert 001 \rangle`, :math:`\lvert 010 \rangle`, :math:`\lvert 011 \rangle`, :math:`\lvert 100 \rangle`, :math:`\lvert 101 \rangle`, :math:`\lvert 110 \rangle`, :math:`\lvert 111 \rangle`.
 
-Áp dụng "chiến thuật" tương tự, mình chỉ quan tâm vị trí 1 và 3. Nghĩa là hệ số của :math:`\lvert 0 x 0 \rangle` và :math:`\lvert 0 x 1 \rangle` giữ nguyên, còn hệ số trước :math:`\lvert 1 x 0 \rangle` và :math:`\lvert 1 x 1 \rangle` đổi chỗ cho nhau, với :math:`x \in \{ 0, 1 \}`. Nói cách khác, :math:`8` hệ số trước amplitude chỉ thay đổi vị trí chứ không nhiều hơn hay ít đi, hay tập hợp hệ số giữ nguyên.
+Áp dụng "chiến thuật" tương tự, ta chỉ quan tâm vị trí 1 và 3. Nghĩa là hệ số của :math:`\lvert 0 x 0 \rangle` và :math:`\lvert 0 x 1 \rangle` giữ nguyên, còn hệ số trước :math:`\lvert 1 x 0 \rangle` và :math:`\lvert 1 x 1 \rangle` đổi chỗ cho nhau, với :math:`x \in \{ 0, 1 \}`. Nói cách khác, :math:`8` hệ số trước amplitude chỉ thay đổi vị trí chứ không nhiều hơn hay ít đi, hay tập hợp hệ số giữ nguyên.
 
 .. figure:: prob-10-8.*
 
@@ -713,24 +713,24 @@ Xét
 
 Ở đây có 3 hệ số khác nhau là :math:`(a^2, ab, b^2)`. Với lưu ý bên trên :math:`a \geqslant 0` nên từ :math:`a^2` tính được :math:`a`. Từ :math:`a`, ta cần thêm :math:`ab` để xác định :math:`b`.
 
-Như vậy mình cần :math:`2^4 = 16` hệ số để tìm lại các key ban đầu.
+Như vậy ta cần :math:`2^4 = 16` hệ số để tìm lại các key ban đầu.
 
 Bình luận
 ----------
 
-Thế éo nào mình lại nhầm khúc cuối mà lấy cả :math:`a^2`, :math:`ab` và :math:`b^2` nên kết quả ra :math:`3^4 = 81`. Tất nhiên là **SAI BÉT** nên chỉ được 2/8. :(((
+Trong bài làm ban đầu, bước cuối đã lấy đồng thời :math:`a^2`, :math:`ab` và :math:`b^2`, dẫn đến kết quả sai :math:`3^4=81`; do đó bài làm chỉ đạt :math:`2/8` điểm.
 
 AntCipher
 ==========
 
-Bài này là bài số 2 ở round 1 và là bài số 11 ở round 2. Lúc thi round 1 mình không biết giải, còn ở round 2 thì mình đã giải theo cách như sau.
+Bài này là bài số 2 ở round 1 và là bài số 11 ở round 2. Lúc thi round 1 ta không biết giải, còn ở round 2 thì ta đã giải theo cách như sau.
 
 Đề bài
 --------
 
 Đặt
 
-.. math:: 
+.. math::
 
     f = (x_1 \lor x_2 \lor x_9) \land (\lnot x_1 \lor \lnot x_2 \lor \lnot x_9) \land (\lnot x_1 \lor x_2 \lnot x_9) \land (x_1 \lor \lnot x_2 \lor x_9) \land \\
     (x_1 \lor x_2 \lor x_3) \land (\lnot x_9 \lor \lnot x_{10} \lor \lnot x_3) \land (x_1 \lor \lnot x_2 \lor x_4) \land (\lnot x_9 \lor x_{10} \lor \lnot x_4) \land \\
@@ -744,18 +744,18 @@ Hàm :math:`f` gồm 10 biến được viết dưới dạng CNF (conjunctive n
 Giải
 --------
 
-Khi mình code hàm để tính giá trị hàm :math:`f` và xem xét những vector
+Khi ta code hàm để tính giá trị hàm :math:`f` và xem xét những vector
 
 .. math:: \bm{x} = (x_1, \ldots, x_{10})
 
-mà :math:`f = True`, mình nhận thấy rằng:
+mà :math:`f = True`, ta nhận thấy rằng:
 
 - nếu :math:`(x_1, x_2) = (0, 0)` thì :math:`(x_9, x_{10}) = (1, 0)`
 - nếu :math:`(x_1, x_2) = (0, 1)` thì :math:`(x_9, x_{10}) = (1, 1)`
 - nếu :math:`(x_1, x_2) = (1, 0)` thì :math:`(x_9, x_{10}) = (0, 0)`
 - nếu :math:`(x_1, x_2) = (1, 1)` thì :math:`(x_9, x_{10}) = (0, 1)`
 
-Mình nhận ra rằng các biến :math:`x_3, x_4, \ldots, x_7, x_8` hoàn toàn không tác động lên việc mã hóa từ :math:`(x_1, x_2)` thành :math:`(x_9, x_{10})` (ít nhất là ở những chỗ :math:`f = True` :v).
+Ta nhận ra rằng các biến :math:`x_3, x_4, \ldots, x_7, x_8` hoàn toàn không tác động lên việc mã hóa từ :math:`(x_1, x_2)` thành :math:`(x_9, x_{10})` (ít nhất là ở những chỗ :math:`f = True`).
 
 Như vậy bài toán được rút gọn thành hàm boolean 4 biến :math:`x_1`, :math:`x_2`, :math:`x_9` và :math:`x_{10}`. Ở đó
 
@@ -799,11 +799,11 @@ Các vector còn lại thì :math:`f=0`. Ở dưới là bảng chân trị.
 | :math:`1`   | :math:`1`   | :math:`1`   | :math:`1`      | :math:`0` |
 +-------------+-------------+-------------+----------------+-----------+
 
-Từ bảng chân trị trên, sử dụng phương pháp bìa Karnaugh mình rút gọn được thành
+Từ bảng chân trị trên, sử dụng phương pháp bìa Karnaugh ta rút gọn được thành
 
-.. math:: 
+.. math::
 
-    f(x_1, x_2, x_9, x_{10}) = & (\lnot x_1 \lor \lnot x_9) \land (x_1 \lor x_9) \land \\ 
+    f(x_1, x_2, x_9, x_{10}) = & (\lnot x_1 \lor \lnot x_9) \land (x_1 \lor x_9) \land \\
     & (\lnot x_1 \lor \lnot x_2 \lor x_{10}) \land (x_1 \lor x_2 \lor \lnot x_{10}) \land \\
     & (\lnot x_1 \lor x_2 \lor \lnot x_{10}) \land (x_1 \lor \lnot x_2 \lor x_{10}).
 
@@ -812,6 +812,6 @@ CNF này có 4 biến và 16 literals, thỏa mãn yêu cầu đề bài và ăn
 Kết luận
 =======================
 
-Năm 2023 khá chill :))) học được nhiều điều :))) không hối hận vì đã liều :)))
+Năm 2023 khá chill học được nhiều điều không hối hận vì đã liều
 
-Xin chân thành cám ơn bạn Chương và bạn Uyên đã đồng hành cùng mình trong kì NSUCRYPTO 2023.
+Xin chân thành cám ơn bạn Chương và bạn Uyên đã đồng hành cùng ta trong kì NSUCRYPTO 2023.

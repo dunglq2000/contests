@@ -24,7 +24,7 @@ Các hàm tọa độ :math:`f_k(\bm{x})` (là các hàm boolean từ :math:`\ma
 
 Nói cách khác, essential depend trên biến :math:`x_j` nghĩa là trong dạng biểu diễn ANF (đa thức Zhegalkin) của hàm :math:`f` có sự có mặt của biến :math:`x_j`.
 
-.. prf:example:: 
+.. prf:example::
     :label: nsu22-exp-super-sbox
 
     Xét :math:`n = 3`. Khi đó hàm boolean :math:`f(x_1, x_2, x_3) = x_1 x_2 \oplus x_3` essential depend trên cả ba biến, nhưng hàm :math:`g(x_1, x_2, x_3) = x_1 x_2 \oplus x_2 \oplus 1` chỉ essential depend trên :math:`x_1` và :math:`x_2`.
@@ -38,7 +38,7 @@ Nói cách khác, essential depend trên biến :math:`x_j` nghĩa là trong d�
 Giải
 ^^^^^^
 
-Q1 có thể được giải với SageMath. Tuy nhiên năm đó mình không dùng SageMath mà dùng Python thuần nên đáp án sai mất. Đáp án cho Q1 với :math:`n = 2` là :math:`0` (liệt kê tất cả hàm ra) và đáp án cho :math:`n = 3` là :math:`24576`.
+Q1 có thể được giải với SageMath. Tuy nhiên năm đó ta không dùng SageMath mà dùng Python thuần nên đáp án sai mất. Đáp án cho Q1 với :math:`n = 2` là :math:`0` (liệt kê tất cả hàm ra) và đáp án cho :math:`n = 3` là :math:`24576`.
 
 Ở Q2 các team giải ra chứng minh được rằng, đáp án sẽ là một số chia hết cho :math:`2^n \cdot n!`.
 
@@ -69,7 +69,7 @@ Alice sử dụng một bảng chữ cái 37 ký tự gồm chữ cái từ A t�
 Để mã hóa Alice sử dụng hàm :math:`f` sao cho :math:`f(x) = a x^2 + b x + c \pmod{37}` với số :math:`a, b, c` nào đó và hàm :math:`f` thỏa tính chất
 
 .. math:: f(x-y) - 2 f(x) f(y) + f(1 + xy) = 1 \pmod{37},
-    
+
 với mọi số nguyên :math:`x`, :math:`y`.
 
 
@@ -80,7 +80,7 @@ Giải
 
 Sử dụng hàm :math:`f`, ta có:
 
-1. Nếu cho :math:`y = 0` thì 
+1. Nếu cho :math:`y = 0` thì
 
 .. math:: f(x) - 2 f(x) \cdot f(0) + f(1) = 1 \pmod{37}
 

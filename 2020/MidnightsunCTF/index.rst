@@ -1,7 +1,7 @@
 Midnightsun CTF 2020
 ********************
 
-Giải này có 4 bài crypto thì mình làm ra một bài pyBonHash, còn bài rsayay là tham khảo trên mạng. Sau đây là writeup của mình.
+Giải này có 4 bài crypto thì ta làm ra một bài pyBonHash, còn bài rsayay là tham khảo trên mạng. Sau đây là bài viết của ta.
 
 pyBonHash
 =========
@@ -12,15 +12,15 @@ pyBonHash
 
 Download `pybonhash.tar.gz <pybonhash.tar.gz>`_.
 
-Đề cho mình file ``hash.txt`` (là ciphertext) và ``pybonhash.cpython-36.pyc``. File pyc là file python đã compile nên mình không thể đọc được. 
+Đề cho ta file ``hash.txt`` (là ciphertext) và ``pybonhash.cpython-36.pyc``. File pyc là file python đã compile nên ta không thể đọc được.
 
-Trên mạng có khá nhiều trang decompiler file pyc, chẳng hạn mình dùng trang `<https://www.toolnb.com/tools-lang-en/pyc.html>`_. Decompile file pyc của đề mình được file python với nội dung như sau:
+Trên mạng có khá nhiều trang decompiler file pyc, chẳng hạn ta dùng trang `<https://www.toolnb.com/tools-lang-en/pyc.html>`_. Decompile file pyc của đề ta được file python với nội dung như sau:
 
 .. code-block:: python
 
    # uncompyle6 version 3.5.0
    # Python bytecode 3.6 (3379)
-   # Decompiled from: Python 2.7.5 (default, Aug  7 2019, 00:51:29) 
+   # Decompiled from: Python 2.7.5 (default, Aug  7 2019, 00:51:29)
    # [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
    # Embedded file name: pybonhash.py
    # Compiled at: 2020-03-28 21:11:38
@@ -65,7 +65,7 @@ Trên mạng có khá nhiều trang decompiler file pyc, chẳng hạn mình dù
 
 Độ dài của key là :math:`42`, và độ dài data phải lớn hơn hoặc bằng :math:`191`. Hàm ``fibseq`` không khó nhận ra mục đích là tạo dãy số Fibonacci.
 
-``FIB`` là dãy số Fibonacci tới số hạng thứ ``MAXFIBSIZE``. Giờ tới phần mã hóa. Khởi gán ``i = 0``. Trong mỗi lặp mình có:
+``FIB`` là dãy số Fibonacci tới số hạng thứ ``MAXFIBSIZE``. Giờ tới phần mã hóa. Khởi gán ``i = 0``. Trong mỗi lặp ta có:
 
 - ``data1``: lấy data ở vị trí ``FIB[i] % len(data)``;
 - ``key1``: lấy key ở vị trí ``(i + FIB[FIBOFFSET + i]) % len(key)``;
@@ -77,11 +77,11 @@ Trên mạng có khá nhiều trang decompiler file pyc, chẳng hạn mình dù
 - sau khi ``toencrypt`` được mã hóa bởi AES ở ECB, dùng khóa là ``thiskey``, ciphertext được lưu vào ``enc``;
 - ``output`` ghép vào sau ciphertext đã được chuyển thành dạng hexa.
 
-**Ngừng đọc và suy nghĩ**: khá là lung tung và có vẻ như việc phá AES là bất khả thi!!! Đúng không nhỉ? :))))
+**Ngừng đọc và suy nghĩ**: khá là lung tung và có vẻ như việc phá AES là bất khả thi!!! Đúng không nhỉ?
 
-Ở đây, ``len(key) = 42`` là cố định, và mình để ý thấy mỗi lần lặp cần hai vị trí trong data nên chắc chắn ``len(data) = 192``.
+Ở đây, ``len(key) = 42`` là cố định, và ta để ý thấy mỗi lần lặp cần hai vị trí trong data nên chắc chắn ``len(data) = 192``.
 
-Đầu tiên, cách lấy index của ``data1``, ``key1`` (``data2`` và ``key2`` tương tự) làm mình thấy rất "hoang mang", không biết có tính chất gì không nhỉ? Thử code một đoạn lấy index xem sao.
+Đầu tiên, cách lấy index của ``data1``, ``key1`` (``data2`` và ``key2`` tương tự) làm ta thấy rất "hoang mang", không biết có tính chất gì không nhỉ? Thử code một đoạn lấy index xem sao.
 
 .. code-block:: python
 
@@ -104,25 +104,25 @@ Trên mạng có khá nhiều trang decompiler file pyc, chẳng hạn mình dù
       print("data1, data2 = {0}, {1}".format(data1, data2))
       print("key1, key2 = {0}, {1}".format(key1, key2))
 
-Mình để ý thấy một số vị trí khá thú vị như dưới đây:
+Ta để ý thấy một số vị trí khá thú vị như dưới đây:
 
 .. figure:: index.png
 
-Index của ``key1`` và ``key2`` trùng nhau. Vì vậy, thay vì phải giải mã từ AES rồi crack ngược md5 sao ta không ... bruteforce nó luôn nhỉ? Đó chính là ý tưởng của mình.
+Index của ``key1`` và ``key2`` trùng nhau. Vì vậy, thay vì phải giải mã từ AES rồi crack ngược md5 sao ta không ... duyệt vét cạn nó luôn nhỉ? Đó chính là ý tưởng của ta.
 
-Mình sẽ bắt đầu từ những vị trí mà index của ``key1`` bằng index ``key2``.
+Ta sẽ bắt đầu từ những vị trí mà index của ``key1`` bằng index ``key2``.
 
-Mình có index ``data1`` và ``data2`` rồi (code ở trên) thì mình chỉ cần bruteforce xem giá trị ở ``data1`` và ``data2`` là gì, và với ``key_s`` nào sẽ cho ra ciphertext khớp với đề cho.
+Ta có index ``data1`` và ``data2`` rồi (code ở trên) thì ta chỉ cần duyệt vét cạn xem giá trị ở ``data1`` và ``data2`` là gì, và với ``key_s`` nào sẽ cho ra ciphertext khớp với đề cho.
 
-Khi tìm được ``key_s`` thì mình lưu lại giá trị vào đúng index đó trong key ban đầu.
+Khi tìm được ``key_s`` thì ta lưu lại giá trị vào đúng index đó trong key ban đầu.
 
-Tiếp theo, khi mình bắt gặp vị trí mà index ``key1`` khác index ``key2``, nếu mình đã giải ra ``key1`` hoặc ``key2`` thì mình làm động tác bruteforce tương tự cho key còn lại chưa giải ra.
+Tiếp theo, khi ta bắt gặp vị trí mà index ``key1`` khác index ``key2``, nếu ta đã giải ra ``key1`` hoặc ``key2`` thì ta làm động tác duyệt vét cạn tương tự cho key còn lại chưa giải ra.
 
-Sau đây là hàm bruteforce:
+Sau đây là hàm duyệt vét cạn:
 
 .. code-block:: python
 
-   def find_match(ciphertext, knownkey = 65, hasother = 0): 
+   def find_match(ciphertext, knownkey = 65, hasother = 0):
       # hasother = 0 when it doens't have other
       # hasother = 1 when knownkey is behind key
       # hasother = -1 when knowkey is before key
@@ -144,15 +144,15 @@ Sau đây là hàm bruteforce:
                   print("\t\tFound data1, data2, key = {0}, {1}, {2}".format(data1, data2, key))
                   return (data1, data2, key)
 
-**Note**: khi giải mình vét từ :math:`0` tới :math:`256` rất lâu nhưng khi đã giải xong thì mình mới phát hiện key và data đều là ký tự in được nên ở đây mình đưa code chạy "ít trâu bò" hơn.
+**Lưu ý**: khi giải ta vét từ :math:`0` tới :math:`256` rất lâu nhưng khi đã giải xong thì ta mới phát hiện key và data đều là ký tự in được nên ở đây ta đưa code chạy "ít trâu bò" hơn.
 
-Hàm này mình nhận tham số là ciphertext (lấy từ file ``hash.txt``), ``knownkey`` trong trường hợp có hai key khác nhau (default là :math:`65`) và ``hasother`` nếu có hai key (default bằng :math:`0` khi hai key giống nhau).
+Hàm này ta nhận tham số là ciphertext (lấy từ file ``hash.txt``), ``knownkey`` trong trường hợp có hai key khác nhau (default là :math:`65`) và ``hasother`` nếu có hai key (default bằng :math:`0` khi hai key giống nhau).
 
-Mình encrypt y như đề bài và so sánh kết quả với ciphertext, nếu đúng thì trả về ``data1``, ``data2`` và ``key``.
+Ta encrypt y như đề bài và so sánh kết quả với ciphertext, nếu đúng thì trả về ``data1``, ``data2`` và ``key``.
 
-Mình cần lưu lại index của ``data1``, ``data2`` và ``key`` để lưu kết quả của hàm ``find_match`` về đúng vị trí của nó. 
+Ta cần lưu lại index của ``data1``, ``data2`` và ``key`` để lưu kết quả của hàm ``find_match`` về đúng vị trí của nó.
 
-Mình tận dụng hàm mình code ở trước và tạo một số mảng để lưu index lẫn kết quả:
+Ta tận dụng hàm ta code ở trước và tạo một số mảng để lưu index lẫn kết quả:
 
 .. code-block:: python
 
@@ -193,7 +193,7 @@ Xử lý nào!
 
 Việc chạy mất thời gian khá lâu, và flag chính là key.
 
-**Note**: trong quá trình chạy các bạn sẽ thấy plaintext đôi khi không khớp, ví dụ ``plaintext[2]`` sẽ có nhiều giá trị. Đó là do mã hash md5 bị đụng độ, key sẽ không thay đổi.
+**Lưu ý**: trong quá trình chạy người đọc sẽ thấy plaintext đôi khi không khớp, ví dụ ``plaintext[2]`` sẽ có nhiều giá trị. Đó là do mã hash md5 bị đụng độ, key sẽ không thay đổi.
 
 Key tìm được sẽ là
 

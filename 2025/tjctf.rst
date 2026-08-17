@@ -1,7 +1,7 @@
 TJCTF 2025
 **********
 
-Đề và code giải mình để ở `đây <https://github.com/dunglq2000/CTF/tree/master/2025/TJCTF>`_.
+Đề và code giải ta để ở `đây <https://github.com/dunglq2000/CTF/tree/master/2025/TJCTF>`_.
 
 alchemist-recipe
 ================
@@ -14,17 +14,17 @@ alchemist-recipe
     import hashlib
 
     SNEEZE_FORK = "AurumPotabileEtChymicumSecretum"
-    WUMBLE_BAG = 8 
+    WUMBLE_BAG = 8
 
     def glorbulate_sprockets_for_bamboozle(blorbo):
         zing = {}
-        yarp = hashlib.sha256(blorbo.encode()).digest() 
+        yarp = hashlib.sha256(blorbo.encode()).digest()
         zing['flibber'] = list(yarp[:WUMBLE_BAG])
         zing['twizzle'] = list(yarp[WUMBLE_BAG:WUMBLE_BAG+16])
         glimbo = list(yarp[WUMBLE_BAG+16:])
         snorb = list(range(256))
         sploop = 0
-        for _ in range(256): 
+        for _ in range(256):
             for z in glimbo:
                 wob = (sploop + z) % 256
                 snorb[sploop], snorb[wob] = snorb[wob], snorb[sploop]
@@ -38,7 +38,7 @@ alchemist-recipe
         zonked = bytes([sprockets['drizzle'][x] for x in dingus])
         quix = sprockets['twizzle']
         splatted = bytes([zonked[i] ^ quix[i % len(quix)] for i in range(WUMBLE_BAG)])
-        wiggle = sprockets['flibber'] 
+        wiggle = sprockets['flibber']
         waggly = sorted([(wiggle[i], i) for i in range(WUMBLE_BAG)])
         zort = [oof for _, oof in waggly]
         plunk = [0] * WUMBLE_BAG
@@ -49,7 +49,7 @@ alchemist-recipe
 
     def snizzle_bytegum(bubbles, jellybean):
         fuzz = WUMBLE_BAG - (len(bubbles) % WUMBLE_BAG)
-        if fuzz == 0: 
+        if fuzz == 0:
             fuzz = WUMBLE_BAG
         bubbles += bytes([fuzz] * fuzz)
         glomp = b""
@@ -122,11 +122,11 @@ Giải
 
 Ở dòng tính ``encrypted_recipe``, đầu vào là ``flag_content`` nên chúng ta có thể đoán được ``snizzle_bytegum`` là hàm encrypt và ``jellybean`` khóa vì hàm encrypt luôn có đầu vào là bản rõ và khóa.
 
-Khi đó mình dùng tính năng Rename của IDE để thay ``jellybean`` thành ``key``, và thay ``snizzle_bytegum`` thành ``encrypt``.
+Khi đó ta dùng tính năng Rename của IDE để thay ``jellybean`` thành ``key``, và thay ``snizzle_bytegum`` thành ``encrypt``.
 
-Trước đó, ``jellybean`` được tính bởi hàm ``glorbulate_sprockets_for_bamboozle`` nên có thể đoán rằng đây là hàm sinh khóa và mình cũng đổi tên thành ``keygen``.
+Trước đó, ``jellybean`` được tính bởi hàm ``glorbulate_sprockets_for_bamboozle`` nên có thể đoán rằng đây là hàm sinh khóa và ta cũng đổi tên thành ``keygen``.
 
-Như vậy hàm ``main`` của mình có dạng
+Như vậy hàm ``main`` của ta có dạng
 
 .. code-block:: python
 
@@ -161,13 +161,13 @@ Hàm ``keygen`` có dạng
 
     def keygen(blorbo):
         zing = {}
-        yarp = hashlib.sha256(blorbo.encode()).digest() 
+        yarp = hashlib.sha256(blorbo.encode()).digest()
         zing['flibber'] = list(yarp[:WUMBLE_BAG])
         zing['twizzle'] = list(yarp[WUMBLE_BAG:WUMBLE_BAG+16])
         glimbo = list(yarp[WUMBLE_BAG+16:])
         snorb = list(range(256))
         sploop = 0
-        for _ in range(256): 
+        for _ in range(256):
             for z in glimbo:
                 wob = (sploop + z) % 256
                 snorb[sploop], snorb[wob] = snorb[wob], snorb[sploop]
@@ -175,30 +175,30 @@ Hàm ``keygen`` có dạng
         zing['drizzle'] = snorb
         return zing
 
-Thông thường đầu vào của hàm sinh khóa là một seed nào đó nên mình sẽ thay ``blorbo`` thành ``seed``.
+Thông thường đầu vào của hàm sinh khóa là một seed nào đó nên ta sẽ thay ``blorbo`` thành ``seed``.
 
 Hàm ``keygen`` trả về biến ``zing`` nên có thể thay ``zing`` thành ``key``, chính là khóa mã hóa.
 
-Biến ``WUMBLE_BAG`` có độ dài là :math:`8` và 
-cũng được sử dụng trong hàm ``encrypt`` nên đó 
-chính là ``BLOCK_SIZE``. Ngoài ra chúng ta không 
-cần xem xét quá nhiều bên trong hàm ``keygen``, 
-chỉ cần biết rằng khóa có ba phần, phần đầu ``key['flibber']`` 
-có :math:`8` bytes, phần hai ``key['twizzle']`` 
-có :math:`8` bytes, và phần cuối ``key['drizzle']`` 
-có :math:`256` bytes. Do ``seed`` cố định nên ``key`` sinh ra cũng cố định. Để dễ nhìn hơn thì mình cũng đổi tên các biến khác nhưng các bạn không làm cũng không sao. Khi đó hàm ``keygen`` có dạng
+Biến ``WUMBLE_BAG`` có độ dài là :math:`8` và
+cũng được sử dụng trong hàm ``encrypt`` nên đó
+chính là ``BLOCK_SIZE``. Ngoài ra chúng ta không
+cần xem xét quá nhiều bên trong hàm ``keygen``,
+chỉ cần biết rằng khóa có ba phần, phần đầu ``key['flibber']``
+có :math:`8` bytes, phần hai ``key['twizzle']``
+có :math:`8` bytes, và phần cuối ``key['drizzle']``
+có :math:`256` bytes. Do ``seed`` cố định nên ``key`` sinh ra cũng cố định. Để dễ nhìn hơn thì ta cũng đổi tên các biến khác nhưng người đọc không làm cũng không sao. Khi đó hàm ``keygen`` có dạng
 
 .. code-block:: python
 
     def keygen(seed):
         key = {}
-        key_hash = hashlib.sha256(seed.encode()).digest() 
+        key_hash = hashlib.sha256(seed.encode()).digest()
         key['flibber'] = list(key_hash[:BLOCK_SIZE])
         key['twizzle'] = list(key_hash[BLOCK_SIZE:BLOCK_SIZE+16])
         glimbo = list(key_hash[BLOCK_SIZE+16:])
         S = list(range(256))
         i = 0
-        for _ in range(256): 
+        for _ in range(256):
             for z in glimbo:
                 j = (i + z) % 256
                 S[i], S[j] = S[j], S[i]
@@ -212,7 +212,7 @@ Tiếp theo, xét hàm ``encrypt``.
 
     def encrypt(bubbles, jellybean):
         fuzz = BLOCK_SIZE - (len(bubbles) % BLOCK_SIZE)
-        if fuzz == 0: 
+        if fuzz == 0:
             fuzz = BLOCK_SIZE
         bubbles += bytes([fuzz] * fuzz)
         glomp = b""
@@ -222,19 +222,19 @@ Tiếp theo, xét hàm ``encrypt``.
             glomp += zap
         return glomp
 
-Như đã phân tích ở hàm ``main``, tham số đầu của ``encrypt`` là bản rõ và tham số thứ hai là khóa. Như vậy mình đổi tên ``bubbles`` thành ``plaintext`` và ``jellybean`` thành ``key``.
+Như đã phân tích ở hàm ``main``, tham số đầu của ``encrypt`` là bản rõ và tham số thứ hai là khóa. Như vậy ta đổi tên ``bubbles`` thành ``plaintext`` và ``jellybean`` thành ``key``.
 
 Chúng ta có thể đoán rằng ``fuzz`` là padding (PKCS7) vì ``plaintext`` được thêm vào các bytes cho đủ độ dài ``BLOCK_SIZE`` (trước là ``WUMBLE_BAG``).
 
-Sau đó ``splinter`` là các khối bản rõ (độ dài :math:`8`) nên có thể đoán rằng ``scrungle_crank`` là hàm mã hóa từng khối, mình đổi tên thành ``encrypt_block``.
+Sau đó ``splinter`` là các khối bản rõ (độ dài :math:`8`) nên có thể đoán rằng ``scrungle_crank`` là hàm mã hóa từng khối, ta đổi tên thành ``encrypt_block``.
 
-Như vậy hàm ``encrypt`` của mình có dạng
+Như vậy hàm ``encrypt`` của ta có dạng
 
 .. code-block:: python
 
     def encrypt(plaintext, key):
         pad = BLOCK_SIZE - (len(plaintext) % BLOCK_SIZE)
-        if pad == 0: 
+        if pad == 0:
             pad = BLOCK_SIZE
         plaintext += bytes([pad] * pad)
         ciphertext = b""
@@ -242,7 +242,7 @@ Như vậy hàm ``encrypt`` của mình có dạng
             block = plaintext[b:b+BLOCK_SIZE]
             zap = encrypt_block(block, key)
             ciphertext += zap
-        return ciphertext   
+        return ciphertext
 
 Cuối cùng, xét hàm ``encrypt_block``.
 
@@ -263,17 +263,17 @@ Cuối cùng, xét hàm ``encrypt_block``.
             plunk[y] = splatted[x]
         return bytes(plunk)
 
-Tham số thứ nhất của ``encrypt_block`` chính là bản rõ nên mình đổi tên ``dingus`` thành ``plaintext``, tương tự tham số thứ hai là khóa nên mình đổi ``sprockets`` thành ``key``.
+Tham số thứ nhất của ``encrypt_block`` chính là bản rõ nên ta đổi tên ``dingus`` thành ``plaintext``, tương tự tham số thứ hai là khóa nên ta đổi ``sprockets`` thành ``key``.
 
-Như mình đã nói ở trên, ``key`` gồm ba phần.
+Như ta đã nói ở trên, ``key`` gồm ba phần.
 
-1. Phần cuối ``key['drizzle']`` của khóa có độ dài :math:`256` bytes nên có thể thấy ``zonked`` là S-box, mình đổi tên thành ``Sbox_key_third``.
-2. Phần thứ hai ``key['twizzle']`` của khóa có :math:`8` bytes nên mình đổi tên ``quix`` thành ``key_second``.
-3. Tiếp theo, ``splatted`` là XOR của phần cuối và phần thứ hai nên mình đổi tên thành ``third_X_second``.
-4. Phần đầu ``key['flibber']`` có :math:`8` bytes nên mình đổi tên ``wiggle`` thành ``key_first``.
-5. Tiếp theo, ``waggly`` là sắp xếp lại giá trị của ``key_first`` nên mình đổi tên thành ``key_first_srt``.
-6. Mình bỏ qua ``zort``
-7. Nhìn xuống một chút mình thấy hàm ``encrypt_block`` return ``bytes(plunk)`` nên có thể đoán ``plunk`` là bản mã, mình đổi tên thành ``ct``.
+1. Phần cuối ``key['drizzle']`` của khóa có độ dài :math:`256` bytes nên có thể thấy ``zonked`` là S-box, ta đổi tên thành ``Sbox_key_third``.
+2. Phần thứ hai ``key['twizzle']`` của khóa có :math:`8` bytes nên ta đổi tên ``quix`` thành ``key_second``.
+3. Tiếp theo, ``splatted`` là XOR của phần cuối và phần thứ hai nên ta đổi tên thành ``third_X_second``.
+4. Phần đầu ``key['flibber']`` có :math:`8` bytes nên ta đổi tên ``wiggle`` thành ``key_first``.
+5. Tiếp theo, ``waggly`` là sắp xếp lại giá trị của ``key_first`` nên ta đổi tên thành ``key_first_srt``.
+6. Ta bỏ qua ``zort``
+7. Nhìn xuống một chút ta thấy hàm ``encrypt_block`` return ``bytes(plunk)`` nên có thể đoán ``plunk`` là bản mã, ta đổi tên thành ``ct``.
 
 Như vậy hàm ``encrypt_block`` có dạng
 
@@ -285,7 +285,7 @@ Như vậy hàm ``encrypt_block`` có dạng
         Sbox_key_third = bytes([key['drizzle'][x] for x in block])
         key_second = key['twizzle']
         third_X_second = bytes([Sbox_key_third[i] ^ key_second[i % len(key_second)] for i in range(BLOCK_SIZE)])
-        key_first = key['flibber'] 
+        key_first = key['flibber']
         key_first_srt = sorted([(key_first[i], i) for i in range(BLOCK_SIZE)])
         zort = [oof for _, oof in key_first_srt]
         ct = [0] * BLOCK_SIZE
@@ -356,7 +356,7 @@ Tiếp theo, hàm ``encrypt_outer`` lấy ASCII của từng kí tự, cộng v�
 Giải
 ----
 
-Chúng ta chỉ cần bruteforce :math:`a` và :math:`b` rồi làm ngược lại hai hàm trên.
+Chúng ta chỉ cần duyệt vét cạn :math:`a` và :math:`b` rồi làm ngược lại hai hàm trên.
 
 dotdotdotv2
 ================
@@ -395,11 +395,11 @@ Khi đó ta gọi ma trận :math:`63 \times 64` là :math:`\mathsf{ff}`, và d�
 
     with open("encoded.txt") as f:
         lines = [line.strip() for line in f.readlines()]
-        
+
         ff = flag[:504]
         ff = "".join(["".join(bin(ord(i))[2:].zfill(8)) for i in ff])
         ff = matrix(GF(2), [list(map(int,list(ff[i:i+n]))) for i in range(0, len(ff), n)])
-        
+
         res = list(list(map(int, line.split())) for line in lines)
         res = matrix(GF(2), [list(map(int, line.split(' '))) for line in lines])
 
@@ -412,7 +412,7 @@ Khi đó ta gọi ma trận :math:`63 \times 64` là :math:`\mathsf{ff}`, và d�
             result += bytes([int(row[i:i+8], 2) for i in range(0, 64, 8)])
         print(result)
 
-Kết quả khá bất ngờ, mình nhận được chuỗi ``b'In cybeRsecuritY``. Như vậy mình chỉ cần sửa kí tự ``R`` thành ``r`` nữa là xong. Để ý rằng nếu xét :math:`8` kí tự, tương ứng :math:`64` bit, thì chỉ cần cộng :math:`1` vào bit thứ :math:`58`.
+Kết quả khá bất ngờ, ta nhận được chuỗi ``b'In cybeRsecuritY``. Như vậy ta chỉ cần sửa kí tự ``R`` thành ``r`` nữa là xong. Để ý rằng nếu xét :math:`8` kí tự, tương ứng :math:`64` bit, thì chỉ cần cộng :math:`1` vào bit thứ :math:`58`.
 
 double-trouble
 ================
@@ -425,7 +425,7 @@ Mã hóa AES hai lần, mỗi lần mã hóa với nửa khóa cố định và 
 Giải
 ----
 
-Mình sử dụng OpenMP và tối ưu ``-O2`` để bruteforce khóa tương ứng.
+Ta sử dụng OpenMP và tối ưu ``-O2`` để duyệt vét cạn khóa tương ứng.
 
 pseudo-secure
 ================
@@ -466,5 +466,5 @@ Giải
 
 Sử dụng định lí số dư Trung Hoa (broadcast attack) và tính căn bậc :math:`e` để tìm lại :math:`m`.
 
-Writeup tới đây là hết. Cám ơn các bạn đã đọc.
+Bài viết tới đây là hết.
 

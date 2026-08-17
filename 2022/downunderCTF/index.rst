@@ -37,7 +37,7 @@ Bài này thuộc dạng stream cipher với việc hai thằng kề nhau sẽ �
 
 Ở đây ta thấy rằng, với :math:`p_i` và :math:`p_{i+1}` là hai ký tự của plaintext sẽ cho ra ký tự :math:`c_i` của ciphertext.
 
-Như vậy mình đã biết một đoạn plaintext ban đầu là ``DUCTF`` rồi nên phần còn lại là bruteforce từng ký tự và so sánh với ciphertext để ra được ký tự ban đầu.
+Như vậy ta đã biết một đoạn plaintext ban đầu là ``DUCTF`` rồi nên phần còn lại là duyệt vét cạn từng ký tự và so sánh với ciphertext để ra được ký tự ban đầu.
 
 .. only:: html
 
@@ -93,11 +93,11 @@ Một bài mã khối gây rối loạn tiền đình.
         if __name__ == '__main__':
             main()
 
-Ở đây mỗi lần netcat lên server sẽ random :math:`300` bytes và nhét vào giữa đoạn ``Decrypt this...`` (có dấu cách ở cuối nữa nha!!!!) và ``FLAG``. Thêm nữa mỗi lần netcat lên sẽ random một khóa AES nên chúng ta sẽ chỉ tấn công trong một session netcat.
+Mỗi kết nối đến máy chủ sinh ngẫu nhiên :math:`300` byte và đặt chúng giữa chuỗi ``Decrypt this... `` và ``FLAG``. Mỗi kết nối cũng sử dụng một khóa AES mới, do đó toàn bộ phép tấn công phải được thực hiện trong cùng một phiên.
 
-Mình được phép kiểm soát hai :math:`IV` cho hai lần encrypt. Sau mỗi lần encrypt mình sẽ được nhận ciphertext. Do đó mình đoán rằng :math:`IV` thứ hai sẽ có liên quan gì đó đến :math:`IV` đầu và ciphertext đầu.
+Ta được phép kiểm soát hai :math:`IV` cho hai lần encrypt. Sau mỗi lần encrypt ta sẽ được nhận ciphertext. Do đó ta đoán rằng :math:`IV` thứ hai sẽ có liên quan gì đó đến :math:`IV` đầu và ciphertext đầu.
 
-Trời không phụ lòng người, có công đoán mò có ngày làm nên. =)))) Mình đã đoán được :math:`IV2` để có thể decrypt.
+Từ cấu trúc trên, ta xác định được :math:`IV2` và thực hiện giải mã.
 
 .. figure:: ofb.png
 
@@ -105,15 +105,15 @@ Trời không phụ lòng người, có công đoán mò có ngày làm nên. =)
 
 Cách giải bài này nằm ở hai dấu chấm đỏ lòm trên hình vẽ.
 
-Trong mode OFB, :math:`C_i = P_i \oplus O_i` với :math:`O_i` là encrypt AES của :math:`O_{i-1}`. Như vậy nếu mình chọn :math:`IV2` sao cho sau khi encrypt thì nó bằng đúng :math:`O_2` ở lần encrypt đầu, thì tất cả các :math:`O'_i` sau đó luôn giống với :math:`O_i` sau một đơn vị. Tức là :math:`O'_i = O_{i+1}`, :math:`i = 1, 2, \ldots`
+Trong mode OFB, :math:`C_i = P_i \oplus O_i` với :math:`O_i` là encrypt AES của :math:`O_{i-1}`. Như vậy nếu ta chọn :math:`IV2` sao cho sau khi encrypt thì nó bằng đúng :math:`O_2` ở lần encrypt đầu, thì tất cả các :math:`O'_i` sau đó luôn giống với :math:`O_i` sau một đơn vị. Tức là :math:`O'_i = O_{i+1}`, :math:`i = 1, 2, \ldots`
 
-Trong OFB thì :math:`C_i = P_i \oplus O_i` và :math:`C'_i = P'_i \oplus O'_i`. Do :math:`O'_i = O_{i+1}` theo cách chọn :math:`IV2` của mình nên mình sẽ có
+Trong OFB thì :math:`C_i = P_i \oplus O_i` và :math:`C'_i = P'_i \oplus O'_i`. Do :math:`O'_i = O_{i+1}` theo cách chọn :math:`IV2` của ta nên ta sẽ có
 
 .. math:: C_{i+1} \oplus P_{i+1} = C'_i \oplus P'_i \Longleftrightarrow P_{i+1} = C_{i+1} \oplus C'_i \oplus P_i,
-    
-mà :math:`P_1` mình có rồi nên mình sẽ suy ra được tất cả :math:`P_i` còn lại với :math:`i = 2, 3, \ldots`
 
-Flag mình tìm được:
+mà :math:`P_1` ta có rồi nên ta sẽ suy ra được tất cả :math:`P_i` còn lại với :math:`i = 2, 3, \ldots`
+
+Flag ta tìm được:
 
 .. only:: html
 
@@ -159,16 +159,16 @@ Một bài discrete logarithm trên modulo đa thức.
 
         # DUCTF{CRT_e4sy_as_0ne_tw0_thr3e}
 
-Ở đây đề cho chúng ta hai đa thức được random là :math:`A` và :math:`B` (cả hai đều nằm trong modulo :math:`f(x)` trên :math:`\mathbb{Z}_p[x]`. Với hai số random :math:`n` và :math:`m` bị giấu, đề cho mình đa thức :math:`C = A^n \cdot B^m`.
+Ở đây đề cho chúng ta hai đa thức được random là :math:`A` và :math:`B` (cả hai đều nằm trong modulo :math:`f(x)` trên :math:`\mathbb{Z}_p[x]`. Với hai số random :math:`n` và :math:`m` bị giấu, đề cho ta đa thức :math:`C = A^n \cdot B^m`.
 
-Nhiệm vụ của mình phải tìm ba vector trong :math:`\mathbb{F}_p` là :math:`\varphi_A`, :math:`\varphi_B` và :math:`\varphi_C` sao cho tích có hướng của :math:`\varphi^n_A` và :math:`\varphi^m_B` bằng đúng :math:`\varphi_C`. Ở đây :math:`\varphi^n_A` nghĩa là mỗi phần tử của :math:`\varphi_A` được mũ :math:`n \pmod p`, :math:`\varphi_A = (x_A, y_A, z_A)` thì 
+Nhiệm vụ của ta phải tìm ba vector trong :math:`\mathbb{F}_p` là :math:`\varphi_A`, :math:`\varphi_B` và :math:`\varphi_C` sao cho tích có hướng của :math:`\varphi^n_A` và :math:`\varphi^m_B` bằng đúng :math:`\varphi_C`. Ở đây :math:`\varphi^n_A` nghĩa là mỗi phần tử của :math:`\varphi_A` được mũ :math:`n \pmod p`, :math:`\varphi_A = (x_A, y_A, z_A)` thì
 
 .. math:: \varphi_A^n = (x^n_A \bmod p, y^n_A \bmod p, z^n_A \bmod p).
 
-Như vậy mình cần giải bài toán discrete logarithm cho polynomial ring. Phần khó của bài này là làm sao tìm được order của mỗi đa thức. Mình thấy rằng :math:`f(x)` có thể factor thành tích của ba đa thức bậc :math:`1`. Như vậy việc giải bài toán trên modulo :math:`f(x)` trở thành giải bài toán trên từng đa thức bậc :math:`1` rồi CRT chúng lại với nhau.
+Như vậy ta cần giải bài toán discrete logarithm cho polynomial ring. Phần khó của bài này là làm sao tìm được order của mỗi đa thức. Ta thấy rằng :math:`f(x)` có thể factor thành tích của ba đa thức bậc :math:`1`. Như vậy việc giải bài toán trên modulo :math:`f(x)` trở thành giải bài toán trên từng đa thức bậc :math:`1` rồi CRT chúng lại với nhau.
 
-Nhưng mình không biết cách tìm order của mỗi đa thức .........
+Nhưng ta không biết cách tìm order của mỗi đa thức .........
 
-Chán thật, mình chọn :math:`\varphi_A = \varphi_B = \varphi_C = (0, 0, 0)` và nó luôn đúng chả quan tâm :math:`n`, :math:`m` chi cả. Unintended solution. =)))
+Chọn :math:`\varphi_A=\varphi_B=\varphi_C=(0,0,0)` luôn thỏa điều kiện với mọi :math:`n` và :math:`m`. Đây là một lời giải ngoài dự kiến.
 
-Cám ơn mọi người đã đọc writeup của mình. Hẹn gặp lại.
+Cám ơn mọi người đã đọc bài viết của ta. Hẹn gặp lại.

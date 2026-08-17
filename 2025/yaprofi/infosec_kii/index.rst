@@ -19,7 +19,7 @@
 
 где
 
-.. math:: 
+.. math::
 
    y_i = x_i \oplus \prod_{j=i+1}^{16} x_j \ \text{для} \ i = 1, \ldots, 15, \\
    y_{16} = x_{16} \oplus 1.
@@ -31,26 +31,26 @@
 Вопрос 6. Алиса продолжает анализ S-блока :math:`s` задачи 5. Она хочет оценить его параметры относительно разностного метода криптоанализа. Для этого ей надо найти разностную :math:`(2^{16} - 1) \times (2^{16} - 1)`-матрицу :math:`p(s) = [[p_{\varepsilon, delta}]]`, где
 
 .. math:: p_{\varepsilon, delta} = 2^{-16} \cdot \lvert \{ \alpha \in \mathbb{Z}_2^{16} : s(\alpha \oplus \varepsilon) \oplus s(\alpha) = \delta \} \rvert
-   
+
 для всех ненулевых :math:`16`-битных векторов :math:`\varepsilon, \delta \in \mathbb{Z}_2^{16}`.
 
 Для вектора :math:`\varepsilon`, :math:`\lVert \varepsilon \rVert = 1` найти наибольший элемент :math:`p_{\varepsilon, \delta}`, т.е.
 
 .. math:: p_{\varepsilon}^{(\max)} = p_{\varepsilon, \delta} = \max \{ p_{\varepsilon, \gamma} \mid \gamma \in \mathbb{Z}_2^{16} \setminus \{ \vec{0} \} \},
-   
+
 где :math:`\lVert \varepsilon \rVert` - вес Хэмминга вектора :math:`\varepsilon`.
 
 В ответе для векторов :math:`\varepsilon = (\varepsilon_1, \ldots, \varepsilon_{16})`, :math:`\delta` и вероятности :math:`p_{\varepsilon}^{(\max)}` записать:
 
 .. math:: i, \lVert \delta \rVert, p,
-   
+
 где :math:`\lVert \varepsilon \rVert = 1` (такая координата у вектора :math:`\varepsilon` единственная),
 
 .. math:: p = \begin{cases} 0, p_{\varepsilon}^{(\max)} = 1, \\ j + 1, 2^{-j-1} \leq p_{\varepsilon}^{(\max)} < 2^{-j}, j \in \mathbb{N} \cup \{ 0 \}, \\ \infty, p_{\varepsilon}^{(\max)} = 0 \end{cases}.
 
 Например, для
 
-.. math:: 
+.. math::
 
    \varepsilon = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), \ \delta = (1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1), \\
    p_{\varepsilon}^{(\max)} = 2^{-4},
@@ -65,14 +65,14 @@
 
 Злоумышленник узнал протокол, номер порта и схему квантования для получения доступа к сервису, а также количество требуемых пакетов. С какой вероятностью злоумышленник угадает правильную последовательность из межпакетных задержек с первой попытки (где одна попытка - это отправка четырех ICMP-пакетов через заданные интервалы времени)? Предполагается, что злоумышленник может контролировать моменты отправки пакетов с точностью до 10 мс.
 
-Вопрос 10. 
+Вопрос 10.
 
 .. code-block:: php
 
    $userName = $_POST['userName'];
    $password = $_POST['password'];
-   $sqlQuery = "select * from users 
-               where user_name = '".$userName."' 
+   $sqlQuery = "select * from users
+               where user_name = '".$userName."'
                and user_password = '".$password."';";
 
 Вопрос 11. При оценке защищённости речевой информации в исследуемом помещении получены следующие результаты:

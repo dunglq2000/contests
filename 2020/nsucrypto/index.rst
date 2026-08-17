@@ -20,8 +20,8 @@ Ta viết các số :math:`2020`, :math:`1984` và :math:`2021` dưới dạng n
 
 Như vậy
 
-.. math:: 
-    
+.. math::
+
     2020 = 11111100100, \ 1984 = 11111000000, \ 2021 = 11111100101.
 
 Đặt :math:`2020 = 11111 \underbrace{1001}_A 00` thì nếu ta xóa dãy :math:`A` khỏi :math:`2020` và thêm vào vị trí đó bốn chữ số :math:`0` thì ta có :math:`1984`. Như vậy máy đầu tiên hoạt động bình thường.
@@ -55,8 +55,8 @@ Phép biến đổi tương đương với phép nhân ma trận :math:`(a, b) \
 
 Kết quả cuối là việc thực hiện liên tiếp các phép nhân có dạng
 
-.. math:: 
-    
+.. math::
+
     (a, b) \cdot \bm{A}_1 \bm{A}_2 \cdots \bm{A}_r
 
 với :math:`\bm{A}_i` là một trong ba ma trận trên.
@@ -82,20 +82,20 @@ Giải
 
 Giả sử đa thức là
 
-.. math:: 
-    
+.. math::
+
     p(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0.
 
 Khi đó
 
-.. math:: 
-    
+.. math::
+
     p(20) = a_n 20^n + a_{n-1} 20^{n-1} + \cdots + a_1 \cdot 20 + a_0 = 7.
 
 Tương tự
 
-.. math:: 
-    
+.. math::
+
     p(15) = a_n 15^n + a_{n-1} 15^{n-1} + \cdots + a_1 \cdot 15 + a_0 = 5.
 
 Suy ra :math:`p(20) - p(15) = 2` mà :math:`p(20) - p(15)` chia hết cho :math:`20 - 15 = 5` nên vô lý vì :math:`2` không chia hết cho :math:`5`. Như vậy thuật toán đã bị cài đặt sai.
@@ -110,16 +110,16 @@ Problem 3. Hidden RSA
 
 Bob học về mật mã khóa công khai và bây giờ mọi người đều có thể gửi message cho anh ta. Message được biểu diễn thành số nguyên không âm :math:`x` và chứa tối đa :math:`70` chữ số trong biểu diễn thập phân. Để gửi message cho Bob, chúng ta nhập :math:`x` vào trang web và kết quả được trả về ở dạng
 
-.. math:: 
-    
+.. math::
+
     \mathtt{Encr}(x) = x^e \pmod n,
 
 với :math:`n` là modulus (biết rằng :math:`n` là tích của hai số nguyên tố phân biệt :math:`p` và :math:`q`) và :math:`e` là số mũ công khai (nguyên tố cùng nhau với :math:`p-1` và :math:`q-1`). Bob sợ bị hacker tấn công nên giấu đi :math:`n` và :math:`e`.
 
 Victor bắt được một encrypted message
 
-.. math:: 
-    
+.. math::
+
     y = 71511896681324833458361392885184344933333159830863878600189212073777582178173,
 
 được Alice gửi cho Bob.
@@ -129,55 +129,55 @@ Hãy giúp Victor giải mã nó.
 Giải
 ------
 
-Gọi :math:`f_2`, :math:`f_3` và :math:`f_6` là kết quả trả về khi nhập :math:`2`, :math:`3` và :math:`6` lên trang web. Mình nhận được
+Gọi :math:`f_2`, :math:`f_3` và :math:`f_6` là kết quả trả về khi nhập :math:`2`, :math:`3` và :math:`6` lên trang web. Ta nhận được
 
-.. math:: 
-    
+.. math::
+
     f_2 & = 50154912289039335014669339773308393642658123228965873078737860474494117389068 \\
     f_3 & = 74177167678866806519929337366689313939300015489238864541679630476008627210599 \\
     f_6 & = 69732835711852253044075185248502970714729629373386336194927784886349053828079.
-    
+
 Vì
 
-.. math:: 
-    
+.. math::
+
     \begin{array}{cccc}
         f_6 & \equiv & 6^e & \pmod n \\
         & \equiv & (2^e) \cdot (3^e) & \pmod n \\
         & \equiv & f_2 \cdot f_3 & \pmod n
     \end{array}
-    
+
 nên suy ra :math:`n \mid (f_2 \cdot f_3 - f_6)`.
 
-Tương tự, gọi :math:`f_5`, :math:`f_7` và :math:`f_{35}` là kết quả trả về khi nhập :math:`5`, :math:`7` và :math:`35`. Mình nhận được
+Tương tự, gọi :math:`f_5`, :math:`f_7` và :math:`f_{35}` là kết quả trả về khi nhập :math:`5`, :math:`7` và :math:`35`. Ta nhận được
 
-.. math:: 
+.. math::
 
     f_5 & = 66788051164865948223783605396869677445056352267867968640234839015540677264876 \\
     f_7 & = 25469333231403648059708659888338792850140504272696299331424365245642760908571 \\
     f_{35} & = 25850860693609575302160565920815769473222469094759983686766869114847002714718.
-    
+
 Tương tự :math:`n \mid (f_3 \cdot f_5 - f_{35})`.
 
 Như vậy
 
-.. math:: 
-    
+.. math::
+
     n = \gcd(f_2 \cdot f_3 - f_6, f_3 \cdot f_5 - f_{35}).
 
-Mình thu được
+Ta thu được
 
-.. math:: 
-    
+.. math::
+
     n = 76200708443433250012501342992033571586971760218934756930058661627867825188509.
 
-Sử dụng factordb mình tìm được
+Sử dụng factordb ta tìm được
 
-.. math:: 
-    
+.. math::
+
     p = 232086664036792751646261018215123451301, \quad q = 328328681700354546732404725320581286809.
 
-Với số :math:`e` mình chọn :math:`e = 65537` là public exponent được dùng nhiều nhất trên thực tế và kiểm tra :math:`2^e \pmod n` có khớp với :math:`f_2` không, tương tự với :math:`3^e \pmod n` với :math:`f_3`, ... và hoàn toàn trùng kết quả.
+Với số :math:`e` ta chọn :math:`e = 65537` là public exponent được dùng nhiều nhất trên thực tế và kiểm tra :math:`2^e \pmod n` có khớp với :math:`f_2` không, tương tự với :math:`3^e \pmod n` với :math:`f_3`, ... và hoàn toàn trùng kết quả.
 
 Như vậy :math:`e = 65537` và tính
 
@@ -187,4 +187,4 @@ từ đó decrypt ra được message ban đầu (theo RSA)
 
 .. math:: m = 202010181600.
 
-Sau này đọc bài giải của anh Hiếu (ndh) thì mình mới biết ý nghĩa của plaintext là ``2020-10-18-16-00`` là năm, tháng, ngày, giờ bắt đầu round 2 (múi giờ Novosibirsk, UTC+7).
+Sau này đọc bài giải của anh Hiếu (ndh) thì ta mới biết ý nghĩa của plaintext là ``2020-10-18-16-00`` là năm, tháng, ngày, giờ bắt đầu round 2 (múi giờ Novosibirsk, UTC+7).

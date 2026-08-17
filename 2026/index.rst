@@ -1,7 +1,7 @@
 Các cuộc thi năm 2026
 #####################
 
-.. toctree:: 
+.. toctree::
    :maxdepth: 1
-   
+
    cryptofox/index

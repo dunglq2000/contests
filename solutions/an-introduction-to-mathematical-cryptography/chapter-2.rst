@@ -2,7 +2,7 @@ Chapter 2. Discrete Logarithms and Diffie-Hellman
 =================================================
 
 .. admonition:: Câu 2.3
-    
+
     Let :math:`g` be a primitive root of :math:`\mathbb{F}_p`.
 
     (a) Suppose that :math:`x = a` and :math:`x = b` are both integer solutions to the congruence :math:`g^x \equiv h` (mod :math:`p`). Prove that :math:`a \equiv b` (mod :math:`p-1`). Explain why this implies that the map (2.1) on page 64 is well-defined
@@ -13,11 +13,11 @@ Chapter 2. Discrete Logarithms and Diffie-Hellman
 
 Các tính chất cơ bản của hàm Euler.
 
-(a) Cả :math:`a` and :math:`b` là nghiệm của đồng dư :math:`g^x \equiv h` (mod :math:`p`) nên :math:`g^a \equiv h \pmod p` và :math:`g^b \equiv h \pmod p`. 
-    
+(a) Cả :math:`a` and :math:`b` là nghiệm của đồng dư :math:`g^x \equiv h` (mod :math:`p`) nên :math:`g^a \equiv h \pmod p` và :math:`g^b \equiv h \pmod p`.
+
 Suy ra ta có :math:`g^{-b} \equiv h^{-1} \pmod p`.
 
-Ta nhân kết quả với đồng dư đầu thì được :math:`g^a g^{-b} \equiv h h^{-1} \equiv 1 \pmod p`, hay :math:`g^{a-b} \equiv 1 \pmod p`. 
+Ta nhân kết quả với đồng dư đầu thì được :math:`g^a g^{-b} \equiv h h^{-1} \equiv 1 \pmod p`, hay :math:`g^{a-b} \equiv 1 \pmod p`.
 
 Do :math:`g` là primitive root of :math:`\mathbb{F}_p` tên ta có :math:`\phi(p) \mid (a-b)`, tương đương với :math:`(p-1) \mid (a-b)`.
 
@@ -28,16 +28,16 @@ Như vậy :math:`a - b \equiv 0 \pmod{p-1}` hay :math:`a \equiv b \pmod {p-1}` 
 Suy ra :math:`x_1 = \log_g h_1` và :math:`x_2 = \log_g h_2` (1).
 
 Do :math:`h_1 h_2 \equiv g^{x_1 + x_2} \pmod p` nên :math:`x_1 + x_2 = \log_g(h_1 h_2)` (2).
-    
+
 Từ (1) và (2), :math:`\log_g h_1 + \log_g h_2 = \log_g (h_1 h_2)`.
-    
+
 (c) tương tự (b).
 
 .. admonition:: Câu 2.5
-    
+
     Let :math:`p` be an odd prime and let :math:`g` be a primitive root modulo :math:`p`.
 
-    Prove that :math:`a` has a square root modulo :math:`p` if and only if its discrete logarithm :math:`\log_g(a)` modulo :math:`p-1` is even. 
+    Prove that :math:`a` has a square root modulo :math:`p` if and only if its discrete logarithm :math:`\log_g(a)` modulo :math:`p-1` is even.
 
 Ta có :math:`g^{p-1} \equiv 1 \pmod p` do :math:`g` là primitive root modulo :math:`p`.
 
@@ -45,7 +45,7 @@ Ta có :math:`g^{p-1} \equiv 1 \pmod p` do :math:`g` là primitive root modulo :
 
 .. math:: \log_g a = \log_g(b^2) = 2 \log_g b \pmod{p-1},
 
-như vậy :math:`\log_ga` chẵn. 
+như vậy :math:`\log_ga` chẵn.
 
 **Điều kiện cần.** Nếu :math:`\log_g a` modulo :math:`p-1` chẵn.
 
@@ -71,7 +71,7 @@ Như vậy :math:`a` có căn bậc hai modulo :math:`p-1`.
 
     Bob chooses a random exponent :math:`b=4037` and sends :math:`v=u^b` (mod :math:`p`) :math:`=15422` back to Alice.
 
-    Alice then computes :math:`w=v^{15619} \equiv 27257` (mod :math:`32611`) and sends :math:`w=27257` to Bob. 
+    Alice then computes :math:`w=v^{15619} \equiv 27257` (mod :math:`32611`) and sends :math:`w=27257` to Bob.
 
     Finally, Bob computes :math:`w^{31883}` (mod :math:`32611`) and recovers the value :math:`11111` of Alice's message.
 
@@ -93,7 +93,7 @@ Tương tự, Bob chọn :math:`b` và :math:`b'` sao cho :math:`bb' \equiv 1 \p
 
 Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
-.. math:: 
+.. math::
 
     & \Rightarrow v \equiv u^b \equiv (m^a)^b \equiv m^{ab} \pmod p \\
     & \Rightarrow w \equiv v^{a'} \equiv (m^{ab})^{a'} \equiv m^{aa'b} \pmod p \\
@@ -104,36 +104,36 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
     The group :math:`S_3` consists of the following six distinct elements
 
     .. math:: e, \sigma, \sigma^2, \tau, \sigma\tau, \sigma^2\tau
-    
+
     where :math:`e` is the identity element and multiplication is performed using the rules
 
     .. math:: \sigma^3 = e, \quad \tau^2 = e, \quad \tau\sigma = \sigma^2\tau
-    
+
     Compute the following values in the group :math:`S_3`:
 
     (a)  :math:`\tau\sigma^2`
 
-    (b)  :math:`\tau(\sigma\tau)` 
+    (b)  :math:`\tau(\sigma\tau)`
 
-    (c)  :math:`(\sigma\tau)(\sigma\tau)` 
+    (c)  :math:`(\sigma\tau)(\sigma\tau)`
 
     (d)  :math:`(\sigma\tau)(\sigma^2\tau)`
 
     Is :math:`S_3` a commutative group?
 
-(a) 
+(a)
 
 .. math:: \tau\sigma^2 = \tau\sigma\sigma = \sigma^2\tau\sigma = \sigma\sigma^2\tau = \sigma^3\tau = e\tau = \tau.
 
-(b) 
+(b)
 
 .. math:: \tau(\sigma\tau)=(\tau\sigma)\tau = \sigma^2\tau\tau = \sigma^2\tau^2 = \sigma^2e = \sigma^2.
 
-(c) 
+(c)
 
 .. math:: (\sigma\tau)(\sigma\tau) = \sigma(\tau\sigma)\tau = \sigma(\sigma^2\tau)\tau = \sigma^3\tau^2 = ee = e.
 
-(d) 
+(d)
 
 .. math:: (\sigma\tau)(\sigma^2\tau) = (\sigma\tau)(\tau\sigma) = \sigma\tau^2\sigma=\sigma e \sigma = \sigma^2.
 
@@ -157,9 +157,9 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
     (d) Show by an example that is :math:`G` is not a commutative group, then :math:`G[d]` need not be a group. (*Hint.* Use Exercise 2.11.)
 
-(a) Vì :math:`g \star g^{-1} = e` nên 
+(a) Vì :math:`g \star g^{-1} = e` nên
 
-.. math:: 
+.. math::
 
     & g \star e \star g^{-1} = e \\
     \Rightarrow & g \star g \star g^{-1} \star g^{-1} = e \\
@@ -167,14 +167,14 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
 Thực hiện thêm :math:`d-2` lần nữa và ta nhận được
 
-.. math:: 
+.. math::
 
     & g^d \star (g^{-1})^d = e \\
-    \Rightarrow & e \star (g^{-1})^2 = e \\ 
+    \Rightarrow & e \star (g^{-1})^2 = e \\
     \Rightarrow & (g^{-1})^2 = e \\
     \Rightarrow & g^{-1} \in G[d]
 
-(b) Ta có :math:`g_1^d = e` and :math:`g_2^d = e`. 
+(b) Ta có :math:`g_1^d = e` and :math:`g_2^d = e`.
 
 Do :math:`G` là nhóm hoán vị nên :math:`g_1^d \star g_2^d = (g_1 \star g_2)^d`, suy ra :math:`(g_1 \star g_2)^d = e \star e = e`.
 
@@ -190,7 +190,7 @@ Với :math:`a, b, c \in G[d]` thì :math:`a^d = b^d = c^d = e`.
 
 Ta có :math:`b^d \star c^d = (b \star c)^d` do tính giao hoán, suy ra
 
-.. math:: 
+.. math::
 
     a^d \star (b^d \star c^d) & = a^d \star (b \star c)^d = (a \star b \star c)^d \\
     & = (a \star b)^d \star c^d = (a^d \star b^d) \star c^d.
@@ -205,7 +205,7 @@ Vì
 
 .. math:: (\sigma\tau)\tau = \sigma\tau^2 = \sigma \notin S_3[2]
 
-nên :math:`S_3[2]` không là nhóm. 
+nên :math:`S_3[2]` không là nhóm.
 
 .. admonition:: Câu 2.13
 
@@ -226,8 +226,8 @@ nên :math:`S_3[2]` không là nhóm.
 
 (a) Với mọi :math:`g \in G` thì :math:`g = g \star e = e \star g`. Suy ra
 
-.. math:: 
-    
+.. math::
+
     & \phi(g) = \phi(g \star e_G) = \phi(e_G \star g) \\
     \Longleftrightarrow \ & \phi(g) = \phi(g) \star \phi(e_G) = \phi(e_G) \star \phi(g)
 
@@ -235,7 +235,7 @@ Do :math:`\phi(g) \in H`, :math:`\phi(e_G)` là phần tử đơn vị của :ma
 
 Trong nhóm :math:`G`, :math:`g \star g^{-1} = e_G`. Suy ra
 
-.. math:: 
+.. math::
 
     & \phi(g \star g^{-1}) = \phi(e_G) \\
     \Longleftrightarrow \ & \phi(g) \star \phi(g^{-1}) = \phi(e_G) \\
@@ -252,7 +252,7 @@ Xét nhóm ở Câu 2.11 và ánh xạ :math:`\phi: G \rightarrow G`, :math:`\ph
 
 Khi đó
 
-.. math:: 
+.. math::
 
     \phi(e) = e^2 = e, & \quad \phi(\sigma) = \sigma^2, \\
     \phi(\tau) = \tau^2 = e, & \quad \phi(\sigma\tau) = (\sigma\tau)^2 = e.
@@ -275,7 +275,7 @@ Kết luận: :math:`G` là homomorphism.
 
 Xét nhóm ở Câu 2.11 và ánh xạ :math:`\phi: G \rightarrow G`, :math:`\phi(g) = g^{-1}`. Ta có
 
-.. math:: 
+.. math::
 
     \sigma\sigma^2 = e = \sigma^2\sigma = e, \quad \tau^2 = e, \quad (\sigma\tau)^2 = e, \quad (\sigma^2\tau)^2 = e,
 
@@ -295,13 +295,13 @@ Vì :math:`\phi(\sigma\tau) = \sigma\tau \neq \sigma^2\tau = \phi(\sigma)\phi(\t
 
     (c) The discrete logarithm map :math:`\log_g: \mathbb{F}_p^* \rightarrow \mathbb{Z}/(p-1)\mathbb{Z}`, where :math:`g` is a primitive root modulo :math:`p`.
 
-(a) Với mọi :math:`a, b \in \mathbb{Z}`, 
+(a) Với mọi :math:`a, b \in \mathbb{Z}`,
 
-.. math:: 
+.. math::
 
     \phi(ab) & = (ab) \pmod N \\
     & = (a \bmod N) \ (b \bmod N) \pmod N \\
-    & = \phi(a) \phi(b) \\ 
+    & = \phi(a) \phi(b) \\
 
 Do đó :math:`\phi` là homomorphism.
 
@@ -311,10 +311,10 @@ Do đó :math:`\phi` là homomorphism.
 
 Ta có
 
-.. math:: 
+.. math::
 
     \phi(a)\phi(b) = \begin{pmatrix}a & 0 \\ 0 & a^{-1}\end{pmatrix}
-    \begin{pmatrix}b & 0 \\ 0 & b^{-1}\end{pmatrix} = 
+    \begin{pmatrix}b & 0 \\ 0 & b^{-1}\end{pmatrix} =
     \begin{pmatrix}ab & 0 \\ 0 & a^{-1}b^{-1}\end{pmatrix}
 
 Trong :math:`\mathbb{R}^*` ta có tính chất :math:`(ab)^{-1} = a^{-1}b^{-1}`, do đó :math:`\phi(ab) = \phi(a)\phi(b)`. Suy ra :math:`\phi` là homomorphism.
@@ -359,7 +359,7 @@ Nếu ta chọn :math:`a_{12} \not\equiv b_{21}^{-1}a_{21}b_{21} \pmod p` thì :
 
 (c) Ta liệt kê tất cả ma trận:
 
-.. math:: 
+.. math::
 
     A_1 = \begin{pmatrix}0 & 1\\1 & 0\end{pmatrix}, \quad A_2 = \begin{pmatrix}0 & 1\\1 & 1\end{pmatrix}, \quad A_3 = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}, \\
     A_4 = \begin{pmatrix}1 & 0\\1 & 1\end{pmatrix}, \quad A_5 = \begin{pmatrix}1 & 1\\0 & 1\end{pmatrix}, \quad A_6 = \begin{pmatrix}1 & 1\\1 & 0\end{pmatrix}.
@@ -432,8 +432,8 @@ Kết luận: có tất cả :math:`(p^n-1)(p^n-p) \cdots (p^n-p^{n-1})` phần 
 
     Solve the 1700-year-old Chinese remainder problem from the *Sun Tzu Suan Ching* stated on page 84.
 
-    .. math:: 
-        
+    .. math::
+
         \begin{cases}
             x \equiv 2 \pmod 3 \\
             x \equiv 3 \pmod 5 \\
@@ -458,7 +458,7 @@ Kết luận: có tất cả :math:`(p^n-1)(p^n-p) \cdots (p^n-p^{n-1})` phần 
 
 Do :math:`b \mid c` nên tồn tại :math:`l \in \mathbb{Z}` sao cho :math:`c = lb`.
 
-Như vậy :math:`ka = lb`. 
+Như vậy :math:`ka = lb`.
 
 Tuy nhiên do :math:`\gcd(a,b) = 1` nên :math:`a \mid l`, hay :math:`l = ma` với :math:`m \in \mathbb{Z}`
 
@@ -502,17 +502,17 @@ Do :math:`2b_1 \not\equiv 0 \pmod{p^2}` nên tồn tại :math:`k` thỏa mãn �
 
 (c) Ta chứng minh theo quy nạp với mọi :math:`n \geqslant 1`, tồn tại :math:`b_n \in \mathbb{Z}` sao cho
 
-.. math:: 
+.. math::
 
     f(b_n) & = b_n^2-a \equiv 0 \pmod{p^n} \\
     b_n & = b \pmod{p^n}
 
 Trường hợp :math:`n = 1` là điều kiện ban đầu với :math:`b_1 = b`. Giả sử mệnh đề đúng tới :math:`n`, nghĩa là:
 
-.. math:: 
+.. math::
 
     f(b_n) & = b_n^2 - a \pmod{p^n} \\
-    b_n & = b \pmod{p^n} 
+    b_n & = b \pmod{p^n}
 
 Xét :math:`b_{n+1}`
 
@@ -520,14 +520,14 @@ Xét :math:`b_{n+1}`
 
 Ta viết :math:`b_{n+1}=b_n+p^nt_n`.
 
-.. math:: 
+.. math::
 
     \Rightarrow f(b_{n+1})=b_n^2+2b_np^nt_n+p^{2n}t_n^2 - a \equiv 0 \pmod{p^{n+1}}
 
     \Rightarrow b_n^2+2b_np^nt_n-a \equiv 0 \pmod{p^{n+1}} \ (\text{vì} \ 2n \geqslant n+1)
 
     \Rightarrow 2 b_n t_n \equiv -(b_n^2-a)/p^n \pmod{p^{n+1}} \ \text{từ} \ (2)
- 
+
 Nghiệm :math:`t_n` tồn tại vì ta đã giả sử :math:`2b_n \equiv 0 \pmod{p^{n}}`. Như vậy
 
 .. math:: f(b_{n+1}) \equiv 0 \pmod{p^{n+1}}, \quad \text{và} \quad b_{n+1} \equiv b_n \pmod{p^n}.
@@ -550,7 +550,7 @@ Chứng minh này dùng cho :math:`b+jp^n` modulo :math:`p^n`, không phải cho
 
     where the last equality holds for those :math:`a \in R` that have a multiplicative inverse.
 
-    (b) Let :math:`p` be a prime, and let :math:`R` be a ring with the property that :math:`pa = 0` for every :math:`a \in R`. (Here :math:`pa` means to add :math:`a` to itself :math:`p` times.) Prove that the map 
+    (b) Let :math:`p` be a prime, and let :math:`R` be a ring with the property that :math:`pa = 0` for every :math:`a \in R`. (Here :math:`pa` means to add :math:`a` to itself :math:`p` times.) Prove that the map
 
     .. math:: \phi: R \rightarrow R, \quad \phi(a)=a^p
 
@@ -558,7 +558,7 @@ Chứng minh này dùng cho :math:`b+jp^n` modulo :math:`p^n`, không phải cho
 
 Điều kiện đề bài là :math:`\phi(a+b)=\phi(a)+\phi(b)` và :math:`\phi(a \star b) = \phi(a) \star \phi(b)` với mọi :math:`a, b \in R`.
 
-(a) Trong :math:`R`, với mọi :math:`a \in R` ta có 
+(a) Trong :math:`R`, với mọi :math:`a \in R` ta có
 
 .. math:: a + 0_R = 0_R + a = a.
 
@@ -657,7 +657,7 @@ Tương tự cho :math:`a_1-b_1 \equiv a_2-b_2 \pmod m`.
 
 Đối với phép nhân, do
 
-.. math:: 
+.. math::
 
     \begin{cases}
         a_1 = a_2 + k \star m \\ b_1 = b_2 + l \star m
@@ -665,7 +665,7 @@ Tương tự cho :math:`a_1-b_1 \equiv a_2-b_2 \pmod m`.
 
 ta có
 
-.. math:: 
+.. math::
 
     a_1 \star b_1 & = (a_2 + k \star m)(b_2 + l \star m) \\
     & = a_2 \star b_2 + a_2 \star l \star m + k \star b_2 \star m + k \star l \star m^2,
@@ -758,7 +758,7 @@ với :math:`a_i \in \mathbb{F}` và :math:`\deg(\mathbf{a}) = n`.
 
 .. math:: b = b_m x^m + b_{m-1} x^{m-1} + \cdots + b_1 x + b_0,
 
-với :math:`b_i \in \mathbb{F}` và :math:`\deg(\mathbf{b}) = m`. 
+với :math:`b_i \in \mathbb{F}` và :math:`\deg(\mathbf{b}) = m`.
 
 Hạng tử với bậc cao nhất trong phép nhân :math:`\mathbf{a} \cdot \mathbf{b}` là :math:`x^{n+m}`, do đó
 
@@ -812,7 +812,7 @@ Tuy nhiên :math:`f(x)` không chia hết cho bất kì đa thức nào kể tr�
 
 
 .. .. admonition:: Câu 2.41.
-..      
+..
 
 .. Let :math:`\mathbb{F}` is a finite field.
 
@@ -822,15 +822,15 @@ Tuy nhiên :math:`f(x)` không chia hết cho bất kì đa thức nào kể tr�
 
 .. then we get 0. Note that here 1 and 0 are the multiplicative and additive identity elements of the field :math:`\mathbb{F}`.
 
-.. Because 1 is element of :math:`\mathbb{F}`, then :math:`\underbrace{1+1+\cdots+1}_{n \text{ times}}` always is an element of :math:`\mathbb{F}`. And :math:`\mathbb{F}` is finite field, so there is :math:`m \geqslant 1` such that :math:`\underbrace{1+1+\cdots+1}_{m \text{ times}}` equals to 0 (1, 1+1, 1+1+1, ... cannot all be different) 
+.. Because 1 is element of :math:`\mathbb{F}`, then :math:`\underbrace{1+1+\cdots+1}_{n \text{ times}}` always is an element of :math:`\mathbb{F}`. And :math:`\mathbb{F}` is finite field, so there is :math:`m \geqslant 1` such that :math:`\underbrace{1+1+\cdots+1}_{m \text{ times}}` equals to 0 (1, 1+1, 1+1+1, ... cannot all be different)
 
 .. (b) Let :math:`m` be the smallest positive integer with the property described in (a). Prove that :math:`m` is prime. This prime is called the *characteristic of the field :math:`\mathbb{F}`*.
 
-..  Suppose that :math:`m` can be factor, so :math:`m=pq` (:math:`1 < p, q < m`) and then 
+..  Suppose that :math:`m` can be factor, so :math:`m=pq` (:math:`1 < p, q < m`) and then
 
-.. :math:`\Rightarrow \underbrace{1+1+\cdots+1}_{m \text{ times}} = 0`. Therefore we can write as \[ \overbrace{\underbrace{(1+1+\cdots+1)}_{p \text{ times}} + \underbrace{(1+1+\cdots+1)}_{p \text{ times}} + \cdots + \underbrace{(1+1+\cdots+1)}_{p \text{ times}}}^{q \text{ times}}\] 
+.. :math:`\Rightarrow \underbrace{1+1+\cdots+1}_{m \text{ times}} = 0`. Therefore we can write as \[ \overbrace{\underbrace{(1+1+\cdots+1)}_{p \text{ times}} + \underbrace{(1+1+\cdots+1)}_{p \text{ times}} + \cdots + \underbrace{(1+1+\cdots+1)}_{p \text{ times}}}^{q \text{ times}}\]
 
-.. Because :math:`\mathbb{F}` is a finite field, :math:`\underbrace{1+1+\cdots+1}_{p \text{ times}} = a \in \mathbb{F}` 
+.. Because :math:`\mathbb{F}` is a finite field, :math:`\underbrace{1+1+\cdots+1}_{p \text{ times}} = a \in \mathbb{F}`
 
 .. :math:`\Rightarrow q \cdot a = 0` (:math:`q > 1` and :math:`a` cannot be 0 because :math:`m` is the smallest number that satisfies :math:`1+1+\cdots+1=0`
 

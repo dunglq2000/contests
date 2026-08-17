@@ -50,11 +50,11 @@ Galois/Counter mode (GCM)
 * CTR được sử dụng để mã hóa các khối plaintext :math:`P_0`, :math:`P_1`, ..., :math:`P_{n-1}` thành các khối ciphertext :math:`C_0`, :math:`C_1`, ..., :math:`C_{n-1}`;
 * các khối ciphertext kết hợp với associated data để tạo ra tag. Tất cả việc tính toán qua hàm :math:`\text{mult}_H` hay :math:`C_i \oplus \text{mult}_H` được thực hiện trên :math:`\mathbb{F}_{2^{128}}` với đa thức tối giản là :math:`f(x) = x^{128} + x^7 + x^2 + x + 1`. Lý do của việc này là mỗi block của AES :math:`16` byte, tương đương :math:`128` bit, nên ta có thể chuyển đổi từ khối :math:`16` bytes thành đa thức thuộc :math:`\mathbb{F}_{2^{128}}`.
 
-Giả sử mình có ciphertext :math:`C` gồm :math:`n` block, kí hiệu là
+Giả sử ta có ciphertext :math:`C` gồm :math:`n` block, kí hiệu là
 
 .. math:: C = C_0 \Vert C_1 \Vert C_2 \Vert \cdots \Vert C_{n-1}.
 
-Đối với bài CTF này thì associated data không được dùng nên mình sẽ bỏ qua.
+Đối với bài CTF này thì associated data không được dùng nên ta sẽ bỏ qua.
 
 Vậy :math:`H` trong chỗ :math:`\text{mult}_H` là gì? Ở đây :math:`H = \text{AES}_K (0^{128})`, nghĩa là encrypt một dãy gồm :math:`128` bits :math:`0`.
 
@@ -73,7 +73,7 @@ Cứ tiếp tục như vậy nhưng để ý hai lần :math:`\text{mult}_H` cu�
 Với lần kế cuối ta sẽ có
 
 .. math:: C_0 H^{n+1} \oplus C_1 H^{n} \oplus \cdots \oplus L H
-    
+
 với :math:`L = 0^{64} \Vert (128 \cdot n)`.
 
 Với lần cuối ta cộng thêm encrypt của :math:`\text{counter}_0` nữa là xong.
@@ -82,7 +82,7 @@ Vậy kết quả cuối cùng của toàn bộ quá trình là tag
 
 .. math:: T = C_0 H^{n+1} + C_1 H^{n} + \cdots + C_{n-1} H^2 + LH + \text{AES}_K (J_0).
 
-Theo cách chọn nonce của AES-GCM thì nonce có độ dài :math:`12` bytes (:math:`96` bits) và 
+Theo cách chọn nonce của AES-GCM thì nonce có độ dài :math:`12` bytes (:math:`96` bits) và
 
 .. math:: J_0 = IV \Vert 0^{31} \Vert 1.
 
@@ -91,26 +91,26 @@ trong đó :math:`IV` là nonce.
 Quay lại bài toán
 -----------------
 
-Để giải bài này mình cần làm như sau:
+Để giải bài này ta cần làm như sau:
 
 * cố định :math:`IV` và :math:`T`;
-* mình chia tập hợp khóa thành hai nửa trái phải (tìm nhị phân) và kiểm tra xem key (trong bài là password) nằm ở nửa nào cho tới khi không gian key chỉ còn 1.
+* ta chia tập hợp khóa thành hai nửa trái phải (tìm nhị phân) và kiểm tra xem key (trong bài là password) nằm ở nửa nào cho tới khi không gian key chỉ còn 1.
 
-Tới đây, mục đích của mình là tìm các ciphertext :math:`C_0`, :math:`C_1`, ..., :math:`C_{n-1}` sao cho với tất cả key trong một nửa trái đều cho ra cùng một tag.
+Tới đây, mục đích của ta là tìm các ciphertext :math:`C_0`, :math:`C_1`, ..., :math:`C_{n-1}` sao cho với tất cả key trong một nửa trái đều cho ra cùng một tag.
 
-Khi mình gửi ciphertext và tag này lên server, nếu server trả về ``Decryption successful`` nghĩa là key cần tìm nằm trong nửa trái, nếu fail nghĩa là key nằm ở nửa phải.
+Khi ta gửi ciphertext và tag này lên server, nếu server trả về ``Decryption successful`` nghĩa là key cần tìm nằm trong nửa trái, nếu fail nghĩa là key nằm ở nửa phải.
 
-Để tìm được các ciphertext như vậy mình sử dụng nội suy Lagrange (Lagrange interpolation).
+Để tìm được các ciphertext như vậy ta sử dụng nội suy Lagrange (Lagrange interpolation).
 
-Mình thấy rằng
+Ta thấy rằng
 
 .. math:: T = C_0 H^{n+1} + C_1 H^{n} + \cdots + C_{n-1} H^2 + LH + \text{AES}_K (J_0).
 
-Tương đương với 
+Tương đương với
 
 .. math:: C_0 H^{n-1} + C_1 H^{n-2} + \cdots + C_{n-1} = (LH + \text{AES}_K (J_0) + T) \cdot H^{-2}.
 
-Với mỗi :math:`K_i` thuộc nửa trái mình có :math:`H_i = \text{AES}_{K_i}(0^{128})` và :math:`\text{AES}_{K_i} (J_0)` tương ứng.
+Với mỗi :math:`K_i` thuộc nửa trái ta có :math:`H_i = \text{AES}_{K_i}(0^{128})` và :math:`\text{AES}_{K_i} (J_0)` tương ứng.
 
 Đặt :math:`f(x) = C_0 x^{n-1} + C_1 x^{n-2} + \cdots + C_{n-1}`. Đa thức này thỏa mãn với mọi key :math:`K_i` thuộc nửa trái thì
 
@@ -118,7 +118,7 @@ Với mỗi :math:`K_i` thuộc nửa trái mình có :math:`H_i = \text{AES}_{K
 
 Lưu ý rằng để tìm đa thức :math:`f(x)` bậc :math:`m` thì cần :math:`m+1` cặp :math:`(x_i, f(x_i))`. Do đó ở đây ta chọn :math:`n = \mathrm{len}(keys)` với :math:`keys` là tập chứa tất cả key của nửa trái.
 
-Từ đó với :math:`n` key mình sẽ tìm được :math:`f(x)` (vì :math:`f(x)` có bậc :math:`n-1`).
+Từ đó với :math:`n` key ta sẽ tìm được :math:`f(x)` (vì :math:`f(x)` có bậc :math:`n-1`).
 
 Hàm encrypt một block AES. Hàm chuyển đối từ block :math:`16` byte sang đa thức thuộc :math:`\mathbb{F}_{2^{128}}` và ngược lại
 
@@ -163,12 +163,12 @@ Hàm attack tìm ciphertext với danh sách key, nonce và tag
 
         return C
 
-**LƯU Ý 1**. Do không gian key ban đầu khá lớn (:math:`26^3`) nên việc tìm nhị phân ngay từ đầu khá là khoai (đa thức bậc :math:`26^3 / 2 = 8788`) nên mình chia ra các chunk key dài :math:`512` để tìm chunk nào chứa key (bản chất không thay đổi). Sau đó từ mỗi chunk mình mới dùng tìm nhị phân mò key.
+**LƯU Ý 1**. Do không gian key ban đầu khá lớn (:math:`26^3`) nên việc tìm nhị phân ngay từ đầu khá là khoai (đa thức bậc :math:`26^3 / 2 = 8788`) nên ta chia ra các chunk key dài :math:`512` để tìm chunk nào chứa key (bản chất không thay đổi). Sau đó từ mỗi chunk ta mới dùng tìm nhị phân mò key.
 
-**LƯU Ý 2**. Việc tính toán đa thức bậc :math:`512` cũng tốn thời gian nên chúng ta có thể tính trước rồi lưu lại trên dict hoặc hash table hoặc bất cứ thứ gì bạn nghĩ ra :v sau đó chúng ta mới giao tiếp với server.
+**LƯU Ý 2**. Việc tính toán đa thức bậc :math:`512` cũng tốn thời gian nên chúng ta có thể tính trước rồi lưu lại trên dict hoặc hash table hoặc bất cứ thứ gì bạn nghĩ ra sau đó chúng ta mới giao tiếp với server.
 
-Phần còn lại của code là attack thôi :) Source code mình để ở file :download:`solve.py <Pythia/service.py>`.
-        
-Với mỗi password mình dùng một query để chỉ định vị trí password (:math:`0`, :math:`1, :math:`2`), :math:`\lceil 26^3 / 512 \rceil = 35` query cho mỗi chunk, và :math:`\log_2(512) = 9` cho tìm nhị phân. Như vậy mình tốn :math:`(1 + 35 + 9) \cdot 3 = 135` query tổng cộng.
+Phần còn lại của code là attack thôi Source code ta để ở file :download:`solve.py <Pythia/service.py>`.
 
-Bài viết tới đây là hết. Cám ơn các bạn đã đọc.
+Với mỗi password ta dùng một query để chỉ định vị trí password (:math:`0`, :math:`1, :math:`2`), :math:`\lceil 26^3 / 512 \rceil = 35` query cho mỗi chunk, và :math:`\log_2(512) = 9` cho tìm nhị phân. Như vậy ta tốn :math:`(1 + 35 + 9) \cdot 3 = 135` query tổng cộng.
+
+Bài viết tới đây là hết.

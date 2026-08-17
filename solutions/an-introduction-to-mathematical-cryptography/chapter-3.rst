@@ -2,7 +2,7 @@ Chapter 3. Integer Factorization and RSA
 ========================================
 
 .. admonition:: Câu 3.4
-     
+
 
     *Euler's phi function* :math:`\phi(N)` is the function defined by
 
@@ -11,7 +11,7 @@ Chapter 3. Integer Factorization and RSA
 Chứng minh định lý Euler đã có trong bài viết về hàm Euler.
 
 .. admonition:: Câu 3.5
-     
+
 
     Properties of Euler's phi function
 
@@ -21,7 +21,7 @@ Chứng minh định lý Euler đã có trong bài viết về hàm Euler.
 Chứng minh tính chất nhân tính của hàm Euler đã có ở bài viết về hàm Euler.
 
 .. admonition:: Câu 3.6
-     
+
 
     Let :math:`N`, :math:`c`, and :math:`e` be positive integers satisfying the conditions :math:`\gcd(N,c)=1` and :math:`\gcd(e,\phi(N))=1`.
 
@@ -40,7 +40,7 @@ và ta đã biết :math:`(x^k)^{\phi(N)} \equiv 1 \pmod{N}` từ Câu 3.4.
 Như vậy :math:`c^d \equiv x \pmod{N}`.
 
 .. admonition:: Câu 3.11
-     
+
 
     Alice chooses two large primes :math:`p` and :math:`q` and she publishes :math:`N=pq`. It is assumed that :math:`N` is hard to factor. Alice also chooses three random numbers :math:`g`, :math:`r_1`, and :math:`r_2` modulo :math:`N` and computes
 
@@ -57,7 +57,7 @@ Như vậy :math:`c^d \equiv x \pmod{N}`.
     Decryption is extreamly fast and essy. Alice uses the Chinese remainder theorem to solve the pair of congruences
 
     .. math:: x \equiv c_2 \pmod{p} \qquad \text{and} \qquad x \equiv c_2 \pmod{q}
-        
+
     Prove that Alice's solution :math:`x` is equal to Bob's plaintext :math:`m`.
 
 Ta có
@@ -75,7 +75,7 @@ Nghiệm của hệ đồng dư là
 với :math:`p p' + q q' = 1`.
 
 .. math:: \Rightarrow x \equiv m p p' + m q q' \equiv m(p p' + q q') \equiv m \pmod N
-        
+
 Ta có
 
 .. math:: g_1 \equiv g^{r_1 (p-1)} \pmod N \equiv g^{r_1 (p-1)} \pmod p \equiv 1 \pmod p.
@@ -85,20 +85,20 @@ Suy ra :math:`p = \gcd(g_1-1, N)`. Tương tự, :math:`q = \gcd(g_2-1, N)`.
 Như vậy ta đã khôi phục lại private key.
 
 .. admonition:: Câu 3.13
-     
+
 
     Find :math:`x`, :math:`y` such that :math:`x e_1 + y e_2 = 1 = \gcd(e_1,e_2)`.
 
 .. math:: \Rightarrow m = c_1^x c_2^y = m^{e_1 x + e_2 y} = m \pmod{N}
 
 .. admonition:: Câu 3.14.
-     
+
 
     [Exercise]
 
 Because 3, 11 and 17 are primes number, :math:`a \equiv a^3 \pmod 3`, :math:`a \equiv a^{11} \pmod{11}`, :math:`a \equiv a^{17} \pmod{17}`. We have system congruence
 
-.. math:: 
+.. math::
 
     a & \equiv a^3 \pmod 3 \\ a & \equiv a^{11} \pmod{11} \\ a & \equiv a^{17} \pmod{17}
 
@@ -106,13 +106,13 @@ Consider that :math:`a^3 \equiv a \pmod 3`, :math:`a^{3^2} \equiv a^3 \equiv a \
 
 Similarly, :math:`a^{561} \equiv a \pmod{11}`, :math:`a^{561} \equiv a \pmod{17}`. From system congruence:
 
-.. math:: 
+.. math::
 
     a^{561} & \equiv a \pmod 3 \\ a^{561} & \equiv a \pmod{11} \\ a^{561} & \equiv a \pmod{17}
 
 Using CRT, :math:`a^{561} = (187 \cdot 1 \cdot a + 51 \cdot 8 \cdot a + 33 \cdot 16 \cdot a) \pmod{561} = a \pmod{561}`
 
-Suppose that :math:`n` is even (:math:`n \geqslant 4`), we have 
+Suppose that :math:`n` is even (:math:`n \geqslant 4`), we have
 
 .. math:: (n-1)^{n-1} = (-1)^{n-1} = -1 \pmod n,
 
@@ -122,15 +122,15 @@ Suppose that :math:`n = p_1^{e_1} p_2^{e_2} \cdots p_r^{e_r}` (:math:`p_i` is od
 
 :math:`\Rightarrow p^{e-1}(p-1) \mid (n-1) \Rightarrow p^{e-1} \mid (n-1)`, but :math:`p^{e-1} \mid n`, which is contrary if :math:`e \geqslant 2`. Hence :math:`e` must be 1.
 
-Therefore :math:`n = p_1 p_2 \cdots p_r` 
+Therefore :math:`n = p_1 p_2 \cdots p_r`
 
 .. admonition:: Câu 3.37
-     
+
 
     [EXERCISE]
 
-.. math:: 
-    
+.. math::
+
     \left(a^{\frac{p-1}{2}}\right)^2 \equiv a^{p-1} \equiv 1 \pmod p
 
     \Rightarrow \binom{a}{p} = \pm 1
@@ -138,8 +138,8 @@ Therefore :math:`n = p_1 p_2 \cdots p_r`
     \Rightarrow \left(a^{\frac{p-1}{2}} - 1\right)\left(a^{\frac{p-1}{2}} + 1\right) \equiv 0 \pmod p
 
     \Rightarrow a^{\frac{p-1}{2}} \equiv \pm 1 \pmod p.
-    
-If :math:`a` is quadratic residue, then :math:`a \equiv b^2 \pmod p` 
+
+If :math:`a` is quadratic residue, then :math:`a \equiv b^2 \pmod p`
 
 :math:`\Rightarrow a^{\frac{p-1}{2}} \equiv (b^2)^{\frac{p-1}{2}} = b^{p-1} \equiv 1 \pmod p`
 
@@ -151,10 +151,10 @@ If :math:`m` is even :math:`\Rightarrow a \equiv g^{2k} \pmod p \Rightarrow a^{\
 
 If :math:`m` is odd :math:`\Rightarrow a = g^{2k+1} \pmod p \Rightarrow a^{\frac{p-1}{2}} \equiv g^{(2k+1)\frac{p-1}{2}} \equiv g^{p-1} g^{\frac{p-1}{2}} \equiv g^{\frac{p-1}{2}}\not\equiv 1 \pmod p`, because :math:`p-1` is smallest number that :math:`g^{p-1} \equiv 1 \pmod p`
 
-From (a) and (b) :math:`\binom{-1}{p} \equiv (-1)^{\frac{p-1}{2}} \pmod p`, if :math:`p=4k+1 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k} \equiv 1 \pmod p` \\ If :math:`p=4k+3 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k+1} \equiv -1 \pmod p` 
+From (a) and (b) :math:`\binom{-1}{p} \equiv (-1)^{\frac{p-1}{2}} \pmod p`, if :math:`p=4k+1 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k} \equiv 1 \pmod p` \\ If :math:`p=4k+3 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k+1} \equiv -1 \pmod p`
 
 .. admonition:: Câu 3.38
-     
+
 
     Prove that the three parts of the quadratic reciprocity theorem are equivalent to the following three concise formulas, where :math:`p` and :math:`q` are odd primes.
 
@@ -173,51 +173,51 @@ If :math:`s` of those residues are greater than :math:`\frac{p}{2}`, then :math:
 .. admonition:: Proof of lemma
     :class: danger, dropdown
 
-    Among smallest residues of :math:`a`, :math:`2a`, :math:`3a`, 
-    ..., :math:`\dfrac{p-1}{2}a`, suppose that :math:`u_1`, :math:`u_2`, 
-    ..., :math:`u_s` are residues greater than :math:`\dfrac{p}{2}`, and 
-    :math:`v_1`, :math:`v_2`, ..., :math:`v_t` are residues smaller than 
+    Among smallest residues of :math:`a`, :math:`2a`, :math:`3a`,
+    ..., :math:`\dfrac{p-1}{2}a`, suppose that :math:`u_1`, :math:`u_2`,
+    ..., :math:`u_s` are residues greater than :math:`\dfrac{p}{2}`, and
+    :math:`v_1`, :math:`v_2`, ..., :math:`v_t` are residues smaller than
     :math:`\frac{p}{2}`.
 
-    Because :math:`\gcd(ja, p) = 1` for all :math:`j`, where 
-    :math:`1 \leqslant j \leqslant \dfrac{p-1}{2}`, all 
+    Because :math:`\gcd(ja, p) = 1` for all :math:`j`, where
+    :math:`1 \leqslant j \leqslant \dfrac{p-1}{2}`, all
     :math:`u_i, v_j \neq 0`, then
-    
+
     .. math:: u_i, v_j \in \{1 , 2,\cdots,p-1\}.
-        
-    We will prove that, the set 
-    
+
+    We will prove that, the set
+
     .. math:: \{p-u_1, p-u_2, \cdots, p-u_s, v_1, v_2, \cdots, v_t\}
-    
+
     is a permutation of :math:`\{1,2,\cdots,\frac{p-1}{2}\}`
 
-    It is clear that there are no :math:`2` numbers :math:`u_i` or :math:`2` 
-    numbers :math:`v_j` simultaneously congruent modulo :math:`p`. Because 
-    if :math:`ma \equiv na \pmod p` and :math:`\gcd(a, p) = 1`, then 
+    It is clear that there are no :math:`2` numbers :math:`u_i` or :math:`2`
+    numbers :math:`v_j` simultaneously congruent modulo :math:`p`. Because
+    if :math:`ma \equiv na \pmod p` and :math:`\gcd(a, p) = 1`, then
     :math:`m\equiv n \pmod p` and it is contrast with :math:`m, n \leqslant \dfrac{p-1}{2}`.
 
     Similarly, we see that there are no numbers :math:`p-u_i` congruent with :math:`v_j`, so
 
     .. math:: (p-u_1)(p-u_2)\cdots(p-u_s)v_1 v_2 \cdots v_t \equiv \left(\frac{p-1}{2}\right)! \pmod p.
 
-    On the other hand, :math:`u_1`, :math:`u_2`, ..., :math:`u_s`, :math:`v_1`, 
-    :math:`v_2`, ..., :math:`v_t` are smallest residues of :math:`a`, :math:`2a`, 
-    :math:`3a`, ..., :math:`\dfrac{p-1}{2}`, so 
-    
+    On the other hand, :math:`u_1`, :math:`u_2`, ..., :math:`u_s`, :math:`v_1`,
+    :math:`v_2`, ..., :math:`v_t` are smallest residues of :math:`a`, :math:`2a`,
+    :math:`3a`, ..., :math:`\dfrac{p-1}{2}`, so
+
     .. math:: u_1 u_2 \cdots u_s v_1 v_2 \cdots v_t \equiv a^{\frac{p-1}{2}} \left(\frac{p-1}{2}\right)! \pmod p.
 
     Therefore
-    
+
     .. math:: (-1)^s a^{\frac{p-1}{2}} \left(\frac{p-1}{2}\right)! \equiv \left(\frac{p-1}{2}\right)! \pmod p
 
-    And because 
-    
+    And because
+
     .. math:: \gcd(p, \left(\frac{p-1}{2}\right)!) = 1 \Rightarrow (-1)^s a^{\frac{p-1}{2}} \equiv 1 \pmod p,
 
     then
 
-    .. math:: 
-        
+    .. math::
+
         a^{\frac{p-1}{2}} \equiv (-1)^s \pmod p, \ \binom{a}{p} = a^{\frac{p-1}{2}},
 
     and :math:`\binom{a}{p} = (-1)^s \pmod p`.
@@ -226,27 +226,27 @@ Return to problem: using theorem above, we need to find the number of residues, 
 
 :math:`\Rightarrow` there are :math:`s = \frac{p-1}{2} - \left[\frac{p}{4}\right] \Rightarrow \left(\frac{2}{p}\right) = (-1)^{\frac{p-1}{2} - \left[\frac{p}{4}\right] }`
 
-With :math:`p \equiv 1, 3, 5, 7 \pmod 8`, we have 
+With :math:`p \equiv 1, 3, 5, 7 \pmod 8`, we have
 
-.. math:: 
-    
+.. math::
+
     \frac{p-1}{2} - \left[\frac{p}{4}\right] \equiv \frac{p^2-1}{8} \pmod 2
 
     \Rightarrow \left(\frac{2}{p}\right) = (-1)^{\frac{p^2-1}{8}}
 
 .. math:: \left(\frac{p}{q}\right)\left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}
 
-We need a lemma: Suppose :math:`p` is an odd prime, :math:`a` is odd and :math:`\gcd(a, p) = 1`, then :math:`\left(\frac{a}{p}\right) = (-1)^{T(a, p)}`, with 
+We need a lemma: Suppose :math:`p` is an odd prime, :math:`a` is odd and :math:`\gcd(a, p) = 1`, then :math:`\left(\frac{a}{p}\right) = (-1)^{T(a, p)}`, with
 
 .. math:: T(a, p) = \sum_{j=1}^{\frac{p-1}{2}}\left[\frac{ja}{p}\right].
 
 .. admonition:: Proof of lemma
     :class: danger, dropdown
-    
+
     Consider smallest residues of :math:`a`, :math:`2a`, :math:`3a`, :math:`\cdots`, :math:`\frac{p-1}{2} \cdot a`. As Gauss's lemma, :math:`u_1`, :math:`u_2`, :math:`\cdots`, :math:`u_s`, :math:`v_1`, :math:`v_2`, :math:`\cdots`, :math:`v_t` are residues greater and less than :math:`\frac{p}{2}` respectively. According to Euclidean divisor:
 
     .. math:: ja = p \left[\frac{ja}{p}\right] + \text{remainder},
-        
+
     remainder is :math:`u_i` or :math:`v_j`. We have such :math:`\frac{p-1}{2}` equations and add them together
 
     .. math:: \Rightarrow \sum_{j=1}^{\frac{p-1}{2}}ja = \sum_{j=1}^{\frac{p-1}{2}}p\left[\frac{ja}{p}\right] + \sum_{i=1}^{s}u_i + \sum_{j=1}^{t}v_j
@@ -271,10 +271,10 @@ We consider pairs with :math:`qx > py`. With every fixed element of :math:`x` (:
 
 From definition of :math:`T(p, q)`, we have result
 
-.. math:: (-1)^{T(p, q) + T(q, p)} = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}} 
+.. math:: (-1)^{T(p, q) + T(q, p)} = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}
 
 .. admonition:: Câu 3.39
-     
+
 
     Let :math:`p` be a prime satisfying :math:`p \equiv 3 \pmod 4`.
 
@@ -291,7 +291,7 @@ Khi đó
 .. math:: b^2 \equiv a^{\frac{p+1}{2}} \equiv a^{1+\frac{p-1}{2}} \equiv a \cdot a^{\frac{p-1}{2}} \equiv a \cdot 1 \equiv 1 \pmod p
 
 .. admonition:: Câu 3.40
-     
+
 
     Let :math:`p` be and odd prime, let :math:`g \in \mathbb{F}^{*}_p` be a primitive root, and let :math:`h \in \mathbb{F}^{*}_p`. Write :math:`p - 1 = 2^sm` with :math:`m` odd and :math:`s \geqslant 1`, and write the binary expansion of :math:`\log_g(h)` as
 
@@ -308,21 +308,21 @@ Khi đó
 
     1. Ta sẽ tìm mảng :math:`\varepsilon_0, \varepsilon_1, \cdots, \varepsilon_{s-1}`
     2. For :math:`i = 0, \ldots, s-1`
-        
+
        1. If :math:`h` là thặng dư chính phương
-        
+
           1. :math:`\varepsilon_i = 0`, :math:`h = \sqrt{h} \pmod p`
-        
+
        2. ElseIf :math:`\varepsilon_i = 1`
-        
+
           1. :math:`h = \sqrt{g^{-1}h} \pmod p`
-        
+
        3. EndIf
 
     3. EndFor
 
 .. admonition:: Câu 3.41
-     
+
 
     Let :math:`p` be a prime satisfying :math:`p \equiv 1 \pmod 3`. We say that :math:`a` is a *cubic residue modulo :math:`p`* if :math:`p \nmid a` and there is an integer :math:`c` satisfying :math:`a \equiv c^3 \pmod p`.
 

@@ -1,7 +1,7 @@
 Các cuộc thi năm 2024
 #####################
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 1
 
     NSUCRYPTO/index
@@ -11,4 +11,17 @@ Các cuộc thi năm 2024
     TJCTF/index
     cryptofox/index
     isitdtu
-    
+
+Chưa có lời giải
+================
+
+Internet Olympiad 2024 — vòng siêu chung kết
+--------------------------------------------
+
+* Bài 3
+* Bài 4
+* Bài 6
+* Bài 8
+* Bài 9
+* Bài 10
+

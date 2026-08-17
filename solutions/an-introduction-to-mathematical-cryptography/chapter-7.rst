@@ -2,7 +2,7 @@ Chapter 7. Lattices and Cryptography
 ====================================
 
 .. admonition:: Câu 7.43
-     
+
 
     Đáp án: :math:`t = \dfrac{\bm{b}_1 \cdot \bm{b}_2}{\lVert \bm{b}_1 \rVert^2}` và :math:`\bm{b}_2^* = \bm{b}_2 - t \bm{b}_1` nên suy ra
 
@@ -12,7 +12,7 @@ Chapter 7. Lattices and Cryptography
 
 
 .. admonition:: Câu 7.44
-     
+
 
     Đáp án:
 
@@ -29,7 +29,7 @@ Chapter 7. Lattices and Cryptography
     Vì vậy :math:`\bm{a} - t \bm{b}` là hình chiếu của :math:`\bm{a}` lên orthogonal complement của :math:`b` (tương tự 7.43).
 
 .. admonition:: Câu 7.45
-     
+
 
     Đáp án ở dưới.
 
@@ -41,18 +41,18 @@ Thuật toán Gauss's lattice reduction.
     1. While True
 
        1. If :math:`\lVert \bm{v}_2 \rVert < \lVert \bm{v}_1 \rVert`
-            
-          1. swap :math:`\bm{v}_1` and :math:`\bm{v}_2`	
+
+          1. swap :math:`\bm{v}_1` and :math:`\bm{v}_2`
           2. :math:`m \gets \lfloor \bm{v}_1 \cdot \bm{v}_2 / \lVert \bm{v}_1 \rVert^2 \rceil`
-        
+
        2. EndIf
        3. If :math:`m = 0`
 
           1. return :math:`(\bm{v}_1, \bm{v}_2)`
-        
+
        4. EndIf
        5. Replace :math:`\bm{v}_2` with :math:`\bm{v}_2 - m\bm{v}_1`
-    
+
     2. EndWhile
 
 :math:`\bm{v}_1 = (14, -47)`, :math:`\bm{v}_2 = (-362, -131)`, 6 steps.
@@ -62,7 +62,7 @@ Thuật toán Gauss's lattice reduction.
 :math:`\bm{v}_1 = (147, 330)`, :math:`\bm{v}_2 = (690, -207)`, 7 steps.
 
 .. admonition:: Câu 7.46
-     
+
 
     Đáp án ở dưới.
 
@@ -80,9 +80,9 @@ Tới đây ta có hai cách giải.
 
 Kí hiệu :math:`U = W + W^\perp`, ta chứng minh :math:`W = V`.
 
-Ta có thể chọn một cơ sở trực chuẩn (orthonormal basis) trong :math:`U` và mở rộng nó thành cơ sở trực chuẩn trong :math:`V`. 
+Ta có thể chọn một cơ sở trực chuẩn (orthonormal basis) trong :math:`U` và mở rộng nó thành cơ sở trực chuẩn trong :math:`V`.
 
-Khi đó, nếu :math:`U \neq V` thì có một phần tử :math:`\bm{e}` trong cơ sở của :math:`V` vuông góc với :math:`U`. Do :math:`U` chứa :math:`W` và :math:`\bm{e}` vuông góc với :math:`U` nên :math:`\bm{e} \in W^\perp`. 
+Khi đó, nếu :math:`U \neq V` thì có một phần tử :math:`\bm{e}` trong cơ sở của :math:`V` vuông góc với :math:`U`. Do :math:`U` chứa :math:`W` và :math:`\bm{e}` vuông góc với :math:`U` nên :math:`\bm{e} \in W^\perp`.
 
 Phần sau là không gian con của :math:`W`, do đó :math:`e` thuộc :math:`W`, mâu thuẫn.
 
@@ -92,9 +92,9 @@ Phần sau là không gian con của :math:`W`, do đó :math:`e` thuộc :math:
 
 Khi đó với mọi :math:`\bm{v} \in V` thì :math:`\bm{v} = \underbrace{P(\bm{v})}_{\in W} + \underbrace{(\bm{v} - P(\bm{v}))}_{\in W^\perp}`.
 
-Ở đây :math:`\bm{v} - P(\bm{v}) \in W^\perp` là vì nếu :math:`j \in \{ 1, 2, \cdots, k \}` thì 
+Ở đây :math:`\bm{v} - P(\bm{v}) \in W^\perp` là vì nếu :math:`j \in \{ 1, 2, \cdots, k \}` thì
 
-.. math:: 
+.. math::
 
     (\bm{v} - P(\bm{v})) \cdot e_j & = \left(\bm{v} - \sum_{l=1}^{k} (\bm{v} \cdot \bm{e}_l) \cdot \bm{e}_l \right) \cdot \bm{e}_j \\
         & = \bm{v} \cdot \bm{e}_j - \bm{v} \cdot \bm{e}_j = 0.
@@ -103,7 +103,7 @@ Do :math:`\{ \bm{e}_1, \cdots, \bm{e}_k \}` là cơ sở của :math:`W`, điề
 
 Như vậy
 
-.. math:: 
+.. math::
 
     \lVert \bm{v} \rVert^2 & = (a \bm{w} + b \bm{w}')^2 = a^2 \bm{w}^2 + 2ab \bm{w} \bm{w}' + b^2 \bm{w}'^2 \\
     & = a^2 \lVert \bm{w} \rVert^2 + 0 + b^2 \lVert \bm{w}' \rVert^2 = a^2 \lVert \bm{w} \rVert^2 + b^2 \lvert \bm{w}' \rVert^2.

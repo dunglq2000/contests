@@ -26,7 +26,7 @@ Cộng tất cả phương trình trên với :math:`k=1, 2, \ldots` thì
 
 Tương tự
 
-.. math:: 
+.. math::
 
     & \int\limits_{k}^{k+1} \frac{dx}{x^2 + t^2} \leqslant \frac{1}{k^2 + t^2} \\
     \Rightarrow & \int\limits_{1}^\infty \frac{dx}{x^2 + t^2} \leqslant \sum_{k=1}^\infty \frac{1}{k^2 + t^2}
@@ -80,7 +80,7 @@ Tính tổng
 
 Đặt
 
-.. math:: 
+.. math::
 
    \alpha & = e^{ix} = \cos(x) + i \sin(x) \\
    \alpha^2 & = e^{2ix} = \cos(2x) + i \sin(2x) \\
@@ -89,7 +89,7 @@ Tính tổng
 
 Ta có
 
-.. math:: 
+.. math::
 
    I & = 1 + \alpha + \alpha^2 + \cdots + \alpha^n = \frac{\alpha^{n+1} - 1}{\alpha - 1} \\
       & = \frac{\cos(n+1)x + i \sin(n+1)x - 1}{\cos(x) + i \sin(x) - 1} \\
@@ -98,7 +98,7 @@ Ta có
 
 Vì tổng :math:`\sum\limits_{k=1}^n \cos(kx)` là phần thực của :math:`I - 1` nên ta chỉ cần xét phần thực của :math:`I`, tức là
 
-.. math:: 
+.. math::
 
    \sum_{k=1}^n \cos(kx) & = \frac{\cos(n+1)x \cdot \cos(x) - \cos(n+1)x - \cos(x) + 1 - \sin(n+1)x \cdot \sin(x)}{(\cos(x) - 1)^2 + \sin(x)^2} - 1 \\
       & = \frac{\cos(n+1)x \cdot \cos(x) - \cos(n+1)x - \cos(x) + 1 - \sin(n+1)x \cdot \sin(x)}{2 - 2 \cos(x)} - 1 \\

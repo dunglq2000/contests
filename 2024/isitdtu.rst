@@ -53,7 +53,7 @@ Sau đó đề (hàm `share_mixer`) tạo random một dãy :math:`c_0`, :math:`
 
 với :math:`j = 0, 1, \ldots, n-1`.
 
-Ý tưởng là mình sẽ gửi lên dãy gồm :math:`1` số :math:`1`, :math:`2` số :math:`2`, ..., :math:`15` số :math:`15`. Thêm nữa mình gửi :math:`1` số :math:`16`, ..., :math:`15` số :math:`30`. Cuối cùng là hai số :math:`31` và :math:`32`.
+Ý tưởng là ta sẽ gửi lên dãy gồm :math:`1` số :math:`1`, :math:`2` số :math:`2`, ..., :math:`15` số :math:`15`. Thêm nữa ta gửi :math:`1` số :math:`16`, ..., :math:`15` số :math:`30`. Cuối cùng là hai số :math:`31` và :math:`32`.
 
 .. only:: html
 
@@ -139,7 +139,7 @@ với :math:`j = 0, 1, \ldots, n-1`.
 
         points = []
 
-        def bruteforce(i):
+        def duyệt vét cạn(i):
             if i == 15:
                 pol = PR.lagrange_polynomial(points)
                 # assert pol.degree() == 32
@@ -154,17 +154,17 @@ với :math:`j = 0, 1, \ldots, n-1`.
                     xs = [1, 16, 31, 32]
                     for ys in itertools.permutations(cnts[0][1]):
                         points.extend(list(zip(xs, ys)))
-                        bruteforce(i+1)
+                        duyệt vét cạn(i+1)
                         for _ in range(4): points.pop()
                 else:
                     __x = cnts[i][0]
                     xs = [__x, __x + 15]
                     for ys in itertools.permutations(cnts[i][1]):
                         points.extend(list(zip(xs, ys)))
-                        bruteforce(i+1)
+                        duyệt vét cạn(i+1)
                         for _ in range(2): points.pop()
 
-        bruteforce(0)
+        duyệt vét cạn(0)
 
         # ISITDTU{Mix1_a5850c98ad583157f0}
 
@@ -174,7 +174,7 @@ Share Mixer 2
 .. only:: html
 
     .. code-block:: python
-            
+
         import random   # TODO: heard that this is unsafe but nvm
         from Crypto.Util.number import getPrime, bytes_to_long
 
@@ -186,7 +186,7 @@ Share Mixer 2
         def share_mixer(xs):
             cs = [random.randint(1, p - 1) for _ in range(l - 1)]
             cs.append(flag)
-            
+
             # mixy mix
             random.shuffle(xs)
             random.shuffle(cs)
@@ -210,7 +210,7 @@ Share Mixer 2
             except:
                 exit(1)
 
-Chưa làm ra. :)))
+Chưa làm ra.
 
 Sign
 ====
@@ -218,7 +218,7 @@ Sign
 .. only:: html
 
     .. code-block:: python
-            
+
         #!/usr/bin/env python3
 
         import os
@@ -276,7 +276,7 @@ Sign
                 print('huh')
                 exit(-1)
 
-Chưa làm ra. :)))
+Chưa làm ra.
 
 Thats so random
 ===============
@@ -292,4 +292,4 @@ Thats so random
         random.seed(flag)
         print(len(flag) < 1337*1.733 and [random.randrange(0, int(0x13371337*1.337)) for _ in range(0x13337)])
 
-Chưa làm ra. :)))
+Chưa làm ra.

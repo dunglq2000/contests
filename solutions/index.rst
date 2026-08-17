@@ -1,7 +1,7 @@
 Đáp án bài tập trong sách
 #########################
 
-.. toctree:: 
+.. toctree::
 
     Judson
     Petrushko/index

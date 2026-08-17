@@ -58,7 +58,7 @@ Tiếp theo ta chọn một số tự nhiên bí mật là :math:`\delta` và t�
 
 Sau đó ta chọn số tự nhiên bí mật khác là :math:`\alpha` và tính với :math:`i = 1, 2, 3, 4`
 
-.. math:: 
+.. math::
 
     c_i & = p_i + 2p_{i+1} + (-1)^{\frac{i+1}{2}} \cdot \delta \bmod 27, \ \text{nếu} \ i \ \text{lẻ}, \\
     c_i & = p_{i-1} + p_i + (-1)^{\frac{i}{2}} \cdot \alpha \bmod 27, \ \text{nếu} \ i \ \text{chẵn}.

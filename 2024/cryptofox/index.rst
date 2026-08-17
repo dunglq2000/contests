@@ -11,7 +11,7 @@ Câu hỏi
 
 .. only:: html
 
-    .. code-block:: python 
+    .. code-block:: python
 
         import os.path		# стандартная библиотека
         import gostcrypto	# сторонняя библиотека (https://pypi.org/project/gostcrypto/)
@@ -179,7 +179,7 @@ Giả sử ta tạo các key Kuznyechik :math:`K_1, K_2, \ldots` từ việc has
 
 .. only:: html
 
-    .. code-block:: python 
+    .. code-block:: python
 
         import random
         from itertools import combinations
@@ -202,15 +202,15 @@ Giả sử ta tạo các key Kuznyechik :math:`K_1, K_2, \ldots` từ việc has
 
 Khi đó khóa Kuznyechik để mã hóa sẽ là khóa có bit 1 nằm ở các vị trí theo tập :math:`J \subset I`. Thử tất cả tập con của :math:`I` đến khi decrypt và decode thành công.
 
-Khóa decrypt viết ở dạng hex là 
+Khóa decrypt viết ở dạng hex là
 
-.. code-block:: 
+.. code-block::
 
     0000e00000000080000000000000000000000004000000000000004000000004
 
 .. only:: html
 
-    .. code-block:: python 
+    .. code-block:: python
 
         import random
         from itertools import combinations
@@ -229,9 +229,9 @@ Khóa decrypt viết ở dạng hex là
                 blocks = ["".join(map(str, kk[i:i+8])) for i in range(0, 256, 8)]
                 key = bytearray(int(block, 2) for block in blocks)
                 cipher_obj = gostcrypto.gostcipher.new(
-                    'kuznechik', 
-                    key, 
-                    gostcrypto.gostcipher.MODE_CTR, 
+                    'kuznechik',
+                    key,
+                    gostcrypto.gostcipher.MODE_CTR,
                     init_vect=iv)
                 plaintext = cipher_obj.decrypt(ciphertext)
                 try:
@@ -291,9 +291,9 @@ GOST-CryptoFox dùng 32 vòng, độ dài khối là 64 bit và độ dài khóa
 
 Ngoài ra, trong thuật toán sử dụng:
 
-- các hoán vị :math:`\pi_1`, :math:`\pi_2`, :math:`\pi_3`, :math:`\pi_4` 
+- các hoán vị :math:`\pi_1`, :math:`\pi_2`, :math:`\pi_3`, :math:`\pi_4`
   trên tập :math:`\{ 1, 2, \ldots, 8 \}` để chỉ định khóa con cho từng vòng;
-- các hoán vị :math:`8` bit :math:`s_1`, :math:`s_2`, :math:`s_3`, 
+- các hoán vị :math:`8` bit :math:`s_1`, :math:`s_2`, :math:`s_3`,
   :math:`s_4` là các S-box của thuật toán.
 
 Thuật toán sinh khóa con
@@ -324,8 +324,8 @@ trong đó:
 
 - :math:`h` là ánh xạ tuyến tính trên :math:`V_{32}(2)` xác định bởi ma trận :math:`4 \times 4` là :math:`\bm{H}` trên :math:`\mathbb{F}_{2^8}`,
 
-.. math:: 
-    
+.. math::
+
     h(\lambda^{(1)}, \ldots, \lambda^{(4)}) = (\lambda^{(1)}, \ldots, \lambda^{(4)}) \bm{H}, \quad \lambda^{(1)}, \ldots, \lambda^{(4)} \in \mathbb{F}_{2^8},
 
     \bm{H} = \begin{pmatrix}
@@ -342,7 +342,7 @@ trong đó:
 nghĩa là khi đó:
 
 - hai vector 32 bit :math:`\alpha` và :math:`k` sẽ được chuyển thành số nguyên 32 bit và cộng modulo :math:`2^{32}`, kết quả sau đó được chuyển lại thành vector 32 bit
-        
+
 .. math:: \lambda = \psi^{-1}(\psi(\alpha) \boxplus \psi(k));
 
 - vector 32 bit :math:`\lambda` được chia thành 4 đoạn :math:`\lambda^{(1)}, \ldots, \lambda^{(4)}` là các phần tử :math:`\mathbb{F}_{2^8}` và biểu diễn :math:`\lambda = (\lambda^{(1)}, \ldots, \lambda^{(4)})` là không gian 4 chiều :math:`V_4(2^8)`. Sau đó tính :math:`\beta = \lambda \bm{H}`;
@@ -357,14 +357,14 @@ Câu hỏi
 
 1. Trong hệ mật mã GOST-CryptoFox trên đầy đủ 32 vòng tìm các vi sai liên quan đến các khóa với xác suất là 1 và chỉ sử dụng các khóa liên quan và cặp plaintext thích hợp. Điều đó nghĩa là, với mỗi khóa chưa biết :math:`K \in V_{256}` tìm phần tử :math:`\varepsilon \in V_{256} \backslash \{ \vec{0}_{256} \}` và :math:`\delta_1, \delta_2 \in V_{64}` sao cho với cách chọn ngẫu nhiên plaintext :math:`\alpha \in V_{64}(2)` đẳng thức vi sai với xác suất là 1 là phương trình:
 
-.. math:: 
+.. math::
     :label: eq-fox24-2
-    
+
     b_K(\alpha) \oplus b_{K \oplus \varepsilon} (\alpha \oplus \delta_1) = \delta_2
 
 2. (Câu hỏi research). Thay phép :math:`\boxplus` bằng phép :math:`\oplus` trong mô hình GOST-CryptoFox 2024 ở trên và kí hiệu là mô hình GOST-CryptoFox-:math:`\oplus`. Thực hiện tấn công trên mô hình GOST-CryptoFox-:math:`\oplus` 2024 với nhiều vòng nhất có thể và đánh giá độ phức tạp. Có khả năng tấn công GOST-CryptoFox-:math:`\oplus` đầy đủ 32 vòng hay không?
 
-.. admonition:: Lời giải bị sai của mình
+.. admonition:: Lời giải bị sai của ta
     :class: dropdown
 
     Для каждого неизвестного ключа шифрования :math:`K \in V_{256}` нужно найти такие :math:`\varepsilon \in V_{256} \setminus \{ \bar{0}_{256} \}, \delta_1, \delta_2 \in V_{64}` что при случайном и равновероятном выборе открытого текста :math:`\alpha \in V_{64}(2)` равенство с вероятностью 1 справедливо равенство
@@ -385,10 +385,10 @@ Câu hỏi
 
     .. math:: g_{k_1}(\alpha_2) = h(S(\psi^{-1}(\psi(\alpha_2) \boxplus \psi(k_1))))
 
-    Аналогично, обозначим 
+    Аналогично, обозначим
 
     - :math:`\varepsilon = \varepsilon_1 \Vert \varepsilon_2 \Vert \ldots \Vert \varepsilon_{8}`, где :math:`\varepsilon \in V_{256}(2)` и :math:`\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_{8} \in V_{32}(2)`
-    - :math:`\delta_1 = \delta_{11} \Vert \delta_{12}`, где :math:`\delta_1 \in V_{64}(2)`, :math:`\delta_{11}, \delta_{12} \in V_{32}`    
+    - :math:`\delta_1 = \delta_{11} \Vert \delta_{12}`, где :math:`\delta_1 \in V_{64}(2)`, :math:`\delta_{11}, \delta_{12} \in V_{32}`
 
     Тогда
 
@@ -422,7 +422,7 @@ Câu hỏi
 
     .. math:: a_1'' \oplus A_1'' = \delta_{11}
 
-    так как :math:`g_{k_1 \oplus \varepsilon_2} (a_2 \oplus \delta_{12}) \equiv g_{k_1} (a_2)` как доказано выше. 
+    так как :math:`g_{k_1 \oplus \varepsilon_2} (a_2 \oplus \delta_{12}) \equiv g_{k_1} (a_2)` как доказано выше.
 
     И пусть :math:`G = a_1 \oplus g_{k_1 \oplus \varepsilon_2} (a_2 \oplus \delta_{12}) = a_1 \oplus g_{k_1} (a_2)`, тогда у нас есть
 
@@ -436,7 +436,7 @@ Câu hỏi
 
     Продолжаем этот процесс и получим, что
 
-    .. math:: 
+    .. math::
 
         \varepsilon_3 & = \delta_{12}, \\
         \varepsilon_4 & = \delta_{11}, \\
@@ -447,7 +447,7 @@ Câu hỏi
 
     и дифференциал между :math:`a^{(i)}` и :math:`A^{(i)}` после :math:`i`-ого раунда, где :math:`1 \leqslant i \leqslant 32`, равен
 
-    .. math:: 
+    .. math::
 
         a^{(i)} \oplus A^{(i)} = \begin{cases}
             \delta_{12} \Vert \delta_{11}, \text{если } i \text{ нечетный}, \\
@@ -543,7 +543,7 @@ Cô ấy tìm được một dãy gồm 9 hành động, bao gồm 1 phép cộn
 
 Có thể tính phép nhân :math:`2024 G` với ít hành động hơn không? Nếu có, hãy chỉ ra cách tính. Nếu không thể, hãy chứng minh.
 
-.. admonition:: Lời giải bị sai của mình
+.. admonition:: Lời giải bị sai của ta
     :class: dropdown
 
     Пусть :math:`G` - начальная точка. Нам нужно вычислять точку :math:`2024 G`.
@@ -590,8 +590,8 @@ có không quá :math:`\delta` nghiệm trên :math:`\mathrm{GF}(2^n)`.
 
 Ví dụ, hàm nghịch đảo trên :math:`\mathrm{GF}(2^8)` xác định bởi
 
-.. math:: 
-    
+.. math::
+
     I(x) = \begin{cases}
         x^{-1}, \ \text{nếu} \ x \neq 0 \\
         0, \ \text{ngược lại}
@@ -623,7 +623,7 @@ Câu hỏi
 
 Hoàn cảnh khiến Andrey và Vladimir phải khẩn trương mở két sắt trong lúc không liên lạc được với ông chủ. Hãy giúp Andrey và Vladimir mở két với thông tin của họ: login của Andrey :math:`x_A = 137059`, chia sẻ bí mật :math:`y_A = 844061`, login của Vladimir là :math:`x_B = 752024`, chia sẻ bí mật :math:`y_B = 639516`.
 
-.. admonition:: Lời giải bị sai của mình
+.. admonition:: Lời giải bị sai của ta
     :class: dropdown
 
     Даны:
@@ -647,8 +647,8 @@ Hoàn cảnh khiến Andrey và Vladimir phải khẩn trương mở két sắt 
 
     Секретная прямая вычисляется над кольцом вычетов по модулю :math:`10^6`, поэтому уравнение секретной прямой равно
 
-    .. math:: 
-        
+    .. math::
+
         & (i_B - i_A) (x - x_A) - (x_B - x_A) (y - i_A) = 0 \bmod{10^6} \\ \Leftrightarrow \, & 535970x + 385035y + 328925 = 0 \bmod{10^6}
 
     Теперь нам нужно найти начальную ординату прямой, т.е. самый минимальный :math:`y`, :math:`10^5 \leqslant y < 10^6`, который удовлетворяет это уравнение для :math:`x = 0`
@@ -715,4 +715,4 @@ Thuật toán sinh khóa con cho các vòng giống với GOST 28147-89 (Magma).
 | Số lượng vòng mã hóa    | :math:`20` vòng |
 +-------------------------+-----------------+
 
-**Câu hỏi.** Hãy đánh giá số lượng vòng của thuật toán mã hóa, trong đó số lượng vòng cho phép đánh giá sự độc lập thống kê giữa các plaintext và ciphertext, mà qua đó khôi phục được một phần hoặc toàn bộ khóa. Hãy đề xuất thuật toán khôi phục khóa mã hóa (phải hiệu quả hơn bruteforce).
+**Câu hỏi.** Hãy đánh giá số lượng vòng của thuật toán mã hóa, trong đó số lượng vòng cho phép đánh giá sự độc lập thống kê giữa các plaintext và ciphertext, mà qua đó khôi phục được một phần hoặc toàn bộ khóa. Hãy đề xuất thuật toán khôi phục khóa mã hóa (phải hiệu quả hơn duyệt vét cạn).

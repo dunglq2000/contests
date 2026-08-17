@@ -1,18 +1,18 @@
 NSUCRYPTO 2024
 **************
 
-Trong hai bài viết mình sẽ giới thiệu cách giải các bài trong NSUCRYPTO 2024 từ bài giải của team mình lẫn từ team các bạn mà mình tham khảo sau khi kết thúc giải. Hiện tại chỉ có team của Robin Jadoul, Jack Pope, Esrever Yievs chia sẻ bài giải gần hoàn chỉnh trên discord của một cộng đồng toxic nào đó mà ai cũng biết nên mình sẽ gọi là team JPY khi đề cập tới cách giải của các bạn (lấy chữ cái đầu họ của ba người :v).
+Hai bài viết trình bày lời giải NSUCRYPTO 2024 của nhóm tác giả và các lời giải tham khảo sau cuộc thi. Nhóm Robin Jadoul, Jack Pope và Esrever Yievs được kí hiệu là nhóm JPY, theo chữ cái đầu trong họ của ba thành viên.
 
 Lời nói đầu
 ===========
 
-Đầu tiên mình xin cám ơn rất nhiều người đã ủng hộ, giúp đỡ mình trong mấy năm qua, để mình có thể đi tới ngày hôm nay.
+Tác giả trân trọng sự hỗ trợ của các đồng nghiệp trong quá trình tham dự cuộc thi.
 
-Đề thi năm nay khiến mình có chút hoang mang khi bắt đầu làm. Round 2 có 11 câu với hai câu special prize. Thường những năm trước có từ 4 tới 5 câu special prize và đây là nơi đột biến xảy ra. Nếu chỉ có hai câu thì mình không hy vọng được giải cao mà mục tiêu là giải trọn vẹn và không mắc lỗi ở tất cả câu khác.
+Đề thi năm nay khiến ta có chút hoang mang khi bắt đầu làm. Round 2 có 11 câu với hai câu special prize. Thường những năm trước có từ 4 tới 5 câu special prize và đây là nơi đột biến xảy ra. Nếu chỉ có hai câu thì ta không hy vọng được giải cao mà mục tiêu là giải trọn vẹn và không mắc lỗi ở tất cả câu khác.
 
-Và điều kì diệu đã xảy ra :))) team mình được hai bài BEST SOLUTION do hai bạn teammate giải, còn mình thì ... ké :D
+Nhóm đạt hai giải **Best Solution**, tương ứng với hai lời giải do các thành viên trong nhóm thực hiện.
 
-Chân thành cám ơn bạn Chương và bạn Uyên đã đồng hành cũng mình hai năm nay.
+Tác giả cảm ơn Chương và Uyên đã đồng hành trong hai năm tham dự NSUCRYPTO.
 
 RSA signature
 =============
@@ -57,7 +57,7 @@ tương tự :math:`S \equiv M^d \pmod q`.
 
 Ngoài ra ta có
 
-.. math:: 
+.. math::
     :label: nsu24-eq-1
 
     S^e \equiv M^{ed} \equiv M \pmod N.
@@ -74,7 +74,7 @@ với :math:`k_p \in \mathbb{Z}`.
 
 Do đó
 
-.. math:: 
+.. math::
     :label: nsu24-eq-2
 
     S^e & \equiv M^{e \cdot (d_p + k_p \cdot (p - 1))} \pmod{p} \\
@@ -149,7 +149,7 @@ Với mỗi số :math:`i` với :math:`i \geqslant 1`, dãy :math:`K_i` 64 bit 
 
 Xét dạng CNF của hàm :math:`C`, với CNF là conjunction of disjunction (tích của các tổng), có dạng sau:
 
-.. math:: 
+.. math::
 
     C = (x_1 \lor v_2 \lor \neg x_5) \land (\neg x_1 \lor \neg x_2 \lor x_5) \land (x_1 \lor x_3 \lor \neg x_5) \land (\neg x_1 \lor \neg x_3 \lor x_5) \\
     \land (x_2 \lor x_3 \lor \neg x_5) \land (\neg x_2 \lor \neg x_3 \lor x_5) \land (x_1 \lor x_2 \lor \neg x_6) \land (\neg x_1 \lor \neg x_2 \lor x_6) \\
@@ -164,13 +164,13 @@ Phương trình :math:`C = 1` biểu diễn một hàm không tuyến tính :mat
 
 :math:`1704` ciphertexts được truyền đi không gặp vấn đề. Tuy nhiên ở hai keystream tiếp theo gặp sự cố về đĩa cứng nên chỉ nhận được ciphertext thứ :math:`1704` là dãy
 
-.. code-block:: 
-    
+.. code-block::
+
     1001 1000 0011 1101 0110 0011 1101 0101 1011 0011 1011 0111 0000 0000 1000 0011
 
 và hai keystrem :math:`1702` và :math:`1703` nhưng bị mất một phần:
 
-.. math:: 
+.. math::
 
     K_{1702} & = \text{0101 1001 1111 0011 00X1 X111 1X00 00X0} \\
             & \text{111X X000 XXXX XXXX XXXX XXXX XXXX XXXX}, \\
@@ -182,7 +182,7 @@ Hãy tìm lại plaintext thứ :math:`1704`.
 Lời giải
 --------
 
-Đầu tiên mình cần tìm những bộ số :math:`(x_1, \ldots, x_8)` mà :math:`C = 1`.
+Đầu tiên ta cần tìm những bộ số :math:`(x_1, \ldots, x_8)` mà :math:`C = 1`.
 
 .. code-block:: python
 
@@ -328,7 +328,7 @@ Dựa vào bảng biến đổi ở trên và lưu ý đầu ra (có :math:`8` t
 15. :math:`\text{XXXX} \rightarrow 0000`.
 16. :math:`\text{XXXX} \rightarrow 1111`.
 
-Như vậy mình đã khôi phục được :math:`K_{1703}` và có thể decrypt.
+Như vậy ta đã khôi phục được :math:`K_{1703}` và có thể decrypt.
 
 .. code-block:: python
 
@@ -392,7 +392,7 @@ Như vậy mình đã khôi phục được :math:`K_{1703}` và có thể decry
 
     print(f"({latitude}, {longitude})")
 
-Mình nhận được tọa độ là
+Ta nhận được tọa độ là
 
 .. math:: (-25.79496192932129, 146.58416748046875).
 
@@ -406,7 +406,7 @@ Steganography and codes
 Đề bài
 ------
 
-Sam và Betty sử dụng kênh mở cho giao tiếp bí mật. Họ không muốn ai biết về hội thoại của mình.
+Sam và Betty sử dụng kênh mở cho giao tiếp bí mật. Họ không muốn ai biết về hội thoại của ta.
 
 Sam có thể gửi co Betty một trong :math:`16` thông điệp.
 
@@ -449,7 +449,7 @@ Alice sử dụng thuật toán DES để mã hóa file `Book.txt` thành `Book_
 
 Hãy giúp Carol tìm lại khóa ban đầu và decrypt bản mã sau:
 
-.. code-block:: 
+.. code-block::
 
     86991641D28259604412D6BA88A5C0A6471CA722
     2C52482BF2D0E841D4343DFB877DC8E0147F3D5F
@@ -459,9 +459,9 @@ Hãy giúp Carol tìm lại khóa ban đầu và decrypt bản mã sau:
 Lời giải
 --------
 
-Bài này được giải bởi bạn Chương và được thêm BEST SOLUTION :)))
+Bài này do thành viên Chương giải và được trao giải **Best Solution**.
 
-Ý tưởng của bài này là slide attack. Các bạn có thể xem lời giải ở bài viết về `slide attack <../../cryptanalysis/slide-attack>`_ của mình.
+Ý tưởng của bài này là slide attack. Người đọc có thể xem lời giải ở bài viết về `slide attack <../../cryptanalysis/slide-attack>`_ của ta.
 
 Reverse engineering
 ===================
@@ -482,17 +482,17 @@ Bob cố gắng hiểu ý nghĩa mật mã của hàm boolean trên là gì, và
 Mở đầu
 ------
 
-Bài này mình chứng minh được tính chất của hàm đề bài cho chứ không tìm ra ý nghĩa của hàm nên chỉ được 4/6 điểm.
+Bài này ta chứng minh được tính chất của hàm đề bài cho chứ không tìm ra ý nghĩa của hàm nên chỉ được 4/6 điểm.
 
 Tham khảo lời giải của team JPY thì đây là hàm kiểm tra tràn bit số nguyên (integer overflow).
 
-Mình sẽ trình bày cả cách giải của mình lẫn cách giải của team bạn.
+Ta sẽ trình bày cả cách giải của ta lẫn cách giải của team bạn.
 
 Hình đề cho là CAST cipher - tiêu chuẩn mã hóa của Canada.
 
-S-boxes trong CAST cipher được lựa chọn từ các hàm boolean có nonlinearity cao nhất nên trong lúc làm bài mình cắm đầu vào tìm một tính chất gì đó của hàm boolean trên liên quan tới nonlinearity.
+S-boxes trong CAST cipher được lựa chọn từ các hàm boolean có nonlinearity cao nhất nên trong lúc làm bài ta cắm đầu vào tìm một tính chất gì đó của hàm boolean trên liên quan tới nonlinearity.
 
-Mình đã chứng minh được hai điều:
+Ta đã chứng minh được hai điều:
 
 - trọng số Hamming của hàm :math:`f_{2n}` bằng :math:`2^{n-1} \cdot (2^n - 1)`;
 - nonlinearity của hàm :math:`f_{2n}` bằng :math:`2^{2n-2}`.
@@ -504,11 +504,11 @@ Nhắc lại hàm boolean :math:`f_{2n}` đề cho là hàm
 Trọng số Hamming của hàm boolean
 --------------------------------
 
-Để tìm công thức hoặc tính chất thì thường mình sẽ thử với các số nhỏ và sau đó đoán công thức.
+Để tìm công thức hoặc tính chất thì thường ta sẽ thử với các số nhỏ và sau đó đoán công thức.
 
 Với :math:`n = 1` thì :math:`f_2(x_1, x_2) = x_1 x_2`. Dễ thấy rằng :math:`f_2 = 1` khi :math:`x_1 = x_2 = 1`.
 
-Thay vì viết bảng chân trị gồm :math:`4` dòng thì mình viết thành bảng ô vuông :math:`2 \times 2`:
+Thay vì viết bảng chân trị gồm :math:`4` dòng thì ta viết thành bảng ô vuông :math:`2 \times 2`:
 
 +-----------------+-----------------+------------------------------+
 |                 | :math:`x_2 = 0` | :math:`x_2 = 1`              |
@@ -522,7 +522,7 @@ Với :math:`n = 2` thì hàm boolean là
 
 .. math:: f_4(x_1, x_, x_3, x_4) = \left[x_1 x_3 (x_2 \oplus x_4)\right] \oplus x_2 x_4 = x_1 x_2 x_3 \oplus x_1 x_3 x_4 \oplus x_2 x_4.
 
-Cũng tương tự, mình viết bảng chân trị thành bảng ô vuông :math:`4 \times 4`:
+Cũng tương tự, ta viết bảng chân trị thành bảng ô vuông :math:`4 \times 4`:
 
 +----------------------+----------------------+------------------------------+------------------------------+------------------------------+
 |                      | :math:`x_3 x_4 = 00` | :math:`x_3 x_4 = 01`         | :math:`x_3 x_4 = 10`         | :math:`x_3 x_4 = 11`         |
@@ -536,7 +536,7 @@ Cũng tương tự, mình viết bảng chân trị thành bảng ô vuông :mat
 | :math:`x_1 x_2 = 11` | :math:`f_4 = 0`      | :math:`f_4 = {\color{red}1}` | :math:`f_4 = {\color{red}1}` | :math:`f_4 = {\color{red}1}` |
 +----------------------+----------------------+------------------------------+------------------------------+------------------------------+
 
-Với :math:`n = 3` thì mình viết bảng chân trị thành bảng :math:`8 \times 8`:
+Với :math:`n = 3` thì ta viết bảng chân trị thành bảng :math:`8 \times 8`:
 
 +-------------+-------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
 |             | :math:`000` | :math:`001`            | :math:`010`            | :math:`011`            | :math:`100`            | :math:`101`            | :math:`110`            | :math:`111`            |
@@ -558,7 +558,7 @@ Với :math:`n = 3` thì mình viết bảng chân trị thành bảng :math:`8 
 | :math:`111` | :math:`0`   | :math:`{\color{red}1}` | :math:`{\color{red}1}` | :math:`{\color{red}1}` | :math:`{\color{red}1}` | :math:`{\color{red}1}` | :math:`{\color{red}1}` | :math:`{\color{red}1}` |
 +-------------+-------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+------------------------+
 
-Đến đây thì mình nhận thấy hàm :math:`f_{2n}` sẽ nhận giá trị :math:`1` tại:
+Đến đây thì ta nhận thấy hàm :math:`f_{2n}` sẽ nhận giá trị :math:`1` tại:
 
 - :math:`1` ô hàng thứ hai;
 - :math:`2` ô hàng thứ ba;
@@ -569,7 +569,7 @@ Như vậy trọng số Hamming được dự đoán là
 
 .. math:: 1 + 2 + \ldots + (2^n - 1) = \dfrac{(2^n - 1) \cdot 2^n}{2} = 2^{n-1} \cdot (2^n - 1).
 
-Sau đây mình sẽ chứng minh công thức trọng số Hamming này bằng quy nạp.
+Sau đây ta sẽ chứng minh công thức trọng số Hamming này bằng quy nạp.
 
 Với :math:`n = 1`, hàm :math:`f_2(x_1, x_2) = x_1 x_2` có trọng số Hamming là :math:`1 = 2^{1-1} \cdot (2^1 - 1)`. Như vậy công thức đúng với :math:`n = 1`.
 
@@ -648,7 +648,7 @@ Thay đổi cách tiếp cận nhưng xét :math:`x_{2n} = 1`, khi đó hàm :ma
 
 Lúc này ta có thể tính
 
-.. math:: 
+.. math::
     :label: nsu24-p5-1
 
     \sum_{\substack{\bm{x} \in \mathbb{F}_2^{2n} \\ x_n = 0}} (-1)^{f(\bm{x}) \oplus 0} = (-1)^{0} \cdot \left[ 2^{n-2} \cdot (2^{n-1} - 1) \right] + (-1)^{1} \cdot (3 \cdot 2^{2n-3} + 2^{n-2}) = 2^{2n-2} + 2^{n-1}.
@@ -677,7 +677,7 @@ vectors. Điều này dẫn tới :math:`f_{2n} = 0` tại :math:`2^{2n-1} - A` 
 
 Ở đây do :math:`x_n = 1` nên khi tính :math:`\sum (-1)^{f(\bm{x}) \oplus 1}` ta cần chuyển dấu
 
-.. math:: 
+.. math::
     :label: nsu24-p5-2
 
     \sum_{\substack{\bm{x} \in \mathbb{F}_2^{2n} \\ x_n = 1}} (-1)^{f(\bm{x}) \oplus 1} = & (-1) \cdot (2^{2n-1} - A) + 1 \cdot A = 2A - 2^{2n-1} \\ = & 2^{2n-1} + 2^{n-1} \cdot (2^{n-1} - 1) - 2^{2n-1} = 2^{2n-2} - 2^{n-1}.
@@ -716,14 +716,14 @@ Như vậy giá trị tuyệt đối lớn nhất trong các hệ số Walsh là
 
 .. math:: N_f = 2^{2n-1} - \frac{1}{2} \max \lvert W_f(\bm{a}) \rvert = 2^{2n-1} - \frac{1}{2} \cdot 2^{2n-1} = 2^{2n-1} - 2^{2n-2} = 2^{2n-2}.
 
-Như vậy mình đã chứng minh xong công thức cho nonlinearity.
+Như vậy ta đã chứng minh xong công thức cho nonlinearity.
 
 Lời giải của team JPY và gợi ý của thầy Kolomeec
 ------------------------------------------------
 
-Sau khi hết giải thì mình hỏi ý kiến thầy Kolomeec về cách làm của mình thì có vẻ là không khớp đáp án. Đáp án là nếu ta xem hai vector :math:`(x_1, \ldots, x_n)` và :math:`(x_{n+1}, \ldots, x_{2n})` như các số nguyên, tức là
+Sau khi hết giải thì ta hỏi ý kiến thầy Kolomeec về cách làm của ta thì có vẻ là không khớp đáp án. Đáp án là nếu ta xem hai vector :math:`(x_1, \ldots, x_n)` và :math:`(x_{n+1}, \ldots, x_{2n})` như các số nguyên, tức là
 
-.. math:: 
+.. math::
 
     u & = x_1 + 2 x_2 + \ldots + 2^{n-1} x_n, \\
     v & = x_{n+1} + 2 x_{n+2} + \ldots + 2^{n-1} x_{2n},
@@ -732,7 +732,7 @@ thì hàm boolean :math:`f_{2n}` có giá trị :math:`1` nếu :math:`u + v \ge
 
 Gợi ý của thầy hoàn toàn khớp với bài giải của team JPY, trong đó nói rằng hàm :math:`f_{2n}` là hàm kiểm tra tràn số khi cộng hai số nguyên (integer overflow). Ví dụ khi cộng hai số kiểu `unsigned int` thì có thể xảy ra hiện tượng tràn bit vì `unsigned int` chỉ có :math:`32` bit. Điều này hợp lý vì CAST cipher có một phép cộng modulo :math:`2^{32}`, nghĩa là có liên quan đến hình vẽ.
 
-Mình cũng sẽ dùng quy nạp để chứng minh khi :math:`u + v \geqslant 2^n` thì :math:`f_{2n}` nhận giá trị :math:`1`.
+Ta cũng sẽ dùng quy nạp để chứng minh khi :math:`u + v \geqslant 2^n` thì :math:`f_{2n}` nhận giá trị :math:`1`.
 
 Với :math:`n = 1`, hàm :math:`f_2(x_1, x_2) = x_1 x_2` nhận giá trị :math:`1` khi :math:`x_1 = x_2 = 1`. Lúc này :math:`u = x_1 = 1` và :math:`v = x_2 = 1` nên :math:`u + v = 2 \geqslant 2^1`. Như vậy mệnh đề đúng với :math:`n = 1`.
 
@@ -742,7 +742,7 @@ Giả thiết quy nạp: giả sử mệnh đề đúng với :math:`n = k \geqs
 
 khi :math:`u + v \geqslant 2^k` với
 
-.. math:: 
+.. math::
 
     u & = x_1 + 2 x_2 + \ldots + 2^{k-1} x_k, \\
     v & = x_{k+1} + 2 x_{k+2} + \ldots + 2^{k-1} x_{2k}.
@@ -751,12 +751,12 @@ Với :math:`n = k + 1`, xét hàm
 
 .. math:: f_{2k+2}(x_1, \ldots, x_k, y, x_{k+1}, \ldots, x_{2k}, z) = \bigoplus_{i=1}^k x_i x_{i+k} \left[\prod_{j=i+1}^k (x_j \oplus x_{j+k}) \cdot (y \oplus z)\right] \oplus yz.
 
-Mình cũng sẽ có bốn trường hợp cho :math:`(y, z)`:
+Ta cũng sẽ có bốn trường hợp cho :math:`(y, z)`:
 
 1. Khi :math:`y = z = 0` thì :math:`f_{2k+2} = 0` với mọi :math:`(x_1, \ldots, x_{2k})` nên chúng ta bỏ qua.
 2. Khi :math:`y = 1` và :math:`z = 0` thì :math:`f_{2k+2} \equiv f_{2k}` như chứng minh ở phần trên. Khi đó :math:`f_{2k+2}` bằng :math:`1` tại các vector :math:`(x_1, \ldots, x_{2k})` khiến :math:`f_{2k}` bằng :math:`1`, nói cách khác là
 
-.. math:: 
+.. math::
 
     u' & = x_1 + 2 x_2 + \ldots + 2^{k-1} x_k + 2^k y = u + 2^k y, \\
     v' & = x_{k+1} + 2 x_{k+2} + \ldots + 2^{k-1} x_{2k} + 2^k z = v + 2^k z.
@@ -782,8 +782,8 @@ Open competition: NSUCRYPTO lightweight cipher
 Đề bài
 ------
 
-.. note:: 
-    
+.. note::
+
     Problem for special prize
 
 NSUCRYPTO team tổ chức cuộc thi phát triển mã khối light-weight mới.
@@ -802,19 +802,19 @@ Hãy so sánh đáp án của bạn với PRESENT: khi thực hiện, khi chốn
 Lời giải
 --------
 
-Đây là bài có tính mở rất cao nhưng để tìm ra điều gì đó mới (và hiệu quả) trong 7 ngày là rất khó. Do đó lúc thi mình đã xây dựng một block cipher mới tốt hơn PRESENT về mặt lưu trữ, còn các tính chất khác như kháng phá mã thì mình không đề cập tới. Bài này mình được 6/10 điểm.
+Đây là bài có tính mở rất cao nhưng để tìm ra điều gì đó mới (và hiệu quả) trong 7 ngày là rất khó. Do đó lúc thi ta đã xây dựng một block cipher mới tốt hơn PRESENT về mặt lưu trữ, còn các tính chất khác như kháng phá mã thì ta không đề cập tới. Bài này ta được 6/10 điểm.
 
-Về PRESENT thì mình đã có tóm tắt trong một bài viết của blog này nên mình không viết lại. PRESENT cipher là thuật toán light-weight, tức là thuật toán được thiết kế nhỏ gọn để chạy trên các thiết bị có bộ xử lý và lưu trữ nhỏ (như các hệ thống nhúng).
+Về PRESENT thì ta đã có tóm tắt trong một bài viết của blog này nên ta không viết lại. PRESENT cipher là thuật toán light-weight, tức là thuật toán được thiết kế nhỏ gọn để chạy trên các thiết bị có bộ xử lý và lưu trữ nhỏ (như các hệ thống nhúng).
 
-Cải tiến của mình dựa trên việc PRESENT sử dụng mạng SP nên sẽ cần lưu trữ phép biến đổi để mã hóa và phép biến đổi ngược để giải mã:
+Cải tiến của ta dựa trên việc PRESENT sử dụng mạng SP nên sẽ cần lưu trữ phép biến đổi để mã hóa và phép biến đổi ngược để giải mã:
 
 - cần lưu trữ đồng thời S-box là :math:`S[x]` và inverse S-box là :math:`S^{-1}[x]`;
 - cần lưu trữ biến đổi tuyến tính pLayer và biến đổi ngược của nó;
-- addRoundKey có phép biến đổi ngược là chính nó nên mình bỏ qua.
+- addRoundKey có phép biến đổi ngược là chính nó nên ta bỏ qua.
 
 Như vậy, ta tốn hai phần bộ nhớ: một cho phép biến đổi mã hóa và một cho phép biến đổi ngược để giải mã.
 
-Làm sao để cải tiến? Mình dùng mô hình Feistel, hoặc mô hình Feistel tổng quát (generalize Feistel network) để xây dựng mã khối mới.
+Làm sao để cải tiến? Ta dùng mô hình Feistel, hoặc mô hình Feistel tổng quát (generalize Feistel network) để xây dựng mã khối mới.
 
 Khối đầu vào (plaintext) có :math:`64` bits sẽ được chia thành :math:`4` phần bằng nhau, mỗi phần có :math:`16` bits:
 
@@ -907,7 +907,7 @@ Hai thanh ghi được dịch chuyển đồng thời. Ví dụ
 
 Keystream :math:`\gamma` với độ dài :math:`8192` tạo bởi bộ sinh khóa trên được ghi lại trong file `keystream.txt`. Ngoài ra chúng ta cũng có trạng thái :math:`A(8192)` và :math:`B(8192)` là:
 
-.. math:: 
+.. math::
 
     A(8192) & = (00101001110001001110111001100001010100000101110), \\
     B(8192) & = (0000010000101001000011000001010111001110000100101).
@@ -917,9 +917,9 @@ Bạn có thể tìm lại trạng thái khởi tạo :math:`A(1)` và :math:`B(
 Lời giải
 --------
 
-Bài này chúng ta bruteforce từ cặp bit :math:`A(i)` và :math:`B(i)` bắt đầu từ vị trí :math:`8191` về :math:`1`.
+Bài này chúng ta duyệt vét cạn từ cặp bit :math:`A(i)` và :math:`B(i)` bắt đầu từ vị trí :math:`8191` về :math:`1`.
 
-Mình sẽ viết lại dãy của đề bài. Dãy trên và dãy dưới lần lượt là :math:`a_0, a_1, \ldots` và :math:`b_0, b_1, \ldots` và các phần tử sau được sinh ra từ các phần tử trước theo công thức
+Ta sẽ viết lại dãy của đề bài. Dãy trên và dãy dưới lần lượt là :math:`a_0, a_1, \ldots` và :math:`b_0, b_1, \ldots` và các phần tử sau được sinh ra từ các phần tử trước theo công thức
 
 .. math:: a_{i+47} = (a_i \& a_{i+1}) \oplus a_{i+12} \oplus a_{i+43}
 
@@ -929,14 +929,14 @@ và
 
 Keystream :math:`\{ g_n \}` sẽ được sinh theo công thức
 
-.. math:: 
+.. math::
 
     g_i & = a_i \oplus a_{i+3} \oplus (a_{i+7} \& a_{i+8}) \\
         & \oplus b_i \oplus (b_{i+4} \& b_{i+5}) \oplus b_{i+7}.
 
-Như vậy mình sẽ bruteforce từ vị trí :math:`i` từ :math:`8190` về :math:`0`. Ở mỗi vị trí mình có hai trường hợp :math:`a_i` và hai trường hợp :math:`b_i`. Nếu đặt được tới :math:`i = 0` thì đây là dãy cần tìm.
+Như vậy ta sẽ duyệt vét cạn từ vị trí :math:`i` từ :math:`8190` về :math:`0`. Ở mỗi vị trí ta có hai trường hợp :math:`a_i` và hai trường hợp :math:`b_i`. Nếu đặt được tới :math:`i = 0` thì đây là dãy cần tìm.
 
-Keystream là một chuỗi :math:`8192` bits nên mình sẽ lưu ở file :download:`keystream.txt <keystream.txt>`.
+Keystream là một chuỗi :math:`8192` bits nên ta sẽ lưu ở file :download:`keystream.txt <keystream.txt>`.
 
 .. code-block:: python
 
@@ -959,7 +959,7 @@ Keystream là một chuỗi :math:`8192` bits nên mình sẽ lưu ở file :dow
     a = [-1] * 8191 + list(map(int, '00101001110001001110111001100001010100000101110'))
     b = [-1] * 8191 + list(map(int, '0000010000101001000011000001010111001110000100101'))
 
-    def bruteforce(i):
+    def duyệt vét cạn(i):
         if i == -1:
             assert "".join(map(str, a[:47])) == "01111100001110000110010001011000110000110011110"
             assert "".join(map(str, b[:49])) == "1100110011010001010101000101110100011011010010110"
@@ -968,12 +968,12 @@ Keystream là một chuỗi :math:`8192` bits nên mình sẽ lưu ở file :dow
             for ai, bi in product(range(2), repeat=2):
                 if check_a(ai, a, i) and check_b(bi, b, i) and check_g(ai, bi, a, b, g, i):
                     a[i], b[i] = ai, bi
-                    bruteforce(i-1)
+                    duyệt vét cạn(i-1)
                     a[i], b[i] = -1, -1
 
-    bruteforce(8190)
+    duyệt vét cạn(8190)
 
-Bài này được giải bởi bạn Uyên và là BEST SOLUTION. Điều thú vị là rất nhiều đội được BEST SOLUTION cho bài này :)))
+Bài này được giải bởi bạn Uyên và là BEST SOLUTION. Điều thú vị là rất nhiều đội được BEST SOLUTION cho bài này
 
 Unsecure SP-network
 ===================
@@ -983,7 +983,7 @@ Unsecure SP-network
 Đề bài
 ------
 
-Bob có nghe về mạng SP và quyết định xây dựng mật mã của riêng mình.
+Bob có nghe về mạng SP và quyết định xây dựng mật mã của riêng ta.
 
 Block size (kích thước khối) là :math:`32` bits. Bob tạo S-boxes kích thước :math:`2 \times 2` là :math:`P`-layer sử dụng một phần của secret key.
 
@@ -1018,22 +1018,22 @@ Tại sao cô ấy làm được?
 Lời giải
 --------
 
-Giả sử việc mã hóa có dạng :math:`C = \mathtt{Enc}(P)`. Mình sẽ chứng minh rằng với hai plaintext :math:`P` và :math:`P'`, nếu ciphertext tương ứng là :math:`C` và :math:`C'` thì
+Giả sử việc mã hóa có dạng :math:`C = \mathtt{Enc}(P)`. Ta sẽ chứng minh rằng với hai plaintext :math:`P` và :math:`P'`, nếu ciphertext tương ứng là :math:`C` và :math:`C'` thì
 
 .. math:: C \oplus C' = \mathtt{Enc}(P \oplus P').
 
-Một điều khá buồn cười là bài này mình mất kha khá thời gian vì những suy nghĩ ... vĩ mô. Theo đề bài có thể nhận thấy S-box :math:`S` là ánh xạ từ :math:`\mathbb{F}_2^2` tới :math:`\mathbb{F}_2^2`. Theo quy tắc nhân có tất cả :math:`2^{2^2} = 16` ánh xạ từ :math:`\mathbb{F}_2^2` tới :math:`\mathbb{F}_2` (số lượng hàm boolean hai biến). Do đó có :math:`16^2 = 256` trường hợp S-box :math:`S`.
+Một điều khá buồn cười là bài này ta mất kha khá thời gian vì những suy nghĩ ... vĩ mô. Theo đề bài có thể nhận thấy S-box :math:`S` là ánh xạ từ :math:`\mathbb{F}_2^2` tới :math:`\mathbb{F}_2^2`. Theo quy tắc nhân có tất cả :math:`2^{2^2} = 16` ánh xạ từ :math:`\mathbb{F}_2^2` tới :math:`\mathbb{F}_2` (số lượng hàm boolean hai biến). Do đó có :math:`16^2 = 256` trường hợp S-box :math:`S`.
 
-Đối với các S-box tuyến tính hoặc affine thì câu chuyện không phải vấn đề. Tuy nhiên các trường hợp khác rất khó kiểm soát. Lúc này bạn Uyên nói với mình có :math:`4! = 24` trường hợp của S-box thôi, là số lượng hoán vị trên tập :math:`\{ 0, 1, 2, 3 \}`. Lý do là vì thuật toán mã hóa sử dụng mạng SP, do đó mỗi phép biến đổi phải có phép biến đổi ngược. Chân lý đây rồi, ánh sáng đây rồi :v :v :v Vậy mà mình nghĩ mãi, haizz.
+Đối với các S-box tuyến tính hoặc affine thì câu chuyện không phải vấn đề. Tuy nhiên các trường hợp khác rất khó kiểm soát. Lúc này bạn Uyên nói với ta có :math:`4! = 24` trường hợp của S-box thôi, là số lượng hoán vị trên tập :math:`\{ 0, 1, 2, 3 \}`. Lý do là vì thuật toán mã hóa sử dụng mạng SP, do đó mỗi phép biến đổi phải có phép biến đổi ngược. Chân lý đây rồi, ánh sáng đây rồi Vậy mà ta nghĩ mãi, haizz.
 
-Ý tưởng của mình là sử dụng phá mã vi sai (differential cryptanalysis).
+Ý tưởng của ta là sử dụng phá mã vi sai (differential cryptanalysis).
 
-Với ánh xạ :math:`M: \mathbb{F}_2^n \to \mathbb{F}_2^n` mình gọi:
+Với ánh xạ :math:`M: \mathbb{F}_2^n \to \mathbb{F}_2^n` ta gọi:
 
 1. **Input differential** là :math:`x_1 \oplus x_2`.
 2. **Output differential** là :math:`M(x_1) \oplus M(x_2)`.
 
-Mình dùng SageMath để kiểm tra nhanh phân bố vi sai trên :math:`24` hoán vị (ứng với :math:`24` S-box).
+Ta dùng SageMath để kiểm tra nhanh phân bố vi sai trên :math:`24` hoán vị (ứng với :math:`24` S-box).
 
 .. code-block:: python
 
@@ -1067,14 +1067,14 @@ thì bảng phân bố vi sai là
 
 Theo bảng trên, nếu input differential là :math:`10` thì output differential chắc chắn là :math:`01`.
 
-Như vậy mình có nhận xét sau.
+Như vậy ta có nhận xét sau.
 
-.. prf:remark:: 
+.. prf:remark::
     :label: nsu24-rmk-sp
 
     Với S-box bất kì là hoán vị trên tập :math:`\{ 0, 1, 2, 3 \}`, nếu input differential cố định thì output differential cũng cố định.
 
-Đầu tiên mình cần viết lại các kí hiệu trong bài này.
+Đầu tiên ta cần viết lại các kí hiệu trong bài này.
 
 Plaintext có :math:`32` bit:
 
@@ -1084,7 +1084,7 @@ S-box là hoán vị trên tập :math:`\{ 0, 1, 2, 3 \}`. Nói cách khác S-bo
 
 Đặt :math:`\mathcal{S}` là ánh xạ biến đổi :math:`32` bit thành :math:`32` bit mới với S-box, nghĩa là
 
-.. math:: 
+.. math::
 
     S : & \ \mathbb{F}_2^{32} \times \mathbb{F}_2^{32} \to \mathbb{F}_2^{32} \\
         & (x, K) \mapsto X,
@@ -1095,8 +1095,8 @@ trong đó:
 - :math:`K = (K_1, \ldots, K_{32})` là khóa con ở vòng tương ứng
 - :math:`X = (X_1, \ldots, X_{32})` nhận được từ
 
-.. math:: 
-    
+.. math::
+
     \begin{array}{ccl}
         (X_1, X_2) & = & S(x_1 \oplus K_1, x_2 \oplus K_2), \\
         (X_3, X_4) & = & S(x_3 \oplus K_3, x_4 \oplus K_4), \\
@@ -1120,15 +1120,15 @@ Ciphertext sau :math:`100` vòng sẽ là
 
 .. math:: c = K^{100} r_{99}(r_{98}(\ldots (r_1(m)))).
 
-Tiếp theo, sử dụng differential attack mình sẽ tìm liên hệ known-plaintext. Mình xét vòng đầu tiên trước.
+Tiếp theo, sử dụng differential attack ta sẽ tìm liên hệ known-plaintext. Ta xét vòng đầu tiên trước.
 
-Giả sử mình có hai plaintext là
+Giả sử ta có hai plaintext là
 
 .. math:: m = (m_1, \ldots, m_{32}) \ \text{và} \ m' = (m_1', \ldots, m_{32}') \in \mathbb{F}_2^{32}.
 
 Ta có
 
-.. math:: 
+.. math::
 
     (m_1, m_2) \rightarrow S(m_1 \oplus K_1^1, m_2 \oplus K_2^1) = (X_1, X_2), \\
     (m_1', m_2') \rightarrow S(m_1' \oplus K_1^1, m_2' \oplus K_2^1) = (X_1', X_2').
@@ -1139,7 +1139,7 @@ Input differential cho S-box là
 
 Ở đây subkey không ảnh hưởng input differential và đây là yếu tố quan trọng cần chú ý.
 
-Nếu mình cố định input differential :math:`(m_1 \oplus m_1', m_2 \oplus m_2')` thì output differential
+Nếu ta cố định input differential :math:`(m_1 \oplus m_1', m_2 \oplus m_2')` thì output differential
 
 .. math:: S(m_1 \oplus K_1^1, m_2 \oplus K_2^1) \oplus S(m_1' \oplus K_1^1, m_2' \oplus K_2^1) = (X_1, X_2) \oplus (X_1', X_2) = (X_1 \oplus X_1', X_2 \oplus X_2')
 
@@ -1147,7 +1147,7 @@ cũng cố định. Tương tự cho các cặp còn lại :math:`(m_3, m_4)`, .
 
 Như vậy ở vòng đầu ta có
 
-.. math:: 
+.. math::
 
     & r_1(m) = P(\mathcal{S}(m, K^1)) = P(X_1, X_2, \ldots, X_{32}), \\
     & r_1(m') = P(\mathcal{S}(m', K^1)) = P(X_1', X_2', \ldots, X_{32}').
@@ -1160,16 +1160,16 @@ vì :math:`P` là biến đổi tuyến tính. Rõ ràng nếu :math:`X_i \oplus
 
 Áp dụng kết quả này cho :math:`99` vòng. Ở vòng cuối (vòng :math:`100`) ta XOR với :math:`K^{100}` nhưng thực ra là
 
-.. math:: 
-    
+.. math::
+
     c \oplus c' & = (K^{100} \oplus r_{99}(r_98)(\ldots r_1(m))) \oplus (K^{100} \oplus r_{99}(r_{98}(\ldots r_1(m')))) \\
                 & = r_{99}(r_98)(\ldots r_1(m)) \oplus r_{99}(r_{98}(\ldots r_1(m'))),
 
 tức là :math:`K^{100}` cũng không ảnh hưởng differential như :math:`K_1, \ldots, K_{99}`.
 
-Tóm lại mình nhận được kết quả sau.
+Tóm lại ta nhận được kết quả sau.
 
-.. prf:remark:: 
+.. prf:remark::
     :label: nsu24-rmk-sp-solve
 
     Nếu ta biết plaintext :math:`P` và ciphertext tương ứng là :math:`C`, thì với mọi ciphertext :math:`C'` mới nào đó ta luôn có thể tìm lại được plaintext tương ứng. Nói cách khác là chú ý ở đầu bài
@@ -1212,7 +1212,7 @@ Tóm lại mình nhận được kết quả sau.
     # https://github.com/xiangzejun/binary_matrix
     # For feedback or questions, pleast contact at xiangzejun@iie.ac.cn
 
-    # Implemented by Xiang Zejun, State Key Laboratory of Information Security, 
+    # Implemented by Xiang Zejun, State Key Laboratory of Information Security,
     # Institute Of Information Engineering, CAS
 
     from functools import reduce
@@ -1245,7 +1245,7 @@ Tóm lại mình nhận được kết quả sau.
     class RankError(Exception):
         """
         Define my rank exception.
-        Check whether the square matrix is full rank when calculating its inverse. 
+        Check whether the square matrix is full rank when calculating its inverse.
         """
         def __init__(self, r):
             self.r = r
@@ -1266,7 +1266,7 @@ Tóm lại mình nhận được kết quả sau.
             """
             Convert each row of the binary matrix to an integer.
             """
-            return [int(reduce(lambda x , y: x + y, map(str, self.m[i])), 2) 
+            return [int(reduce(lambda x , y: x + y, map(str, self.m[i])), 2)
                 for i in range(self.r_len)]
 
         def __appendUnitMatrix(self):
@@ -1274,17 +1274,17 @@ Tóm lại mình nhận được kết quả sau.
             Append a unit matrix to m_int.
             """
             m_int = self.__convertMatrixToInt()
-            return [(1 << (self.r_len + self.c_len - 1 - i)) ^ m_int[i] 
+            return [(1 << (self.r_len + self.c_len - 1 - i)) ^ m_int[i]
                 for i in range(self.r_len)]
 
         def __chooseElement(self, r, c, m_int):
             """
             Choose a none-zero row started from position [r][c].
             """
-            
+
             err = "The row index can not exceed the column index in row-reduced echelon matrix."
             assert r <= c, err
-        
+
             if c == self.c_len:
                 return None
             else:
@@ -1306,7 +1306,7 @@ Tóm lại mình nhận được kết quả sau.
 
         def __addRows(self, r, c, m_int):
             """
-            Add the r-th row to all the other rows if the c-th element of 
+            Add the r-th row to all the other rows if the c-th element of
             the corresponding rows are nonzero.
             """
             mask = (1 << (self.c_len - 1 - c))
@@ -1316,7 +1316,7 @@ Tóm lại mình nhận được kết quả sau.
                 if m_int[i] & mask != 0:
                     m_int[i] ^= m_int[r]
 
-        
+
         def __isMatrix(self):
             """
             Check whether the input is a matrix.
@@ -1363,7 +1363,7 @@ Tóm lại mình nhận được kết quả sau.
                     self.__switchRows(r, r_temp, m_int)
                     self.__addRows(r, c, m_int)
                     r += 1
-                    c += 1  
+                    c += 1
                 else:
                     return r
             return self.r_len
@@ -1400,7 +1400,7 @@ Tóm lại mình nhận được kết quả sau.
                 else:
                     raise RankError(r)
             return [
-                list(map(int, list(format((m_adj[i] >> self.c_len), "0" + str(self.r_len) + "b")))) 
+                list(map(int, list(format((m_adj[i] >> self.c_len), "0" + str(self.r_len) + "b"))))
                 for i in range(self.r_len)]
 
 .. code-block:: python
@@ -1502,9 +1502,9 @@ với :math:`S_i` là hoán vị bất kì trên :math:`\{ 0, 1, 2, 3 \}`, :math
 Lời giải hoàn chỉnh
 -------------------
 
-Thật ra mình đã đọc thiếu đề và chưa xét trường hợp S-box và :math:`P` là các phép biến đổi bí mật (giống secret key). Đây là lý do mình không được full điểm câu này.
+Thật ra ta đã đọc thiếu đề và chưa xét trường hợp S-box và :math:`P` là các phép biến đổi bí mật (giống secret key). Đây là lý do ta không được full điểm câu này.
 
-S-box, theo phân tích của mình ở trên, thực chất là một ánh xạ affine. Nhắc lại ánh xạ affine là ánh xạ có dạng :math:`S(\bm{x}) = \bm{A} \cdot \bm{x} \oplus \bm{b}`, trong đó :math:`\bm{A}` là ma trận, :math:`\bm{x}` và :math:`\bm{b}` là các vector cột.
+S-box, theo phân tích của ta ở trên, thực chất là một ánh xạ affine. Nhắc lại ánh xạ affine là ánh xạ có dạng :math:`S(\bm{x}) = \bm{A} \cdot \bm{x} \oplus \bm{b}`, trong đó :math:`\bm{A}` là ma trận, :math:`\bm{x}` và :math:`\bm{b}` là các vector cột.
 
 Khi đó, với hai đầu vào :math:`\bm{x}` và :math:`\bm{x}'` sao cho :math:`\bm{x} \oplus \bm{x}'` cố định (input differential) thì ta có
 
@@ -1546,7 +1546,7 @@ Sử dụng `cipher.py` ở trên và đoạn code sau để giải:
     u = random_vector(GF(2), 32)
     assert encrypt(list(map(int, u)), K) == list(map(int, u * A + b))
 
-Ở đây mình viết plaintext ở dạng hàng. Giả sử plaintext và ciphertext là
+Ở đây ta viết plaintext ở dạng hàng. Giả sử plaintext và ciphertext là
 
 .. math:: M = (m_1, \ldots, m_n), \quad C = (c_1, \ldots, c_n).
 
@@ -1556,24 +1556,24 @@ Sử dụng `cipher.py` ở trên và đoạn code sau để giải:
 
 trong đó :math:`\bm{A}` là ma trận :math:`n \times n` (trong trường hợp bài này :math:`n = 32`).
 
-Như vậy mình cần tìm ma trận :math:`\bm{A}` và vector :math:`\bm{b} = (b_1, \ldots, b_n)`. Nếu có :math:`T` phương trình như vậy
+Như vậy ta cần tìm ma trận :math:`\bm{A}` và vector :math:`\bm{b} = (b_1, \ldots, b_n)`. Nếu có :math:`T` phương trình như vậy
 
-.. math:: 
+.. math::
 
     (c_{11}, \ldots, c_{1n}) & = (m_{11}, \ldots, m_{1n}) \cdot \bm{A} + (b_1, \ldots, b_n), \\
     (c_{21}, \ldots, c_{2n}) & = (m_{21}, \ldots, m_{2n}) \cdot \bm{A} + (b_1, \ldots, b_n), \\
     \cdots & = \cdots \\
     (c_{T1}, \ldots, c_{Tn}) & = (m_{T1}, \ldots, m_{Tn}) \cdot \bm{A} + (b_1, \ldots, b_n),
 
-thì mình giải từng cột thứ :math:`i` của ma trận :math:`A` và từng số hạng :math:`b_i`. Nghĩa là
+thì ta giải từng cột thứ :math:`i` của ma trận :math:`A` và từng số hạng :math:`b_i`. Nghĩa là
 
-.. math:: 
-    
-    \begin{pmatrix} c_{11} \\ c_{12} \\ \vdots \\ c_{T1} \end{pmatrix} = 
+.. math::
+
+    \begin{pmatrix} c_{11} \\ c_{12} \\ \vdots \\ c_{T1} \end{pmatrix} =
     \begin{pmatrix} m_{11} & m_{12} & \cdots & m_{1n} \\ m_{21} & m_{22} & \cdots & m_{2n} \\ \vdots & \ddots & \ddots & \vdots \\ m_{T1} & m_{T2} & \cdots & m_{Tn} \end{pmatrix} \cdot
     \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{n1} \end{pmatrix} + \begin{pmatrix} b_1 \\ b_1 \\ \vdots \\ b_1 \end{pmatrix}.
 
-Như vậy chúng ta bruteforce :math:`b_1` và kiểm tra xem phương trình có nghiệm :math:`\begin{pmatrix} a_{11} \\ \vdots \\ a_{n1} \end{pmatrix}` không. Nếu có thì đây là kết quả cần tìm.
+Như vậy chúng ta duyệt vét cạn :math:`b_1` và kiểm tra xem phương trình có nghiệm :math:`\begin{pmatrix} a_{11} \\ \vdots \\ a_{n1} \end{pmatrix}` không. Nếu có thì đây là kết quả cần tìm.
 
 Tiến hành cho từng cột của :math:`\bm{A}` và từng phần tử :math:`b_i` sẽ tìm được ánh xạ affine.
 
@@ -1607,7 +1607,7 @@ và cuối cùng ta thu được ciphertext.
 
 Alice có thể khôi phục secret key :math:`k` không nếu cô ấy không biết hàm :math:`f`?
 
-Giả sử Alice có oracle access tới máy lượng tử với khóa cố định :math:`k` và thu được thông tin 
+Giả sử Alice có oracle access tới máy lượng tử với khóa cố định :math:`k` và thu được thông tin
 
 .. math:: f(0, 0, 0, 0) \oplus f(1, 1, 1, 1) \oplus f(1, 0, 0, 0) = c \in \mathbb{F}_2^4
 
@@ -1667,7 +1667,7 @@ với :math:`\bm{c}` đã biết.
 
 Như vậy ta có
 
-.. math:: 
+.. math::
 
     & f(0, 0, 0, 0) = (m_0, n_0, p_0, q_0), \\
     & f(1, 1, 1, 1) = (m_{15}, n_{15}, p_{15}, q_{15}), \\
@@ -1701,7 +1701,7 @@ Vì Alice có truy cập oracle tới máy với khóa cố định :math:`k` n�
 
 Nói cách khác là
 
-.. math:: 
+.. math::
 
     \bm{C}_0 \oplus \bm{C}_{15} \oplus \bm{C}_8 & = (k_1 \oplus (m_0 \oplus m_{15} \oplus m_8), k_2 \oplus (n_0 \oplus n_{15} \oplus n_8), k_3 \oplus (p_0 \oplus p_{15} \oplus p_8), k_4 \oplus (q_0 \oplus q_{15} \oplus q_8)) \\
     & = (k_1, k_2, k_3, k_4) \oplus \bm{c}.
@@ -1741,11 +1741,11 @@ Hơn nữa hãy tìm va chạm ngắn nhất cho dãy trong ví dụ (dãy :math
 Lời giải
 --------
 
-Bài này mình có chút nhầm lẫn nên không được full điểm.
+Bài này ta có chút nhầm lẫn nên không được full điểm.
 
 Giả sử input có :math:`t` khối là :math:`n_1`, :math:`n_2`, ..., :math:`n_t`. Mỗi khối có :math:`6` chữ số.
 
-Mình sẽ chứng minh rằng khi :math:`t` chẵn thì ta luôn tìm được collision mà không cần khóa :math:`K`.
+Ta sẽ chứng minh rằng khi :math:`t` chẵn thì ta luôn tìm được collision mà không cần khóa :math:`K`.
 
 Đầu tiên, với :math:`t = 2`, giả sử hai khối là
 
@@ -1753,18 +1753,18 @@ Mình sẽ chứng minh rằng khi :math:`t` chẵn thì ta luôn tìm được 
 
 Giả sử khóa là :math:`K = (k_1, \ldots, k_6)`. Khi đó hash là
 
-.. math:: 
+.. math::
 
     H & = (-1)^{k_1} \cdot p_{1, 1} + \ldots + (-1)^{k_6} \cdot p_{1, 6} \\
     & - \left[ (-1)^{k_1} \cdot p_{2, 1} + \ldots + (-1)^{k_6} \cdot p_{2, 6} \right]
 
-và nếu mình tăng hoặc giảm :math:`p_{1, i}` và :math:`p_{2, i}`, với :math:`1 \leqslant i \leqslant 6`, cùng một lượng, ví dụ như
+và nếu ta tăng hoặc giảm :math:`p_{1, i}` và :math:`p_{2, i}`, với :math:`1 \leqslant i \leqslant 6`, cùng một lượng, ví dụ như
 
 .. math:: p_{1, 1}' = p_{1, 1} + a, \quad p_{2, 1}' = p_{2, 1} + a,
 
 và thay :math:`p_{1, 1}'` và :math:`p_{2, 1}'` vào hash thì được
 
-.. math:: 
+.. math::
 
     H' & = (-1)^{k_1} \cdot p_{1, 1}' + \ldots + (-1)^{k_6} \cdot p_{1, 6} - \left[ (-1)^{k_1} \cdot p_{2, 1}' + \ldots + (-1)^{k_6} \cdot p_{2, 6} \right] \\
     & = (-1)^{k_1} \cdot (p_{1, 1} + a) + \ldots + (-1)^{k_6} \cdot p_{1, 6} - \left[ (-1)^{k-1} \cdot (p_{2, 1} + a) + \ldots +  (-1)^{k_6} \cdot p_{2, 6} \right] \\
@@ -1774,7 +1774,7 @@ và thay :math:`p_{1, 1}'` và :math:`p_{2, 1}'` vào hash thì được
 
 .. math:: p_{1, i}' = p_{1, i} + a_i, \ p_{2, i}' = p_{2, i} + a_i, \ \text{where} \ a_i \in \{ -1, 0, 1\},
 
-và phải thỏa điều kiện :math:`1 \leqslant p_{1, i}' \leqslant 9` và :math:`1 \leqslant p_{2, i}' \leqslant 9` thì mình sẽ tìm được input mới có cùng hash.
+và phải thỏa điều kiện :math:`1 \leqslant p_{1, i}' \leqslant 9` và :math:`1 \leqslant p_{2, i}' \leqslant 9` thì ta sẽ tìm được input mới có cùng hash.
 
 Khi :math:`t = 4, 6, \ldots` thì sử dụng phương pháp tương tự cho các cặp khối :math:`n_{2m+1}` và :math:`n_{2m+2}` (mỗi cặp sử dụng các giá trị :math:`a_i` tùy ý miễn thỏa các điều kiện trên) thì ta luôn tìm được collision bất kể khóa :math:`K` là gì.
 
@@ -1787,7 +1787,7 @@ Cryptographic Fish
 
 Đây là tam giác Pascal.
 
-Mình đã có một hàng là
+Ta đã có một hàng là
 
 .. math:: 1 \to 3 \to 3 \to 1.
 
@@ -1814,3 +1814,11 @@ Còn về ô đầu tiên thì cần điền số :math:`\color{red}2` do dòng 
 Như vậy kết quả là
 
 .. math:: 2 + 6 + 5 + 5 + 15 + 15 + 35 + 35 = 118.
+
+Mã nguồn bổ sung
+================
+
+Weak Key Schedule
+-----------------
+
+Lời giải của bạn Chương được lưu trong :download:`des.zip <des.zip>`.

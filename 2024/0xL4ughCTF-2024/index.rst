@@ -6,7 +6,7 @@ RSA_GCD
 
 .. admonition:: chall.py
     :class: dropdown
-    
+
     .. code-block:: python
 
         import math
@@ -29,11 +29,11 @@ RSA_GCD
         with open('chall2.txt', 'w') as f:
             f.write(f"power1={power1}\npower2={power2}\neq1={eq1}\nout2={out2}\nc={c}\nn={n}")
 
-Đề bài cho mình thuật toán RSA với các tham số gồm ``power1``, ``power2``, ``eq1``, ``out2``, ``c`` và ``n``.
+Đề bài cho ta thuật toán RSA với các tham số gồm ``power1``, ``power2``, ``eq1``, ``out2``, ``c`` và ``n``.
 
 Trong đó ``c`` là ciphertext RSA với modulo là ``n``, số mũ là ``eq1``.
 
-Mình đã có ``out2`` nhưng chưa có ``out1``. Vì ``eq1`` là số nguyên tố tiếp theo kể từ ``out1``, nếu mình gọi ``eq0`` là số nguyên tố trước ``eq1`` thì ``out1`` sẽ nằm trong khoảng ``[eq0, eq1]`` và mình sẽ bruteforce ``out1`` trong khoảng này.
+Ta đã có ``out2`` nhưng chưa có ``out1``. Vì ``eq1`` là số nguyên tố tiếp theo kể từ ``out1``, nếu ta gọi ``eq0`` là số nguyên tố trước ``eq1`` thì ``out1`` sẽ nằm trong khoảng ``[eq0, eq1]`` và ta sẽ duyệt vét cạn ``out1`` trong khoảng này.
 
 Để tìm :math:`p` và :math:`q`, do :math:`o_1 = (p+5q)^{e_1} \pmod n` và :math:`o_2 = (2p - 3q)^{e_2} \pmod n` (ở đây :math:`o_1` và :math:`o_2` tương ứng ``out1`` và ``out2``, :math:`e_1` và :math:`e_2` tương ứng ``power1`` và ``power2``).
 
@@ -47,14 +47,14 @@ Thêm một bước nữa là
 
 Tương tự, :math:`o_2^{e_1} = (2p)^{e_1 e_2} \pmod q`.
 
-Như vậy :math:`o_1^{e_2} \cdot 2^{e_1 e_2} - o_2^{e_1}` chia hết cho :math:`q` nên có ước chung lớn nhất với :math:`n` bằng :math:`q`. Từ đó mình tìm được :math:`q` và :math:`p` và decrypt plaintext. Các bạn có thể xem code giải ở :download:`đây <solve_rsa_gcd.py>`.
+Như vậy :math:`o_1^{e_2} \cdot 2^{e_1 e_2} - o_2^{e_1}` chia hết cho :math:`q` nên có ước chung lớn nhất với :math:`n` bằng :math:`q`. Từ đó ta tìm được :math:`q` và :math:`p` và decrypt plaintext. Người đọc có thể xem code giải ở :download:`đây <solve_rsa_gcd.py>`.
 
 Poisson
 =======
 
-Đề bài mình để ở :download:`đây <chall_poisson.py>`.            
+Đề bài ta để ở :download:`đây <chall_poisson.py>`.
 
-Đề bài cho mình đường cong elliptic với điểm generator :math:`G`. Flag được biểu diễn bằng dãy nhị phân `my_priv`.
+Đề bài cho ta đường cong elliptic với điểm generator :math:`G`. Flag được biểu diễn bằng dãy nhị phân `my_priv`.
 
 Ở mỗi vòng lặp ở vị trí `count`, chương trình sẽ
 
@@ -66,43 +66,43 @@ Poisson
 - tính `new_priv = poisson(my_priv, ind)` là đảo bit ở vị trí `ind`. Ví dụ, với dãy nhị phân `111001` và `ind` là :math:`2` thì kết quả là `110001` (vị trí thứ hai là bit :math:`1` đổi thành bit :math:`0`);
 - tính điểm :math:`dec = C_2 - new\_priv * C_1`.
 
-Mình để ý rằng, khi đảo một bit thì lúc trừ số ban đầu và số sau khi đảo sẽ ra lũy thừa của :math:`2` (có thể là số âm). Với ví dụ ở trên, `111001 - 110001 = 1000` chính là :math:`2^3`.
+Ta để ý rằng, khi đảo một bit thì lúc trừ số ban đầu và số sau khi đảo sẽ ra lũy thừa của :math:`2` (có thể là số âm). Với ví dụ ở trên, `111001 - 110001 = 1000` chính là :math:`2^3`.
 
-Như vậy, biến đổi một chút mình có
+Như vậy, biến đổi một chút ta có
 
-.. math:: 
-    
+.. math::
+
     dec = & C_2 - new\_priv * C_1 = M + k * Q - new\_priv * k * G \\
     = & M + k * my\_priv * G - k * new\_priv * G \\
     \Leftrightarrow dec - M = & (my\_priv - new\_priv) * k * G \\ = & (my\_priv - new\_priv) * C_1.
-    
+
 Do đó, ở vị trí :math:`i`, nếu :math:`dec - M = 2^i * C_1` thì bit ở vị trí :math:`i` là :math:`1` (do :math:`1` đổi thành :math:`0` nên số lúc trước lớn hơn số lúc sau). Tương tự, nếu :math:`dec - M = -2^i * C_1` thì bit ở vị trí :math:`i` là :math:`0`.
 
-Code giải mình để ở :download:`đây <solve_poisson.py>`.
+Code giải ta để ở :download:`đây <solve_poisson.py>`.
 
 L4ugh
 =====
 
-Đề gồm hai file là :download:`challenge.py <L4ugh/challenge.py>` và :download:`utils.py <L4ugh/utils.py>`.        
+Đề gồm hai file là :download:`challenge.py <L4ugh/challenge.py>` và :download:`utils.py <L4ugh/utils.py>`.
 
 Ở bài này, đầu tiên chương trình sinh số nguyên tố :math:`d` có :math:`666` bit sao cho :math:`333` bit đầu cũng là số nguyên tố.
 
 Đặt :math:`d = d_e \cdot 2^{333} + d_g`, tương ứng trong chương trình :math:`d_e` là ``d_evil`` còn :math:`d_g` là ``d_good``.
 
-Chương trình cho phép chọn một trong ba option. Mình sẽ dùng option :math:`1` để tìm :math:`d_e`, dùng option :math:`2` để tìm :math:`d_g`. Để sử dụng option :math:`3` mình cần cung cấp :math:`d` hoàn chỉnh.
+Chương trình cho phép chọn một trong ba option. Ta sẽ dùng option :math:`1` để tìm :math:`d_e`, dùng option :math:`2` để tìm :math:`d_g`. Để sử dụng option :math:`3` ta cần cung cấp :math:`d` hoàn chỉnh.
 
 1. Tìm d "good"
 ---------------
 
-Phần này dễ hơn nên mình làm trước. Từ ``d_good`` và :math:`10` số nguyên tố sinh ngẫu nhiên, mình cần nhập số `user_input` nào đó không nhiều hơn :math:`333` bit và chương trình sẽ trả lại mảng :math:`d_g \cdot input + p_i`, :math:`0 \leqslant i \leqslant 9` và :math:`p_i` là số nguyên tố.
+Phần này dễ hơn nên ta làm trước. Từ ``d_good`` và :math:`10` số nguyên tố sinh ngẫu nhiên, ta cần nhập số `user_input` nào đó không nhiều hơn :math:`333` bit và chương trình sẽ trả lại mảng :math:`d_g \cdot input + p_i`, :math:`0 \leqslant i \leqslant 9` và :math:`p_i` là số nguyên tố.
 
-Mình muốn :math:`d_g` và :math:`p_i` độc lập với nhau, nghĩa là càng ít liên quan nhau càng tốt. Khi đó mình sẽ có lợi thế trích xuất thông tin hơn. Để ý rằng do :math:`p_i` là số nguyên tố :math:`333` bit nên nếu chọn :math:`input = 2^{333}` thì :math:`p_i` là :math:`333` bit thấp của kết quả và :math:`d_g` là :math:`333` bit cao của kết quả. Tuy nhiên :math:`2^{333}` có :math:`334` bit nên không được. Ở đây mình dùng trick lỏ là chọn :math:`input = 2^{333} - 1`.
+Ta muốn :math:`d_g` và :math:`p_i` độc lập với nhau, nghĩa là càng ít liên quan nhau càng tốt. Khi đó ta sẽ có lợi thế trích xuất thông tin hơn. Để ý rằng do :math:`p_i` là số nguyên tố :math:`333` bit nên nếu chọn :math:`input = 2^{333}` thì :math:`p_i` là :math:`333` bit thấp của kết quả và :math:`d_g` là :math:`333` bit cao của kết quả. Tuy nhiên :math:`2^{333}` có :math:`334` bit nên không được. Ở đây ta dùng trick lỏ là chọn :math:`input = 2^{333} - 1`.
 
 Khi đó
 
 .. math:: r_i = d_g \cdot (2^{333} - 1) + p_i = d_g \cdot 2^{333} + (p_i - d_g).
 
-Lúc này :math:`d_g` thực sự là :math:`333` bit cao của :math:`r_i` nhưng chỉ khi :math:`p_i - d_g > 0`. Từ :math:`10` phần tử của mảng mình có thể chọn ra vị trí mà :math:`r_i - d_g \cdot (2^{333} - 1)` là số nguyên tố. Khi đó mình lấy :math:`d_g` thôi.
+Lúc này :math:`d_g` thực sự là :math:`333` bit cao của :math:`r_i` nhưng chỉ khi :math:`p_i - d_g > 0`. Từ :math:`10` phần tử của mảng ta có thể chọn ra vị trí mà :math:`r_i - d_g \cdot (2^{333} - 1)` là số nguyên tố. Khi đó ta lấy :math:`d_g` thôi.
 
 .. code-block:: python
 
@@ -151,12 +151,12 @@ hay là
 
 .. math:: k_i (p_i + q_i - 1) - 1 = k_i N_i - e_i d_e.
 
-Do :math:`N_i`, :math:`e_i` là các số :math:`1024` bit, và :math:`d_e` là số :math:`333` bit nên suy ra :math:`k_i` cũng khoảng :math:`333` bit. Như vậy vế phải có :math:`1024+333` bit. Trong khi đó, vế trái sẽ có :math:`333+512` bit, nhỏ hơn nhiều so với vế phải. Điều này dẫn mình tới lattice.
+Do :math:`N_i`, :math:`e_i` là các số :math:`1024` bit, và :math:`d_e` là số :math:`333` bit nên suy ra :math:`k_i` cũng khoảng :math:`333` bit. Như vậy vế phải có :math:`1024+333` bit. Trong khi đó, vế trái sẽ có :math:`333+512` bit, nhỏ hơn nhiều so với vế phải. Điều này dẫn ta tới lattice.
 
-Mình xây dựng lattice là ma trận sau
+Ta xây dựng lattice là ma trận sau
 
-.. math:: 
-    
+.. math::
+
     \begin{bmatrix}
         e_0 & e_1 & e_2 & 1 & 0 & 0 & 0 \\
         N_0 & 0 & 0 & 0 & 1 & 0 & 0 \\
@@ -164,22 +164,22 @@ Mình xây dựng lattice là ma trận sau
         0 & 0 & N_2 & 0 & 0 & 0 & 1
     \end{bmatrix}
 
-thì khi nhân hàng đầu với :math:`-d_e`, nhân hàng hai với :math:`k_0`, hàng thứ ba với :math:`k_1` và hàng thứ tư với :math:`k_2` thì mình có vector ngắn trong lattice là
+thì khi nhân hàng đầu với :math:`-d_e`, nhân hàng hai với :math:`k_0`, hàng thứ ba với :math:`k_1` và hàng thứ tư với :math:`k_2` thì ta có vector ngắn trong lattice là
 
 .. math:: \bm{v} = (k_0 (p_0 + q_0 - 1) - 1, \cdots, \cdots, -d_e, k_0, k_1, k_2).
 
-Chạy LLL và lấy vị trí thứ ba trong vector ngắn (thêm giá trị tuyệt đối) là mình có :math:`d_e` rồi.
+Chạy LLL và lấy vị trí thứ ba trong vector ngắn (thêm giá trị tuyệt đối) là ta có :math:`d_e` rồi.
 
 Nhưng mà khoan, không ra?
 
-Nguyên nhân là vì các số hạng trong vector ngắn :math:`\bm{v}` không có cùng số bit. Ở trên mình đã nói :math:`k_i (p_i + q_i - 1) - 1` có :math:`333 + 512` bit, trong khi :math:`-d_e` có :math:`333` bit và :math:`k_i` cũng có :math:`333` bit. Do đó mình sẽ phải "scale" để chúng có số bit bằng nhau ở vector ngắn.
+Nguyên nhân là vì các số hạng trong vector ngắn :math:`\bm{v}` không có cùng số bit. Ở trên ta đã nói :math:`k_i (p_i + q_i - 1) - 1` có :math:`333 + 512` bit, trong khi :math:`-d_e` có :math:`333` bit và :math:`k_i` cũng có :math:`333` bit. Do đó ta sẽ phải "scale" để chúng có số bit bằng nhau ở vector ngắn.
 
-Quay ngược lên trên lattice, mình nhân thêm hệ số :math:`2^L` để đảm bảo khi nhân mỗi hàng với :math:`-d_e` và :math:`k_i` thì kết quả là vector ngắn :math:`\bm{v}` có số bit như nhau.
+Quay ngược lên trên lattice, ta nhân thêm hệ số :math:`2^L` để đảm bảo khi nhân mỗi hàng với :math:`-d_e` và :math:`k_i` thì kết quả là vector ngắn :math:`\bm{v}` có số bit như nhau.
 
-Lattice của mình lúc này sẽ là
+Lattice của ta lúc này sẽ là
 
-.. math:: 
-    
+.. math::
+
     \begin{bmatrix}
         e_0 & e_1 & e_2 & 2^{512} & 0 & 0 & 0 \\
         N_0 & 0 & 0 & 0 & 2^{512} & 0 & 0 \\
@@ -187,7 +187,7 @@ Lattice của mình lúc này sẽ là
         0 & 0 & N_2 & 0 & 0 & 0 & 2^{512} \\
     \end{bmatrix}.
 
-Vector ngắn lúc này là 
+Vector ngắn lúc này là
 
 .. math:: \bm{v} = (k_0 (p_0 + q_0 - 1) - 1, \cdots, \cdots, -d_e \cdot 2^{512}, k_0 \cdot 2^{512}, k_1 \cdot 2^{512}, k_2 \cdot 2^{512}).
 
@@ -223,7 +223,7 @@ Như vậy mỗi phần tử trong :math:`\bm{v}` đều có :math:`512 + 333` b
 
 Output của đoạn code trên là:
 
-.. code-block:: 
+.. code-block::
 
     [1022, 1021, 1022]
     d_evil = 9164192793237501841603085694166740261176767425415039425767329941821517155591215118383740675363639829
@@ -231,19 +231,19 @@ Output của đoạn code trên là:
 3. CBC Oracle
 -------------
 
-Tới đây thì dễ thở hơn rồi! Đầu tiên mình encrypt một lần và nhận về ciphertext. Chúng ta sẽ flip phần ciphertext để khi decrypt ra sẽ có đoạn ``isadmin: true``.
+Tới đây thì dễ thở hơn rồi! Đầu tiên ta encrypt một lần và nhận về ciphertext. Chúng ta sẽ flip phần ciphertext để khi decrypt ra sẽ có đoạn ``isadmin: true``.
 
 Giả sử ciphertext gồm các block :math:`C_0`, :math:`C_1`, ... Plaintext gồm các block tương ứng là :math:`P_0`, :math:`P_1`, ...
 
 Giả sử tiếp, đoạn ``isadmin: false`` nằm trong block :math:`P_i`. Quá trình giải mã để tìm :math:`P_i` theo công thức :math:`P_i = C_{i-1} \oplus \text{DEC}(C_i)`.
 
-Do mình muốn :math:`P_i'` chứa ``isadmin: true`` (thêm dấu cách ở cuối để số ký tự trước và sau khi đổi bằng nhau). Khi đó mình sẽ đổi
+Do ta muốn :math:`P_i'` chứa ``isadmin: true`` (thêm dấu cách ở cuối để số ký tự trước và sau khi đổi bằng nhau). Khi đó ta sẽ đổi
 
 .. math:: C_{i-1}' = C_{i-1} \oplus \text{???isadmin: true ???}.
-    
+
 Các block ciphertext còn lại giữ nguyên.
 
-Mình mang ciphertext mới đi decrypt thì sẽ nhận được lỗi do block đầu tiên khi decrypt ra không đúng (khác ciphertext ban đầu nên khi XOR với :math:`IV` không ra).
+Ta mang ciphertext mới đi decrypt thì sẽ nhận được lỗi do block đầu tiên khi decrypt ra không đúng (khác ciphertext ban đầu nên khi XOR với :math:`IV` không ra).
 
 .. code-block:: python
 
@@ -282,7 +282,7 @@ Mình mang ciphertext mới đi decrypt thì sẽ nhận được lỗi do block
     {"id": 190504, "isadmin": False, "username": "user"} 52
 
 
-Do đó mình cũng phải sửa :math:`IV` để khi decrypt :math:`C_0` và xor với :math:`IV'` thì sẽ ra được :math:`P_0` ban đầu.
+Do đó ta cũng phải sửa :math:`IV` để khi decrypt :math:`C_0` và xor với :math:`IV'` thì sẽ ra được :math:`P_0` ban đầu.
 
 Để ý rằng :math:`P_0' = IV \oplus \text{DEC}(C_0')` nên :math:`P_0 = P_0' \oplus IV \oplus P_0 \oplus \text{DEC}(C_0')`, suy ra :math:`IV' = P_0' \oplus IV \oplus P_0`.
 
@@ -329,8 +329,8 @@ Do đó mình cũng phải sửa :math:`IV` để khi decrypt :math:`C_0` và xo
 
     # b'0xL4ugh{Fak3_Fl@g}\n'
 
-Một vấn đề là đoạn ``isadmin: false`` phải nằm cùng block nếu không sẽ không decrypt ra, việc này may rủi tùy vào :math:`x` được random như nào. Một vấn đề khác là **bytes trong string** nên mình phải viết hàm extract chuỗi byte đó ra nên không chắc sẽ tránh được lỗi.
+Một vấn đề là đoạn ``isadmin: false`` phải nằm cùng block nếu không sẽ không decrypt ra, việc này may rủi tùy vào :math:`x` được random như nào. Một vấn đề khác là **bytes trong string** nên ta phải viết hàm extract chuỗi byte đó ra nên không chắc sẽ tránh được lỗi.
 
-Nhưng chạy tới một lúc nào đó sẽ có flag thôi :)))
+Nhưng chạy tới một lúc nào đó sẽ có flag thôi
 
-Writeup của mình đến đây là hết. Cám ơn các bạn đã đọc.
+Bài viết của ta đến đây là hết.

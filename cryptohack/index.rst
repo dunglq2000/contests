@@ -1,7 +1,7 @@
 Wargame chill chill
 *******************
 
-Để tránh vấn đề bản quyền và bị soi bởi cộng đồng toxic nào đó thì mình sẽ không để đề ở đây.
+Để tuân thủ bản quyền, phần này không sao chép nguyên văn đề bài; người đọc có thể đối chiếu trực tiếp trên CryptoHack.
 
 Đã giải:
 
@@ -54,7 +54,7 @@ Giả sử flag là một số nguyên :math:`M`. Chọn số nguyên tố :math
 
 .. math:: M = s_0 + s_1 q + s_2 q^2 + \cdots + s_{n-1} q^n \mapsto (s_0, s_1, \ldots, s_{n-1}).
 
-Secret sẽ là vector :math:`(s_0, \ldots, s_{n-1})` và mình kí hiệu ngắn gọn là :math:`\bm{s}`.
+Secret sẽ là vector :math:`(s_0, \ldots, s_{n-1})` và ta kí hiệu ngắn gọn là :math:`\bm{s}`.
 
 Chọn ngẫu nhiên ma trận :math:`\bm{A}` kích thước :math:`m \times n` với các phần tử thuộc :math:`\mathbb{F}_q`, trong đó :math:`n` là độ dài vector :math:`\bm{s}` và :math:`m = n^2`.
 
@@ -351,7 +351,7 @@ Noise free
                 if np.linalg.matrix_rank(At) == np.linalg.matrix_rank(A) + 1:
                     A = np.vstack([A, a])
                     B.append(b - m)
-            
+
             if np.linalg.matrix_rank(A) == n:
                 break
 
@@ -501,7 +501,7 @@ Too Many Errors
                     f = (b * pow(a, -1, q)) % q
                     flag[i] = f
                     break
-            
+
             pr.close()
 
         print(bytes(flag))

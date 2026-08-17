@@ -1,7 +1,7 @@
 Я - профессионал 2025
 *********************
 
-.. toctree:: 
+.. toctree::
 
     maths_modeling/index
     infosec_kii/index

@@ -34,14 +34,14 @@ Olympiad mật mã và bảo mật thông tin CryptoFox 2025.
 Giới thiệu
 ==========
 
-Đầu tiên mình xin phép có một số ý kiến về việc trình bày đề thi. Đề thi có một điểm khá khó chịu là không được biên tập thống nhất. Mình hiểu rằng có nhiều người ra đề nhưng ít nhất cũng phải có người chịu trách nhiệm biên tập lại đề mỗi câu chứ. Kí hiệu ở mỗi câu mỗi khác nhau làm mất tính thống nhất của một cuộc thi. Ví dụ, ở câu 1 dùng :math:`1 \leq \sigma(f)`, còn câu 2 dùng :math:`\alpha, \beta \geqslant 0`, khác cách viết dấu bằng ở bất đẳng thức. Một ví dụ khác là kí hiệu trường hữu hạn, ở câu 1 dùng :math:`\mathbb{Z}_p` nhưng câu 4 lại dùng :math:`\mathbb{F}_{2^8}`. Trong trường hợp này mình nghĩ nên thống nhất dùng :math:`\mathrm{GF}(p)` và :math:`\mathrm{GF}(2^8)`, hoặc :math:`\mathbb{F}_p` và :math:`\mathbb{F}_{2^8}`, sẽ hợp lí hơn. Sự không thống nhất cuối cùng còn ở chỗ mỗi đề có font chữ, cỡ chữ khác nhau, thậm chí có đề đánh số trang nhưng có đề không. Vì lý do trên nên khi viết lại đề, mình sẽ thay đổi kí hiệu cho thống nhất.
+Kí hiệu trong đề gốc chưa hoàn toàn thống nhất giữa các bài. Chẳng hạn, bài 1 dùng :math:`1 \leq \sigma(f)`, còn bài 2 dùng :math:`\alpha, \beta \geqslant 0`; trường hữu hạn lần lượt được kí hiệu bởi :math:`\mathbb{Z}_p` và :math:`\mathbb{F}_{2^8}`. Trong bài viết này, các kí hiệu được chuẩn hóa thành :math:`\mathbb{F}_p` và :math:`\mathbb{F}_{2^8}`, đồng thời cách viết bất đẳng thức cũng được thống nhất.
 
-Về phần nội dung trong đề thì có 4 câu về reverse engineering (câu 0, câu 3, câu 6 và câu 8), còn lại 7 câu về mật mã. Các câu reverse engineering cũng là những thuật toán mật mã được giấu bên trong chương trình. Với kinh nghiệm hạn hẹp về reverse engineering thì mình không làm được những bài đó. =)))
+Về phần nội dung trong đề thì có 4 câu về reverse engineering (câu 0, câu 3, câu 6 và câu 8), còn lại 7 câu về mật mã. Các câu reverse engineering cũng là những thuật toán mật mã được giấu bên trong chương trình. Với kinh nghiệm hạn hẹp về reverse engineering thì ta không làm được những bài đó.
 
 Задача 0. Хакерская атака
 =========================
 
-Đây là một bài reverse engineering, và mình không biết làm. :)
+Đây là một bài dịch ngược và hiện chưa có lời giải.
 
 Задача 1. Кривизна функции
 ==========================
@@ -82,7 +82,7 @@ với mọi số tự nhiên :math:`p` và :math:`N`.
 [TODO] Giải
 -----------
 
-Bài này mình giải được một phần câu 1.
+Bài này ta giải được một phần câu 1.
 
 Sử dụng biến đổi Fourier rời rạc, đặt
 
@@ -92,7 +92,7 @@ Sử dụng biến đổi Fourier rời rạc, đặt
 
 .. math:: U_a = \sum_{x = 0}^{p - 1} u_x e^{-2\pi i\frac{a}{p} x}
 
-với :math:`a = 0, 1, \ldots, p - 1`. 
+với :math:`a = 0, 1, \ldots, p - 1`.
 
 Khi đó, theo biến đổi Fourier rời rạc ngược có thể thấy liên hệ giữa dãy :math:`\{ u_ x \}` theo :math:`\{ U_ a \}` là
 
@@ -160,7 +160,7 @@ Chúng ta sử dụng một kênh truyền quantum để trao đổi thông tin,
 Задача 3. Магическая шкатулка
 =============================
 
-Lại một bài reverse engineering khác và mình cũng không làm ra.
+Lại một bài reverse engineering khác và ta cũng không làm ra.
 
 Задача 4. Разности для FOX128
 =============================
@@ -230,8 +230,8 @@ như sau
 
 **Phép biến đổi tuyến tính** của phần tử :math:`\alpha = (\alpha_1, \ldots, \alpha_{16})` với :math:`\alpha \in V_{16}(2^8)` được kí hiệu là :math:`h`. Khi đó với phần tử :math:`\alpha = (\alpha_1, \ldots, \alpha_{16})` ta chuyển thành dạng ma trận
 
-.. math:: 
-    
+.. math::
+
     A = \begin{pmatrix}
         \alpha_1 & \alpha_2 & \alpha_3 & \alpha_4 \\
         \alpha_5 & \alpha_6 & \alpha_7 & \alpha_8 \\
@@ -241,8 +241,8 @@ như sau
 
 Khi đó :math:`h(\alpha)` là ma trận :math:`B`, được tính theo công thức:
 
-.. math:: 
-    
+.. math::
+
     B = \begin{pmatrix}
         0 & 1 & 1 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 0
     \end{pmatrix} \cdot A,
@@ -259,7 +259,7 @@ Khi đó, hàm mã hóa đối với bản rõ :math:`\alpha \in V_{16}(2^8)` c�
 
 .. math:: g_{k_1 k_2}(\alpha) = \nu_{k_2} h \pi' v_{k_1} (\alpha).
 
-Grisha sử dụng mode ECB để mã hóa từ `ПРИВЕДЕНИЕ`. Ở đây anh ấy dùng bảng sau để encode kí tự tiếng Nga sang phần tử thuộc :math:`\mathbb{F}_{2^8}` và để gọn mình sẽ viết ở dạng thập phân.
+Grisha sử dụng mode ECB để mã hóa từ `ПРИВЕДЕНИЕ`. Ở đây anh ấy dùng bảng sau để encode kí tự tiếng Nga sang phần tử thuộc :math:`\mathbb{F}_{2^8}` và để gọn ta sẽ viết ở dạng thập phân.
 
 +------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+
 | А          | У          | О          | И          | Э          | Ы          | Я          | Ю          | Е          | Ё          | Б          | В          | Г          | Д          | Ж          | З          | Й          |
@@ -283,7 +283,7 @@ Sau đó Grisha mã hóa một thông điệp khác với cùng khóa con :math:
 
 .. math:: \beta_2 = (216, 121, 230, 68, 93, 121, 229, 223, 114, 81, 251, 83, 200, 53, 194, 79).
 
-Grisha đã làm mất thí nghiệm của mình và không còn thông tin về khóa, cũng như bản rõ tương ứng với :math:`\beta_2`. Hãy giúp anh ấy.
+Grisha đã làm mất thí nghiệm của ta và không còn thông tin về khóa, cũng như bản rõ tương ứng với :math:`\beta_2`. Hãy giúp anh ấy.
 
 1. Khôi phục bản rõ tương ứng bản mã :math:`\beta_2`.
 2. Đưa ra thuật toán tối ưu khôi phục lại :math:`k_2` hoặc một phần của nó, nếu biết rằng khi tạo khóa con :math:`k_2` chỉ sử dụng các nguyên âm.
@@ -291,7 +291,7 @@ Grisha đã làm mất thí nghiệm của mình và không còn thông tin về
 [TODO] Giải
 -----------
 
-Mình giải được câu 1 và chưa kịp làm câu 2.
+Ta giải được câu 1 và chưa kịp làm câu 2.
 
 Giả sử chúng ta mã hóa hai bản rõ :math:`\bm{a}, \bm{a}' \in V_{16}(2^8)` với cùng khóa :math:`\bm{k}_1` và :math:`\bm{k}_2`.
 
@@ -309,7 +309,7 @@ với :math:`k_{1, i}` và :math:`k_{2, i} \in \mathbb{F}_{2^8}`, :math:`i = 1, 
 
 Sau phép biến đổi :math:`\nu_{\bm{k}_1}` ta được
 
-.. math:: 
+.. math::
 
     \nu_{\bm{k}_1}(\bm{a}) = (a_1 \oplus k_{1,1}, \ldots, a_{16} \oplus k_{1, 16}) = (b_1, \ldots, b_{16}), \\
     \nu_{\bm{k}_1}(\bm{a}') = (a_1' \oplus k_{1,1}, \ldots, a_{16}' \oplus k_{1, 16}) = (b_1', \ldots, b_{16}'),
@@ -318,7 +318,7 @@ Sau phép biến đổi :math:`\nu_{\bm{k}_1}` ta được
 
 Sau phép biến đổi thứ hai :math:`\pi'` ta có
 
-.. math:: 
+.. math::
 
     \pi'(b_1, \ldots, b_{16}) = (c_1, \ldots, c_{16}), \\
     \pi'(b_1', \ldots, b_{16}') = (c_1', \ldots, c_{16}'),
@@ -331,7 +331,7 @@ Sau phép biến đổi tuyến tính :math:`h` ta có
 
 Cuối cùng, phép biến đổi :math:`\nu_{\bm{k}_2}`:
 
-.. math:: 
+.. math::
 
     \nu_{\bm{k}_2}(d_1, \ldots, d_{16}) = (d_1 \oplus k_{2, 1}, \ldots, d_{16} \oplus k_{2, 16}) = (e_1, \ldots, e_{16}), \\
     \nu_{\bm{k}_2}(d_1', \ldots, d_{16}') = (d_1' \oplus k_{2, 1}, \ldots, d_{16}' \oplus k_{2, 16}) = (e_1', \ldots, e_{16}').
@@ -362,7 +362,7 @@ Lúc này ta thử các :math:`k_{1, i}` với :math:`i = 1, 2, \ldots, 16` đ�
 
 với điều kiện là :math:`0 \leqslant a_i' \leqslant 32` (theo bảng code bên trên).
 
-Chương trình giải mình để ở :download:`đây <solve_fox128_1.py>`.
+Chương trình giải ta để ở :download:`đây <solve_fox128_1.py>`.
 
 Theo kết quả chạy chương trình thì các vị trí :math:`i` sau cho :math:`a_i = a_i'`:
 
@@ -384,7 +384,7 @@ Câu hỏi
 
 Ta sử dụng thuật toán RSA để mã hóa với tham số sau
 
-.. math:: 
+.. math::
 
     \begin{array}{cl}
         n = & 307113764813174451979648861837374183706400686964058131652523053759767112686 \\
@@ -397,7 +397,7 @@ Ta sử dụng thuật toán RSA để mã hóa với tham số sau
 
 Ta chặn được hai bản mã:
 
-.. math:: 
+.. math::
 
     \begin{array}{cl}
         c1 = & 693089265758848025485688850665080349728312487495309688707596506807354538873 \\
@@ -418,7 +418,7 @@ Sử dụng Coppersmith attack ở file :download:`solve_rsa.py`.
 Задача 6. Подозрительная фотография
 ===================================
 
-Thêm một bài reverse engineering và lần này là Android. Mình chịu chết.
+Thêm một bài reverse engineering và lần này là Android. Ta chịu chết.
 
 Задача 7. Замены и перестановки
 ===============================
@@ -454,8 +454,8 @@ với :math:`i \in \mathbb{N}`, :math:`K_i \in \{ 0, 1 \}^{256}`.
 
 Dãy :math:`\{ \gamma_n \}` nhận được từ các giá trị :math:`K_i` và :math:`K_0`. Ở đây, :math:`4` bits đầu tiên của dãy :math:`\{ \gamma_n \}` nhận được từ :math:`K_0` theo quy tắc
 
-.. math:: 
-    
+.. math::
+
     \gamma_j = \begin{cases}
         0 \ \text{nếu} \ K_0[j] = 0, \\
         1 \ \text{trong trường hợp khác},
@@ -465,8 +465,8 @@ trong đó :math:`K_0[j]` là khối :math:`64` bits thứ :math:`i` của :math
 
 Các bit tiếp theo được sinh tương tự theo quy tắc
 
-.. math:: 
-    
+.. math::
+
     \gamma_j = \begin{cases}
         0 \ \text{nếu} \ K_{j / 4}[j \% 4] = 0, \\
         1 \ \text{trong trường hợp khác},
@@ -476,7 +476,7 @@ với :math:`a \% b` là số dư khi chia :math:`a` cho :math:`b`, :math:`j \in
 
 Ví dụ ta có khóa
 
-.. math:: 
+.. math::
 
     K_j = \{ \mathrm{0x0c}, \mathrm{0xea}, \mathrm{0x66}, \mathrm{0xe0}, \mathrm{0x96}, \mathrm{0xbd}, \mathrm{0xf1}, \mathrm{0xc0}, \\
     \mathrm{0x9c}, \mathrm{0xc2}, \mathrm{0xf1}, \mathrm{0x62}, \mathrm{0xa5}, \mathrm{0x44} ,\mathrm{0x1f}, \mathrm{0xb7}, \\
@@ -485,7 +485,7 @@ Ví dụ ta có khóa
 
 thì ta sẽ chia được thành :math:`4` đoạn, mỗi đoạn :math:`64` bits (hay :math:`8` bytes) như sau
 
-.. math:: 
+.. math::
 
     K_j[0] & = \{ \mathrm{0x0c}, \mathrm{0xea}, \mathrm{0x66}, \mathrm{0xe0}, \mathrm{0x96}, \mathrm{0xbd}, \mathrm{0xf1}, \mathrm{0xc0} \}, \\
     K_j[1] & = \{ \mathrm{0x9c}, \mathrm{0xc2}, \mathrm{0xf1}, \mathrm{0x62}, \mathrm{0xa5}, \mathrm{0x44}, \mathrm{0x1f}, \mathrm{0xb7} \}, \\
@@ -519,7 +519,7 @@ trong đó :math:`K_{root} \in \{ 0, 1 \}^{80}`, :math:`IV \in \{ 0, 1 \}^{64}`,
 
 Giả sử :math:`K_0 = (K_0[0], K_0[1], K_0[2], K_0[3]) \in \{ 0, 1 \}^{256}`, với :math:`K_0[j] \in \{ 0, 1 \}^{64}`, :math:`j = 0, 1, 2, 3`. Theo mode CFB thì
 
-.. math:: 
+.. math::
 
     K_0[0] & = \mathsf{Enc}(IV) \oplus ([0x00] \cdot 8) = \mathsf{Enc}(IV), \\
     K_0[1] & = \mathsf{Enc}(K_0[0]) \oplus ([0x00] \cdot 8) = \mathsf{Enc}(K_0[0]), \\
@@ -532,7 +532,7 @@ Giả sử :math:`K_0 = (K_0[0], K_0[1], K_0[2], K_0[3]) \in \{ 0, 1 \}^{256}`, 
 
 Giả sử :math:`K_1 = (K_1[0], K_1[1], K_1[2], K_1[3]) \in \{ 0, 1 \}^{256}` với :math:`K_1[j] \in \{ 0, 1 \}^{64}`, :math:`j = 0, 1, 2, 3`. Tương tự, theo mode CFB thì
 
-.. math:: 
+.. math::
 
     K_1[0] & = \mathsf{Enc}(IV) \oplus K_0[0], \\
     K_1[1] & = \mathsf{Enc}(K_0[0]) \oplus K_0[1], \\
@@ -553,7 +553,7 @@ với :math:`K_i[j] \in \{ 0, 1 \}^{64}`, :math:`j = 0, 1, 2, 3`.
 
 Theo mode CFB thì
 
-.. math:: 
+.. math::
 
     K_i[0] & = \mathsf{Enc}(IV) \oplus K_{i-1}[0], \\
     K_i[1] & = \mathsf{Enc}(K_0[0]) \oplus K_{i-1}[1], \\
@@ -562,8 +562,8 @@ Theo mode CFB thì
 
 Dãy :math:`\{ \gamma_n \}` nhận được từ các giá trị :math:`K_i` và :math:`K_0`. Ở đây, :math:`4` bits đầu tiên của dãy :math:`\{ \gamma_n \}` nhận được từ :math:`K_0` theo quy tắc
 
-.. math:: 
-    
+.. math::
+
     \gamma_j = \begin{cases}
         0 \ \text{nếu} \ K_0[j] = 0, \\
         1 \ \text{trong trường hợp khác},
@@ -573,8 +573,8 @@ trong đó :math:`K_0[j]` là khối :math:`64` bits thứ :math:`i` của :math
 
 Các bit tiếp theo được sinh tương tự theo quy tắc
 
-.. math:: 
-    
+.. math::
+
     \gamma_j = \begin{cases}
         0 \ \text{nếu} \ K_{j / 4}[j \% 4] = 0, \\
         1 \ \text{trong trường hợp khác},
@@ -590,7 +590,7 @@ Tiếp theo, chúng ta thử mã hóa với :math:`K_{root}` bất kì để qua
 
 Dễ thấy bản mã (dạng hex) có dạng sau:
 
-.. code-block:: 
+.. code-block::
 
     0d16dceddfc805c1 47122ce9d3b7983a 02fd48e270666df7 28a8d35b20fbd167
     0000000000000000 c4a1be9a50040a49 a266cc2ec5ada370 59c24fdb72f24d49
@@ -611,7 +611,7 @@ Dễ thấy bản mã (dạng hex) có dạng sau:
 
 Ta chỉ quan tâm các khối :math:`64` bits toàn các byte `\0` nên bản mã dạng hex trên tương đương với
 
-.. code-block:: 
+.. code-block::
 
     ---------------- ---------------- ---------------- ----------------
     0000000000000000 ---------------- ---------------- ----------------
@@ -643,7 +643,7 @@ Kết quả giải mã là
 Задача 8. Загадочная ошибка
 ===========================
 
-Thêm một bài reverse engineering C++. Bài này có dùng thêm OpenSSL nhưng mình vẫn không biết làm.
+Đây là một bài dịch ngược chương trình C++ có sử dụng OpenSSL và hiện chưa có lời giải.
 
 Задача 9. Генератор гаммы на основе XSL-схемы
 =============================================
@@ -727,7 +727,7 @@ với :math:`y^{(i)}, x^{(i)} \in \mathbb{F}_2^{64}`.
 
 Người truyền tin muốn kiểm tra độ an toàn của thuật toán sinh khóa. Anh ta mã hóa một phần của đoạn văn đầu trong tiểu thuyết "Alice in Wonderland" (tiếng Anh) và thu được bản mã là
 
-.. code-block:: 
+.. code-block::
 
     3291999942924df2eb53323558623a949f5d90c4ba2cf0d9883c21ee0fcd8e5348de9d8fecee8b55693a5682396c33b57cdcaa6946fdfe5c50660656cfb03fbfa682db7f20837e3d406340ebf301b8223a7ada2820b5e15756ab0f54e2af8008f181e474757afbdfaf65525e88dadce723653bfc35398852d3e82cfb4815f3f6
 
@@ -776,4 +776,3 @@ Kết luận
 =========
 
 Để viết sau.
-

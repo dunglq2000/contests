@@ -8,28 +8,28 @@ Bài này sinh ra :math:`8` số nguyên tố để mã hóa. Từ một trạng
 
 Chúng ta chỉ biết seed ban đầu, không biết :math:`m`, :math:`c` hay :math:`n`. Đề cho chúng ta dãy :math:`6` số đầu tạo bởi chuỗi trên, giả sử là :math:`s_0`, :math:`s_1`, :math:`s_2`, ...
 
-Mình thấy rằng :math:`s_1 = (m s_0 + c) \bmod n`, :math:`s_2 = (m s_1 + c) \bmod n` và :math:`s_3 = (m s_2 + c) \bmod n`.
+Ta thấy rằng :math:`s_1 = (m s_0 + c) \bmod n`, :math:`s_2 = (m s_1 + c) \bmod n` và :math:`s_3 = (m s_2 + c) \bmod n`.
 
-Trừ vế theo vế mình có :math:`s_2 - s_1 = m (s_1 - s_0) \bmod n` và :math:`s_3 - s_2 = m (s_2 - s_1) \bmod n`.
+Trừ vế theo vế ta có :math:`s_2 - s_1 = m (s_1 - s_0) \bmod n` và :math:`s_3 - s_2 = m (s_2 - s_1) \bmod n`.
 
-Suy ra :math:`n \mid (s_2 - s_1) - m (s_1 - s_0)` và :math:`n \mid (s_3 - s_2) - m (s_2 - s_1)`. Như vậy nhân chéo lên để khử :math:`m` mình thu được 
+Suy ra :math:`n \mid (s_2 - s_1) - m (s_1 - s_0)` và :math:`n \mid (s_3 - s_2) - m (s_2 - s_1)`. Như vậy nhân chéo lên để khử :math:`m` ta thu được
 
-.. math:: 
-    
+.. math::
+
     \begin{cases}
-        n \mid (s_2 - s_1)^2 - m(s_1 - s_0) (s_2 - s_1) \\ 
+        n \mid (s_2 - s_1)^2 - m(s_1 - s_0) (s_2 - s_1) \\
         n \mid (s_3 - s_2) (s_1 - s_0) - m (s_2 - s_1) (s_1 - s_0)
     \end{cases},
 
-hay tương đương với 
+hay tương đương với
 
 .. math:: n \mid (s_2 - s_1)^2 - (s_3 - s_2)(s_1 - s_0)
 
-Tương tự như vậy với các cặp khác, dùng gcd mình sẽ tìm ra được :math:`n`.
+Tương tự như vậy với các cặp khác, dùng gcd ta sẽ tìm ra được :math:`n`.
 
 Khi đã có :math:`n`, nhớ lại rằng :math:`s_2 - s_1 = m (s_1 - s_0) \bmod n` sẽ suy ra được :math:`m`. Cuối cùng do :math:`s_1 = (m s_0 + c) \bmod n` nên sẽ tìm được :math:`c`.
 
-Có đủ :math:`n`, :math:`m` và :math:`c` mình chạy hàm như đề bài là sẽ tìm được các số nguyên tố từ đó decrypt ra được kết quả.
+Có đủ :math:`n`, :math:`m` và :math:`c` ta chạy hàm như đề bài là sẽ tìm được các số nguyên tố từ đó decrypt ra được kết quả.
 
 .. only:: html
 
@@ -68,7 +68,7 @@ Có đủ :math:`n`, :math:`m` và :math:`c` mình chạy hàm như đề bài l
             def next(self):
                 self.state = (self.state * self.lcg_m + self.lcg_c) % self.lcg_n
                 return self.state
-            
+
         primes_arr = []
         primes_n = 1
         lcg = LCG(s_)
@@ -88,7 +88,7 @@ Có đủ :math:`n`, :math:`m` và :math:`c` mình chạy hàm như đề bài l
                         primes_n *= prime_candidate
                         primes_arr.append(prime_candidate)
                         break
-            
+
             if primes_n.bit_length() > 4096:
                 primes_arr.clear()
                 primes_n = 1
@@ -129,13 +129,13 @@ Bài này định nghĩa một đường cong (có lẽ vậy) là tập hợp c
 
 Phép cộng hai điểm :math:`(x_1, y_1)` và :math:`(x_2, y_2)` được định nghĩa là điểm :math:`(x_1 x_2 + D y_1 y_2, x_1 y_2 + x_2 y_1)` (tất cả trong modulo :math:`p`).
 
-Đề bài cho chúng ta biết điểm generator là :math:`G = (2, 1)`, public key là một điểm không đổi trong tất cả lần chạy (điểm :math:`P`). Mình gọi :math:`k` là private key, là một số trong modulo :math:`n = p-1` sao cho :math:`P = k G`.
+Đề bài cho chúng ta biết điểm generator là :math:`G = (2, 1)`, public key là một điểm không đổi trong tất cả lần chạy (điểm :math:`P`). Ta gọi :math:`k` là private key, là một số trong modulo :math:`n = p-1` sao cho :math:`P = k G`.
 
-Hướng tấn công của bài này là xây dựng một homomorphism từ nhóm các điểm trên lên :math:`\mathrm{GF}(p)` và giải discrete logarithm trên :math:`\mathrm{GF}(p)`. Mình xét ánh xạ
+Hướng tấn công của bài này là xây dựng một homomorphism từ nhóm các điểm trên lên :math:`\mathrm{GF}(p)` và giải discrete logarithm trên :math:`\mathrm{GF}(p)`. Ta xét ánh xạ
 
 .. math:: \varphi: \mathbb{F}_p \times \mathbb{F}_p \to \mathbb{F}_p, \quad (x, y) \to x + yW
 
-Ở đây :math:`W` là một số nào đó thuộc :math:`\mathrm{GF}(p)`. Mình muốn ánh xạ này là homomorphism thì tương đương với điều kiện
+Ở đây :math:`W` là một số nào đó thuộc :math:`\mathrm{GF}(p)`. Ta muốn ánh xạ này là homomorphism thì tương đương với điều kiện
 
 .. math:: \varphi(x_1, y_1) \cdot \varphi(x_2, y_2) = \varphi(x_1 x_2 + D y_1 y_2, x_1 y_2 + x_2 y_1)
 
@@ -143,21 +143,21 @@ Tương đương với
 
 .. math:: (x_1 + y_1 W) \cdot (x_2 + y_2 W) = (x_1 x_2 + D y_1 y_2) + (x_1 y_2 + x_2 y_1) W
 
-Khai triển và thu gọn mình có được :math:`W^2 = D`. Như vậy :math:`W = \sqrt{3} \bmod p`.
+Khai triển và thu gọn ta có được :math:`W^2 = D`. Như vậy :math:`W = \sqrt{3} \bmod p`.
 
-Và đúng là :math:`D` là số chính phương modulo :math:`p` thật, quá tốt :))))
+Và đúng là :math:`D` là số chính phương modulo :math:`p` thật, quá tốt
 
-Như vậy mình sẽ chuyển việc tính toán discrete logarithm :math:`P = k G` trên tập hợp các điểm trên thành việc tính toán discrete logarithm ứng với phương trình
+Như vậy ta sẽ chuyển việc tính toán discrete logarithm :math:`P = k G` trên tập hợp các điểm trên thành việc tính toán discrete logarithm ứng với phương trình
 
 .. math:: (x_G + y_G W)^k = (x_P + y_P W) \bmod p
 
-Tới đây thì khá bế tắc vì :math:`p-1` có các thừa số rất lớn. Mình đi "hỏi thăm" 1 vòng thì biết có tool open source rất mạnh để tính việc này là `cado-nfs <https://github.com/cado-nfs/cado-nfs>`_.
+Do :math:`p-1` chứa các thừa số rất lớn, các phương pháp phân tích thông thường không còn hiệu quả. Ta sử dụng công cụ mã nguồn mở `cado-nfs <https://github.com/cado-nfs/cado-nfs>`_ cho bước tính toán này.
 
-Đặt :math:`g = x_G + y_G W \bmod p` và :math:`h = x_P + y_P W \bmod p`. Lúc giải mình thấy một điều lạ lùng là mình không dùng tool trên tính dlog modulo 2 được, nên mình chỉ tính dlog của :math:`g` và :math:`h` trên modulo :math:`(p-1)/2`. Cado-nfs sẽ trả về base, mình gọi là :math:`b`, và dlog của :math:`g` và :math:`h` lần lượt là :math:`t_1` và :math:`t_2`.
+Đặt :math:`g = x_G + y_G W \bmod p` và :math:`h = x_P + y_P W \bmod p`. Lúc giải ta thấy một điều lạ lùng là ta không dùng tool trên tính dlog modulo 2 được, nên ta chỉ tính dlog của :math:`g` và :math:`h` trên modulo :math:`(p-1)/2`. Cado-nfs sẽ trả về base, ta gọi là :math:`b`, và dlog của :math:`g` và :math:`h` lần lượt là :math:`t_1` và :math:`t_2`.
 
-Do :math:`g = b^{t_1}`, :math:`h = b^{t_2}`, :math:`h = g^k` nên :math:`b^{t_2} = b^{t_1 k}` (tất cả modulo :math:`p`). Suy ra :math:`t_2 = t_1 k \bmod \dfrac{p-1}{2}`, từ đó mình tìm được :math:`k` và :math:`k` này thỏa mãn :math:`P = k G`.
+Do :math:`g = b^{t_1}`, :math:`h = b^{t_2}`, :math:`h = g^k` nên :math:`b^{t_2} = b^{t_1 k}` (tất cả modulo :math:`p`). Suy ra :math:`t_2 = t_1 k \bmod \dfrac{p-1}{2}`, từ đó ta tìm được :math:`k` và :math:`k` này thỏa mãn :math:`P = k G`.
 
-Như vậy mình đã khôi phục lại private key và sẵn sàng ký bất cứ `nonce` nào gửi tới.
+Như vậy ta đã khôi phục lại private key và sẵn sàng ký bất cứ `nonce` nào gửi tới.
 
 .. only:: html
 
@@ -200,7 +200,7 @@ MHK2
 
 Hệ thống sinh dãy số cho tới khi :math:`\displaystyle{p_1 = \sum_{i=1}^n s_{1i} + 2}` là số nguyên tố, tương tự cho :math:`\displaystyle{p_2 = \sum_{i=1}^n s_{2i} + 2}` là số nguyên tố. Sau đó hệ thống chọn ngẫu nhiên số :math:`e_1 \in \Bigl[\dfrac{p_1}{2}, p_1\Bigl]` và :math:`e_2 \in \Bigl[\dfrac{p_2}{2}, p_2\Bigr]`.
 
-Cuối cùng tính 
+Cuối cùng tính
 
 .. math:: s = (s_{11} + s_{21}, s_{12} + s_{22}, \ldots, s_{1n} + s_{2n}) = (s_1, s_2, \ldots, s_n).
 
@@ -209,11 +209,11 @@ Cuối cùng tính
 
 Từ hai dãy :math:`s_1` và :math:`s_2` ở trên hệ thống tính hai dãy :math:`a_1 = (e_1 * s_{11}, e_1 * s_{12}, \ldots, e_1 * s_{1n})` (tất cả trong modulo :math:`p_1`) và :math:`a_2 = (e_2 * s_{21}, e_2 * s_{22}, \ldots, e_2 * s_{2n})` (tất cả trong modulo :math:`p_2`).
 
-Đặt 
+Đặt
 
 .. math:: b_1 = (s_{11} \bmod 2, s_{12} \bmod 2, \ldots, s_{1n} \bmod 2).
 
-Đặt 
+Đặt
 
 .. math:: b_2 = (s_{21} \bmod 2, s_{22} \bmod 2, \ldots, s_{2n} \bmod 2).
 
@@ -233,19 +233,19 @@ Khi đó ciphertext là :math:`c_1 = \sum_{i=1}^n a_{1i} \cdot r_{1i}` và :math
 4. Khôi phục private key
 ------------------------
 
-Chi tiết cách giải bài này mình tham khảo writeup của Google và Mystiz. Về mặt lý thuyết mình không hiểu sao họ có thể nghĩ ra lattice hay như vậy :)))) Do đó ở đây mình chỉ trình bày cách xây dựng lattice để giải bài này.
+Chi tiết cách giải bài này ta tham khảo bài viết của Google và Mystiz. Về mặt lý thuyết ta không hiểu sao họ có thể nghĩ ra lattice hay như vậy Do đó ở đây ta chỉ trình bày cách xây dựng lattice để giải bài này.
 
-Ý tưởng là từ public key :math:`a_1` (:math:`a_2` tương tự) mình sẽ khôi phục lại :math:`p_1` và :math:`e_1`.
+Ý tưởng là từ public key :math:`a_1` (:math:`a_2` tương tự) ta sẽ khôi phục lại :math:`p_1` và :math:`e_1`.
 
-Đặt :math:`A_1 = \sum_{i=1}^n a_{1i}`. 
+Đặt :math:`A_1 = \sum_{i=1}^n a_{1i}`.
 
-Do :math:`a_{1i} = e_1 \cdot s_{1i} \bmod p_1` với :math:`i = \overline{1, n}` nên :math:`A_1 = \sum\limits_{i=1}^n e_1 \cdot s_{1i} = e_1 \sum\limits_{i=1}^N s_{1i}`. Mà mình đã biết :math:`p_1 = \sum\limits_{i=1}^n s_{1i} + 2` nên phương trình trên tương đương với :math:`A_1 = e_1 * (p_1 - 2)`. Lấy modulo :math:`p_1` ta có :math:`A_1 \equiv -2 e_1 \bmod p_1`.
+Do :math:`a_{1i} = e_1 \cdot s_{1i} \bmod p_1` với :math:`i = \overline{1, n}` nên :math:`A_1 = \sum\limits_{i=1}^n e_1 \cdot s_{1i} = e_1 \sum\limits_{i=1}^N s_{1i}`. Mà ta đã biết :math:`p_1 = \sum\limits_{i=1}^n s_{1i} + 2` nên phương trình trên tương đương với :math:`A_1 = e_1 * (p_1 - 2)`. Lấy modulo :math:`p_1` ta có :math:`A_1 \equiv -2 e_1 \bmod p_1`.
 
 Từ việc :math:`a_{1i} \equiv e_1 \cdot s_{1i} \bmod p_1`, ta có :math:`2 a_{1i} \equiv 2 e_1 \cdot s_{1i} \equiv -A_1 \cdot s_{1i} \bmod p_1`.
 
 Nghĩa là tồn tại số :math:`x_{1i} \in \mathbb{Z}` sao cho :math:`2 a_{1i} + A_1 \cdot s_{1i} = x_{1i} \cdot p_1` với :math:`i = \overline{1, n}`.
 
-Mình có thể đánh giá :math:`x_{1i}` đơn giản như sau: 
+Ta có thể đánh giá :math:`x_{1i}` đơn giản như sau:
 
 .. math:: x_{1i} = \dfrac{2 a_{1i} + A_1 s_{1i}}{p_1} \leqslant \dfrac{2 \max(a_{1i}) + A_1 \cdot 2^{128}}{\max(a_{1i})}
 
@@ -255,31 +255,31 @@ Lấy :math:`i=1` ta có :math:`2 a_{11} + A_1 \cdot s_{11} = x_{11} \cdot p_1` 
 
 Lấy :math:`2 \leqslant i \leqslant n` ta có :math:`2 a_{1i} + A_1 \cdot s_{1i} = x_{1i} \cdot p_1` (2).
 
-Để khử :math:`p_1` mình nhân hai vế phương trình (1) cho :math:`x_{1i}` và nhân hai vế phương trình (2) cho :math:`x_{11}`, rồi trừ vế theo vế thu được
+Để khử :math:`p_1` ta nhân hai vế phương trình (1) cho :math:`x_{1i}` và nhân hai vế phương trình (2) cho :math:`x_{11}`, rồi trừ vế theo vế thu được
 
 .. math:: 2 a_{11} \cdot x_{1i} - 2 a_{1i} \cdot x_{11} + A_1 (s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}) = 0.
 
-Ở đây chúng ta đã biết :math:`a_{11}`, :math:`a_{1i}` và :math:`A_1`. Việc xây dựng lattice sẽ dựa trên các hệ số :math:`x_{1i}`, :math:`x_{11}` và :math:`s_{11} \cdot x_{1i} - s_{1i} * s_{11}`. Do đó mình viết
+Ở đây chúng ta đã biết :math:`a_{11}`, :math:`a_{1i}` và :math:`A_1`. Việc xây dựng lattice sẽ dựa trên các hệ số :math:`x_{1i}`, :math:`x_{11}` và :math:`s_{11} \cdot x_{1i} - s_{1i} * s_{11}`. Do đó ta viết
 
-.. math:: 
-    
+.. math::
+
     \begin{array}{ccc}
-        x_{11} & \cdot & (\ldots, -2a_{1i}, \ldots) \\ 
-        x_{1i} & \cdot & (\ldots, 2a_{11}, \ldots) \\ 
-        \ldots & \cdot & (\ldots, \ldots, \ldots) \\ 
-        (s_{11} \cdot x_{1i} - s_{1i} * x_{11}) & * & (\ldots, A_1, \ldots) \\ 
+        x_{11} & \cdot & (\ldots, -2a_{1i}, \ldots) \\
+        x_{1i} & \cdot & (\ldots, 2a_{11}, \ldots) \\
+        \ldots & \cdot & (\ldots, \ldots, \ldots) \\
+        (s_{11} \cdot x_{1i} - s_{1i} * x_{11}) & * & (\ldots, A_1, \ldots) \\
         \ldots & \cdot & (\ldots, \ldots, \ldots)
     \end{array}
 
-Với :math:`i = \overline{2, n}` thì mình sẽ cần :math:`255` cột. Tuy nhiên chúng ta thường sử dụng :math:`1` để khi tính ra lattice thì sẽ thu được số cần tìm, cụ thể ở đây là :math:`x_{11}` và :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}`. Do đó mình sẽ modify nhẹ lại lattice trên thành
+Với :math:`i = \overline{2, n}` thì ta sẽ cần :math:`255` cột. Tuy nhiên chúng ta thường sử dụng :math:`1` để khi tính ra lattice thì sẽ thu được số cần tìm, cụ thể ở đây là :math:`x_{11}` và :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}`. Do đó ta sẽ modify nhẹ lại lattice trên thành
 
-.. math:: 
-    
+.. math::
+
     \begin{array}{ccc}
-        x_{11} & \cdot & (1, \ldots, -2a_{1i}, \ldots) \\ 
-        x_{1i} & \cdot & (\ldots, \ldots, 2a_{11}, \ldots) \\ 
-        \ldots & \cdot & (\ldots, \ldots, \ldots, \ldots) \\ 
-        (s_{11} \cdot x_{1i} - s_{1i} * x_{11}) & * & (0, 1, \ldots, A_1, \ldots) \\ 
+        x_{11} & \cdot & (1, \ldots, -2a_{1i}, \ldots) \\
+        x_{1i} & \cdot & (\ldots, \ldots, 2a_{11}, \ldots) \\
+        \ldots & \cdot & (\ldots, \ldots, \ldots, \ldots) \\
+        (s_{11} \cdot x_{1i} - s_{1i} * x_{11}) & * & (0, 1, \ldots, A_1, \ldots) \\
         \ldots & \cdot & (\ldots, \ldots, \ldots, \ldots)
     \end{array}
 
@@ -287,23 +287,23 @@ Với :math:`i = \overline{2, n}` thì mình sẽ cần :math:`255` cột. Tuy n
 
 .. math:: \begin{pmatrix}1 & 0 & 0 & \ldots & -2a_{12} & -2a_{13} & \ldots \\ 0 & 0 & 0 & \ldots & 2a_{11} & 0 & \ldots \\ 0 & 0 & 0 & \ldots & 0 & 2a_{11} & \ldots \\ \ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\ 0 & 1 & \ldots & \ldots & A_1 & 0 & \ldots \\ 0 & 0 & 1 & \ldots & 0 & A_1 & \ldots \\ \ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\ \end{pmatrix}
 
-Tới lúc này chúng ta đã hoàn thành ... 10% chặng đường. Lý do là vì với lattice này chúng ta không thể giải ra short vector mong muốn được. Dựa trên lattice mình hy vọng sẽ chạy ra vector
+Tới lúc này chúng ta đã hoàn thành ... 10% chặng đường. Lý do là vì với lattice này chúng ta không thể giải ra short vector mong muốn được. Dựa trên lattice ta hy vọng sẽ chạy ra vector
 
 .. math:: v = (x_{11}, s_{11} \cdot x_{12} - s_{12} \cdot x_{11}, \ldots, s_{11} \cdot x_{1n} - s_{1n} \cdot x_{11}, 0, 0, \ldots, 0)
 
 Tuy nhiên cần nhớ rằng :math:`s_{1i}` có :math:`64` bit và :math:`x_{1i}` xấp xỉ :math:`136` bit. Bằng tính toán có thể thấy :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}` cũng có :math:`64` bit. Như vậy chúng ta cần scale lattice trên để các giá trị không sai khác nhau quá lớn.
 
-Cụ thể, do :math:`x_{11}` có :math:`136` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{136}}`, do :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}` có :math:`64` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{128}}`. Đối với :math:`-2a_{1i}`, :math:`2a_{11}` và :math:`A_1` thì mình cần chúng lớn để lattice tìm ra short vector, nên nhân với :math:`2^{1024}`.
+Cụ thể, do :math:`x_{11}` có :math:`136` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{136}}`, do :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}` có :math:`64` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{128}}`. Đối với :math:`-2a_{1i}`, :math:`2a_{11}` và :math:`A_1` thì ta cần chúng lớn để lattice tìm ra short vector, nên nhân với :math:`2^{1024}`.
 
 Sử dụng tính chất
 
 .. math:: \begin{pmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots & a_{2n} \\ \ldots & \ldots & \ldots & \ldots \\ a_{n1} & a_{n2} & \ldots & a_{nn} \end{pmatrix} \times \begin{pmatrix} b_1 & 0 & 0 & 0 \\ 0 & b_2 & 0 & 0 \\ 0 & 0 & \ddots & 0 \\ 0 & 0 & 0 & b_n \end{pmatrix} = \begin{pmatrix} a_{11} b_1 & a_{12} b_2 & \ldots & a_{1n} b_n \\ a_{21} b_1 & a_{22} b_2 & \ldots & a_{2n} b_n \\ \ldots & \ldots & \ldots & \ldots \\ a_{n1} b_1 & a_{n2} b_2 & \ldots & a_{nn} b_n \end{pmatrix}
 
-Mình sẽ nhân lattice trên với ma trận sau là sẽ scale được hệ số theo nhu cầu
+Ta sẽ nhân lattice trên với ma trận sau là sẽ scale được hệ số theo nhu cầu
 
 .. math:: \begin{pmatrix}\dfrac{1}{2^{136}} & & & & & & \\ & \dfrac{1}{2^{128}} & & & & & \\ & & \ddots & \dfrac{1}{2^{128}} & & & & \\ & & & & 2^{1024} & & \\ & & & & & \ddots & \\ & & & & & & 2^{1024}\end{pmatrix}
 
-Phần tử đầu tiên của short vector là :math:`x_{11}` (có lẽ vậy :v). Thật ra thì phần tử đầu tiên của short vector là :math:`x_{11} \bmod a_{11}` hoặc :math:`-x_{11} \bmod a_{11}`. Phía trên mình đã tính được chặn trên của :math:`x_{11}` là :math:`\dfrac{2 \max(a_{1i}) + A_1 \cdot 2^{128}}{\max(a_{1i})}`. Từ đây mình duyệt vòng for qua các giá trị :math:`x_{11} + k a_{11}` và :math:`-x_{11} + k a_{11}` để tìm các số :math:`s_{1i}` theo cách sau
+Phần tử đầu tiên của short vector là :math:`x_{11}` (có lẽ vậy). Thật ra thì phần tử đầu tiên của short vector là :math:`x_{11} \bmod a_{11}` hoặc :math:`-x_{11} \bmod a_{11}`. Phía trên ta đã tính được chặn trên của :math:`x_{11}` là :math:`\dfrac{2 \max(a_{1i}) + A_1 \cdot 2^{128}}{\max(a_{1i})}`. Từ đây ta duyệt vòng for qua các giá trị :math:`x_{11} + k a_{11}` và :math:`-x_{11} + k a_{11}` để tìm các số :math:`s_{1i}` theo cách sau
 
 a. Khôi phục modulo
 ^^^^^^^^^^^^^^^^^^^
@@ -315,12 +315,12 @@ Nhắc lại :math:`2 a_{11} + A_1 \cdot s_{11} = x_{11} \cdot p_1`. Modulo hai 
 b. Khôi phục e
 ^^^^^^^^^^^^^^
 
-Bên trên mình đã có :math:`A_1 = -2e_1 \bmod p_1` nên mình sẽ tìm được :math:`e_1`. Sau đó từ :math:`a_1 = (a_{11}, a_{12}, \ldots, a_{1n})` và :math:`e_1` mình tính lại được tất cả :math:`s_{1i}` và kiểm tra xem :math:`\sum\limits_{i=1}^n s_i + 2 \equiv p_1`, đồng thời không có số :math:`s_{1i}` nào vượt quá :math:`64` bit.
+Bên trên ta đã có :math:`A_1 = -2e_1 \bmod p_1` nên ta sẽ tìm được :math:`e_1`. Sau đó từ :math:`a_1 = (a_{11}, a_{12}, \ldots, a_{1n})` và :math:`e_1` ta tính lại được tất cả :math:`s_{1i}` và kiểm tra xem :math:`\sum\limits_{i=1}^n s_i + 2 \equiv p_1`, đồng thời không có số :math:`s_{1i}` nào vượt quá :math:`64` bit.
 
 c. Giải
 ^^^^^^^
 
-Đoạn code mình lấy của Google. Lưu ý rằng sau khi LLL xong mình cần scale ngược lại độ lớn ban đầu, ở đây là chia cho ma trận :math:`Q`. Do một chút lười nên ở đây thay `a2` thành `a_1` để áp dụng cho :math:`p_1`.
+Đoạn code ta lấy của Google. Lưu ý rằng sau khi LLL xong ta cần scale ngược lại độ lớn ban đầu, ở đây là chia cho ma trận :math:`Q`. Do một chút lười nên ở đây thay `a2` thành `a_1` để áp dụng cho :math:`p_1`.
 
 .. only:: html
 
@@ -402,7 +402,7 @@ Cuối cùng chạy decrypt và lấy flag thôi.
 MYTLS
 =====
 
-Bài này dựa trên nguyên lý handshake của TLS (mãi sau mình đàm đạo với các bạn khác mới biết :v). Trong bài này đề cho các file sau:
+Bài này dựa trên nguyên lý handshake của TLS (mãi sau ta đàm đạo với người đọc khác mới biết). Trong bài này đề cho các file sau:
 
 * admin-ecdhcert.pem
 * ca-crt.pem
@@ -413,9 +413,9 @@ Bài này dựa trên nguyên lý handshake của TLS (mãi sau mình đàm đ�
 * server.py
 * start.sh
 
-Ở bài này xảy ra hai công đoạn trao đổi khóa, mình sẽ gọi là `share_key` và `share_ephemeral_key`.
+Ở bài này xảy ra hai công đoạn trao đổi khóa, ta sẽ gọi là `share_key` và `share_ephemeral_key`.
 
-Đối với `share_ephemeral_key`, mình sẽ cần gửi lên một chuỗi hex độ dài :math:`32` ký tự, và một public key ECDH theo dạng PEM. Server cũng sẽ tạo một chuỗi hex độ dài :math:`32` ký tự, private key và public key ECDH, sau đó gửi public key ECDH này về cho mình cũng ở dạng PEM.
+Đối với `share_ephemeral_key`, ta sẽ cần gửi lên một chuỗi hex độ dài :math:`32` ký tự, và một public key ECDH theo dạng PEM. Server cũng sẽ tạo một chuỗi hex độ dài :math:`32` ký tự, private key và public key ECDH, sau đó gửi public key ECDH này về cho ta cũng ở dạng PEM.
 
 Khi đó `share_ephemeral_key` sẽ được tính là
 
@@ -427,23 +427,23 @@ Khi đó `share_ephemeral_key` sẽ được tính là
 Điều này là tương đương với đoạn code sau của đề vì việc trao đổi khóa sẽ giống nhau ở hai bên trao đổi khóa.
 
 .. code-block:: python
-    
+
     server_ephemeral_secret = server_ephemeral_key.exchange(
         ec.ECDH(), client_ephemeral_public_key)
 
-Do đó mình chỉ cần tạo một ECDH key mỗi lần trao đổi khóa, hoặc tạo một lần cũng được.
+Do đó ta chỉ cần tạo một ECDH key mỗi lần trao đổi khóa, hoặc tạo một lần cũng được.
 
 Tiếp theo là ``share_key``.
 
-Ở đầu bài, mình sẽ cần cung cấp một public key (certificate) cho server. Server sẽ sử dụng ca-crt.pem để verify xem cert của mình có hợp lệ không (có được ký bởi CA không). Server cũng sẽ đọc private key tương ứng (ở file `server-ecdhkey.pem`) và tiến hành trao đổi khóa ECDH lần hai.
+Ở đầu bài, ta sẽ cần cung cấp một public key (certificate) cho server. Server sẽ sử dụng ca-crt.pem để verify xem cert của ta có hợp lệ không (có được ký bởi CA không). Server cũng sẽ đọc private key tương ứng (ở file `server-ecdhkey.pem`) và tiến hành trao đổi khóa ECDH lần hai.
 
 .. code-block:: python
-    
+
     server_secret = server_key.exchange(ec.ECDH(), client_cert.public_key())
 
 Đoạn code trên thực hiện việc thực hiện trao đổi khóa với certificate (public key) nhận từ client, và server private key.
 
-Mình thấy rằng đề đã cung cấp cho mình hai file cert và key của guest đã được ký bởi CA. Do đó mình dùng `guest-ecdhcert.pem` làm `client_cert`, và đề cũng đã cho mình `server-ecdhcert.pem` nên mình có thể tính toán khóa trao đổi ở phía mình.
+Ta thấy rằng đề đã cung cấp cho ta hai file cert và key của guest đã được ký bởi CA. Do đó ta dùng `guest-ecdhcert.pem` làm `client_cert`, và đề cũng đã cho ta `server-ecdhcert.pem` nên ta có thể tính toán khóa trao đổi ở phía ta.
 
 .. code-block:: python
 
@@ -501,7 +501,7 @@ Mình thấy rằng đề đã cung cấp cho mình hai file cert và key của 
 
         with open("guest-ecdhkey.pem", "rb") as f:
             client_key = serialization.load_pem_private_key(f.read(), None)
-            
+
         server_secret = client_key.exchange(ec.ECDH(), server_public_key)
 
         derived_key = HKDF(algorithm=hashes.SHA256(),
@@ -523,22 +523,22 @@ Mình thấy rằng đề đã cung cấp cho mình hai file cert và key của 
         r.recvuntil(b'Server HMAC:\n')
         assert server_hmac.finalize().hex() == r.recvline().strip().decode()
 
-Tuy nhiên tới đây chúng ta vấp phải một vấn đề, đó là subject được ký trên certificate phải là `admin.tls`, trong khi nếu sử dụng `guest-ecdhcert.pem` thì subject là `guest.tls`. Hmm tình hình có vẻ khá phức tạp. Tới đây thì mình chịu chết, sau giải mới làm ra :D
+Tuy nhiên tới đây chúng ta vấp phải một vấn đề, đó là subject được ký trên certificate phải là `admin.tls`, trong khi nếu sử dụng `guest-ecdhcert.pem` thì subject là `guest.tls`. Hmm tình hình có vẻ khá phức tạp. Tới đây thì ta chịu chết, sau giải mới làm ra
 
-Khi nhìn vào file Docker, mình thấy rằng file `server-ecdhkey`.pem cũng được chép vào container. Từ đó, ở mỗi lần chạy vòng lặp, mình sẽ chỉ định path của file thành `../../app/server-ecdhkey.pem` để thoát khỏi path `/tmp/storage`, vì khi đó mình sẽ "đọc" được một ít thông tin nào đó từ `server-ecdhkey.pem`.
+Khi nhìn vào file Docker, ta thấy rằng file `server-ecdhkey`.pem cũng được chép vào container. Từ đó, ở mỗi lần chạy vòng lặp, ta sẽ chỉ định path của file thành `../../app/server-ecdhkey.pem` để thoát khỏi path `/tmp/storage`, vì khi đó ta sẽ "đọc" được một ít thông tin nào đó từ `server-ecdhkey.pem`.
 
-Do `server-ecdhcert.pem` có :math:`241` bytes, mình đoán rằng `server-ecdhkey.pem` cũng có :math:`241` bytes. Do đó chiến thuật của mình là ghi đè lên :math:`240` bytes đầu của `server-ecdh.pem`, server sẽ trả về hash `H(240_bytes_ghi_đè || byte_cuối)`. Mình có thể bruteforce byte cuối với :math:`240` bytes ghi đè ban đầu fix sẵn.
+Do `server-ecdhcert.pem` có :math:`241` bytes, ta đoán rằng `server-ecdhkey.pem` cũng có :math:`241` bytes. Do đó chiến thuật của ta là ghi đè lên :math:`240` bytes đầu của `server-ecdh.pem`, server sẽ trả về hash `H(240_bytes_ghi_đè || byte_cuối)`. Ta có thể duyệt vét cạn byte cuối với :math:`240` bytes ghi đè ban đầu fix sẵn.
 
-Sau đó mình connect lại. Với byte cuối đã biết, mình sẽ bruteforce byte kế cuối với :math:`239` bytes ghi đè. Lúc này server trả về hash `H(239_bytes_ghi_đè || byte_kế_cuối || byte_cuối)`.
+Sau đó ta connect lại. Với byte cuối đã biết, ta sẽ duyệt vét cạn byte kế cuối với :math:`239` bytes ghi đè. Lúc này server trả về hash `H(239_bytes_ghi_đè || byte_kế_cuối || byte_cuối)`.
 
-Như vậy mình bruteforce từ dưới lên với công thức `((240-số bytes đã biết) || byte_cần_brute || bytes_đã_biết)` (có 241 bytes).
+Như vậy ta duyệt vét cạn từ dưới lên với công thức `((240-số bytes đã biết) || byte_cần_brute || bytes_đã_biết)` (có 241 bytes).
 
-Full code để bruteforce `server-ecdhkey.pem`:
+Full code để duyệt vét cạn `server-ecdhkey.pem`:
 
 .. only:: html
 
     .. code-block:: python
-        
+
         # get_key.py
         from pwn import remote, context
         from cryptography.hazmat.primitives import serialization
@@ -638,7 +638,7 @@ Full code để bruteforce `server-ecdhkey.pem`:
 
             with open("guest-ecdhkey.pem", "rb") as f:
                 client_key = serialization.load_pem_private_key(f.read(), None)
-                
+
             server_secret = client_key.exchange(ec.ECDH(), server_public_key)
 
             derived_key = HKDF(algorithm=hashes.SHA256(),
@@ -703,16 +703,16 @@ Full code để bruteforce `server-ecdhkey.pem`:
 
         r.close()
 
-Sau khi đã có `server-ecdhkey.pem`, mình quay lại bypass phần kiểm tra subject của certificate. Trong các file cert được cho thì có `admin-ecdhcert.pem` là có subject chúng ta cần (CN=admin.tls). Mình đã có `server-ecdhcert.pem` và `server-ecdhkey.pem` (vừa leak) để tiến hành trao đổi khóa. Tuy nhiên `server-ecdhcert.pem` thì lại không có CN=admin.tls.
+Sau khi đã có `server-ecdhkey.pem`, ta quay lại bypass phần kiểm tra subject của certificate. Trong các file cert được cho thì có `admin-ecdhcert.pem` là có subject chúng ta cần (CN=admin.tls). Ta đã có `server-ecdhcert.pem` và `server-ecdhkey.pem` (vừa leak) để tiến hành trao đổi khóa. Tuy nhiên `server-ecdhcert.pem` thì lại không có CN=admin.tls.
 
-Ở đây mình gửi lên `admin-ecdhcert.pem`, nhưng khi tính khóa trao đổi thì sử dụng `server-ecdhkey.pem` (không gửi `server-ecdhcert.pem`) và nó đã work!!! Đọc writeup của mọi người thì họ gọi là KCI attack do tính chất trao đổi khóa Diffie-Hellman.
+Ta gửi ``admin-ecdhcert.pem`` nhưng tính khóa trao đổi bằng ``server-ecdhkey.pem`` mà không gửi ``server-ecdhcert.pem``. Đây là một trường hợp tấn công KCI phát sinh từ tính chất của phép trao đổi khóa Diffie--Hellman.
 
-Mình sửa đổi một tí file trên để lấy flag (gửi lên cert là `admin-ecdhcert.pem` và dùng `server-ecdhkey` để tính `share_key`).
+Ta sửa đổi một tí file trên để lấy flag (gửi lên cert là `admin-ecdhcert.pem` và dùng `server-ecdhkey` để tính `share_key`).
 
 .. only:: html
 
     .. code-block:: python
-        
+
         # solve.py
         from pwn import remote, context
         from cryptography.hazmat.primitives import serialization
@@ -737,7 +737,7 @@ Mình sửa đổi một tí file trên để lấy flag (gửi lên cert là `a
             message = message.encode('utf-8')
             payload = encryptor.update(
                 message + b'\x00' * (16 - len(message) % 16)) + encryptor.finalize()
-            
+
             return binascii.hexlify(payload).decode('utf-8')
 
 
@@ -839,13 +839,13 @@ Mình sửa đổi một tí file trên để lấy flag (gửi lên cert là `a
 PRIMES
 ======
 
-Đề bài cho mình một dãy các số nguyên tố :math:`p_i` cố định và một số nguyên tố :math:`q`.
+Đề bài cho ta một dãy các số nguyên tố :math:`p_i` cố định và một số nguyên tố :math:`q`.
 
 Giả sử plaintext được biểu diễn ở dạng chuỗi bit :math:`b = (b_1, b_2, \ldots, b_n)` thì ciphertext sẽ là :math:`x = \prod\limits_{i=1}^n p_i^{b_i} \bmod q`.
 
-Tuy nhiên message :math:`m` mà đề cho không encrypt ra :math:`x` tương ứng, mình sẽ gọi là :math:`y`. Nghĩa là nếu biểu diễn :math:`m = (m_1, m_2, \ldots, m_n)` thì mình có :math:`y = \prod\limits_{i=1}^n p_i^{m_i} \bmod q`. Ở đây :math:`m` và flag có cùng độ dài và sự sai lệch bit không đáng kể.
+Tuy nhiên message :math:`m` mà đề cho không encrypt ra :math:`x` tương ứng, ta sẽ gọi là :math:`y`. Nghĩa là nếu biểu diễn :math:`m = (m_1, m_2, \ldots, m_n)` thì ta có :math:`y = \prod\limits_{i=1}^n p_i^{m_i} \bmod q`. Ở đây :math:`m` và flag có cùng độ dài và sự sai lệch bit không đáng kể.
 
-Hmm, sai lệch bit không đáng kể? :v
+Hmm, sai lệch bit không đáng kể?
 
 Đặt
 
@@ -859,7 +859,7 @@ Do :math:`\lvert ed - sq \rvert = n` nên tương đương với :math:`\Bigg\lv
 
 Bài này dựa trên ý tưởng `xấp xỉ Diophantine <https://en.wikipedia.org/wiki/Diophantine\_approximation>`_. Ở đây điều kiện để tồn tại chuỗi liên phân số hội tụ là :math:`nd < \dfrac{q}{2}`. Khi đó :math:`\dfrac{s}{d}` là liên phân số hội tụ dần tới :math:`\dfrac{1}{d^2}` do :math:`\dfrac{n}{qd} < \dfrac{1}{d^2}`.
 
-Sử dụng SageMath mình có thể tìm được dãy các phân số :math:`\dfrac{s_j}{d_j}` hội tụ tới :math:`\dfrac{1}{d^2}`. Do đó chiến thuật để giải bài này là tìm :math:`d_j` mà có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng :math:`y`). Sau đó với :math:`d_j e` mà cũng có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng với :math:`x`) thì ta sẽ tìm được phân tích tốt nhất để sửa các bit error :math:`e_i`.
+Sử dụng SageMath ta có thể tìm được dãy các phân số :math:`\dfrac{s_j}{d_j}` hội tụ tới :math:`\dfrac{1}{d^2}`. Do đó chiến thuật để giải bài này là tìm :math:`d_j` mà có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng :math:`y`). Sau đó với :math:`d_j e` mà cũng có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng với :math:`x`) thì ta sẽ tìm được phân tích tốt nhất để sửa các bit error :math:`e_i`.
 
 .. only:: html
 

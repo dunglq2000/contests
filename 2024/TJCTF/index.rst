@@ -3,17 +3,17 @@ TJCTF 2024
 
 Một ngày đẹp trời 20/05/20xx ...
 
-Đề bài của CTF này có nhiều câu rất dài nên mình không để ở đây. Các bạn có thể tải đề từ github của cuộc thi tại `đây <https://github.com/TJCSec/tjctf-2024-challenges>`_.
+Đề bài của CTF này có nhiều câu rất dài nên ta không để ở đây. Người đọc có thể tải đề từ github của cuộc thi tại `đây <https://github.com/TJCSec/tjctf-2024-challenges>`_.
 
 weird-crypto
 ============
 
-Đây là một bài RSA cơ bản và không may là lúc thi mình không vào được factordb, nhưng ``oops`` đủ nhỏ để bruteforce nên cũng không hề gì.
+Đây là một bài RSA cơ bản và không may là lúc thi ta không vào được factordb, nhưng ``oops`` đủ nhỏ để duyệt vét cạn nên cũng không hề gì.
 
 accountleak
 ============
 
-Bài này cần tìm ``subs`` để recover lại ``p`` và ``q``. Tương tự bài trên, ``subs`` cũng đủ nhỏ để mình bruteforce đến khi nào tìm được cặp ``p`` và ``q`` là hai số nguyên tố và decrypt ``my_password``.
+Bài này cần tìm ``subs`` để recover lại ``p`` và ``q``. Tương tự bài trên, ``subs`` cũng đủ nhỏ để ta duyệt vét cạn đến khi nào tìm được cặp ``p`` và ``q`` là hai số nguyên tố và decrypt ``my_password``.
 
 .. code-block:: python
 
@@ -57,13 +57,13 @@ Bài này cần tìm ``subs`` để recover lại ``p`` và ``q``. Tương tự 
         pr.recvline()
         pr.recvline()
         print(pr.recvline())
-        
+
     pr.close()
 
 assume
 ============
 
-Ở bài này mình chỉ cần kiểm tra xem if hay else được thực thi bằng việc kiểm tra message thứ 5 của mỗi đoạn có bằng ``(g^a)^b`` không.
+Ở bài này ta chỉ cần kiểm tra xem if hay else được thực thi bằng việc kiểm tra message thứ 5 của mỗi đoạn có bằng ``(g^a)^b`` không.
 
 .. code-block:: python
 
@@ -78,7 +78,7 @@ assume
     pos = 0
 
     for ln in range(0, len(msg), 6 * 20):
-        for i in range(ln, ln + 6 * 20, 6):    
+        for i in range(ln, ln + 6 * 20, 6):
             ga = int(msg[i].split(" ")[-1])
             b = int(msg[i+1].split(" ")[-1])
             gb = int(msg[i+2].split(" ")[-1])
@@ -94,19 +94,19 @@ assume
 
 iodomethane
 ============
- 
+
 Ở bài này, nếu gọi :math:`K` là khóa thì :math:`K` là ma trận :math:`3 \times 3`. Giả sử flag gồm các bytes :math:`f_0 f_1 \ldots f_{n}` thì kết quả output là phép nhân ma trận
 
 .. math:: \begin{pmatrix} f_0 & f_1 & f_2 \\ f_3 & f_4 & f_5 \\ & \ddots & \\ \end{pmatrix} \cdot K = \begin{pmatrix} e_0 & e_1 & e_2 \\ e_3 & e_4 & e_5 \\ & \ddots & \end{pmatrix}.
 
-Với flag format là ``tjctf{``, mình đã biết :math:`6` ký tự đầu của flag, mình chỉ cần bruteforce thêm :math:`3` ký tự nữa là có thể kết hợp với output để tìm :math:`K`. Ở đây :math:`K` cần thỏa mãn là ma trận khả nghịch và khi decrypt mỗi dòng của flag (trừ dòng cuối) phải cho kết quả nằm trong ``alphabet``.
+Với flag format là ``tjctf{``, ta đã biết :math:`6` ký tự đầu của flag, ta chỉ cần duyệt vét cạn thêm :math:`3` ký tự nữa là có thể kết hợp với output để tìm :math:`K`. Ở đây :math:`K` cần thỏa mãn là ma trận khả nghịch và khi decrypt mỗi dòng của flag (trừ dòng cuối) phải cho kết quả nằm trong ``alphabet``.
 
-Code giải mình để ở :download:`solve.py <iodomethane/solve.py>`.
+Code giải ta để ở :download:`solve.py <iodomethane/solve.py>`.
 
 alkane
 ============
 
-Bài này mình giải ra sau cùng do một số nhầm lẫn. 
+Bài này ta giải ra sau cùng do một số nhầm lẫn.
 
 Giả sử gọi dòng :math:`i` của `schedule` là :math:`S^{(i)} = ( s^{(i)}_0, s^{(i)}_1, \ldots, s^{(i)}_{63} )`.
 
@@ -114,13 +114,13 @@ Gọi key là :math:`K = k_0 k_1 \ldots k_{128}`. Khi đó mảng `arr` sẽ đ�
 
 .. math:: \text{arr}_i = k_{s^{(i)}_0} \oplus k_{s^{(i)}_1} \oplus \ldots \oplus k_{s^{(i)}_{63}}.
 
-Ý tưởng của mình là xem phép tính trên như một tích vô hướng của hai vector :math:`\bar{a}_i = (a_0, \ldots, a_{127})` và :math:`K`, với :math:`a_j = 1` nếu :math:`j` nằm trong :math:`S^{(i)}`, ngược lại thì :math:`a_j = 0`.
+Ý tưởng của ta là xem phép tính trên như một tích vô hướng của hai vector :math:`\bar{a}_i = (a_0, \ldots, a_{127})` và :math:`K`, với :math:`a_j = 1` nếu :math:`j` nằm trong :math:`S^{(i)}`, ngược lại thì :math:`a_j = 0`.
 
-Khi mình xây dựng ma trận :math:`M` gồm các dòng là các vector :math:`\bar{a}_i` như trên thì mình không decrypt ra được. Mãi về sau mình mới phát hiện rằng trong :math:`S^{(i)}` có một số phần tử trùng nhau chứ không hoàn toàn là :math:`64` phần tử phân biệt.
+Khi ta xây dựng ma trận :math:`M` gồm các dòng là các vector :math:`\bar{a}_i` như trên thì ta không decrypt ra được. Mãi về sau ta mới phát hiện rằng trong :math:`S^{(i)}` có một số phần tử trùng nhau chứ không hoàn toàn là :math:`64` phần tử phân biệt.
 
-Khi đó mình cần xem số lần mỗi phần tử xuất hiện trong :math:`S^{(i)}` là chẵn hay lẻ.
+Khi đó ta cần xem số lần mỗi phần tử xuất hiện trong :math:`S^{(i)}` là chẵn hay lẻ.
 
-Một vấn đề khác là ma trận :math:`M` có rank bằng 127, không phải full rank. Do đó để tìm tất cả nghiệm của hệ phương trình mình cần cộng với tất cả tổ hợp tuyến tính của các vector trong kernel.
+Một vấn đề khác là ma trận :math:`M` có rank bằng 127, không phải full rank. Do đó để tìm tất cả nghiệm của hệ phương trình ta cần cộng với tất cả tổ hợp tuyến tính của các vector trong kernel.
 
 .. code-block:: python
 
@@ -199,36 +199,36 @@ lightweight-crypto-guard-system
 
 Với seed ban đầu :math:`x_0`, chuỗi sẽ được sinh theo công thức :math:`x_{i+1} = (a x_i + b) \bmod m`. Ở đây cả :math:`a`, :math:`b` và :math:`m` đều không biết.
 
-Có nhiều hướng dẫn mình tham khảo để tìm lại modulo :math:`m` và :math:`a`, :math:`b` (mình lười :v). Ví dụ như ở `link <https://math.stackexchange.com/questions/2724959/how-to-crack-a-linear-congruential-generator-lcg>`_.
+Có nhiều hướng dẫn ta tham khảo để tìm lại modulo :math:`m` và :math:`a`, :math:`b` (ta lười). Ví dụ như ở `link <https://math.stackexchange.com/questions/2724959/how-to-crack-a-linear-congruential-generator-lcg>`_.
 
 Nhưng vấn đề ở bài này là chúng ta được cho  một đoạn liên tục :math:`x_0, x_1, x_2, \ldots` mà thay vào đó là :math:`x_1`, :math:`x_{1+n}`, :math:`x_{2n+1}` (tổng có 6 số).
 
-Thực ra cách giải vẫn giống nhau. Đầu tiên mình recover modulo :math:`m`. Sau đó để ý rằng
+Thực ra cách giải vẫn giống nhau. Đầu tiên ta recover modulo :math:`m`. Sau đó để ý rằng
 
-.. math:: 
+.. math::
 
     x_1 & = (a x_0 + b) \bmod m \\
-    x_2 & = (a x_1 + b) \bmod m = (a \cdot (a x_0 + b) + b) = (a^2 x_0 + ab + b) \bmod m \\ 
+    x_2 & = (a x_1 + b) \bmod m = (a \cdot (a x_0 + b) + b) = (a^2 x_0 + ab + b) \bmod m \\
     x_3 & = (a x_2 + b) \bmod m = \ldots = a^3 x_0 + a^2 b + ab + b = a^3 x_0 + \dfrac{a^3 - 1}{a - 1} \cdot b \bmod m.
 
-Cứ tương tự vậy mình có :math:`x_{i+n} = (A x_n + B) \bmod m`,
+Cứ tương tự vậy ta có :math:`x_{i+n} = (A x_n + B) \bmod m`,
 
 với :math:`A = a^n \bmod m` và :math:`B = \dfrac{a^n - 1}{a - 1} \cdot b \bmod m`.
 
-Như vậy mình có một LCG mới và giải ra được :math:`A`, :math:`B`.
+Như vậy ta có một LCG mới và giải ra được :math:`A`, :math:`B`.
 
-Sau đó mình recover lại :math:`a` và :math:`b`. Như vậy là mình sinh được toàn bộ dãy.
+Sau đó ta recover lại :math:`a` và :math:`b`. Như vậy là ta sinh được toàn bộ dãy.
 
 hulksmash
 ============
 
-Với hint là file ``keysmashes.txt`` thì các dòng trong file sẽ giúp mình tìm key.
+Với hint là file ``keysmashes.txt`` thì các dòng trong file sẽ giúp ta tìm key.
 
 Để ý rằng mỗi dòng chỉ gồm các ký tự ``fjdlska;`` (:math:`8` ký tự, mỗi ký tự xuất hiện hai lần).
 
-Để ý thêm xíu nữa, mình phát hiện ra mỗi ký tự xuất hiện hai lần vào vị trí hoặc đều chẵn, hoặc đều lẻ. Cụ thể là các ký tự ``fdsa`` sẽ ở vị trí chẵn còn ``jlk;`` ở vị trí lẻ.
+Để ý thêm xíu nữa, ta phát hiện ra mỗi ký tự xuất hiện hai lần vào vị trí hoặc đều chẵn, hoặc đều lẻ. Cụ thể là các ký tự ``fdsa`` sẽ ở vị trí chẵn còn ``jlk;`` ở vị trí lẻ.
 
-Như vậy mình bruteforce tất cả tổ hợp như vậy và thử decrypt ...
+Như vậy ta duyệt vét cạn tất cả tổ hợp như vậy và thử decrypt ...
 
 .. code-block:: python
 
@@ -276,22 +276,22 @@ Như vậy mình bruteforce tất cả tổ hợp như vậy và thử decrypt .
                             except:
                                 pass
 
-Tiếp theo mình sẽ trình bày các bài mình làm sau khi giải kết thúc (có tham khảo writeup).
+Tiếp theo ta sẽ trình bày các bài ta làm sau khi giải kết thúc (có tham khảo bài viết).
 
 c-8
 ============
 
-Đề bài cho mình các file ``enc.py``, ``dec.py``, ``re_plaus``, ``plausibly.deniable``. Với hint là affine cipher và modulo ``n = 18446744073709551629`` mình cần khôi phục lại bốn file trên.
+Đề bài cho ta các file ``enc.py``, ``dec.py``, ``re_plaus``, ``plausibly.deniable``. Với hint là affine cipher và modulo ``n = 18446744073709551629`` ta cần khôi phục lại bốn file trên.
 
-Do :math:`n` có :math:`65` bit nên việc mã hóa theo mã affine sẽ mã hóa :math:`8` bytes một lần ra :math:`9` bytes của ciphertext. Các bạn cũng có thể thấy rằng byte đầu của mỗi đoạn :math:`9` bytes các file trên là ``0x00`` hoặc ``0x01``.
+Do :math:`n` có :math:`65` bit nên việc mã hóa theo mã affine sẽ mã hóa :math:`8` bytes một lần ra :math:`9` bytes của ciphertext. Người đọc cũng có thể thấy rằng byte đầu của mỗi đoạn :math:`9` bytes các file trên là ``0x00`` hoặc ``0x01``.
 
-Mã affine có dạng :math:`y = ax + b \bmod n` với :math:`a` và :math:`b` là hai số chưa biết cần đi tìm. Mình đã có :math:`y` và cần dự đoán :math:`x` nào sẽ mã hóa ra :math:`y` tương ứng. Đoạn đầu của các file mã hóa với Python thường sẽ dùng các thư viện như ``pycryptodome``. Mình thử một loạt các kiểu import và tìm ra phần đầu sẽ là
+Mã affine có dạng :math:`y = ax + b \bmod n` với :math:`a` và :math:`b` là hai số chưa biết cần đi tìm. Ta đã có :math:`y` và cần dự đoán :math:`x` nào sẽ mã hóa ra :math:`y` tương ứng. Đoạn đầu của các file mã hóa với Python thường sẽ dùng các thư viện như ``pycryptodome``. Ta thử một loạt các kiểu import và tìm ra phần đầu sẽ là
 
 .. code-block:: python
 
     from Crypto.Cipher import AES
 
-Mình chỉ cần :math:`16` bytes ở trên thôi là được. Dựa vào đó mình khôi phục lại :math:`a` và :math:`b` rồi decrypt bốn file ban đầu.
+Ta chỉ cần :math:`16` bytes ở trên thôi là được. Dựa vào đó ta khôi phục lại :math:`a` và :math:`b` rồi decrypt bốn file ban đầu.
 
 u-235
 ============
@@ -303,7 +303,7 @@ titanium-isopropoxide
 
 Bài này mã hóa bằng file C++ với thuật toán khá phức tạp.
 
-Bug ở bài này là key được tạo ra từ S-box không đủ mạnh. Sử dụng known-plaintext là flag format `tjctf{` và XOR với :math:`6` bytes đầu của ciphertext của hai file mình:
+Bug ở bài này là key được tạo ra từ S-box không đủ mạnh. Sử dụng known-plaintext là flag format `tjctf{` và XOR với :math:`6` bytes đầu của ciphertext của hai file ta:
 
 .. code-block:: python
 
@@ -326,13 +326,13 @@ Bug ở bài này là key được tạo ra từ S-box không đủ mạnh. Sử
     print(bytes(f2))
     print(bytes(f3))
 
-Ở kết quả thu được từ đoạn code, mình thấy rằng `flag2` khá giống với đoạn văn có nghĩa. Sau dấu ``{`` là từ ``this`` (vì có sẵn chữ ``is``), sau dấu ``_`` là ``cube``. Như vậy, mình XOR đoạn ``tjctf{this_cube`` thì sẽ thấy được key:
+Ở kết quả thu được từ đoạn code, ta thấy rằng `flag2` khá giống với đoạn văn có nghĩa. Sau dấu ``{`` là từ ``this`` (vì có sẵn chữ ``is``), sau dấu ``_`` là ``cube``. Như vậy, ta XOR đoạn ``tjctf{this_cube`` thì sẽ thấy được key:
 
-.. code-block:: 
+.. code-block::
 
     b'<U\xed\x18\xed\x18\xed\x18\xed\x18\xed\x18\xf7\x1e\xed'
 
-Mình thấy rằng key bắt đầu bởi ``<U`` và lặp lại cặp byte ```\xed\x18``. Do đó mình có thể decrypt ra flag.
+Ta thấy rằng key bắt đầu bởi ``<U`` và lặp lại cặp byte ```\xed\x18``. Do đó ta có thể decrypt ra flag.
 
 .. code-block:: python
 
@@ -357,9 +357,9 @@ Mình thấy rằng key bắt đầu bởi ``<U`` và lặp lại cặp byte ```
 lithium-stearate
 ================
 
-Sau khi giải kết thúc một pro đã hint cho mình: Slide attack.
+Sau khi cuộc thi kết thúc, một lời giải tham khảo gợi ý sử dụng tấn công trượt (*slide attack*).
 
-Bài này mình được cho :math:`20` cặp plaintext-ciphertext cùng với ciphertext của flag. Thông tin về cipher:
+Bài này ta được cho :math:`20` cặp plaintext-ciphertext cùng với ciphertext của flag. Thông tin về cipher:
 
 - độ dài block là :math:`16` bits (:math:`2` bytes);
 - độ dài khóa là :math:`64` bits (:math:`8` bytes);
@@ -412,7 +412,7 @@ Trong đó, ``P_f`` và ``S_f`` là hai hàm:
         out |= (in >> 8) & 0xff;
         out |= (in & 0xff) << 8;
         out ^= out >> 8;
-        
+
         Word out2 = 0;
         out2 |= out >> r;
         out2 |= out << (16 - r);
@@ -420,7 +420,7 @@ Trong đó, ``P_f`` và ``S_f`` là hai hàm:
         return out2;
     }
 
-Như vậy, ``S_f`` là hàm sử dụng S-box cho trước, và ``P_f`` là hàm hoán vị. Mình kí hiệu hai hàm này là :math:`S_f` và :math:`P_f`.
+Như vậy, ``S_f`` là hàm sử dụng S-box cho trước, và ``P_f`` là hàm hoán vị. Ta kí hiệu hai hàm này là :math:`S_f` và :math:`P_f`.
 
 Như vậy round function có dạng :math:`out = P_f(S_f(out \oplus k))`, trong đó :math:`r` là số :math:`16` bits và :math:`k` cũng là số :math:`16` bits. Ở đây lưu ý rằng tham số thứ hai của `r` là số :math:`32` bits nhưng thực chất là lấy nửa đầu XOR nửa cuối, như vậy key được dùng có :math:`16` bits.
 
@@ -429,7 +429,7 @@ key schedule
 
 Thuật toán sinh khóa ``ksch`` lấy đầu vào là khóa ban đầu :math:`8` bytes và vòng hiện tại :math:`i` để sinh ra khóa :math:`k_i`. Khi thử in ra tất cả :math:`1000000` khóa khi mã hóa một plaintext bất kì thì chúng ta có thể thấy rằng **chỉ có đúng bốn subkey xoay vòng**.
 
-Kết hợp với lúc nãy mình chỉ ra, mỗi round function lấy vào key :math:`32` bits nhưng thực chất chỉ là :math:`16` bits. Như vậy nếu bruteforce cả bốn vòng với bốn subkeys thì sẽ cần :math:`16 \times 4 = 64` bits. À thì nó cũng chả khác việc key ban đầu có :math:`64` bits :))) nên chúng ta sẽ không bruteforce kiểu này.
+Theo phân tích trên, mỗi hàm vòng nhận khóa :math:`32` bit nhưng chỉ sử dụng hiệu quả :math:`16` bit. Duyệt vét cạn bốn khóa con vẫn đòi hỏi không gian :math:`16 \times 4=64` bit, tương đương duyệt trực tiếp khóa ban đầu; vì vậy phương án này không đem lại cải thiện.
 
 Chúng ta sẽ xem kỹ hơn hàm sinh khóa con ``ksch``.
 
@@ -479,7 +479,7 @@ Chúng ta sẽ xem kỹ hơn hàm sinh khóa con ``ksch``.
         return r;
     }
 
-Ở phần kế của hàm ``ksch`` có :math:`3/4` trường hợp ``r`` là XOR của :math:`32` bits cao và :math:`32` bits thấp. Ở trên mình đã phân tích rằng bytes thứ :math:`3` và thứ :math:`7` của ``k`` sẽ là ``0xff`` nên khi XOR như vậy sẽ triệt tiêu byte đầu tiên của ``r``, nên ``r`` chỉ còn :math:`24` bits và chúng ta sẽ bruteforce ở đây.
+Ở phần kế của hàm ``ksch`` có :math:`3/4` trường hợp ``r`` là XOR của :math:`32` bits cao và :math:`32` bits thấp. Ở trên ta đã phân tích rằng bytes thứ :math:`3` và thứ :math:`7` của ``k`` sẽ là ``0xff`` nên khi XOR như vậy sẽ triệt tiêu byte đầu tiên của ``r``, nên ``r`` chỉ còn :math:`24` bits và chúng ta sẽ duyệt vét cạn ở đây.
 
 Trong trường hợp ``i = 0`` thì chương trình cũng chỉ lấy :math:`32` bits thấp nên chúng ta có thể bỏ qua. Lý do sẽ được trình bày ở phần sau.
 
@@ -508,7 +508,7 @@ hay tương đương là
 
 Slide attack lúc này sẽ hoạt động nếu :math:`P' = O_2 = F(P)` và :math:`C' = F(C)`. Khi vẽ ra sẽ có dạng:
 
-.. math:: 
+.. math::
     :nowrap:
 
     \begin{align*}
@@ -529,17 +529,17 @@ Như vậy chiến thuật để giải bài này là:
 
 Tuy nhiên việc này khó khăn vì không có khóa :math:`K` thì không kiểm tra được điều kiện :math:`F(P, K) = P'`. Do đó chúng ta sẽ làm ngược lại.
 
-Như ở trên đã phân tích, :math:`K_1`, :math:`K_2` và :math:`K_3` được sinh ra từ một ``k`` có :math:`24` bits, do đó chúng ta bruteforce các ``k`` như vậy và tính ra :math:`K_1`, :math:`K_2` và :math:`K_3` tương ứng.
+Như ở trên đã phân tích, :math:`K_1`, :math:`K_2` và :math:`K_3` được sinh ra từ một ``k`` có :math:`24` bits, do đó chúng ta duyệt vét cạn các ``k`` như vậy và tính ra :math:`K_1`, :math:`K_2` và :math:`K_3` tương ứng.
 
-Với mỗi hai plaintext :math:`P_i` và :math:`P_j` ta tính :math:`K_0` theo :math:`K_0 = S_f^{-1}(P^{-1}(T)) \oplus P`, với 
+Với mỗi hai plaintext :math:`P_i` và :math:`P_j` ta tính :math:`K_0` theo :math:`K_0 = S_f^{-1}(P^{-1}(T)) \oplus P`, với
 
 .. math:: T = G^{-1}(G^{-1}(G^{-1}(P', K_3), K_2), K_1)..
 
-Khi đã có đủ :math:`K_0`, :math:`K_1`, :math:`K_2` và :math:`K_3`, mình sẽ kiểm tra điều kiện :math:`C' = F(C, K)`. Nếu thỏa mãn thì mình có được một cặp **slid pair** và sẽ thử mã hóa hai cặp plaintext-ciphertext bất kì để xem việc mã hóa với khóa có đúng không.
+Khi đã có đủ :math:`K_0`, :math:`K_1`, :math:`K_2` và :math:`K_3`, ta sẽ kiểm tra điều kiện :math:`C' = F(C, K)`. Nếu thỏa mãn thì ta có được một cặp **slid pair** và sẽ thử mã hóa hai cặp plaintext-ciphertext bất kì để xem việc mã hóa với khóa có đúng không.
 
-Khi tìm được khóa rồi thì mình giải mã lại flag.
+Khi tìm được khóa rồi thì ta giải mã lại flag.
 
-Sau khi chạy :download:`findkey.cpp <lithium-stearate/findkey.cpp>` thì mình tìm được key là :math:`11892`, :math:`8704`, :math:`3384`, :math:`38922`. Sau đó mình decrypt ra flag. Ở đây mình compile với flag ``-O3`` và ``openmp`` vì mình không có nhiều kinh nghiệm dùng GCC lắm. :))) Code cũng sẽ chạy nhanh hơn nếu sử dụng các flag khác, cũng như C++ khác như 11, ...
+Sau khi chạy :download:`findkey.cpp <lithium-stearate/findkey.cpp>` thì ta tìm được key là :math:`11892`, :math:`8704`, :math:`3384`, :math:`38922`. Sau đó ta decrypt ra flag. Ở đây ta compile với flag ``-O3`` và ``openmp`` vì ta không có nhiều kinh nghiệm dùng GCC lắm. Code cũng sẽ chạy nhanh hơn nếu sử dụng các flag khác, cũng như C++ khác như 11, ...
 
 Lệnh compile:
 
@@ -549,9 +549,9 @@ Lệnh compile:
 
 Cuối cùng chúng ta giải mã với file :download:`decrypt.cpp <lithium-stearate/decrypt.cpp>`.
 
-Mình dành hẳn một phần cho một bài vì bài này khá dài và phức tạp.
+Ta dành hẳn một phần cho một bài vì bài này khá dài và phức tạp.
 
-Đây cũng là bài viết đầu tiên của mình về một phương pháp tấn công cực kì phổ biến là differential attack (phá mã vi sai).
+Đây cũng là bài viết đầu tiên của ta về một phương pháp tấn công cực kì phổ biến là differential attack (phá mã vi sai).
 
 tetraethyllead
 ==============
@@ -578,7 +578,7 @@ Trong đó:
 
 Ở mô hình Feistel bên trên (cũng là mô hình chuẩn) thì hàm :math:`F` cố định cho mỗi vòng. Tuy nhiên ở bài này thì round function ở mỗi vòng khác nhau. Cụ thể thì ở vòng một dùng S-box `r2`, ở vòng thứ hai là S-box `r1`, các vòng sau thì dùng hàm `r345`.
 
-Mình có thể viết quá trình biến đổi như sau:
+Ta có thể viết quá trình biến đổi như sau:
 
 +----------------+-----------------------------------------------+----------------------------------------------------------------+
 | Vòng :math:`1` | :math:`L_1 = R_0`                             | :math:`R_1 = L_0 \oplus r_2(R_0, S_2)`                         |
@@ -607,17 +607,17 @@ Differential là gì???
 
 Hàm :math:`S` thường là các S-box trong block cipher. Các S-box thường không tuyến tính, nghĩa là ta không có :math:`S(\boldsymbol{a} \oplus \boldsymbol{b}) = S(\boldsymbol{a}) \oplus S(\boldsymbol{b})`.
 
-Differential dựa trên quan sát rằng khi :math:`\boldsymbol{a} \oplus \boldsymbol{b}` cố định thì output differential :math:`S(\boldsymbol{a}) \oplus S(\boldsymbol{b})` phân bố không đều. Giả sử mình có S-box như sau:
+Differential dựa trên quan sát rằng khi :math:`\boldsymbol{a} \oplus \boldsymbol{b}` cố định thì output differential :math:`S(\boldsymbol{a}) \oplus S(\boldsymbol{b})` phân bố không đều. Giả sử ta có S-box như sau:
 
-.. math:: 
-    
+.. math::
+
     \begin{array}{|c|c|c|c|c|c|c|c|c||c|c|c|c|c|c|c|c|}
         \hline
         x & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\ \hline
         S(x) & 3 & 14 & 1 & 10 & 4 & 9 & 5 & 6 & 8 & 11 & 15 & 2 & 13 & 12 & 0 & 7 \\ \hline
     \end{array}
 
-Nếu mình duyệt qua tất cả cặp :math:`\boldsymbol{a}, \boldsymbol{b} \in \mathbb{F}_2^4` thì mình sẽ có quan sát sau:
+Nếu ta duyệt qua tất cả cặp :math:`\boldsymbol{a}, \boldsymbol{b} \in \mathbb{F}_2^4` thì ta sẽ có quan sát sau:
 
 - Nếu input vi sai là :math:`0` thì output vi sai là :math:`0` với xác suất :math:`1`.
 - Nếu input vi sai là :math:`1` thì output vi sai là :math:`13` với xác suất :math:`6 / 16`.
@@ -651,7 +651,7 @@ Sau vòng :math:`1` ta có:
 
 Khi đó differential ở vòng :math:`1` là:
 
-.. math:: 
+.. math::
 
     & \Delta L_1 = L_1 \oplus L'_1 = R_0 \oplus R'_0 \\
     & \Delta R_1 = R_1 \oplus R'_1 = L_0 \oplus L'_0 \oplus r_2(R_0, S_2) \oplus r_2(R'_0, S_2).
@@ -667,7 +667,7 @@ Như vậy :math:`\Delta R_1` phụ thuộc vào vi sai của hàm :math:`r_2`.
 
         for byte in i:
             out.append(box[byte])
-            
+
         for idx in range(len(out) - 2, -1, -1):
             out[idx] ^= out[idx + 1]
 
@@ -679,11 +679,11 @@ Giả sử bốn bytes đầu vào của :math:`r_2` là :math:`a \Vert b \Vert 
 
 Như vậy nếu :math:`R_0 = a \Vert b \Vert c \Vert d` và :math:`R'_0 = a' \Vert b' \Vert c' \Vert d'` thì:
 
-.. math:: 
+.. math::
 
-    r_2(R_0, S_2) \oplus r_2(R_0', S_2) = & S_2(a) \oplus S_2(b) \oplus S_2(c) \oplus S_2(d) \oplus S_2(a') \oplus S_2(b') \oplus S_2(c') \oplus S_2(d') \\ 
-    \Vert & S_2(b) \oplus S_2(c) \oplus S_2(d') \oplus S_2(b') \oplus S_2(c') \oplus S_2(d') \\ 
-    \Vert & S_2(c) \oplus S_2(d) \oplus S_2(c') \oplus S_2(d') \\ 
+    r_2(R_0, S_2) \oplus r_2(R_0', S_2) = & S_2(a) \oplus S_2(b) \oplus S_2(c) \oplus S_2(d) \oplus S_2(a') \oplus S_2(b') \oplus S_2(c') \oplus S_2(d') \\
+    \Vert & S_2(b) \oplus S_2(c) \oplus S_2(d') \oplus S_2(b') \oplus S_2(c') \oplus S_2(d') \\
+    \Vert & S_2(c) \oplus S_2(d) \oplus S_2(c') \oplus S_2(d') \\
     \Vert & S_2(d) \oplus S_2(d')
 
 Dễ thấy rằng nếu chúng ta chọn :math:`d = d'` thì byte cuối triệt tiêu.
@@ -692,11 +692,11 @@ Tiếp theo chọn :math:`c = c'` thì byte kế cuối cũng triệt tiêu.
 
 Tiếp theo chọn :math:`b = b'` thì byte thứ ba (từ phải sang trái) cũng triệt tiêu.
 
-Khi đó vi sai sẽ là 
+Khi đó vi sai sẽ là
 
 .. math:: r_2(R_0, S_2) \oplus r_2(R_0', S_2) = S_2(a) \oplus S_2(a') \Vert 00 \Vert 00 \Vert 00.
 
-Bằng một cách *ảo ma* nào đó thì output differential :math:`S_2(a) \oplus S_2(a') = 0x80` có xác suất xảy ra cao nhất khi input differential là :math:`0x80`. Cái này writeup nói nhưng chúng ta cũng có thể kiểm tra phân bố vi sai của :math:`r_2`.
+Bằng một cách *ảo ma* nào đó thì output differential :math:`S_2(a) \oplus S_2(a') = 0x80` có xác suất xảy ra cao nhất khi input differential là :math:`0x80`. Cái này bài viết nói nhưng chúng ta cũng có thể kiểm tra phân bố vi sai của :math:`r_2`.
 
 Đi ngược lên trên thì :math:`a \Vert b \Vert c \Vert d \oplus a' \Vert b' \Vert c' \Vert d' = 80 \Vert 00 \Vert 00 \Vert 00`. Đây chính là vi sai cho :math:`R_0 \oplus R_0'`.
 
@@ -715,7 +715,7 @@ Sau vòng :math:`2` ta có:
 Khi đó differential ở vòng :math:`2` là:
 
 .. math:: \Delta L_2 = L_2 \oplus L'_2 = R_1 \oplus R'_1 = L_0 \oplus L_0' \oplus 0x80000000.
- 
+
 với xác suất cao.
 
 Tương tự
@@ -726,11 +726,11 @@ Khi này, :math:`R_1 \oplus R_1'` rất khó kiểm soát nên chúng ta sẽ kh
 
 Nếu :math:`R_1 = R_1'` thì quay ngược lên trên, :math:`\Delta R_1 = 00 = L_0 \oplus L_0' \oplus 0x80000000` nên :math:`L_0 \oplus L_0' = 0x80000000`.
 
-Như vậy mình đã tìm được input differential cho cả hàm mã hóa là :math:`L_0 \oplus L_0' = 0x80000000` và :math:`R_0 \oplus R_0' = 0x80000000`.
+Như vậy ta đã tìm được input differential cho cả hàm mã hóa là :math:`L_0 \oplus L_0' = 0x80000000` và :math:`R_0 \oplus R_0' = 0x80000000`.
 
 Lúc này, differential ở vòng :math:`2` có xác suất xảy ra cao nhất là :math:`L_2 \oplus L_2' = 0x00000000` và :math:`R_2 \oplus R_2' = 0x80000000`.
 
-Tiếp theo, mình cần biết output differential nào của toàn bộ hàm ``encrypt`` sẽ có khả năng xảy ra nhất đối với input differential này.
+Tiếp theo, ta cần biết output differential nào của toàn bộ hàm ``encrypt`` sẽ có khả năng xảy ra nhất đối với input differential này.
 
 .. _ham_z345:
 
@@ -751,11 +751,11 @@ Hàm ``z345``
 
         return rrot(word, -504 + 418 * rnum -499 * rnum**2 + -511 * rnum**3 + 98 * rnum**4) & 0xffffffff
 
-Khi thay các giá trị ``rnum`` vào thì mình thấy có :math:`3` vòng ``rrot`` và ``lrot`` ngược nhau (``rrot(word, 17)`` và ``lrot(word, 15)`` trên :math:`32` bit) nên ở những vòng này ``rrot`` và ``lrot`` sẽ triệt tiêu nhau do đa thức.
+Khi thay các giá trị ``rnum`` vào thì ta thấy có :math:`3` vòng ``rrot`` và ``lrot`` ngược nhau (``rrot(word, 17)`` và ``lrot(word, 15)`` trên :math:`32` bit) nên ở những vòng này ``rrot`` và ``lrot`` sẽ triệt tiêu nhau do đa thức.
 
 Tiếp theo, ``word ^= word << 5`` sẽ không làm thay đổi differential :math:`0x80`. Lấy ví dụ với :math:`8` bit :math:`\bar{a} = a_0 a_1 a_2 a_3 a_4 a_5 a_6 a_7` và :math:`\bar{b} = b_0 b_1 b_2 b_3 b_4 b_5 b_6 b_7`. Giả sử :math:`\bar{a} \oplus \bar{b} = 0x80` thì:
 
-.. math:: 
+.. math::
 
     \bar{a} \oplus (\bar{a} << 5) \oplus \bar{b} \oplus (\bar{b} << 5) = & a_0 a_1 a_2 a_3 a_4 a_5 a_6 a_7 \oplus a_5 a_6 a_7 0 0 0 0 0 \\ \oplus & b_0 b_1 b_2 b_3 b_4 b_5 b_6 b_7 \oplus b_5 b_6 b_7 00000 \\ = & \underbrace{(a_0 a_1 a_2 a_3 a_4 a_5 a_6 a_7 \oplus b_0 b_1 b_2 b_3 b_4 b_5 b_6 b_7)}_{0x80} \\ \oplus & \underbrace{(a_5 a_6 a_7 00000 \oplus b_5 b_6 b_7 00000)}_{0x00} = 0x80.
 
@@ -771,7 +771,7 @@ Chiến thuật để giải bài này là:
 
 Các cặp plaintext, ciphertext như trên sẽ giúp ta khôi phục lại khóa.
 
-**Note.** Để thuận tiện thì mình sẽ cố định khóa trong `server.py` và chỉ cần tìm ra khóa là xong. Ở trong giải thì sau khi request đủ :math:`1024` lần encrypt server cũng không đặt timeout nên chúng ta có thể để script chạy bao lâu tùy ý.
+**Note.** Để thuận tiện thì ta sẽ cố định khóa trong `server.py` và chỉ cần tìm ra khóa là xong. Ở trong giải thì sau khi request đủ :math:`1024` lần encrypt server cũng không đặt timeout nên chúng ta có thể để script chạy bao lâu tùy ý.
 
 File :download:`solve.py <tetraethyllead/solve.py>` sau đây tương tác với ``server.py`` để lấy về các cặp plaintext, ciphertext thỏa mãn điều kiện trên.
 
@@ -784,14 +784,14 @@ Chúng ta cần viết :download:`solve.h <tetraethyllead/solve.h>` chứa đị
 .. code-block:: cpp
 
     int main()
-    {    
+    {
         std::vector<uint32_t> key2 = bruteforce_k2();
         for (int i = 0; i < key2.size(); i++)
             std::cout << std::hex << key2[i] << std::endl;
         return 0;
     }
 
-Sau đó với mỗi ``k2`` chúng ta bruteforce các ``k1`` và kiểm tra ``k = k1 || k2`` nào sẽ encrypt đúng. Ở đây do mình đã cố định khóa ở ``server.py`` nên mình biết ``k2`` nào là đúng để tiết kiệm thời gian viết lại writeup. Sau đó thì chỉ cần bruteforce ``k1`` thôi.
+Sau đó với mỗi ``k2`` chúng ta duyệt vét cạn các ``k1`` và kiểm tra ``k = k1 || k2`` nào sẽ encrypt đúng. Ở đây do ta đã cố định khóa ở ``server.py`` nên ta biết ``k2`` nào là đúng để tiết kiệm thời gian viết lại bài viết. Sau đó thì chỉ cần duyệt vét cạn ``k1`` thôi.
 
 .. code-block:: cpp
 
@@ -799,7 +799,7 @@ Sau đó với mỗi ``k2`` chúng ta bruteforce các ``k1`` và kiểm tra ``k 
     {
         uint8_t k2[] = { 0xef, 0x13, 0x37, 0xff };
         get_sbox(k2, sbox2);
-        
+
         uint64_t p = 2194090266659289430ULL;
         uint64_t c = 5313144679078469543ULL;
 
@@ -815,4 +815,4 @@ Sau đó với mỗi ``k2`` chúng ta bruteforce các ``k1`` và kiểm tra ``k 
         return 0;
     }
 
-Cám ơn các bạn đã đọc writeup dài lê thê của mình.
+ bài viết dài lê thê của ta.

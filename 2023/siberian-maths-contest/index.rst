@@ -1,7 +1,7 @@
 Siberian Mathematical Contest 2023
 **********************************
 
-Đề và lời giải gốc (tiếng Nga) các bạn có thể tải ở :download:`solutions_SMC_2023.pdf`.
+Đề và lời giải gốc (tiếng Nga) người đọc có thể tải ở :download:`solutions_SMC_2023.pdf`.
 
 Đề dành cho năm nhất
 ====================
@@ -44,16 +44,16 @@ Từ quy nạp toán học có thể tìm được
 
 Từ đó,
 
-.. math:: 
+.. math::
 
     a_n & = n \left( (n-1) a_{n-2} + \frac{(-1)^{n-1}}{n} \right) + \frac{(-1)^n}{n+1} \\
     & = n (n-1) a_{n-2} + (-1)^{n-1} + \frac{(-1)^n}{n+1} \\
     & = \ldots \\
-    & = n! a_0 - \frac{n!}{2!} + \frac{(-1)^2 n!}{3!} + \frac{(-1)^3 n!}{4!} + \cdots + \frac{(-1)^{n-1} n!}{n!} + \frac{(-1)^n n!}{n!} 
+    & = n! a_0 - \frac{n!}{2!} + \frac{(-1)^2 n!}{3!} + \frac{(-1)^3 n!}{4!} + \cdots + \frac{(-1)^{n-1} n!}{n!} + \frac{(-1)^n n!}{n!}
 
 Nói cách khác,
 
-.. math:: 
+.. math::
 
     \frac{a_n}{n!} & = a_0 + \frac{(-1)^1}{2!} + \frac{(-1)^2}{3!} + \frac{(-1)^3}{4!} + \cdots + \frac{(-1)^{n-1}}{n!} + \frac{(-1)^n}{n!} \\
     & = \sum_{k=0}^n \frac{(-1)^k}{(k+1)!} = 1 - \sum_{k=0}^{n+1} \frac{(-1)^k}{k!} \to 1 - \frac{1}{e}
@@ -73,8 +73,8 @@ Lời giải
 
 Giả sử, :math:`[f(m)] \geqslant n`. Đặt :math:`[f(s)] = l_s`. Theo tính đơn điệu thì :math:`l_s \leqslant f(s) < l_{s+1}`. Do :math:`f(x)` liên tục và đơn điệu tăng nghiêm ngặt nên :math:`g(x)` cũng liên tục và đơn điệu.
 
-.. math:: 
-    
+.. math::
+
     \sum_{k=0}^m [f(k)] = l_1 + l_2 + \cdots + l_m;
 
     \sum_{s=0}^n [g(s)] = 1 (l_2 - l_1) + 2(l_3 - l_2) + 3 (l_4 - l_3) + \cdots + p(n - l_p).
@@ -85,7 +85,7 @@ với :math:`p` nào đó mà :math:`l_p < n \leqslant l_{p+1}`. Từ đây ta c
 
 Vì :math:`l_{p+1}, l_{p+2}, \ldots, l_m > n` nên
 
-.. math:: 
+.. math::
 
     \sum_{k=0}^m [f(k)] + \sum_{s=0}^n [g(s)] & = p l_p + p(n - l_p) + l_{p+1} + l_{p+2} + \cdots + l_m \\
     & = pn + l_{p+1} + l_{p+2} + \cdots + l_m > pn + (m - p) n = mn.

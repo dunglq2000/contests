@@ -27,7 +27,7 @@ Thay (2) vào đây thì :math:`(1 + (k + b) \cdot q)^{2019} \equiv (c1 \cdot b^
 Hơn nữa :math:`1 + (k + b) \cdot q \equiv 1 \mod q` nên suy ra :math:`(c1 \cdot b^{2019}) \bmod n - 1` chia hết :math:`q`. Như vậy
 
 .. math:: \gcd(n, (c1 \cdot b^{2019}) \bmod n - 1) = q
-    
+
 vì :math:`(c1 \cdot b^{2019}) \bmod n - 1` không chia hết :math:`n`.
 
 Chiến thuật giải: tìm ước chung lớn nhất giữa :math:`n` và :math:`(c1 \cdot b^{2019}) \bmod n - 1` sẽ được :math:`q`. Từ đó tính

@@ -1,7 +1,7 @@
 Các cuộc thi năm 2022
 #####################
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 1
 
     downunderCTF/index

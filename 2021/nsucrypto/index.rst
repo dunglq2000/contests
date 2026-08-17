@@ -24,7 +24,7 @@ Giả sử order của :math:`Q` là :math:`n` lẻ. Xét điểm :math:`P = \df
 
 Do :math:`2P = (n+1) Q = Q` (do :math:`Q` có order là :math:`n`) nên theo công thức cộng hai điểm trên elliptic ta có
 
-.. math:: 
+.. math::
 
    x' & = \left(\frac{3x^2 + a}{2y}\right) - 2x \\
       & = \frac{9x^4 + 6x^2 a + a^2 - 8x(x^3 + ax)}{(2y)^2} \\
@@ -51,25 +51,25 @@ Giải
 
 Dễ thấy rằng khi :math:`l > 2` thì sử dụng động tác thứ hai khiến độ dài dãy tăng lên rất nhanh như lại tốn thêm coin.
 
-Như vậy khi :math:`l > 6` mình sẽ chứng minh rằng động tác thứ hai hiệu quả hơn.
+Như vậy khi :math:`l > 6` ta sẽ chứng minh rằng động tác thứ hai hiệu quả hơn.
 
-Để ý rằng nếu mình sử dụng động tác thứ nhất ba lần liên tiếp, khi đó từ dãy có độ dài :math:`l` mình thu được dãy mới độ dài :math:`l + 4 + 4 + 4 = l + 12` và việc này tốn :math:`6` *nsucoin*.
+Để ý rằng nếu ta sử dụng động tác thứ nhất ba lần liên tiếp, khi đó từ dãy có độ dài :math:`l` ta thu được dãy mới độ dài :math:`l + 4 + 4 + 4 = l + 12` và việc này tốn :math:`6` *nsucoin*.
 
-Trong khi đó, nếu mình dùng động tác thứ hai một lần thì từ dãy độ dài :math:`l` mình thu được dãy độ dài :math:`3l` và tốn :math:`5` *nsucoin*.
+Trong khi đó, nếu ta dùng động tác thứ hai một lần thì từ dãy độ dài :math:`l` ta thu được dãy độ dài :math:`3l` và tốn :math:`5` *nsucoin*.
 
-Mình muốn :math:`3l > l + 12` vì mình đã có :math:`3l` tương ứng :math:`5` *nsucoin* và :math:`l + 12` tương ứng :math:`6` *nsucoin*. Như vậy :math:`l > 6`.
+Ta muốn :math:`3l > l + 12` vì ta đã có :math:`3l` tương ứng :math:`5` *nsucoin* và :math:`l + 12` tương ứng :math:`6` *nsucoin*. Như vậy :math:`l > 6`.
 
-Chiến thuật lúc này là mình sẽ dùng động tác thứ hai để triple độ dài bất cứ lúc nào có thể. Nói cách khác là khi đi ngược từ :math:`2021` về :math:`0` thì khi nào số chia hết cho :math:`3`, mình sẽ dùng động tác thứ hai, không thì dùng động tác thứ nhất.
+Chiến thuật lúc này là ta sẽ dùng động tác thứ hai để triple độ dài bất cứ lúc nào có thể. Nói cách khác là khi đi ngược từ :math:`2021` về :math:`0` thì khi nào số chia hết cho :math:`3`, ta sẽ dùng động tác thứ hai, không thì dùng động tác thứ nhất.
 
 Quá trình sẽ diễn ra theo bảng sau.
 
 .. only:: html
 
-   .. table:: 
+   .. table::
       :class: centered-table
 
       .. include:: bitkey.rst.inc
-        
+
 .. only:: latex
 
    .. tabularcolumns:: |c|c|
@@ -78,6 +78,6 @@ Quá trình sẽ diễn ra theo bảng sau.
 
 Từ :math:`21` trở đi không thể áp dụng quy tắc trên nữa vì theo chứng minh trên chiến thuật chỉ hiệu quả với :math:`l > 6`.
 
-Mình khai triển :math:`21 = 1 + 4 + 4 + 4 + 4 + 4`, thực hiện :math:`4` phép trừ (động tác đầu) tốn :math:`5 \cdot 2 = 10` *nsucoin* và trừ :math:`1` tốn :math:`1` *nsucoin*.
+Ta khai triển :math:`21 = 1 + 4 + 4 + 4 + 4 + 4`, thực hiện :math:`4` phép trừ (động tác đầu) tốn :math:`5 \cdot 2 = 10` *nsucoin* và trừ :math:`1` tốn :math:`1` *nsucoin*.
 
 Như vậy tổng số *nsucoin* nhỏ nhất cần là :math:`47`.
