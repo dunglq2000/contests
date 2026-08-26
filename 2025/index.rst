@@ -6,7 +6,7 @@ Các cuộc thi năm 2025
 
     cryptofox/index
     tjctf
-    olympiad-algebra
+    olympiad-algebra-MSU/index
     CryptoFox2025/4/solve
 
 ..

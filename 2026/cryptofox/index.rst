@@ -149,13 +149,13 @@ Bởi vì :math:`f` là hàm cân bằng nên :math:`\sum\limits_{x \in P} f(x) 
 
 Bây giờ ta chứng minh :math:`N` và :math:`T` nguyên tố cùng nhau.
 
-**Trường hợp 1:** :math:`f(0) = 0`, khi đó :math:`N` là số chẵn, mà :math:`T` là số lẻ nên :math:`\gcd(T, N) = 1`.
+**Trường hợp 1:** :math:`f(0) = 0`, khi đó :math:`N` là luỹ thừa của :math:`2` nên mọi ước của :math:`N` chia hết cho :math:`2`, mà :math:`T` là số lẻ nên :math:`\gcd(T, N) = 1`.
 
 **Trường hợp 2:** :math:`f(0) = 1`, khi đó :math:`N = 2^{nm-1} - 1`. Ta có
 
 .. math:: 
 
-   T = 2^{nm} - 1 = (2^{nm} - 1) \cdot 2 + 1 = 2N + 1,
+   T = 2^{nm} - 1 = (2^{nm - 1} - 1) \cdot 2 + 1 = 2N + 1,
 
 như vậy
 
@@ -169,7 +169,7 @@ Vì :math:`N = (T / d) \cdot k`, tương đương với :math:`T \cdot k = N \cd
 
 .. math:: \boxed{T(u) = T(v)}.
 
-Tiếp theo ta chứng minh ý 2: với mọi :math:`t` mà không chia hết cho :math:`(2^{nm} - 1) / (2^n - 1)` thì khoảng cách Hamming :math:`\rho_t` giữa vector :math:`(v(0), v(1), \ldots, v(T(u) - 1)` và :math:`v(t), v(t+1), \ldots, v(t+T(u)-1)` bằng :math:`2^{nm}-1`.
+Tiếp theo ta chứng minh ý 2: với mọi :math:`t` mà không chia hết cho :math:`(2^{nm} - 1) / (2^n - 1)` thì khoảng cách Hamming :math:`\rho_t` giữa vector :math:`(v(0), v(1), \ldots, v(T(u) - 1))` và :math:`(v(t), v(t+1), \ldots, v(t+T(u)-1))` bằng :math:`2^{nm-1}`.
 
 Đặt :math:`Q = \FF_{2^{nm}}` là trường với :math:`2^{nm}` phần tử. Đặt
 
@@ -232,7 +232,7 @@ Khi :math:`v(i) = v(i+t)` thì :math:`f(u(i)) = f(u(i+t))`. Ta cần chứng min
 
    Đặt :math:`L` là ánh xạ :math:`Q \to P^2`, :math:`x \mapsto (\mathrm{tr}(\beta x), \mathrm{tr}(\gamma x))`.
 
-   Vì :math:`\mathrm{tr}` là ánh xạ tuyến tính nên :math:`L` cũng tuyến tính. Ở trên ta đã chứng minh rằng nếu :math:`t` không là bội của :math:`T / (2^n - 1)` thì :math:`\alpha^i \not\in P`. Khi đó :math:`\beta` và :math:`\gamma` độc lập tuyến tính trên :math:`P`.
+   Vì :math:`\mathrm{tr}` là ánh xạ tuyến tính nên :math:`L` cũng tuyến tính. Ở trên ta đã chứng minh rằng nếu :math:`t` không là bội của :math:`T / (2^n - 1)` thì :math:`\alpha^t \not\in P`. Khi đó :math:`\beta` và :math:`\gamma` độc lập tuyến tính trên :math:`P`.
 
    Từ đó, :math:`\mathrm{tr}(\beta x)` và :math:`\mathrm{tr}(\gamma x)` độc lập tuyến tính, suy ra :math:`L` là không gian vector con trên :math:`P^2` và có số chiều là :math:`2`. Dễ thấy :math:`L` là toàn ánh nên :math:`\dim \ker(L) = m - 2`, như vậy :math:`\lvert \ker(L) \rvert = (2^n)^{m-2} = 2^{n(m-2)}`.
 
@@ -276,15 +276,15 @@ Từ đó
 
 Đặt
 
-.. math:: J = \sum_{i=0}^{T-1} g(u(i)) \cdot g(u(i+t)) = \sum_{a \in P} \sum_{b \in P} g(a) \cdot g(b) \cdot W(a, b).
+.. math:: J = \sum_{i=0}^{T-1} g(u(i)) \cdot g(u(i+t)) = \sum_{a \in P} \sum_{b \in P} g(a) \cdot g(b) \cdot \lvert W(a, b) \rvert.
 
 Khi đó:
 
-1. Nếu :math:`(a, b) = (0, 0)` thì :math:`g(a) \cdot g(b) \cdot W(a, b) = 1 \cdot (2^{n(m-2)} - 1) = 2^{n(m-2)} - 1`.
+1. Nếu :math:`(a, b) = (0, 0)` thì :math:`g(a) \cdot g(b) \cdot \lvert W(a, b) \rvert = 1 \cdot (2^{n(m-2)} - 1) = 2^{n(m-2)} - 1`.
 2. Nếu :math:`(a, b) \neq (0, 0)` thì ta có hai trường hợp:
 
-   - nếu :math:`f(a) = f(b)` thì :math:`g(a) \cdot g(b) \cdot W(a, b) = 1 \cdot 2^{n(m-2)} = 2^{n(m-2)}` và tồn tại :math:`2^{2n-1} - 1` cặp :math:`(a, b)` như vậy (không tính cặp :math:`(0, 0)`);
-   - nếu :math:`f(a) \neq f(b)` thì :math:`g(a) \cdot g(b) \cdot W(a, b) = -1 \cdot 2^{n(m-2)} = -2^{n(m-2)}` và tồn tại :math:`2^{2n-1}` cặp :math:`(a, b)` như vậy.
+   - nếu :math:`f(a) = f(b)` thì :math:`g(a) \cdot g(b) \cdot \lvert W(a, b) \rvert = 1 \cdot 2^{n(m-2)} = 2^{n(m-2)}` và tồn tại :math:`2^{2n-1} - 1` cặp :math:`(a, b)` như vậy (không tính cặp :math:`(0, 0)`);
+   - nếu :math:`f(a) \neq f(b)` thì :math:`g(a) \cdot g(b) \cdot \lvert W(a, b) \rvert = -1 \cdot 2^{n(m-2)} = -2^{n(m-2)}` và tồn tại :math:`2^{2n-1}` cặp :math:`(a, b)` như vậy.
 
 Tổng kết lại
 

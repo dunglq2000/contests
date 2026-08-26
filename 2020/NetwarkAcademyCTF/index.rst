@@ -4,18 +4,18 @@ Netwark Academy CTF 2020
 1. Caesar's Challenge
 ---------------------
 
-**Mô tả**: Zabelo wrote this message on a note he passed to me. anpgs{q3p1cu3e1at_e0px5!} He also told me his favorite number was 13. What could this mean?
+**Mô tả**: Zabelo wrote this message on a note he passed to me. ``anpgs{q3p1cu3e1at_e0px5!}`` He also told me his favorite number was 13. What could this mean?
 
-**Lời giải**: Đây là 1 bài ceasar cơ bản. Duyệt vét cạn tất cả key ta có được flag: **nactf{d3c1ph3r1ng_r0ck5!}** với key là 13
+**Lời giải**: Đây là 1 bài ceasar cơ bản. Duyệt vét cạn tất cả key ta có được flag: ``nactf{d3c1ph3r1ng_r0ck5!}`` với key là 13.
 
 2. YASM
 -------
 
 **Mô tả**: Instead of turnips, Yavan loves YAMS. Day and night, he sings about YAMS, dreams about YAMS and runs to the store to catch the newest released batch of YAMS. Hes cryptic too. I wonder what this could mean.
 
-Uexummq lm Vuycnqjc. Hqjc ie qmud xjas: fycfx{waY5_sp3_Y0yEw_w9vU91}
+``Uexummq lm Vuycnqjc. Hqjc ie qmud xjas: fycfx{waY5_sp3_Y0yEw_w9vU91}``
 
-**Lời giải**: Ta biết format flag là nactf{....}, vậy thì nactf sẽ được mã hóa thành fycfx. Ta dò bảng Vigenere Cipher như sau: tìm trên cột n vị trí ký tự f, đối chiếu sang hàng ngang để tìm key (làm ngược với mã hóa). Cứ như vậy ta tìm được key là **syam** (từ chữ yasm). Flag là **nactf{yaM5_ar3_Y0mMy_w9jC91}**
+**Lời giải**: Ta biết format flag là ``nactf{....}``, vậy thì ``nactf`` sẽ được mã hóa thành ``fycfx``. Ta dò bảng Vigenere Cipher như sau: tìm trên cột ``n`` vị trí ký tự ``f``, đối chiếu sang hàng ngang để tìm key (làm ngược với mã hóa). Cứ như vậy ta tìm được key là ``syam`` (từ chữ ``yasm``). Flag là ``nactf{yaM5_ar3_Y0mMy_w9jC91}``.
 
 3. Error 9
 ----------
@@ -45,25 +45,25 @@ Uexummq lm Vuycnqjc. Hqjc ie qmud xjas: fycfx{waY5_sp3_Y0yEw_w9vU91}
        flag += chr(int(f[i:i+8], 2))
    print(flag)
 
-Kết quả thu được là **nactf{n01sy_n013j_|\|()|$'/}**; chuỗi này được hệ thống chấp nhận.
+Kết quả thu được là ``nactf{n01sy_n013j_|\|()|$'/}``; chuỗi này được hệ thống chấp nhận.
 
 4. Oligar's Tricky RSA
 ----------------------
 
 **Mô tả**: The crypto master Oligar just sent this file with three numbers. What do they mean?
 
-**Lời giải**: Đề cho ta file rsa.txt
+**Lời giải**: Đề cho ta file ``rsa.txt``
 
-Đây là 1 bài rsa cơ bản, dùng các tool factor n thành p và q. Rồi decrypt như rsa bình thường
+Đây là một bài rsa cơ bản, dùng các tool factor ``n`` thành ``p ``và ``q``. Rồi decrypt như rsa bình thường.
 
-Flag: **nactf{sn3aky_c1ph3r}**
+Flag: ``nactf{sn3aky_c1ph3r}``.
 
 5. Error 1
 ----------
 
 **Mô tả**: Pranay has decided that the previous error detection scheme is a little bit too inefficient... While eating his delicious HAM-filled Italian Sub at lunch, he came up with a new idea. Fortunately, he has also invested in a less noisy communication channel.
 
-**Lời giải**: Đề cho ta 2 file: `enc.txt <enc1.txt>`_ và error1.py
+**Lời giải**: Đề cho ta hai file: `enc.txt <enc1.txt>`_ và error1.py
 
 .. code-block:: python
 
@@ -113,10 +113,10 @@ và đổi tất cả bit ở vị trí i[2^j-1] thành 0. Tiếp đó, ta tính
 
 So sánh p với parity, nếu bằng nhau thì chính bit đó bị đổi dấu. Chỉ việc loại bỏ khỏi đoạn i tại các vị trí 0, 1, 3, 7 là ta có lại đoạn 11 bit ban đầu. Và code của ta: `error1dec.py <error1dec.py>`_
 
-Flag: **nactf{hamm1ng_cod3s_546mv3q9a0te}** (oke Hamming code)
+Flag: ``nactf{hamm1ng_cod3s_546mv3q9a0te}`` (oke Hamming code)
 
 6. Error 2
-==========
+----------
 
 **Mô tả**: Kayla decided she wants to use the previous error detection scheme for cryptography! After computing the normal error bits, she switched them around according to a secret key.
 
@@ -223,7 +223,7 @@ Cách giải của ta là duyệt vét cạn để tìm parity_pos ta biết for
 
 Ta có khoảng 6 trường hợp, thử từng cái thì ta có vị trí parity_pos là 5, 7, 8, 13. Tới đây làm tương tự bài **Error 1** là có flag (người đọc thử sức xem).
 
-Mã nguồn được lưu tại `error2dec.py <error2dec.py>`_
+Mã nguồn được lưu tại `error2dec.py <error2dec.py>`_.
 
 Bài **Random Number Generator** chưa có lời giải.
 
