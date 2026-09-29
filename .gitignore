@@ -309,3 +309,4 @@ TSWLatexianTemp*
 __pycache__
 _build/
 .vscode/
+.DS_Store
