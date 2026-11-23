@@ -196,7 +196,7 @@ MHK2
 1. Tạo private key
 ------------------
 
-Để tạo private key, server random hai dãy số :math:`s_1 = (s_{11}, s_{12}, \ldots, s_{1n})` và :math:`s_2 = (s_{21}, s_{22}, \ldots, s_{2n})` với :math:`n = 256` và :math:`s_{ij}` :math:`64` bit.
+Để tạo private key, server random hai dãy số :math:`s_1 = (s_{11}, s_{12}, \ldots, s_{1n})` và :math:`s_2 = (s_{21}, s_{22}, \ldots, s_{2n})` với :math:`n = 256` và :math:`s_{ij}` có :math:`128` bit.
 
 Hệ thống sinh dãy số cho tới khi :math:`\displaystyle{p_1 = \sum_{i=1}^n s_{1i} + 2}` là số nguyên tố, tương tự cho :math:`\displaystyle{p_2 = \sum_{i=1}^n s_{2i} + 2}` là số nguyên tố. Sau đó hệ thống chọn ngẫu nhiên số :math:`e_1 \in \Bigl[\dfrac{p_1}{2}, p_1\Bigl]` và :math:`e_2 \in \Bigl[\dfrac{p_2}{2}, p_2\Bigr]`.
 
@@ -228,7 +228,7 @@ Cuối cùng, :math:`c` được chọn ngẫu nhiên, hoặc là :math:`b_1`, h
 
 Để mã hóa một bit, :math:`\mathrm{bit} \in \{0, 1\}`, đầu tiên tạo hai dãy ngẫu nhiên :math:`r_1 = (r_{11}, r_{12}, \ldots, r_{1n})` và :math:`r_2 = (r_{21}, r_{22}, \ldots, r_{2n})` với :math:`r_{ij} \in \{0, 1\}`.
 
-Khi đó ciphertext là :math:`c_1 = \sum_{i=1}^n a_{1i} \cdot r_{1i}` và :math:`c_2 \sum_{i=1}^n a_{2i} \cdot r_{2i}` (điều kiện đối với :math:`\mathrm{bit}` ở :math:`m_1`, :math:`m_2` và :math:`eq` nhưng hiện tại chúng ta không cần dùng tới).
+Khi đó ciphertext là :math:`c_1 = \sum_{i=1}^n a_{1i} \cdot r_{1i}` và :math:`c_2 = \sum_{i=1}^n a_{2i} \cdot r_{2i}` (điều kiện đối với :math:`\mathrm{bit}` ở :math:`m_1`, :math:`m_2` và :math:`eq` nhưng hiện tại chúng ta không cần dùng tới).
 
 4. Khôi phục private key
 ------------------------
@@ -239,7 +239,7 @@ Chi tiết cách giải bài này ta tham khảo bài viết của Google và My
 
 Đặt :math:`A_1 = \sum_{i=1}^n a_{1i}`.
 
-Do :math:`a_{1i} = e_1 \cdot s_{1i} \bmod p_1` với :math:`i = \overline{1, n}` nên :math:`A_1 = \sum\limits_{i=1}^n e_1 \cdot s_{1i} = e_1 \sum\limits_{i=1}^N s_{1i}`. Mà ta đã biết :math:`p_1 = \sum\limits_{i=1}^n s_{1i} + 2` nên phương trình trên tương đương với :math:`A_1 = e_1 * (p_1 - 2)`. Lấy modulo :math:`p_1` ta có :math:`A_1 \equiv -2 e_1 \bmod p_1`.
+Do :math:`a_{1i} \equiv e_1 \cdot s_{1i} \pmod{p_1}` với :math:`i = \overline{1, n}` nên :math:`A_1 \equiv \sum\limits_{i=1}^n e_1 \cdot s_{1i} = e_1 \sum\limits_{i=1}^n s_{1i} \pmod{p_1}`. Mà ta đã biết :math:`p_1 = \sum\limits_{i=1}^n s_{1i} + 2` nên :math:`A_1 \equiv e_1 (p_1 - 2) \equiv -2 e_1 \pmod{p_1}`.
 
 Từ việc :math:`a_{1i} \equiv e_1 \cdot s_{1i} \bmod p_1`, ta có :math:`2 a_{1i} \equiv 2 e_1 \cdot s_{1i} \equiv -A_1 \cdot s_{1i} \bmod p_1`.
 
@@ -259,7 +259,7 @@ Lấy :math:`2 \leqslant i \leqslant n` ta có :math:`2 a_{1i} + A_1 \cdot s_{1i
 
 .. math:: 2 a_{11} \cdot x_{1i} - 2 a_{1i} \cdot x_{11} + A_1 (s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}) = 0.
 
-Ở đây chúng ta đã biết :math:`a_{11}`, :math:`a_{1i}` và :math:`A_1`. Việc xây dựng lattice sẽ dựa trên các hệ số :math:`x_{1i}`, :math:`x_{11}` và :math:`s_{11} \cdot x_{1i} - s_{1i} * s_{11}`. Do đó ta viết
+Ở đây chúng ta đã biết :math:`a_{11}`, :math:`a_{1i}` và :math:`A_1`. Việc xây dựng lattice sẽ dựa trên các hệ số :math:`x_{1i}`, :math:`x_{11}` và :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}`. Do đó ta viết
 
 .. math::
 
@@ -291,9 +291,9 @@ Tới lúc này chúng ta đã hoàn thành ... 10% chặng đường. Lý do l�
 
 .. math:: v = (x_{11}, s_{11} \cdot x_{12} - s_{12} \cdot x_{11}, \ldots, s_{11} \cdot x_{1n} - s_{1n} \cdot x_{11}, 0, 0, \ldots, 0)
 
-Tuy nhiên cần nhớ rằng :math:`s_{1i}` có :math:`64` bit và :math:`x_{1i}` xấp xỉ :math:`136` bit. Bằng tính toán có thể thấy :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}` cũng có :math:`64` bit. Như vậy chúng ta cần scale lattice trên để các giá trị không sai khác nhau quá lớn.
+Tuy nhiên cần nhớ rằng :math:`s_{1i}` có :math:`128` bit và :math:`x_{1i}` xấp xỉ :math:`136` bit. Từ (1) và (2), :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11} = 2(s_{11} a_{1i} - s_{1i} a_{11}) / p_1` nên chỉ có khoảng :math:`128` bit. Như vậy chúng ta cần scale lattice trên để các giá trị không sai khác nhau quá lớn.
 
-Cụ thể, do :math:`x_{11}` có :math:`136` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{136}}`, do :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}` có :math:`64` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{128}}`. Đối với :math:`-2a_{1i}`, :math:`2a_{11}` và :math:`A_1` thì ta cần chúng lớn để lattice tìm ra short vector, nên nhân với :math:`2^{1024}`.
+Cụ thể, do :math:`x_{11}` có :math:`136` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{136}}`, do :math:`s_{11} \cdot x_{1i} - s_{1i} \cdot x_{11}` có khoảng :math:`128` bit nên ta sẽ nhân với :math:`\dfrac{1}{2^{128}}`. Đối với :math:`-2a_{1i}`, :math:`2a_{11}` và :math:`A_1` thì ta cần chúng lớn để lattice tìm ra short vector, nên nhân với :math:`2^{1024}`.
 
 Sử dụng tính chất
 
@@ -315,7 +315,7 @@ Nhắc lại :math:`2 a_{11} + A_1 \cdot s_{11} = x_{11} \cdot p_1`. Modulo hai 
 b. Khôi phục e
 ^^^^^^^^^^^^^^
 
-Bên trên ta đã có :math:`A_1 = -2e_1 \bmod p_1` nên ta sẽ tìm được :math:`e_1`. Sau đó từ :math:`a_1 = (a_{11}, a_{12}, \ldots, a_{1n})` và :math:`e_1` ta tính lại được tất cả :math:`s_{1i}` và kiểm tra xem :math:`\sum\limits_{i=1}^n s_i + 2 \equiv p_1`, đồng thời không có số :math:`s_{1i}` nào vượt quá :math:`64` bit.
+Bên trên ta đã có :math:`A_1 = -2e_1 \bmod p_1` nên ta sẽ tìm được :math:`e_1`. Sau đó từ :math:`a_1 = (a_{11}, a_{12}, \ldots, a_{1n})` và :math:`e_1` ta tính lại được tất cả :math:`s_{1i}` và kiểm tra xem :math:`\sum\limits_{i=1}^n s_i + 2 \equiv p_1`, đồng thời không có số :math:`s_{1i}` nào vượt quá :math:`128` bit.
 
 c. Giải
 ^^^^^^^
@@ -527,7 +527,7 @@ Tuy nhiên tới đây chúng ta vấp phải một vấn đề, đó là subjec
 
 Khi nhìn vào file Docker, ta thấy rằng file `server-ecdhkey`.pem cũng được chép vào container. Từ đó, ở mỗi lần chạy vòng lặp, ta sẽ chỉ định path của file thành `../../app/server-ecdhkey.pem` để thoát khỏi path `/tmp/storage`, vì khi đó ta sẽ "đọc" được một ít thông tin nào đó từ `server-ecdhkey.pem`.
 
-Do `server-ecdhcert.pem` có :math:`241` bytes, ta đoán rằng `server-ecdhkey.pem` cũng có :math:`241` bytes. Do đó chiến thuật của ta là ghi đè lên :math:`240` bytes đầu của `server-ecdh.pem`, server sẽ trả về hash `H(240_bytes_ghi_đè || byte_cuối)`. Ta có thể duyệt vét cạn byte cuối với :math:`240` bytes ghi đè ban đầu fix sẵn.
+Do `server-ecdhcert.pem` có :math:`241` bytes, ta đoán rằng `server-ecdhkey.pem` cũng có :math:`241` bytes. Do đó chiến thuật của ta là ghi đè lên :math:`240` bytes đầu của `server-ecdhkey.pem`, server sẽ trả về hash `H(240_bytes_ghi_đè || byte_cuối)`. Ta có thể duyệt vét cạn byte cuối với :math:`240` bytes ghi đè ban đầu fix sẵn.
 
 Sau đó ta connect lại. Với byte cuối đã biết, ta sẽ duyệt vét cạn byte kế cuối với :math:`239` bytes ghi đè. Lúc này server trả về hash `H(239_bytes_ghi_đè || byte_kế_cuối || byte_cuối)`.
 
@@ -857,9 +857,9 @@ Suy ra :math:`e = nd^{-1} \bmod q` với :math:`n` và :math:`d` phân tích đ�
 
 Do :math:`\lvert ed - sq \rvert = n` nên tương đương với :math:`\Bigg\lvert \dfrac{ed}{qd} - \dfrac{sq}{qd} \Bigg\rvert = \dfrac{n}{qd}`, hay :math:`\Bigg\lvert \dfrac{e}{q} - \dfrac{s}{d} \Bigg\rvert = \dfrac{n}{qd}`.
 
-Bài này dựa trên ý tưởng `xấp xỉ Diophantine <https://en.wikipedia.org/wiki/Diophantine\_approximation>`_. Ở đây điều kiện để tồn tại chuỗi liên phân số hội tụ là :math:`nd < \dfrac{q}{2}`. Khi đó :math:`\dfrac{s}{d}` là liên phân số hội tụ dần tới :math:`\dfrac{1}{d^2}` do :math:`\dfrac{n}{qd} < \dfrac{1}{d^2}`.
+Bài này dựa trên ý tưởng `xấp xỉ Diophantine <https://en.wikipedia.org/wiki/Diophantine\_approximation>`_. Theo định lý Legendre, nếu :math:`\Big\lvert \dfrac{e}{q} - \dfrac{s}{d} \Big\rvert < \dfrac{1}{2d^2}` thì :math:`\dfrac{s}{d}` là một phân số hội tụ (convergent) trong khai triển liên phân số của :math:`\dfrac{e}{q}`. Ở đây điều kiện đó tương đương với :math:`\dfrac{n}{qd} < \dfrac{1}{2d^2}`, tức :math:`nd < \dfrac{q}{2}`.
 
-Sử dụng SageMath ta có thể tìm được dãy các phân số :math:`\dfrac{s_j}{d_j}` hội tụ tới :math:`\dfrac{1}{d^2}`. Do đó chiến thuật để giải bài này là tìm :math:`d_j` mà có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng :math:`y`). Sau đó với :math:`d_j e` mà cũng có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng với :math:`x`) thì ta sẽ tìm được phân tích tốt nhất để sửa các bit error :math:`e_i`.
+Sử dụng SageMath ta có thể tìm được dãy các phân số hội tụ :math:`\dfrac{s_j}{d_j}` của :math:`\dfrac{e}{q}`. Do đó chiến thuật để giải bài này là tìm :math:`d_j` mà có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng :math:`y`). Sau đó với :math:`d_j e` mà cũng có thể phân tích thành lũy thừa không âm của các :math:`p_i` (tương ứng với :math:`x`) thì ta sẽ tìm được phân tích tốt nhất để sửa các bit error :math:`e_i`.
 
 .. only:: html
 
