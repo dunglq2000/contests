@@ -10,9 +10,7 @@
 
 Если :math:`P(X=3)`, третьи бросок будет другой стороной, чем 2 другие. Поэтому вероятность того, что второй бросок выпадает одной стороной: :math:`\dfrac{1}{2}`, а третьи бросок: :math:`\dfrac{1}{2}`.
 
-То :math:`P(X=3) = \dfrac{1}{2} \cdot \dfrac{1}{2} = \dfrac{1}{4}`, :math:`P(X=4) = \dfrac{1}{8}` и :math:`\dfrac{1}{16}`.
-
-Аналогично, :math:`P(X=4) = \dfrac{1}{8}`.
+То :math:`P(X=3) = \dfrac{1}{2} \cdot \dfrac{1}{2} = \dfrac{1}{4}`. Аналогично, :math:`P(X=4) = \dfrac{1}{8}` и :math:`P(X=5) = \dfrac{1}{16}`.
 
 :math:`\Longrightarrow P(A) = \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{16} = \dfrac{15}{16}`.
 
@@ -30,13 +28,13 @@
 
 Задача 7. Из колоды карт (36 штук)
 
-(a) Пусть :math:`A` = { Первый тух появится при третьем извлечении карты }.
+(a) Пусть :math:`A` = { Первый туз появится при третьем извлечении карты }.
 
-:math:`\lvert \Omega \rvert = A^3_36`.
+:math:`\lvert \Omega \rvert = A^3_{36}`.
 
 Пусть :math:`a_1, a_2, a_3` - карты выбраны.
 
-Тогда :math:`a_3` будет одном из 4 карт, у нас есть 4 вариантов.
+Тогда :math:`a_3` будет одним из 4 тузов, у нас есть 4 вариантов.
 
 Ещё нужно выбрать карты :math:`a_1` и :math:`a_2`, мы не можем выбрать туз, поэтому имеем :math:`A^2_{36-4} = A^2_{32}`.
 
@@ -49,7 +47,7 @@
 - Если первый туз появится при первом извлечении, то вероятность равно :math:`\dfrac{4}{36} = \dfrac{1}{9}`
 - Если первый туз появится при втором извлечении, то делаем аналогично (а), мы получим :math:`\dfrac{4 \cdot A^1_{32}}{A^2_{36}}`
 
-Поэтому, :math:`P(\overline{B}) = \dfrac{4}{36} + \dfrac{4 \cdot A^1_{32}}{A^2_{26}} = \dfrac{67}{315}`.
+Поэтому, :math:`P(\overline{B}) = \dfrac{4}{36} + \dfrac{4 \cdot A^1_{32}}{A^2_{36}} = \dfrac{67}{315}`.
 
 
 .. math::
@@ -79,7 +77,7 @@
 
 .. math::
 
-   \Longrightarrow P(\overline{A}) = P(X=1) + P(X=2) + P(X=3) = \dfrac{18}{36} + \dfrac{18 \cdot 18}{A^2_{26}} + \dfrac{18 \cdot A^2_{18}}{A^3_{36}} = \dfrac{31}{35}.
+   \Longrightarrow P(\overline{A}) = P(X=1) + P(X=2) + P(X=3) = \dfrac{18}{36} + \dfrac{18 \cdot 18}{A^2_{36}} + \dfrac{18 \cdot A^2_{18}}{A^3_{36}} = \dfrac{31}{35}.
 
 
 .. math::
@@ -124,9 +122,9 @@
    P(B_i | A) = \dfrac{P(B_i) \cdot P(A | B_i)}{P(A)} = \dfrac{P(B_i) \cdot P(A | B_i)}{\sum_{j=1}^{3} P(B_j) \cdot P(A | B_j)}
 
 
-- :math:`P(B_1) = \dfrac{\dfrac{1}{4} \cdot \dfrac{1}{4}}{\dfrac{17}{48}} = \dfrac{3}{17}`
-- :math:`P(B_2) = \dfrac{\dfrac{1}{4} \cdot \dfrac{1}{2}}{\dfrac{17}{48}} = \dfrac{6}{17}`
-- :math:`P(B_3) = \dfrac{\dfrac{1}{4} \cdot \dfrac{2}{3}}{\dfrac{17}{48}} = \dfrac{8}{17}`
+- :math:`P(B_1 | A) = \dfrac{\dfrac{1}{4} \cdot \dfrac{1}{4}}{\dfrac{17}{48}} = \dfrac{3}{17}`
+- :math:`P(B_2 | A) = \dfrac{\dfrac{1}{4} \cdot \dfrac{1}{2}}{\dfrac{17}{48}} = \dfrac{6}{17}`
+- :math:`P(B_3 | A) = \dfrac{\dfrac{1}{4} \cdot \dfrac{2}{3}}{\dfrac{17}{48}} = \dfrac{8}{17}`
 
 
 Задача 3. Пусть :math:`A_1` = { дефективные } и :math:`A_2` = { не дефективные }.
@@ -178,7 +176,7 @@
 
 :math:`B` = { третий шар отказался белым }.
 
-У нас есть :math:`P(A_3 | B) = \dfrac{P(A_3) \cdot P(B | A_3)}{P(A_1) + P(B|A_1) + P(A_2) \cdot P(B|A_2) + P(A_3) \cdot P(B | A_3)}` (формула Байеса)
+У нас есть :math:`P(A_3 | B) = \dfrac{P(A_3) \cdot P(B | A_3)}{P(A_1) \cdot P(B|A_1) + P(A_2) \cdot P(B|A_2) + P(A_3) \cdot P(B | A_3)}` (формула Байеса)
 
 1. C :math:`A_1`, у нас есть :math:`P(A_1) = \dfrac{5 \cdot 4}{8 \cdot 7} = \dfrac{5}{14}`. Значит третий шар имеет 3 варианта, чтобы получить белый шар, :math:`P(B | A_1) = \dfrac{3}{6} = \dfrac{1}{2}`.
 2. C :math:`A_2`, у нас есть :math:`P(A_2) = \dfrac{3 \cdot 2}{8 \cdot 7} = \dfrac{3}{28}`. Значит третий шар имеет 5 варианта, чтобы получить белый шар, :math:`P(B | A_2) = \dfrac{5}{6}`.
@@ -202,18 +200,18 @@
    \begin{align*} \Longrightarrow P(C) & = P(A_1 \cdot B_1 + A_2 \cdot B_2) = & P(A_1) \cdot P(B_1 | A_1) + P(A_2) \cdot P(B_2 | A_2) \\ & = \dfrac{1}{2} \cdot \dfrac{3}{6} + \dfrac{1}{2} \cdot \dfrac{4}{6} = \dfrac{7}{12} \end{align*}
 
 
-(б) Пусть :math:`D` = { выбрать красный шар из первой урны и черный шар из второй урны }
+(б) Найдем вероятность того, что из первой урны был вынут черный шар, при условии, что из второй урны вынут красный шар, т.е. :math:`P(A_2 | B_1)`.
 
 
 .. math::
 
-   \begin{align*} P(D) = P(A_2 | B_1) & = \dfrac{P(A_2) \cdot P(B_1 | A_2)}{P(A_1) \cdot P(B_1 | A_1) + P(A_2) \cdot P(B_1 | A_2)} \\ & = \left(\dfrac{1}{2} \cdot \dfrac{2}{6}\right) : \left(\dfrac{1}{2} \cdot \dfrac{2}{6} + \dfrac{1}{2} \cdot \dfrac{3}{6}\right) = \dfrac{2}{5} \end{align*}
+   \begin{align*} P(A_2 | B_1) & = \dfrac{P(A_2) \cdot P(B_1 | A_2)}{P(A_1) \cdot P(B_1 | A_1) + P(A_2) \cdot P(B_1 | A_2)} \\ & = \left(\dfrac{1}{2} \cdot \dfrac{2}{6}\right) : \left(\dfrac{1}{2} \cdot \dfrac{2}{6} + \dfrac{1}{2} \cdot \dfrac{3}{6}\right) = \dfrac{2}{5} \end{align*}
 
 
 Задача 8.
 
 
-Задача 9. Пусть :math:`A_1` = { первый шар является белым } и :math:`A_2` = { второй шар является черным }.
+Задача 9. Пусть :math:`A_1` = { первый шар является белым } и :math:`A_2` = { первый шар является черным }.
 
 :math:`B` = { два следующие шары - черные }.
 
@@ -237,8 +235,8 @@
 
 У нас есть: :math:`P(A_1) = 0,7`, :math:`P(A_2) = 0,3`
 
-1. Если комбинация 11111 передана, то первое, третье и пятое цифры правильно, а другие нет, поэтому :math:`P(B | A_1) = 0,6 \cdot 0,4 \cdot 0,6 \cdot 0,6 \cdot 0,4 = 0,6^3 \cdot 0,4^2`
-2. Если комбинация 00000 передана, то второе и четвертое цифры правильно, а другие нет, поэтому :math:`P(B | A_2) = 0,4 \cdot 0,6 \cdot 0,4 \cdot 0,4 \cdot 0,6 = 0,4^3 \cdot 0,6^2`
+1. Если комбинация 11111 передана, то первая, третья и четвертая цифры приняты правильно, а вторая и пятая нет, поэтому :math:`P(B | A_1) = 0,6 \cdot 0,4 \cdot 0,6 \cdot 0,6 \cdot 0,4 = 0,6^3 \cdot 0,4^2`
+2. Если комбинация 00000 передана, то вторая и пятая цифры приняты правильно, а другие нет, поэтому :math:`P(B | A_2) = 0,4 \cdot 0,6 \cdot 0,4 \cdot 0,4 \cdot 0,6 = 0,4^3 \cdot 0,6^2`
 
 Ответ
 
@@ -288,9 +286,9 @@
 
 (a) :math:`P_{100} (k=0) = \dfrac{e^{-2} \cdot 2^0}{0!} = e^{-2}`.
 
-(б) :math:`P_{100} (k>2) = 1-P_{100} (k = 0) - P_{100} (k = 1) = 1 - \dfrac{e^{-2} \cdot 2^0}{0!} - \dfrac{e^{-2} \cdot 2^1}{1!} - \dfrac{e^{-2} \cdot 2^2}{2!} = 1 - 5e^{-2}`.
+(б) :math:`P_{100} (k>2) = 1-P_{100} (k = 0) - P_{100} (k = 1) - P_{100} (k = 2) = 1 - \dfrac{e^{-2} \cdot 2^0}{0!} - \dfrac{e^{-2} \cdot 2^1}{1!} - \dfrac{e^{-2} \cdot 2^2}{2!} = 1 - 5e^{-2}`.
 
-(в) :math:`P_{100} (k = k_0)`, мы используем :math:`k=0, 1, 2, \cdots` и видим, что :math:`k=2` наиболее. Поэтому ответ :math:`k_0 = 2`.
+(в) Наивероятнейшее число :math:`k_0` удовлетворяет :math:`np - q \leqslant k_0 \leqslant np + p`, т.е. :math:`1,02 \leqslant k_0 \leqslant 2,02`. Поэтому ответ :math:`k_0 = 2`. (По формуле Пуассона с :math:`\lambda = 2` получаем :math:`P(k=1) = P(k=2) = 2e^{-2}`, поэтому здесь нужна точная биномиальная формула.)
 
 
 Задача 6. Пусть :math:`n` - количество изделий, чтобы с вероятностью не менее 0,95 обнаружить хотя бы одно изделие низкого качества
@@ -302,12 +300,12 @@
 
 .. math::
 
-   \begin{align*} P_n(k \geqslant 1) & = 1 - P_n(k = 0) = 1 (0,9)^n \geqslant 0,95 \\ & \Longleftrightarrow (0,9)^n \leqslant 0,05 \\ & \Longleftrightarrow n \ln{0,9} \leqslant \ln{0,05} \\ & \Longleftrightarrow n \geqslant \dfrac{\ln{0,05}}{\ln{0,9}} \\ & \Longleftrightarrow n \geqslant 28,43 \\ & \Longrightarrow n \geqslant 29 \end{align*}
+   \begin{align*} P_n(k \geqslant 1) & = 1 - P_n(k = 0) = 1 - (0,9)^n \geqslant 0,95 \\ & \Longleftrightarrow (0,9)^n \leqslant 0,05 \\ & \Longleftrightarrow n \ln{0,9} \leqslant \ln{0,05} \\ & \Longleftrightarrow n \geqslant \dfrac{\ln{0,05}}{\ln{0,9}} \\ & \Longleftrightarrow n \geqslant 28,43 \\ & \Longrightarrow n \geqslant 29 \end{align*}
 
 
 Задача 7. В течение часа поступает в среднем 120 телефонных вызовов, значит в течение минуты :math:`\lambda = \dfrac{1 \cdot 120}{60} = 2` вызовов.
 
-Поэтому ответ: :math:`P(k=3) = \dfrac{e^{-2} \cdot 2^3}{3!} = \dfrac{2e^{-2}}{3} \approx 0,09`
+Поэтому ответ: :math:`P(k=3) = \dfrac{e^{-2} \cdot 2^3}{3!} = \dfrac{4e^{-2}}{3} \approx 0,18`
 
 
 Задача 8. У нас есть :math:`n=400` и :math:`p=0,005` - мало, поэтому мы можем используем формулу Пуассона с :math:`\lambda = np = 2`.
@@ -317,7 +315,7 @@
 
 .. math::
 
-   \begin{align*} P_{400} (k > 2) & = 1 - P_{400}(k=0) - P_{400}(k=1) - P_{400}(k=2) & = 1 - \dfrac{e^{-2} \cdot 2^0}{0!} - \dfrac{e^{-2} \cdot 2^1}{1!} - \dfrac{e^{-2} \cdot 2^2}{2!} & = 1 - 5e^{-2} \approx 0,31
+   \begin{align*} P_{400} (k > 2) & = 1 - P_{400}(k=0) - P_{400}(k=1) - P_{400}(k=2) \\ & = 1 - \dfrac{e^{-2} \cdot 2^0}{0!} - \dfrac{e^{-2} \cdot 2^1}{1!} - \dfrac{e^{-2} \cdot 2^2}{2!} \\ & = 1 - 5e^{-2} \approx 0,32
    \end{align*}
 
 
@@ -326,17 +324,17 @@
 
 Чтобы получить текст, все цифры будут приняты правильно, :math:`k=0` и :math:`\lambda = np = 800 \cdot 0,0025 = 2`.
 
-Ответ: :math:`P_{800}(k=0) = \dfrac{e^{-2} \cdot 2^0}{0!} = e^{-2} \approx 0,136`
+Ответ: :math:`P_{800}(k=0) = \dfrac{e^{-2} \cdot 2^0}{0!} = e^{-2} \approx 0,135`
 
 
 Задача 10. Мы знаем только один выстрел из 200 достигает цели, тогда при 100 выстрелах :math:`\lambda = 1 \cdot 100 : 200 = \dfrac{1}{2}`.
 
-Ответ :math:`P_{100}(k \geqslant 1) = 1 - P_{100} (k = 0) = 1 - \dfrac{e^{\dfrac{-1}{2}} \cdot \left(\dfrac{1}{2}\right)^0}{0!} = 1 - e^{\dfrac{-1}{2} \approx 0,4}`
+Ответ :math:`P_{100}(k \geqslant 1) = 1 - P_{100} (k = 0) = 1 - \dfrac{e^{\dfrac{-1}{2}} \cdot \left(\dfrac{1}{2}\right)^0}{0!} = 1 - e^{-1/2} \approx 0,39`
 
 
 Задача 11. У нас есть :math:`n=50` и :math:`p=0,01` - мало, поэтому мы используем формулу Пуассона с :math:`\lambda = np = 0,5`.
 
-Ответ :math:`P_{50} (k \geqslant 1) = 1 - P_{50} (k = 0) = 1 - \dfrac{e^{-0,5} \cdot (0,5)^0}{0!} = 1 - e^{-0,5} \approx 0,4`
+Ответ :math:`P_{50} (k \geqslant 1) = 1 - P_{50} (k = 0) = 1 - \dfrac{e^{-0,5} \cdot (0,5)^0}{0!} = 1 - e^{-0,5} \approx 0,39`
 
 
 Задача 12. Пусть :math:`A_i` = { монету 1 бросают герб :math:`i` раз }, и :math:`B_i` = { монету 2 бросают герб :math:`i` раз }.
@@ -354,7 +352,7 @@
 
 .. math::
 
-   \begin{align*} P(C) & = \sum_{i=0}^{5} P_{A, 5}(k=i) \cdot P_{B, 5}(k=i) & = \sum_{i=0}^{5} \left[C^i_5 \left(\dfrac{1}{2}\right)^i \cdot \left(\dfrac{1}{2}\right)^{5-i}\right] \cdot \left[C^i_5 \left(\dfrac{1}{2}\right)^i \cdot \left(\dfrac{1}{2}\right)^{5-i}\right] & = \sum_{i=0}^{5} \left[C^i_5 \left(\dfrac{1}{2}\right)^5\right]^2 = \dfrac{63}{256}
+   \begin{align*} P(C) & = \sum_{i=0}^{5} P_{A, 5}(k=i) \cdot P_{B, 5}(k=i) \\ & = \sum_{i=0}^{5} \left[C^i_5 \left(\dfrac{1}{2}\right)^i \cdot \left(\dfrac{1}{2}\right)^{5-i}\right] \cdot \left[C^i_5 \left(\dfrac{1}{2}\right)^i \cdot \left(\dfrac{1}{2}\right)^{5-i}\right] \\ & = \sum_{i=0}^{5} \left[C^i_5 \left(\dfrac{1}{2}\right)^5\right]^2 = \dfrac{C^5_{10}}{2^{10}} = \dfrac{63}{256}
    \end{align*}
 
 
@@ -367,15 +365,17 @@
 
 .. math::
 
-   \begin{align*} x - y \in [-2; 0] x + y = 5 x, y \in \mathbb{Z}\end{align*}
+   x - y \in [-2; 0], \quad x + y = 5, \quad x, y \in \mathbb{Z}_{\geqslant 0}.
 
 
-Среди { -2, -1, 0 }, мы получим цельные числа только когда -1. Значит
-$\begin{cases}
-x - y = -1.
+Так как :math:`x + y = 5` нечетно, :math:`x - y` тоже нечетно, поэтому среди :math:`\{-2, -1, 0\}` подходит только :math:`-1`. Значит
 
-x + y = 5
-\end{cases}$
+.. math::
+
+   \begin{cases}
+   x - y = -1, \\
+   x + y = 5.
+   \end{cases}
 
 Получим :math:`x=2`, :math:`y=3`. Пусть :math:`A` = { через пять секунд частица двигается вправо 2 раза }.
 
@@ -391,10 +391,8 @@ x + y = 5
 .. math::
 
    \begin{align*}
-   	\Longrightarrow P(A_1 A_2 A_3) & = P(A_1) P(A_2) P(A_3) = (P(A_1))^3.
-   
-   & = (P_5(k=0))^3 = [C^0_5 (0,95)^5]^3.
-   
+   \Longrightarrow P(A_1 A_2 A_3) & = P(A_1) P(A_2) P(A_3) = (P(A_1))^3 \\
+   & = (P_5(k=5))^3 = [C^5_5 (0,95)^5]^3 \\
    & \approx 0,46
    \end{align*}
 
@@ -405,10 +403,8 @@ x + y = 5
 .. math::
 
    \begin{align*}
-   	\Longrightarrow P(B_1 B_2 B_3) & = P(B_1) P(B_2) P(B_3) = (P(B_1))^3.
-   
-   & = [P_5 (k=1)]^3 = [C^1_5 (0,05)^1 (0,95)^4]^3.
-   
+   \Longrightarrow P(B_1 B_2 B_3) & = P(B_1) P(B_2) P(B_3) = (P(B_1))^3 \\
+   & = [C^1_5 (0,05)^1 (0,95)^4]^3 \\
    & \approx 0,008
    \end{align*}
 
@@ -419,6 +415,7 @@ x + y = 5
 Мы знаем, что последний выстрел будет попадание. Среди первые 4 выстрела, там есть два промаха с вероятностью :math:`p=1-\dfrac{1}{3} = \dfrac{2}{3}`.
 
 Поэтому,
+
 .. math::
 
    \begin{align*}
@@ -439,11 +436,24 @@ x + y = 5
 
 Если :math:`x_n = n`, :math:`p_n = P(X=n) = \left(\dfrac{4}{5}\right)^{n-1} \cdot \dfrac{1}{5}`.
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   | :math:`X` | :math:`1` | :math:`2` | :math:`3` | :math:`\cdots` | :math:`n` | :math:`\cdots` |
-   |-----|-----|-----|-----|----------|-----|----------|
-   | :math:`P` | :math:`1/5` | :math:`(4/5) \cdot (1/5)` | :math:`(4/5)^2 \cdot (1/5)` | :math:`\cdots` | :math:`(4/5)^{n-1} \cdot (1/5)` | :math:`\cdots` |
+   * - :math:`X`
+     - :math:`1`
+     - :math:`2`
+     - :math:`3`
+     - :math:`\cdots`
+     - :math:`n`
+     - :math:`\cdots`
+   * - :math:`P`
+     - :math:`1/5`
+     - :math:`(4/5) \cdot (1/5)`
+     - :math:`(4/5)^2 \cdot (1/5)`
+     - :math:`\cdots`
+     - :math:`(4/5)^{n-1} \cdot (1/5)`
+     - :math:`\cdots`
+
 
 
 Значит :math:`M(X) = \sum_{i=1}^{n} i \cdot \left(\dfrac{4}{5}\right)^{i-1} \cdot \dfrac{1}{5}`, когда :math:`n \Longrightarrow \infty`
@@ -453,7 +463,7 @@ x + y = 5
 
 .. math::
 
-   \begin{align*} 1 + x + x^2 + x^3 + \cdots + x^n & = \dfrac{x^{n+1} - 1}{x-1} \\ \Longleftrightarrow (1 + x + x^2 + x^3 + \cdots + x^n)' & = \left(\dfrac{x^{n+1} - 1}{x-1}\right)' \\ \Longleftrightarrow 0 + 1 + 2 \cdot x + 3 \cdot x^2 + \cdots + n \cdot x^{n-1} \\ & = \dfrac{(n+1) \cdot x^n \cdot (x-1) (x^{n+1}-1) \cdot 1}{(x-1)^2} \\ \Longleftrightarrow 1 + 2 \cdot x + 3 \cdot x^2 + \cdots + n \cdot x^{n-1} \\ & = \dfrac{n \cdot x^{n+1} (n+1) \cdot x^n + 1}{(x-1)^2} \end{align*}
+   \begin{align*} 1 + x + x^2 + x^3 + \cdots + x^n & = \dfrac{x^{n+1} - 1}{x-1} \\ \Longleftrightarrow (1 + x + x^2 + x^3 + \cdots + x^n)' & = \left(\dfrac{x^{n+1} - 1}{x-1}\right)' \\ \Longleftrightarrow 0 + 1 + 2 \cdot x + 3 \cdot x^2 + \cdots + n \cdot x^{n-1} \\ & = \dfrac{(n+1) \cdot x^n \cdot (x-1) - (x^{n+1}-1) \cdot 1}{(x-1)^2} \\ \Longleftrightarrow 1 + 2 \cdot x + 3 \cdot x^2 + \cdots + n \cdot x^{n-1} \\ & = \dfrac{n \cdot x^{n+1} - (n+1) \cdot x^n + 1}{(x-1)^2} \end{align*}
 
 
 Пусть :math:`x=4/5` и :math:`n \Longrightarrow \infty`, мы получим
@@ -461,7 +471,7 @@ x + y = 5
 
 .. math::
 
-   \begin{align*} \lim_{n\to\infty} \sum_{i=1}^{n} i \cdot \left(\dfrac{4}{5}\right)^{i-1} \cdot \dfrac{1}{5} & = \dfrac{1}{5} \lim_{n\to\infty} i \cdot \left(\dfrac{4}{5}\right)^{i-1} \\ & = \dfrac{1}{5} \cdot \lim_{n\to\infty}\dfrac{n \cdot (4/5)^{n+1} (n+1) \cdot (4/5)^n + 1}{(4/5-1)^2} \end{align*}
+   \begin{align*} \lim_{n\to\infty} \sum_{i=1}^{n} i \cdot \left(\dfrac{4}{5}\right)^{i-1} \cdot \dfrac{1}{5} & = \dfrac{1}{5} \lim_{n\to\infty} \sum_{i=1}^{n} i \cdot \left(\dfrac{4}{5}\right)^{i-1} \\ & = \dfrac{1}{5} \cdot \lim_{n\to\infty}\dfrac{n \cdot (4/5)^{n+1} - (n+1) \cdot (4/5)^n + 1}{(4/5-1)^2} \end{align*}
 
 
 И у нас есть.
@@ -477,19 +487,19 @@ x + y = 5
 
 .. math::
 
-   \dfrac{1}{5} \lim_{n\to\infty} \dfrac{n \cdot (4/5)^{n+1} (n+1) \cdot (4/5)^n + 1}{(4/5-1)^2} = \dfrac{1}{5} \cdot \dfrac{1}{(1/5)^2} = 5
+   \dfrac{1}{5} \lim_{n\to\infty} \dfrac{n \cdot (4/5)^{n+1} - (n+1) \cdot (4/5)^n + 1}{(4/5-1)^2} = \dfrac{1}{5} \cdot \dfrac{1}{(1/5)^2} = 5
 
 
-Задача 2. На электронное реле воздействует случайное напряжение, имеющее плотность вероятности :math:`f(x) = \dfrac{x}{\sigma^2} \cdot \exp{ -\dfrac{x^2}{2\sigma^2} }`, :math:`x \geqslant 0`. Реле срабатывает всякий раз, когда напряжение на его входе превышает 3 В. Какова вероятность срабатывания реле?
+Задача 2. На электронное реле воздействует случайное напряжение, имеющее плотность вероятности :math:`f(x) = \dfrac{x}{\sigma^2} \cdot \exp\left( -\dfrac{x^2}{2\sigma^2} \right)`, :math:`x \geqslant 0`. Реле срабатывает всякий раз, когда напряжение на его входе превышает 3 В. Какова вероятность срабатывания реле?
 
-У нас есть :math:`f(x) = \dfrac{x}{\sigma^2} \cdot \exp{ -\dfrac{x^2}{2\sigma^2} }`.
+У нас есть :math:`f(x) = \dfrac{x}{\sigma^2} \cdot \exp\left( -\dfrac{x^2}{2\sigma^2} \right)`.
 
 Поэтому
 
 
 .. math::
 
-   P(X > 3) = \int\limits_{3}^{+\infty} \dfrac{x}{\sigma^2} \cdot exp{ -\dfrac{x^2}{2\sigma^2} }\,dx.
+   P(X > 3) = \int\limits_{3}^{+\infty} \dfrac{x}{\sigma^2} \cdot \exp\left( -\dfrac{x^2}{2\sigma^2} \right)\,dx.
 
 
 Пусть :math:`t=\dfrac{x^2}{2\sigma^2} \Longrightarrow \,dt = \dfrac{x}{\sigma^2} \,dx`. Если :math:`x=+\infty \Longrightarrow t = +\infty` и если :math:`x=3 \Longrightarrow t = \dfrac{9}{2\sigma^2}`
@@ -497,30 +507,50 @@ x + y = 5
 
 .. math::
 
-   \begin{align*}\int\limits_{3}^{+\infty} \dfrac{x}{2\sigma^2} \cdot \exp{ -\dfrac{x^2}{\sigma^2} } \,dt & = \int\limits_{9/(\sigma^2)}^{+\infty} e^{-t} \,dt. \\ & = -e^{-t} |^{+\infty}_{9/(2\sigma^2)}. \\ & = -e^{-\infty} + e^{-9/(2\sigma^2)}. \\ & = 0 + e^{-9/(2\sigma^2)}. \\ & = e^{-9/(2\sigma^2)} \end{align*}
+   \begin{align*}\int\limits_{3}^{+\infty} \dfrac{x}{\sigma^2} \cdot \exp\left( -\dfrac{x^2}{2\sigma^2} \right) \,dx & = \int\limits_{9/(2\sigma^2)}^{+\infty} e^{-t} \,dt. \\ & = -e^{-t} |^{+\infty}_{9/(2\sigma^2)}. \\ & = -e^{-\infty} + e^{-9/(2\sigma^2)}. \\ & = 0 + e^{-9/(2\sigma^2)}. \\ & = e^{-9/(2\sigma^2)} \end{align*}
 
 
 Задача 3. Пусть :math:`x` - число монет по 10 копеек и :math:`y` - число монет по 50 копеек. Отсюда :math:`x + y = 4` и :math:`0 \leqslant x \leqslant 5, 0 \leqslant y \leqslant 3`.
 
 Пусть :math:`X` - сумма вынутых копеек :math:`\Longrightarrow X = 10x + 50y`.
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   |   |     |     |    |    |
-   |---|-----|-----|----|----|
-   | x | 1   | 2   | 3  | 4  |
-   | y | 3   | 2   | 1  | 0  |
-   | X | 160 | 120 | 80 | 40 |
+   * - x
+     - 1
+     - 2
+     - 3
+     - 4
+   * - y
+     - 3
+     - 2
+     - 1
+     - 0
+   * - X
+     - 160
+     - 120
+     - 80
+     - 40
+
 
 
 Отсюда, мы получим закон распределения случайной :math:`X`
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   |     |      |      |       |       |
-   |-----|:----:|:----:|:-----:|:-----:|
-   | :math:`X` | :math:`40` | :math:`80` | :math:`120` | :math:`160` |
-   | :math:`P` | :math:`\dfrac{C^4_5 \cdot C^0_3}{C^4_8} = \dfrac{1}{14}` | :math:`\dfrac{C^3_5 \cdot C^1_3}{C^4_8} = \dfrac{3}{7}` | :math:`\dfrac{C^2_5} \cdot C^2_3{C^4_8} = \dfrac{3}{7}` | :math:`\dfrac{C^1_5 \cdot C^3_3}{C^4_8} = \dfrac{1}{14}` |
+   * - :math:`X`
+     - :math:`40`
+     - :math:`80`
+     - :math:`120`
+     - :math:`160`
+   * - :math:`P`
+     - :math:`\dfrac{C^4_5 \cdot C^0_3}{C^4_8} = \dfrac{1}{14}`
+     - :math:`\dfrac{C^3_5 \cdot C^1_3}{C^4_8} = \dfrac{3}{7}`
+     - :math:`\dfrac{C^2_5 \cdot C^2_3}{C^4_8} = \dfrac{3}{7}`
+     - :math:`\dfrac{C^1_5 \cdot C^3_3}{C^4_8} = \dfrac{1}{14}`
+
 
 
 
@@ -534,7 +564,7 @@ x + y = 5
    
 .. math::
 
-   F(x) = P(X \leqslant 0) = \int\limits_{-\infty}^{0}f(x)\,dx = \int\limits_{-\infty}^{0}0\,dx = 0
+   F(x) = P(X \leqslant x) = \int\limits_{-\infty}^{x}f(t)\,dt = \int\limits_{-\infty}^{x}0\,dt = 0
 
 
 2. При :math:`x \geqslant 0`
@@ -542,7 +572,7 @@ x + y = 5
    
 .. math::
 
-   \begin{align*} F(x) = P(X \leqslant 0) & = \int\limits_{-\infty}^{x}f(x)\,dx. \\ & = \int\limits_{-\infty}^{0}0\,dx + \int\limits_{0}^{x}0,002e^{-0,002x}\,dx. \\ & = 0 + \int\limits_{0}^{x}e^{-0,002x}\,d(0,002x). \\ & = \left.-e^{-0,002x}\right|^{x}_{0}. \\ & = -e^{-0,002x} + e^{0}. \\ & = 1 - e^{-0,002x} \end{align*}
+   \begin{align*} F(x) = P(X \leqslant x) & = \int\limits_{-\infty}^{x}f(t)\,dt. \\ & = \int\limits_{-\infty}^{0}0\,dx + \int\limits_{0}^{x}0,002e^{-0,002x}\,dx. \\ & = 0 + \int\limits_{0}^{x}e^{-0,002x}\,d(0,002x). \\ & = \left.-e^{-0,002x}\right|^{x}_{0}. \\ & = -e^{-0,002x} + e^{0}. \\ & = 1 - e^{-0,002x} \end{align*}
 
 
 Вероятность того, что предохранитель безотказно проработает 1000 часов
@@ -550,7 +580,7 @@ x + y = 5
 
 .. math::
 
-   F(x) = P(X \geqslant 1000) = F(+\infty) - F(1000) = 1 (1 - e^{-0,002 \cdot 1000}) = e^{-2}.
+   P(X \geqslant 1000) = F(+\infty) - F(1000) = 1 - (1 - e^{-0,002 \cdot 1000}) = e^{-2}.
 
 
 Задача 5. Пусть :math:`X` - сумма выпавших очков. Поэтому 
@@ -558,7 +588,7 @@ x + y = 5
 
 .. math::
 
-   X \in { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }
+   X \in \{ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \}
 
 
 - :math:`X=2=1+1`, выбрать очку 1 (первый кубик) и очку 1 (второй кубик).
@@ -579,12 +609,34 @@ x + y = 5
 
 - И далее :math:`\cdots`
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   |     |     |     |     |     |     |     |     |     |      |      |        |
-   |-----|-----|-----|-----|-----|-----|-----|-----|-----|------|------|------|
-   | :math:`X` | :math:`2` | :math:`3` | :math:`4` | :math:`5` | :math:`6` | :math:`7` | :math:`8` | :math:`9` | :math:`10` | :math:`11` | :math:`12` |
-   | :math:`P` | :math:`\dfrac{1}{36}` | :math:`\dfrac{1}{18}` | :math:`\dfrac{1}{12}` | :math:`\dfrac{1}{9}` | :math:`\dfrac{5}{36}` | :math:`\dfrac{1}{6}` | :math:`\dfrac{5}{36}` | :math:`\dfrac{1}{9}` | :math:`\dfrac{1}{12}` | :math:`\dfrac{1}{18}` | :math:`\dfrac{1}{36}` |
+   * - :math:`X`
+     - :math:`2`
+     - :math:`3`
+     - :math:`4`
+     - :math:`5`
+     - :math:`6`
+     - :math:`7`
+     - :math:`8`
+     - :math:`9`
+     - :math:`10`
+     - :math:`11`
+     - :math:`12`
+   * - :math:`P`
+     - :math:`\dfrac{1}{36}`
+     - :math:`\dfrac{1}{18}`
+     - :math:`\dfrac{1}{12}`
+     - :math:`\dfrac{1}{9}`
+     - :math:`\dfrac{5}{36}`
+     - :math:`\dfrac{1}{6}`
+     - :math:`\dfrac{5}{36}`
+     - :math:`\dfrac{1}{9}`
+     - :math:`\dfrac{1}{12}`
+     - :math:`\dfrac{1}{18}`
+     - :math:`\dfrac{1}{36}`
+
 
 
 Математическое ожидание
@@ -592,32 +644,38 @@ x + y = 5
 
 .. math::
 
-   M(\xi) & = 2 \cdot \dfrac{1}{36} + 3 \cdot \dfrac{1}{18} + \cdots + 12 \cdot \dfrac{1}{36} \\ & = 14 \cdot \left(\dfrac{1}{36} + \dfrac{1}{18} + \dfrac{1}{12} + \dfrac{1}{9} + \dfrac{5}{16}\right) + 7 \cdot \dfrac{1}{6} = 7.
+   M(\xi) & = 2 \cdot \dfrac{1}{36} + 3 \cdot \dfrac{1}{18} + \cdots + 12 \cdot \dfrac{1}{36} \\ & = 14 \cdot \left(\dfrac{1}{36} + \dfrac{1}{18} + \dfrac{1}{12} + \dfrac{1}{9} + \dfrac{5}{36}\right) + 7 \cdot \dfrac{1}{6} = 7.
 
 
 Задача 6.
-Чтобы выбирать шары до тех пор, пока не будет вынут черный шар, у нас есть 4 способа
+Шары (3 белых и 2 черных) вынимают без возвращения до тех пор, пока не будет вынут черный шар; :math:`X` - количество вынутых белых шаров. Последовательности разной длины не равновероятны, поэтому вероятности нужно вычислять по правилу умножения:
 
-- :math:`0` белых шара: :math:`A^0_3 C^1_2`;
-- :math:`1` белый шар: :math:`A^1_3 C^1_2`;
-- :math:`2` белых шара: :math:`A^2_3 C^1_2`;
-- :math:`3` белых шара: :math:`A^3_3 C^1_2`.
+- :math:`P(X=0) = \dfrac{2}{5}`;
+- :math:`P(X=1) = \dfrac{3}{5} \cdot \dfrac{2}{4} = \dfrac{3}{10}`;
+- :math:`P(X=2) = \dfrac{3}{5} \cdot \dfrac{2}{4} \cdot \dfrac{2}{3} = \dfrac{1}{5}`;
+- :math:`P(X=3) = \dfrac{3}{5} \cdot \dfrac{2}{4} \cdot \dfrac{1}{3} \cdot \dfrac{2}{2} = \dfrac{1}{10}`.
 
-Мы получим :math:`\lvert \Omega \rvert = A^0_3 C^1_2 + A^1_3 C^1_2 + A^2_3 C^1_2 + A^3_3 C^1_2 = 32`, и закон распределения с :math:`X` - количество белых шара
+Проверка: :math:`\dfrac{2}{5} + \dfrac{3}{10} + \dfrac{1}{5} + \dfrac{1}{10} = 1`.
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   | :math:`X` | :math:`0` | :math:`1` | :math:`2` | :math:`3` |
-   |-----|-----|-----|-----|-----|
-   | :math:`P` | :math:`\dfrac{A^0_3 C^1_2}{32} = \dfrac{1}{16}` | :math:`\dfrac{A^1_3 C^1_2}{32} = \dfrac{3}{16}` | :math:`\dfrac{A^2_3 C^1_2}{32} = \dfrac{3}{8}` | :math:`\dfrac{A^3_3 C^1_2}{32} = \dfrac{3}{8}` |
-
+   * - :math:`X`
+     - :math:`0`
+     - :math:`1`
+     - :math:`2`
+     - :math:`3`
+   * - :math:`P`
+     - :math:`2/5`
+     - :math:`3/10`
+     - :math:`1/5`
+     - :math:`1/10`
 
 Поэтому
 
-
 .. math::
 
-   M(\xi) = 0 \cdot \dfrac{1}{16} + 1 \cdot \dfrac{3}{16} + 2 \cdot \dfrac{3}{8} + 3 \cdot \dfrac{3}{8} = \dfrac{33}{16} \approx 2
+   M(X) = 0 \cdot \dfrac{2}{5} + 1 \cdot \dfrac{3}{10} + 2 \cdot \dfrac{1}{5} + 3 \cdot \dfrac{1}{10} = 1.
 
 
 Задача 7.
@@ -699,7 +757,7 @@ x + y = 5
    P = \left(\dfrac{1}{2}\right)^3 = \dfrac{1}{8}.
 
 
-Задача 10. Случайная величина :math:`X` - погрешность измерительного прибора распределена по нормальному закону распределения с дисперсией :math:`\sigma^2 = 25` м:math:`B^2`. Систематическая погрешность прибора отсутствует. Найдите вероятность того, что при пяти независимых измерениях ошибка измерения хотя бы один раз превзойдет по модулю 10 мВ
+Задача 10. Случайная величина :math:`X` - погрешность измерительного прибора распределена по нормальному закону распределения с дисперсией :math:`\sigma^2 = 25` мВ\ :math:`^2`. Систематическая погрешность прибора отсутствует. Найдите вероятность того, что при пяти независимых измерениях ошибка измерения хотя бы один раз превзойдет по модулю 10 мВ
 
 Пусть :math:`A` = { при пяти независимых измерениях ошибка измерения хотя бы один раз превзойдет по модулю 10 мВ }.
 
@@ -750,7 +808,7 @@ x + y = 5
 
 Задача 14. :math:`P(X=k) = \dfrac{\lambda^k \cdot e^{-\lambda}}{k!}` , :math:`k=0,1,2,\cdots`.
 
-У нас есть :math:`\psi(z) = M(z^X)=\sum_{k=0}^{\infty}p_k x^k = \sum_{k=0}^{\infty} \dfrac{e^{-\lambda} \cdot \lambda^k \cdot z^k}{k!}`,
+У нас есть :math:`\psi(z) = M(z^X)=\sum_{k=0}^{\infty}p_k z^k = \sum_{k=0}^{\infty} \dfrac{e^{-\lambda} \cdot \lambda^k \cdot z^k}{k!}`,
 
 
 .. math::
@@ -760,7 +818,7 @@ x + y = 5
 
 :math:`\Longrightarrow M(X) = \psi'(1) = e^{-\lambda} \cdot \lambda \cdot e^{\lambda} = \lambda`
 
-Аналогично, мы получим :math:`\psi''(1)= \lambda^2` и :math:`D(X) = \psi''(1) + \psi'(1) (\psi'(1))^2 = \lambda^2 + \lambda - \lambda^2 = \lambda`
+Аналогично, мы получим :math:`\psi''(1)= \lambda^2` и :math:`D(X) = \psi''(1) + \psi'(1) - (\psi'(1))^2 = \lambda^2 + \lambda - \lambda^2 = \lambda`
 
 
 Занятие 8
@@ -779,11 +837,16 @@ x + y = 5
 
 Мы получим закон распределения
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   | :math:`Y` | :math:`1`   | :math:`4`   |
-   |-----|-------|-------|
-   | :math:`P` | :math:`0,7` | :math:`0,3` |
+   * - :math:`Y`
+     - :math:`1`
+     - :math:`4`
+   * - :math:`P`
+     - :math:`0,7`
+     - :math:`0,3`
+
 
 
 
@@ -803,7 +866,7 @@ x + y = 5
    g(y) = \dfrac{1}{b-a} \cdot \left|(\sqrt{y})'\right| = \dfrac{1}{2(b-a)\cdot \sqrt{y}}, a^2 \leqslant y \leqslant b^2.
 
 
-Задача 3. :math:`f(x) = \dfrac{x}{\sigma^2} \exp{-\dfrac{x^2}{2\sigma^2}}`, :math:`x \geqslant 0` и :math:`Y=\sigma/X`.
+Задача 3. :math:`f(x) = \dfrac{x}{\sigma^2} \exp\left(-\dfrac{x^2}{2\sigma^2}\right)`, :math:`x \geqslant 0` и :math:`Y=\sigma/X`.
 
 :math:`\Longrightarrow x=\sigma/y` и :math:`y > 0`. Поэтому плотность распределения случайной величины :math:`Y`:
 
@@ -819,11 +882,11 @@ x + y = 5
 
 У нас есть :math:`H = \tg X`, :math:`x \in [0, \pi/2]`. Следовательно, :math:`X` имеет равномерное на :math:`[0, \pi/2]` распределения с функцией плотности вероятности :math:`f(x)=\dfrac{2}{\pi}`. Поэтому :math:`x = \arctg h`, :math:`h \geqslant 0`.
 
-Мы получим :math:`g(h)=\dfrac{2}{\pi} \cdot \left|(\arctg h)'\right| = \dfrac{2}{\pi \sqrt{1+h^2}}`, :math:`h > 0`.
+Мы получим :math:`g(h)=\dfrac{2}{\pi} \cdot \left|(\arctg h)'\right| = \dfrac{2}{\pi (1+h^2)}`, :math:`h > 0`.
 
 При :math:`h \leqslant 0`, :math:`F(h) = \int\limits_{-\infty}^{h}0\,dh = 0`.
 
-При :math:`h > 0`, :math:`F(h) = \int\limits_{-\infty}^{h}g(h)\,dh = \int\limits_{0}^{h}\dfrac{2}{\pi \sqrt{1+h^2}}\,dh = \dfrac{2}{\pi} \cdot \arctg h`.
+При :math:`h > 0`, :math:`F(h) = \int\limits_{-\infty}^{h}g(h)\,dh = \int\limits_{0}^{h}\dfrac{2}{\pi (1+t^2)}\,dt = \dfrac{2}{\pi} \cdot \arctg h`.
 
 
 Задача 5. Случайная величина :math:`X` равномерно распределения на отрезке :math:`[0, 1]`, поэтому функция плотности вероятности :math:`f(x) = 1`.
@@ -835,14 +898,14 @@ x + y = 5
 
 .. math::
 
-   g(h) = 1 \cdot \left|(1/e^y)'\right| = 1/e^y.
+   g(y) = 1 \cdot \left|(1/e^y)'\right| = 1/e^y.
 
 
 Тогда функция распределения:
 
 При :math:`y<0`, :math:`F(y)=0`.
 
-При :math:`y \geqslant 0`, :math:`F(y) = \int\limits_{-\infty}^{y}\,dy = \int\limits_{0}^{y}1/e^y\,dy = -e^{-y}\left.\right|^y_0=-e^{-y} + e^0 = 1 - e^{-y}`.
+При :math:`y \geqslant 0`, :math:`F(y) = \int\limits_{-\infty}^{y}g(t)\,dt = \int\limits_{0}^{y}e^{-t}\,dt = -e^{-y}\left.\right|^y_0=-e^{-y} + e^0 = 1 - e^{-y}`.
 
 
 Задача 6. :math:`Y = X^2-X+1`.
@@ -851,11 +914,18 @@ x + y = 5
 - :math:`X=2`, :math:`Y=2^2-2+1=3`
 - :math:`X=4`, :math:`Y=4^2-4+1=13`
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   | :math:`Y` | :math:`1`   | :math:`3`   | :math:`13`  |
-   |-----|-------|-------|-------|
-   | :math:`P` | :math:`0,3` | :math:`0,5` | :math:`0,2` |
+   * - :math:`Y`
+     - :math:`1`
+     - :math:`3`
+     - :math:`13`
+   * - :math:`P`
+     - :math:`0,3`
+     - :math:`0,5`
+     - :math:`0,2`
+
 
 
 Математическое ожидание :math:`M\xi = 1 \cdot 0,3 + 3 \cdot 0,5 + 13 \cdot 0,2 = 4,4`.
@@ -866,7 +936,7 @@ x + y = 5
 - :math:`X=0`, :math:`P_3(X=0) = C^0_3 (1/2)^0 \cdot (1/2)^3=1/8` и :math:`Y=X^2=0`;
 - :math:`X=1`, :math:`P_3(X=1) = C^1_3 (1/2)^1 \cdot (1/2)^2 = 3/8` и :math:`Y=X^2=1`;
 - :math:`X=2`, :math:`P_3(X=2) = C^2_3 (1/2)^2 \cdot (1/2)^1 = 3/8` и :math:`Y=X^2=4`;
-- :math:`X=3`, :math:`P_3(X=3) = C^1_3 (1/2)^3 \cdot (1/2)^0 = 1/8` и :math:`Y=X^2=9`.
+- :math:`X=3`, :math:`P_3(X=3) = C^3_3 (1/2)^3 \cdot (1/2)^0 = 1/8` и :math:`Y=X^2=9`.
 
 Математическое ожидание случайной величины :math:`Y`
 
@@ -876,7 +946,7 @@ x + y = 5
    M\xi = 0 \cdot (1/8) + 1 \cdot (3/8) + 4 \cdot (3/8) + 9 \cdot (1/8) = 3
 
 
-Задача 8. Случайная величина :math:`X` равномерно распределения на отрезке :math:`[0, 1] \Longrightarrow` функция распределения :math:`f(x)=1`
+Задача 8. Случайная величина :math:`X` равномерно распределена на отрезке :math:`[0, 1] \Longrightarrow` плотность вероятности :math:`f(x)=1`
 
 Мы найдем область значений :math:`y=\varphi(x)`
 
@@ -915,7 +985,7 @@ x + y = 5
 
 Функция плотности вероятности равна
 
-:math:`g(y) = 0,5\sin (y/2) \cdot \left|(y/2)'\right|=0,25 \sin(y/2)` при :math:`y \in [0, 2\pi]` и :math:`f(y)=0` при остальных :math:`y`.
+:math:`g(y) = 0,5\sin (y/2) \cdot \left|(y/2)'\right|=0,25 \sin(y/2)` при :math:`y \in [0, 2\pi]` и :math:`g(y)=0` при остальных :math:`y`.
 
 Математическое ожидание.
 
@@ -947,7 +1017,7 @@ x + y = 5
 1. При :math:`x \in [0, 4]`, :math:`x=x(y)=2y`, :math:`y \in [0,2]`
 2. При :math:`x \in (4, +\infty)`, :math:`y \equiv 2`
 
-Поэтому :math:`y=0` при :math:`y \not\in [0, 2]` и если :math:`y=2 \Longrightarrow x=4`.
+Поэтому :math:`g(y)=0` при :math:`y \not\in [0, 2]`, а значение :math:`y=2` принимается при всех :math:`x \geqslant 4`.
 
 
 .. math::
@@ -981,21 +1051,44 @@ x + y = 5
 
 Задача 1.
 
-.. code-block:: text
+.. list-table::
+   :class: centered-table
 
-   | :math:`X` | :math:`Y` | :math:`Z` | :math:`P` |
-   |-----|-----|-----|-----|
-   | :math:`2` | :math:`4` | :math:`6` | :math:`0,3 \cdot 0,4 = 0,12` |
-   | :math:`2` | :math:`5` | :math:`7` | \multirow{2}{*}{:math:`0,3 \cdot 0,4 + 0,7 \cdot 0,4 = 0,46`} |
-   | :math:`3` | :math:`4` | :math:`7` |     |
-   | :math:`3` | :math:`5` | :math:`8` | :math:`0,7 \cdot 0,6 = 0,42` |
+   * - :math:`X`
+     - :math:`Y`
+     - :math:`Z`
+     - :math:`P`
+   * - :math:`2`
+     - :math:`4`
+     - :math:`6`
+     - :math:`0,3 \cdot 0,4 = 0,12`
+   * - :math:`2`
+     - :math:`5`
+     - :math:`7`
+     - :math:`0,3 \cdot 0,6 + 0,7 \cdot 0,4 = 0,46`
+   * - :math:`3`
+     - :math:`4`
+     - :math:`7`
+     - 
+   * - :math:`3`
+     - :math:`5`
+     - :math:`8`
+     - :math:`0,7 \cdot 0,6 = 0,42`
 
 
-.. code-block:: text
 
-   | :math:`Z` | :math:`6`    | :math:`7`    | :math:`8`    |
-   |-----|--------|--------|--------|
-   | :math:`P` | :math:`0,12` | :math:`0,46` | :math:`0,42` |
+.. list-table::
+   :class: centered-table
+
+   * - :math:`Z`
+     - :math:`6`
+     - :math:`7`
+     - :math:`8`
+   * - :math:`P`
+     - :math:`0,12`
+     - :math:`0,46`
+     - :math:`0,42`
+
 
 
 
@@ -1017,7 +1110,7 @@ x + y = 5
    Z = X+Y \Longrightarrow f(z) = \int\limits_{-\infty}^{+\infty}f_1(x) f_2(z-x)\,dx.
 
 
-При :math:`z \geqslant 0 \Longrightarrow f(z) = \int\limits_{0}^{z}\lambda e^{-\lambda x} \cdot \lambda e^{-\lambda (z-x)}\,dx = \int\limits_{0}^{z}\lambda^2 e^{-\lambda z}\,dx = \lambda^2 e^{-\lambda z}` \\
+При :math:`z \geqslant 0 \Longrightarrow f(z) = \int\limits_{0}^{z}\lambda e^{-\lambda x} \cdot \lambda e^{-\lambda (z-x)}\,dx = \int\limits_{0}^{z}\lambda^2 e^{-\lambda z}\,dx = \lambda^2 z e^{-\lambda z}`
 
 При :math:`z < 0`, :math:`f(z) = 0`.
 
@@ -1097,7 +1190,7 @@ x + y = 5
 
 .. math::
 
-   f_1(x) = \int\limits_{0}^{x/2}1\,dy = \dfrac{2}{x}, f_2(y) = \int\limits_{2y}^{2}1\,dx = 2-2y.
+   f_1(x) = \int\limits_{0}^{x/2}1\,dy = \dfrac{x}{2}, \quad f_2(y) = \int\limits_{2y}^{2}1\,dx = 2-2y.
 
 
 .. math::
@@ -1124,8 +1217,8 @@ x + y = 5
 
 
 1. При :math:`y < 0`, :math:`G(y) = P(X \leqslant y) = \int\limits_{-\infty}^{y}f(x)\,dx = F(y) \Longrightarrow g(y)=f(y)`
-2. При :math:`0 \leqslant y < 1`, :math:`G(y) = P(X^2 \leqslant y) = P(X \leqslant \sqrt{Y}) = \int\limits_{0}^{\sqrt{y}}f(x)\,dx = F(\sqrt{y}) \Longrightarrow g(y) = f(\sqrt{y})(\sqrt{y})'=\dfrac{f(\sqrt{y})}{2\sqrt{y}}`
-3. При :math:`y \geqslant 1`, :math:`G(y) = P(X \leqslant y) = \int\limits_{1}^{y}f(x)\,dx = F(y) \Longrightarrow g(y)=f(y)`
+2. При :math:`0 \leqslant y < 1`, :math:`G(y) = P(X < 0) + P(0 \leqslant X \leqslant \sqrt{y}) = \int\limits_{-\infty}^{\sqrt{y}}f(x)\,dx = F(\sqrt{y}) \Longrightarrow g(y) = f(\sqrt{y})(\sqrt{y})'=\dfrac{f(\sqrt{y})}{2\sqrt{y}}`
+3. При :math:`y \geqslant 1`, :math:`G(y) = P(X \leqslant y) = \int\limits_{-\infty}^{y}f(x)\,dx = F(y) \Longrightarrow g(y)=f(y)`
 
 
 Задача 12. :math:`X_1, X_2 \Longrightarrow f(x_1, x_2) = \dfrac{2}{\pi^2(x_1^2+1)(x_2^2+4)}`, :math:`g(y_1, y_2) \Longrightarrow Y_1, Y_2`, :math:`X_1 = \tg(Y_1)`, :math:`X_2 = 2 \tg(Y_2)`, :math:`| Y_1 | < \pi / 2`, :math:`|Y_2| < \pi/2`
@@ -1162,7 +1255,7 @@ x + y = 5
 
 :math:`\Longleftrightarrow 0,2\sqrt{n} > 1,65 \Longrightarrow n > 68,0625`. Значит больше :math:`68`.
 
-(б) :math:`P(|k/n<0,5|<0,1) \geqslant 1 - \dfrac{0,25}{0,1^2 n} = 0,9 \Longleftrightarrow n \geqslant 250`. Значит больше :math:`250`.
+(б) По неравенству Чебышева :math:`P(|k/n-0,5|<0,1) \geqslant 1 - \dfrac{0,25}{0,1^2 n} \geqslant 0,9 \Longleftrightarrow n \geqslant 250`. Значит не меньше :math:`250`.
 
 
 Задача 4. Пусть :math:`X_i` - время :math:`i`-го.
@@ -1227,7 +1320,7 @@ x + y = 5
 
 .. math::
 
-   L & = \dfrac{x_1 x_2 x_3}{\sigma^6}\exp{ -\dfrac{x_1^2+x_2^2+x_3^2}{2\sigma^2} } = \dfrac{1,98}{\sigma^6}exp{ -\dfrac{4,9}{\sigma^2} } \\  \ln L & = \ln 1,98 - 6\ln \sigma - \dfrac{4,9}{2\sigma^2} \\ \dfrac{\partial\ln L}{\partial \sigma} & = -\dfrac{6}{\sigma}+\dfrac{4,9}{\sigma^3} = 0 \sigma^2 & = \dfrac{49}{60} \approx 0,82.
+   L & = \dfrac{x_1 x_2 x_3}{\sigma^6}\exp\left( -\dfrac{x_1^2+x_2^2+x_3^2}{2\sigma^2} \right) = \dfrac{1,98}{\sigma^6}\exp\left( -\dfrac{4,9}{2\sigma^2} \right) \\  \ln L & = \ln 1,98 - 6\ln \sigma - \dfrac{4,9}{2\sigma^2} \\ \dfrac{\partial\ln L}{\partial \sigma} & = -\dfrac{6}{\sigma}+\dfrac{4,9}{\sigma^3} = 0 \\ \sigma^2 & = \dfrac{49}{60} \approx 0,82.
 
 
 Задача 6. :math:`L = C^1_k p (1-p)^{k-1} = kp(1-p)^{k-1}`.
@@ -1236,7 +1329,7 @@ x + y = 5
 
 :math:`\Longrightarrow \dfrac{\partial \ln L}{\partial p} = \dfrac{1}{p} - \dfrac{k-1}{1-p} = 0`.
 
-:math:`\Longrightarrow \dfrac{1-p-p(k-1)}{p(p-1)} = 0 \Longleftrightarrow pk = 1 \Longleftrightarrow p = 1/k`
+:math:`\Longrightarrow \dfrac{1-p-p(k-1)}{p(1-p)} = 0 \Longleftrightarrow pk = 1 \Longleftrightarrow p = 1/k`
 
 
 Занятие 12
@@ -1255,7 +1348,7 @@ x + y = 5
 
 .. math::
 
-   p\sum_{k=1}^{n} X_k^2 + b \sum_{k=1}^{n} X_k = \sum_{k=1}^{n} X_k Y_k \Longleftrightarrow p \sum_{k=1}^{n} X_k + nb = \sum_{k=1}^{n} Y_k.
+   p\sum_{k=1}^{n} X_k^2 + b \sum_{k=1}^{n} X_k = \sum_{k=1}^{n} X_k Y_k, \qquad p \sum_{k=1}^{n} X_k + nb = \sum_{k=1}^{n} Y_k.
 
 
 Мы вычисляем
@@ -1312,7 +1405,7 @@ x + y = 5
 Задача 3. :math:`0,73 < p < 0,77`
 
 
-Задача 4. :math:`k=1200`, :math:`\overline{X} = 15,6`, :math:`s=0,4`, :math:`\gamma=0,95 \Longrightarrow t_\gamma=1,96`.
+Задача 4. :math:`n=16`, :math:`\overline{X} = 15,6`, :math:`s=0,4`, :math:`\gamma=0,95`. Так как дисперсия неизвестна и выборка мала, используем распределение Стьюдента с :math:`n-1=15` степенями свободы: :math:`t_\gamma=2,131`.
 
 :math:`\overline{X} - t_\gamma \dfrac{s}{\sqrt{n}} < M < \overline{X} + t_\gamma \dfrac{s}{\sqrt{n}}`.
 
@@ -1428,7 +1521,7 @@ x + y = 5
    \begin{align*} P(B_1) & = P(A_1 | A) = \dfrac{1/2 \cdot 3/10}{77/180} = \dfrac{27}{77} \\ P(B_2) & = P(A_2 | A) = \dfrac{1/2 \cdot 5/9}{77/180} = \dfrac{50}{77} \end{align*}
 
 
-Если первый ящик выбирается, после мы взяли один белый шар, еще 8 белых, тогда :math:`P(B | B_1) = \dfrac{2}{9}`. Аналогично, :math:`P(B | B_2) = \dfrac{4}{8}`.
+Если первый ящик выбирается, после того как мы взяли один белый шар, в нем осталось 2 белых из 9 шаров, тогда :math:`P(B | B_1) = \dfrac{2}{9}`. Аналогично, :math:`P(B | B_2) = \dfrac{4}{8}`.
 
 Отсюда
 
@@ -1448,7 +1541,7 @@ x + y = 5
 - :math:`A_4` = { белый шар из 4-ого ящика } :math:`\Longrightarrow \overline{A}_4` = { черный шар из 4-ого ящика };
 - :math:`A_5` = { белый шар из 5-ого ящика } :math:`\Longrightarrow \overline{A}_5` = { черный шар из 5-ого ящика }.
 
-Если мы выбираем белый шар из :math:`i`-ого ящика, тогда в :math:`(i+1)`-ом ящике есть :math:`8 + 1 = 9` белых ящиков. Значит :math:`P(A_{i+1} | A_i) = \dfrac{11}{41}`. Аналогично, если мы выбираем черный шар из :math:`i`-ого ящика, :math:`P(A_{i+1} | \overline{A}_i) = \dfrac{10}{41}` и 
+Если мы выбираем белый шар из :math:`i`-ого ящика, тогда в :math:`(i+1)`-ом ящике есть :math:`10 + 1 = 11` белых шаров из 41. Значит :math:`P(A_{i+1} | A_i) = \dfrac{11}{41}`. Аналогично, если мы выбираем черный шар из :math:`i`-ого ящика, :math:`P(A_{i+1} | \overline{A}_i) = \dfrac{10}{41}` и 
 
 
 .. math::
@@ -1496,25 +1589,11 @@ x + y = 5
 
 Задача 2. Из урны, содержащей пять белых и четыре черных шара, извлекают шары по одному без возвращения, пока не будет извлечен белый шар. Какова вероятность того, что придется извлечь четыре шара?
 
-Пусть
-
-- :math:`A_i` = { выбрать :math:`i` черных шаров, пока не будет извлечен белый шар }. Поэтому :math:`i \in { 0, 1, 2, 3, 4 }`;
-- :math:`B` = { выбрать белый шар в последний раз }.
-
-У нас есть :math:`P(B|A_0) = P(B|A_1) = \cdots = P(B|A_4) = \dfrac{1}{5}`
-
+Придется извлечь ровно четыре шара тогда и только тогда, когда первые три шара черные, а четвертый белый. По правилу умножения
 
 .. math::
 
-   P(A_0) = \dfrac{A^0_4}{A^0_9} = 1, P(A_1) = \dfrac{A^1_4}{A^1_9} = \dfrac{4}{9}, P(A_2) = \dfrac{A^2_4}{A^2_9} = \dfrac{1}{6}, P(A_3) = \dfrac{A^3_4}{A^3_9} = \dfrac{1}{21}, P(A_4) = \dfrac{A^4_4}{A^4_9} = \dfrac{1}{126}.
-
-
-Мы можем вычислять
-
-
-.. math::
-
-   \begin{align*} P(A_3 | B) & = \dfrac{P(B|A_3)P(A_3)}{\sum\limits_{i=0}^{4}P(B|A_i) P(A_i)} \\ & = \dfrac{1/5 \cdot 1/21}{1/5 \cdot (1 + 4/9 + 1/6 + 1/21 + 1/126)} = \dfrac{1}{35}.\end{align*}
+   P = \dfrac{4}{9} \cdot \dfrac{3}{8} \cdot \dfrac{2}{7} \cdot \dfrac{5}{6} = \dfrac{A^3_4 \cdot 5}{A^4_9} = \dfrac{5}{126} \approx 0,04.
 
 
 Задача 3. Для каждого из чисел :math:`X` и :math:`Y` равновозможно любое значение из отрезка :math:`[0;2]`. Какова вероятность того, что разность :math:`X - Y` превосходит единицу?
@@ -1527,7 +1606,7 @@ x + y = 5
    \begin{cases} X - Y \geqslant 1 \\ 0 \leqslant X, Y \leqslant 2 \end{cases}
 
 
-Отсюда мы получим вероятность равно :math:`P = \dfrac{S_{\triangle AB}}{S_{OBMN}} = \dfrac{1/2}{4} = \dfrac{1}{8}`.
+Это треугольник с вершинами :math:`(1, 0)`, :math:`(2, 0)`, :math:`(2, 1)` площади :math:`1/2` внутри квадрата :math:`[0,2]^2` площади :math:`4`. Отсюда мы получим вероятность :math:`P = \dfrac{1/2}{4} = \dfrac{1}{8}`.
 
 
 Задача 4. В одном из двух ящиков лежит 9 белых и 3 черных шара, а в другом лежит 6 белых и 3 черных шара. Наугад выбирается один из ящиков и вынимается из него шар, который оказался белым. Найти вероятность того, что следующий извлеченный из этого же ящика шар тоже белый.
@@ -1560,7 +1639,7 @@ x + y = 5
    P(B_1) = P(A_1 | A) = \dfrac{1/2 \cdot 9/12}{17/24} = \dfrac{9}{17}, P(B_2) = P(A_2 | A) = \dfrac{1/2 \cdot 6/9}{17/24} = \dfrac{8}{17}.
 
 
-Если первый ящик выбирается, после мы взяли один белый шар, еще 8 белых, тогда :math:`P(B | B_1) = \dfrac{8}{11}`. Аналогично, :math:`P(B | B_2) = \dfrac{5}{8}`.
+Если первый ящик выбирается, после того как мы взяли один белый шар, в нем осталось 8 белых из 11 шаров, тогда :math:`P(B | B_1) = \dfrac{8}{11}`. Аналогично, :math:`P(B | B_2) = \dfrac{5}{8}`.
 
 Поэтому
 
@@ -1580,7 +1659,7 @@ x + y = 5
 - :math:`A_4` = { белый шар из 4-ого ящика } :math:`\Longrightarrow \overline{A}_4` = { черный шар из 4-ого ящика };
 - :math:`A_5` = { белый шар из 5-ого ящика } :math:`\Longrightarrow \overline{A}_5` = { черный шар из 5-ого ящика }.
 
-Если мы выбираем белый шар из :math:`i`-ого ящика, тогда в :math:`(i+1)`-ом ящике есть :math:`8 + 1 = 9` белых ящиков. Значит :math:`P(A_{i+1} | A_i) = \dfrac{9}{25}`. Аналогично, если мы выбираем черный шар из :math:`i`-ого ящика, :math:`P(A_{i+1} | \overline{A}_i) = \dfrac{8}{25}` и 
+Если мы выбираем белый шар из :math:`i`-ого ящика, тогда в :math:`(i+1)`-ом ящике есть :math:`8 + 1 = 9` белых шаров из 25. Значит :math:`P(A_{i+1} | A_i) = \dfrac{9}{25}`. Аналогично, если мы выбираем черный шар из :math:`i`-ого ящика, :math:`P(A_{i+1} | \overline{A}_i) = \dfrac{8}{25}` и 
 
 
 .. math::

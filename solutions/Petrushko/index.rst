@@ -401,11 +401,11 @@ Như vậy
 **Bài 9.** Một bộ bài gồm :math:`36` lá. Lấy ngẫu nhiên hai lá. Tính xác suất
 để hai lá đó có màu đỏ.
 
-**Giải.** Không gian mẫu :math:`\lvert \Omega \rvert = C^2_{26}`.
+**Giải.** Không gian mẫu :math:`\lvert \Omega \rvert = C^2_{36}`.
 
 Lấy hai trong :math:`36/2=18` lá đỏ có :math:`C^2_{18}` cách.
 
-Đáp án: :math:`\dfrac{C^2_{18}}{C^2_{26}} = \dfrac{17}{70}`.
+Đáp án: :math:`\dfrac{C^2_{18}}{C^2_{36}} = \dfrac{17}{70}`.
 
 **Bài 10.** Trong thùng có :math:`3` bóng đèn hỏng và :math:`7` bóng đèn tốt.
 Lấy ngẫu nhiên các bóng lần lượt đến khi lấy được :math:`2` bóng tốt thì dừng.
@@ -506,16 +506,11 @@ cần trả lời đúng :math:`2` câu hỏi bắt buộc hoặc trả lời đ
 :math:`2` câu bắt buộc cộng thêm :math:`1` câu hỏi phụ. Tính xác suất để
 sinh viên vượt qua bài thi?
 
-**Giải.** Ở đây cần hiểu là sinh viên biết :math:`20` câu trong số :math:`30` câu,
-:math:`10` câu kia là câu hỏi phụ. Khi đó có hai trường hợp:
+**Giải.** Đề thi gồm :math:`2` câu bắt buộc rồi :math:`1` câu phụ, cả ba câu được rút ngẫu nhiên, khác nhau, từ :math:`30` câu; sinh viên biết :math:`20` câu. Có hai trường hợp rời nhau:
 
-Trường hợp 1 là sinh viên trả lời đúng :math:`2` câu trong số :math:`20` câu
-sinh viên biết nên xác suất là :math:`\dfrac{A^2_{20}}{A^2_{30}}`.
+Trường hợp 1: sinh viên biết cả :math:`2` câu bắt buộc. Xác suất là :math:`\dfrac{A^2_{20}}{A^2_{30}} = \dfrac{38}{87}`.
 
-Trường hợp 2 là sinh viên trả lời đúng :math:`1` trong :math:`2` câu bắt buộc
-(có :math:`A^2_{20} \cdot 2` cách chọn) và :math:`1` câu hỏi phụ (:math:`10` cách chọn)
-nên xác suất là :math:`\dfrac{A^2_{20} \cdot 2 \cdot 10}{A^3_{30}}`. Tổng số
-câu sinh viên trả lời là :math:`3`.
+Trường hợp 2: sinh viên biết đúng :math:`1` trong :math:`2` câu bắt buộc và biết câu phụ. Đếm các bộ có thứ tự (câu bắt buộc 1, câu bắt buộc 2, câu phụ): chọn vị trí của câu biết trong hai câu bắt buộc có :math:`2` cách, chọn câu biết có :math:`20` cách, câu không biết có :math:`10` cách, và câu phụ phải là một trong :math:`19` câu biết còn lại. Số trường hợp là :math:`2 \cdot 20 \cdot 10 \cdot 19 = A^2_{20} \cdot 2 \cdot 10`, nên xác suất là :math:`\dfrac{A^2_{20} \cdot 2 \cdot 10}{A^3_{30}}`.
 
 Đáp án: :math:`\dfrac{A^2_{20}}{A^2_{30}} + \dfrac{A^2_{20} \cdot 2 \cdot 10}{A^3_{30}} = \dfrac{152}{203}`.
 
