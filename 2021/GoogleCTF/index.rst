@@ -167,8 +167,8 @@ Hàm attack tìm ciphertext với danh sách key, nonce và tag
 
 **LƯU Ý 2**. Việc tính toán đa thức bậc :math:`512` cũng tốn thời gian nên chúng ta có thể tính trước rồi lưu lại trên dict hoặc hash table hoặc bất cứ thứ gì bạn nghĩ ra sau đó chúng ta mới giao tiếp với server.
 
-Phần còn lại của code là attack thôi Source code ta để ở file :download:`solve.py <Pythia/service.py>`.
+Phần còn lại của code là attack thôi Source code ta để ở file :download:`solve.py <Pythia/solve.py>`.
 
-Với mỗi password ta dùng một query để chỉ định vị trí password (:math:`0`, :math:`1, :math:`2`), :math:`\lceil 26^3 / 512 \rceil = 35` query cho mỗi chunk, và :math:`\log_2(512) = 9` cho tìm nhị phân. Như vậy ta tốn :math:`(1 + 35 + 9) \cdot 3 = 135` query tổng cộng.
+Với mỗi password ta dùng một query để chỉ định vị trí password (:math:`0`, :math:`1`, :math:`2`), :math:`\lceil 26^3 / 512 \rceil = 35` query cho mỗi chunk, và :math:`\log_2(512) = 9` cho tìm nhị phân. Như vậy ta tốn :math:`(1 + 35 + 9) \cdot 3 = 135` query tổng cộng.
 
 Bài viết tới đây là hết.
