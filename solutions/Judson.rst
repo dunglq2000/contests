@@ -10,10 +10,11 @@ Chương 3. Groups
     
     Đặt :math:`S = \mathbb{R} \setminus \{-1\}` và định nghĩa toán tử hai ngôi trên :math:`S` là :math:`a \star b = a + b + ab`. Chứng minh rằng :math:`(S, \star)` là nhóm Abel.
 
-Để chứng minh :math:`(S, \star)` là nhóm ta chứng minh ba tiên đề của nhóm.
+Để chứng minh :math:`(S, \star)` là nhóm Abel ta kiểm tra tính đóng, ba tiên đề của nhóm và tính giao hoán.
 
-1. Giả sử tồn tại phần tử đơn vị :math:`e`, khi đó :math:`e \star s = s \star e = s` với mọi :math:`s \in S`. Nghĩa là :math:`e + s + es = s + e + se = s`. Vậy :math:`e + se = 0` mà :math:`s \neq -1` nên :math:`e = 0`
-2. Với :math:`e = 0`, giả sử với mọi :math:`s \in S` có nghịch đảo :math:`s'`. Do :math:`s \star s' = s' \star s = e` nên :math:`s + s' + ss' = s' + s + s's = e = 0`, tức là :math:`s'(1 + s) = -s`. Vậy :math:`s' = \dfrac{-s}{1 + s}`
+0. Tính đóng: :math:`a \star b = a + b + ab = (1+a)(1+b) - 1`. Với :math:`a, b \neq -1` thì :math:`(1+a)(1+b) \neq 0`, nên :math:`a \star b \neq -1`, tức :math:`a \star b \in S`.
+1. Giả sử tồn tại phần tử đơn vị :math:`e`, khi đó :math:`e \star s = s \star e = s` với mọi :math:`s \in S`. Nghĩa là :math:`e + s + es = s + e + se = s`. Vậy :math:`e(1 + s) = 0` mà :math:`s \neq -1` nên :math:`e = 0`; ngược lại :math:`0 \star s = s` nên :math:`0` đúng là phần tử đơn vị.
+2. Với :math:`e = 0`, giả sử với mọi :math:`s \in S` có nghịch đảo :math:`s'`. Do :math:`s \star s' = s' \star s = e` nên :math:`s + s' + ss' = s' + s + s's = e = 0`, tức là :math:`s'(1 + s) = -s`. Vậy :math:`s' = \dfrac{-s}{1 + s}`. Phần tử này thuộc :math:`S` vì :math:`\dfrac{-s}{1+s} = -1` kéo theo :math:`s = 1 + s`, vô lý.
 3. Với mọi :math:`a, b, c \in S`, 
 
    .. math:: 
@@ -25,12 +26,12 @@ Chương 3. Groups
 
    .. math:: 
 
-       (a \star b) \star c & = (a + b + ab) \star c = a + b + ab + c + c(a+b+bc) \\
+       (a \star b) \star c & = (a + b + ab) \star c = a + b + ab + c + c(a+b+ab) \\
         & = a + b + c + ab + bc + ca + abc.
 
 Như vậy :math:`a \star (b \star c) = (a \star b) \star c`, do đó :math:`\star` có tính kết hợp.
 
-Vậy :math:`(S, \star)` là nhóm.
+Cuối cùng :math:`a \star b = a + b + ab = b + a + ba = b \star a` nên :math:`\star` giao hoán. Vậy :math:`(S, \star)` là nhóm Abel.
 
 .. admonition::  Bài 39
 
@@ -63,7 +64,7 @@ Với :math:`\theta_1, \theta_2 \in \mathbb{R}`, ta có
         \sin (\theta_1 + \theta_2) & \cos (\theta_1 + \theta_2)
     \end{pmatrix},
 
-suy ra định thức của tích hai ma trận là
+Trước hết mỗi ma trận trong :math:`G` có định thức :math:`\cos^2\theta + \sin^2\theta = 1` nên :math:`G \subseteq SL_2(\mathbb{R})`. Tích của hai phần tử của :math:`G` lại có dạng trên (với góc :math:`\theta_1 + \theta_2`), và định thức của nó là
 
 .. math:: 
 
@@ -77,7 +78,7 @@ Như vậy phép nhân hai ma trận có dạng trên đóng trên :math:`SL_2 (
 
 Phần tử đơn vị là :math:`\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}` tương ứng với :math:`\theta = 0`.
 
-Phần tử nghịch đảo là :math:`\begin{pmatrix} \cos (-\theta) & -\sin (-\theta) \\ \sin (-\theta) & \cos (-\theta) \end{pmatrix}` suy ra từ công thức định thức ban nãy.
+Phần tử nghịch đảo là :math:`\begin{pmatrix} \cos (-\theta) & -\sin (-\theta) \\ \sin (-\theta) & \cos (-\theta) \end{pmatrix}`, suy ra từ công thức tích ở trên với :math:`\theta_2 = -\theta_1`, và nó cũng thuộc :math:`G`.
 
 Cuối cùng, phép nhân ma trận có tính kết hợp. Như vậy :math:`G` là subgroup của :math:`SL_2 (\mathbb{R})`.      
 
@@ -97,13 +98,13 @@ Xét phần tử :math:`x_1 x_2`, ta có
 
 .. math:: (x_1 x_2) g = x_1 (x_2 g) = x_1 (g x_2) = (g x_1) x_2 = g (x_1 x_2)
 
-với mọi :math:`g \in G`. Do đó :math:`x_1 x_2 \in Z(G)` nên :math:`Z(G)` là subgroup.
+với mọi :math:`g \in G`. Do đó :math:`x_1 x_2 \in Z(G)`. Ngoài ra :math:`eg = g = ge` nên :math:`e \in Z(G)`, và nếu :math:`x \in Z(G)` thì nhân hai vế của :math:`xg = gx` với :math:`x^{-1}` ở bên trái và bên phải được :math:`g x^{-1} = x^{-1} g`, tức :math:`x^{-1} \in Z(G)`. Vậy :math:`Z(G)` là subgroup.
 
 .. admonition::  Bài 49
 
     Cho ví dụ về nhóm vô hạn mà mọi nhóm con không tầm thường của nó đều vô hạn.
 
-Ví dụ tập :math:`\mathbb{Z}` và phép cộng số nguyên. Khi đó mọi nhóm con của :math:`\mathbb{Z}` có dạng :math:`n\mathbb{Z}` với :math:`n \in \mathbb{Z}`. Ví dụ
+Ví dụ tập :math:`\mathbb{Z}` và phép cộng số nguyên. Khi đó mọi nhóm con của :math:`\mathbb{Z}` có dạng :math:`n\mathbb{Z}` với :math:`n \in \mathbb{Z}`, và nhóm con không tầm thường ứng với :math:`n \neq 0` luôn vô hạn. Ví dụ
 
 * :math:`2\mathbb{Z} = \{\cdots, -4, -2, 0, 2, 4, \cdots\}` với phần tử sinh là :math:`2`;
 * :math:`n\mathbb{Z} = \{\cdots, -2n, -n, 0, n, 2n, \cdots\}` với phần tử sinh là :math:`n`.
@@ -122,7 +123,7 @@ Xét phần tử :math:`g_1 g_2`, với mọi :math:`h \in H` ta có
 
 .. math:: (g_1 g_2) h = g_1 (g_2 h) = g_1 (h g_2) = (g_1 h) g_2 = (h g_1) g_2 = h (g_1 g_2).
 
-Như vậy :math:`g_1 g_2 \in C(H)`, từ đó :math:`C(H)` là subgroup của :math:`G`
+Như vậy :math:`g_1 g_2 \in C(H)`. Hiển nhiên :math:`e \in C(H)`, và từ :math:`gh = hg` suy ra :math:`h g^{-1} = g^{-1} h` (nhân :math:`g^{-1}` vào hai phía), nên :math:`g^{-1} \in C(H)`. Từ đó :math:`C(H)` là subgroup của :math:`G`.
 
 Chương 5. Permutation Groups
 ============================
@@ -131,9 +132,9 @@ Chương 5. Permutation Groups
 
     Đặt :math:`\sigma = \sigma_1 \cdots \sigma_m \in S_n` là tích của các cycle độc lập. Chứng minh rằng order của :math:`\sigma` là LCM của độ dài các cycle :math:`\sigma_1, \cdots, \sigma_m`.
 
-Đặt :math:`l_i` là độ dài cycle :math:`\sigma_i` (:math:`i = 1, \cdots m`). Khi đó :math:`\sigma_i^{k_i l_i}` sẽ ở dạng các cycle độ dài :math:`1` (:math:`k_i \in \mathbb{Z}`).
+Đặt :math:`l_i` là độ dài cycle :math:`\sigma_i` (:math:`i = 1, \ldots, m`). Một cycle độ dài :math:`l_i` có order :math:`l_i`, nên :math:`\sigma_i^l = \mathrm{id}` khi và chỉ khi :math:`l_i \mid l`.
 
-Từ đó, :math:`\sigma^l = \sigma_1^l \cdots \sigma_m^l = (1)\cdots(n)` nếu :math:`l = k_1 l_1 = \cdots k_m l_m`. Số :math:`l` nhỏ nhất thỏa mãn điều kiện này là :math:`\text{lcm} (l_1, \cdots, l_m)` (đpcm).
+Các cycle độc lập giao hoán với nhau nên :math:`\sigma^l = \sigma_1^l \cdots \sigma_m^l`. Hơn nữa :math:`\sigma_i^l` chỉ di chuyển các phần tử trong cycle :math:`\sigma_i`, và các tập này rời nhau, nên :math:`\sigma^l = \mathrm{id}` khi và chỉ khi :math:`\sigma_i^l = \mathrm{id}` với mọi :math:`i`, tức :math:`l_i \mid l` với mọi :math:`i`. Số :math:`l` dương nhỏ nhất thỏa mãn điều kiện này là :math:`\text{lcm} (l_1, \ldots, l_m)` (đpcm).
 
 .. admonition::  Bài 23
 
@@ -161,8 +162,8 @@ cũng là chu trình.
 
 Để chứng minh hai mệnh đề trên ta cần chú ý một số điều.
 
-1. Ta thấy rằng bất kì phần tử nào khác :math:`a_1, a_2, \cdots, a_k` thì khi qua :math:`\tau` không đổi, do đó khi đi qua :math:`\sigma \tau \sigma^{-1}` thì chỉ đi qua :math:`\sigma \sigma^{-1}` và cũng không đổi. Nói cách khác các phần tử :math:`a_1, a_2, \cdots, a_k` vẫn nằm trong chu trình nên ta có đpcm.
-2. Từ câu (a), với :math:`\mu = (b_1, b_2, \cdots, b_k)` thì ta chọn :math:`\sigma` sao cho :math:`b_i = \sigma(a_i)`.
+1. Với :math:`x = \sigma(a_i)` ta có :math:`\sigma \tau \sigma^{-1}(x) = \sigma(\tau(a_i)) = \sigma(a_{i+1})` (chỉ số lấy theo modulo :math:`k`). Nếu :math:`x` không thuộc :math:`\{\sigma(a_1), \ldots, \sigma(a_k)\}` thì :math:`\sigma^{-1}(x)` không thuộc :math:`\{a_1, \ldots, a_k\}`, nên :math:`\tau` giữ nguyên nó và :math:`\sigma \tau \sigma^{-1}(x) = \sigma \sigma^{-1}(x) = x`. Vậy :math:`\sigma \tau \sigma^{-1} = (\sigma(a_1), \sigma(a_2), \ldots, \sigma(a_k))`, là chu trình độ dài :math:`k` vì :math:`\sigma` là song ánh.
+2. Từ câu 1, với :math:`\mu = (b_1, b_2, \ldots, b_k)` thì ta chọn hoán vị :math:`\sigma` bất kỳ sao cho :math:`\sigma(a_i) = b_i` với :math:`i = 1, \ldots, k` (luôn tồn tại vì hai tập :math:`\{a_i\}` và :math:`\{b_i\}` có cùng số phần tử, nên có thể mở rộng thành song ánh trên toàn tập).
 
 Chương 6. Cosets
 ================
@@ -178,19 +179,19 @@ Chương 6. Cosets
     5. :math:`g_1^{-1} g_2 \in H` 
 
 
-Từ (1) ra (2): Ta đã biết các coset là rời nhau hoặc trùng nhau, do đó với mọi :math:`g_1 h \in g_1 H`, tồn tại :math:`g_2 h' \in g_2 H` mà :math:`g_1 h = g_2 h'`, suy ra :math:`(g_1 h)^{-1} = (g_2 h')^{-1}` hay :math:`h^{-1} g_1^{-1} = h'^{_1} g_2^{-1}` (đpcm).
+Ta chứng minh theo vòng :math:`(1) \Rightarrow (3) \Rightarrow (4) \Rightarrow (5) \Rightarrow (1)`, sau đó chứng minh :math:`(1) \Leftrightarrow (2)`.
 
-Từ (1) ra (3): Hiển nhiên.
-
-Từ (1) ra (4): Với mọi :math:`g_1 h \in g_1 H`, tồn tại :math:`g_2 h' \in g_2 H` sao cho :math:`g_1 h = g_2 h'`, hay :math:`g_2 = g_1 h h'^{-1}`, đặt :math:`h'' = h h'^{-1}` thì :math:`h'' \in H` (:math:`H` là nhóm con) nên :math:`g_1 h'' \in g_1 H`, suy ra :math:`g_2 \in g_1 H`.
-
-Từ (1) ra (5): Tương tự, ta có :math:`g_1 h = g_2 h'`, suy ra :math:`h h'^{-1}= g_1^{-1} g_2 \in H`.
+* :math:`(1) \Rightarrow (3)`: hiển nhiên.
+* :math:`(3) \Rightarrow (4)`: :math:`g_1 = g_1 e \in g_1 H \subseteq g_2 H`, nên :math:`g_1 = g_2 h` với :math:`h \in H`. Suy ra :math:`g_2 = g_1 h^{-1} \in g_1 H`.
+* :math:`(4) \Rightarrow (5)`: :math:`g_2 = g_1 h` với :math:`h \in H`, nên :math:`g_1^{-1} g_2 = h \in H`.
+* :math:`(5) \Rightarrow (1)`: đặt :math:`h_0 = g_1^{-1} g_2 \in H`. Khi đó :math:`g_2 H = g_1 h_0 H = g_1 H` vì :math:`h_0 H = H`.
+* :math:`(1) \Leftrightarrow (2)`: ánh xạ :math:`x \mapsto x^{-1}` biến :math:`gH` thành :math:`(gH)^{-1} = H^{-1} g^{-1} = H g^{-1}`, và là song ánh. Do đó :math:`g_1 H = g_2 H` khi và chỉ khi :math:`H g_1^{-1} = H g_2^{-1}`.
 
 .. admonition::  Bài 16
 
     Nếu :math:`g h g^{-1} \in H` với mọi :math:`g \in G` và :math:`h \in H`, chứng minh rằng right coset trùng với left coset.
 
-Do :math:`g h g^{-1} \in H` nên tồn tại :math:`h' \in H` sao cho :math:`g h g^{-1} = h'`. Tương đương :math:`g h = h' g` với mọi :math:`h \in H` nên :math:`g H = H g`. Điều này đúng với mọi :math:`g \in G` nên các right coset trùng left coset.
+Do :math:`g h g^{-1} \in H` nên tồn tại :math:`h' \in H` sao cho :math:`g h g^{-1} = h'`. Tương đương :math:`g h = h' g` với mọi :math:`h \in H`, nên :math:`g H \subseteq H g`. Áp dụng giả thiết cho :math:`g^{-1}` thì :math:`g^{-1} h g \in H`, tức :math:`h g = g h''` với :math:`h'' \in H`, nên :math:`H g \subseteq g H`. Vậy :math:`g H = H g` với mọi :math:`g \in G`, tức các right coset trùng left coset.
 
 .. admonition::  Bài 17
 
@@ -219,11 +220,11 @@ Chương 9. Isomorphism
 
     Chứng minh rằng subgroup của :math:`\mathbb{Q}^*` gồm các phần tử có dạng :math:`2^m 3^n` với :math:`m, n \in \mathbb{Z}` là internal direct product tới :math:`\mathbb{Z} \times \mathbb{Z}`
 
-Xét ánh xạ :math:`\varphi: \mathbb{Q}^* \rightarrow \mathbb{Z~} \times \mathbb{Z}`, :math:`\varphi(2^m 3^n) = (m, n)`.
+Gọi :math:`H = \{2^m 3^n : m, n \in \mathbb{Z}\}` và xét ánh xạ :math:`\varphi: H \rightarrow \mathbb{Z} \times \mathbb{Z}`, :math:`\varphi(2^m 3^n) = (m, n)`.
 
-Hàm này là well-defined vì với :math:`m` cố định thì mỗi phần tử :math:`2^m 3^n` chỉ cho ra một phần tử :math:`(m, n)`. Tương tự với cố định :math:`n`.
+Hàm này là well-defined vì theo định lý cơ bản của số học (phân tích duy nhất ra thừa số nguyên tố, mở rộng cho số hữu tỉ), mỗi phần tử của :math:`H` viết được duy nhất dưới dạng :math:`2^m 3^n`.
 
-Hàm này là đơn ánh (one-to-one) vì với :math:`m_1 = m_2` và :math:`n_1 = n_2` thì :math:`2^{m_1} 3^{n_1} = 2^{m_2} 3^{n_2}`.
+Hàm này là đơn ánh (one-to-one) vì nếu :math:`\varphi(2^{m_1} 3^{n_1}) = \varphi(2^{m_2} 3^{n_2})` thì :math:`m_1 = m_2` và :math:`n_1 = n_2`, nên :math:`2^{m_1} 3^{n_1} = 2^{m_2} 3^{n_2}`.
 
 Hàm này cũng là toàn ánh vì với mỗi cặp :math:`(m, n)` ta đều tính được :math:`2^m 3^n`.
 
@@ -237,29 +238,36 @@ Thêm nữa,
     & = (m_1 + m_2, n_1 + n_2) = (m_1, n_1) + (m_2, n_2) \\
     & = \varphi(2^{m_1} 3^{n_1}) \varphi(2^{m_2} 3^{n_2}).
 
-Vậy :math:`\varphi` là homomorphism, và là song ánh nên là isomorphism.
+Vậy :math:`\varphi` là homomorphism, và là song ánh nên là isomorphism. Nói cách khác, :math:`H` là internal direct product của hai nhóm con cyclic :math:`\langle 2 \rangle` và :math:`\langle 3 \rangle`: chúng giao hoán với nhau, :math:`H = \langle 2 \rangle \langle 3 \rangle` và :math:`\langle 2 \rangle \cap \langle 3 \rangle = \{1\}`, và mỗi nhóm đẳng cấu với :math:`\mathbb{Z}`.
 
 .. admonition::  Bài 20
 
     Chứng minh hoặc bác bỏ: mọi nhóm Abel có order chia hết bởi :math:`3` chứa một subgroup có order là :math:`3`.
 
-Gọi order của nhóm Abel là :math:`n = 3k`, và :math:`g` là phần tử sinh của nhóm Abel đó. Như vậy :math:`g^n = g^{3k} = e`.
+Mệnh đề đúng (đây là trường hợp riêng của định lý Cauchy). Lưu ý rằng nhóm Abel không nhất thiết là nhóm cyclic nên không thể lấy một phần tử sinh của cả nhóm. Ta chứng minh quy nạp theo :math:`|G|`. Chỉ cần tìm một phần tử :math:`h` có order :math:`3`; khi đó :math:`\langle h \rangle` là subgroup có order :math:`3`.
 
-Nếu ta chọn :math:`h = g^k` thì :math:`h^3 = e`, khi đó subgroup được sinh bởi :math:`h` có order :math:`3` (đpcm).
+Lấy :math:`g \neq e` bất kỳ, gọi :math:`m` là order của :math:`g`.
+
+* Nếu :math:`3 \mid m` thì :math:`h = g^{m/3}` có order :math:`3`.
+* Nếu :math:`3 \nmid m` thì nhóm thương :math:`G / \langle g \rangle` (tồn tại vì :math:`G` Abel) có order :math:`|G| / m` chia hết cho :math:`3` và nhỏ hơn :math:`|G|`. Theo giả thiết quy nạp, có lớp :math:`x \langle g \rangle` có order :math:`3` trong nhóm thương. Gọi :math:`t` là order của :math:`x` trong :math:`G`. Vì :math:`(x \langle g \rangle)^t = \langle g \rangle` nên :math:`3 \mid t`, do đó :math:`h = x^{t/3}` có order :math:`3`.
 
 .. admonition::  Bài 21
 
     Chứng minh hoặc bác bỏ: mọi nhóm không phải Abel có order chia hết bởi :math:`6` chứa một subgroup có order :math:`6`.
 
-Với :math:`\mathcal{S}_3` có order là :math:`6` nhưng không có nhóm con nào order :math:`6` (nhóm con chỉ có order :math:`1`, :math:`2` hoặc :math:`3`) (bác bỏ).
+Mệnh đề sai. Lưu ý :math:`S_3` không phải phản ví dụ vì bản thân nó là subgroup order :math:`6` của chính nó. Phản ví dụ là nhóm thay phiên :math:`A_4` có order :math:`12`, không Abel, nhưng không có subgroup order :math:`6`.
+
+Thật vậy, giả sử :math:`H \leqslant A_4` có order :math:`6`. Khi đó :math:`[A_4 : H] = 2` nên :math:`H` chuẩn tắc và :math:`g^2 \in H` với mọi :math:`g \in A_4` (vì :math:`A_4/H` có order :math:`2`). Mọi 3-cycle :math:`c` thỏa :math:`c = (c^2)^2`, nên :math:`c = (c^2)^2 \in H`. Nhưng :math:`A_4` có :math:`8` phần tử là 3-cycle, nhiều hơn :math:`|H| = 6`, mâu thuẫn.
 
 .. admonition::  Bài 22
 
-    Gọi :math:`G` là group với order :math:`20`. Nếu :math:`G` có các subgroup :math:`H` và :math:`K` với order :math:`4` và :math:`5` mà :math:`hk = kh` với mọi :math:`h \in H` và :math:`k \in K`, chứng minh rằng
+    Gọi :math:`G` là group với order :math:`20`. Nếu :math:`G` có các subgroup :math:`H` và :math:`K` với order :math:`4` và :math:`5` mà :math:`hk = kh` với mọi :math:`h \in H` và :math:`k \in K`, chứng minh rằng :math:`G` là internal direct product của :math:`H` và :math:`K`.
 
-Ta chứng minh :math:`H \cap K = \{ e \}`. Giả sử tồn tại phần tử :math:`m \in H \cap K`, khi đó do :math:`m \in H` nên :math:`mk = km` với mọi :math:`k \in K`. Tuy nhiên :math:`m \in K` do đó điều này xảy ra khi và chỉ khi :math:`m = e`.
+Ta cần kiểm tra ba điều kiện: :math:`hk = kh` (đã có theo giả thiết), :math:`H \cap K = \{e\}` và :math:`G = HK`.
 
-Như vậy :math:`H \cap K = \{ e \}`.
+:math:`H \cap K` là subgroup của cả :math:`H` và :math:`K`, nên theo định lý Lagrange, order của nó chia hết cả :math:`4` và :math:`5`, tức bằng :math:`1`. Như vậy :math:`H \cap K = \{ e \}`.
+
+Ánh xạ :math:`H \times K \to G`, :math:`(h, k) \mapsto hk` là đơn ánh: nếu :math:`h_1 k_1 = h_2 k_2` thì :math:`h_2^{-1} h_1 = k_2 k_1^{-1} \in H \cap K = \{e\}`. Do đó :math:`|HK| = 4 \cdot 5 = 20 = |G|`, tức :math:`G = HK`. Vậy :math:`G` là internal direct product của :math:`H` và :math:`K`.
 
 Chương 11. Homomorphism
 =======================
@@ -326,7 +334,7 @@ Với mọi :math:`g, h \in G`, do :math:`\phi` là homomorphism nên :math:`\ph
 
     Nếu :math:`\phi : G \to H` là homomorphism và :math:`G` là nhóm cyclic, chứng minh rằng :math:`\phi(G)` cũng là nhóm cyclic.
 
-Tương tự câu 9.
+Nếu :math:`G = \langle g \rangle` thì mọi phần tử của :math:`G` có dạng :math:`g^k`, và :math:`\phi(g^k) = \phi(g)^k`. Do đó :math:`\phi(G) = \langle \phi(g) \rangle` là nhóm cyclic.
 
 .. admonition::  Bài 20
 
@@ -340,6 +348,8 @@ Nếu :math:`a \sim b` thì :math:`\phi(a) = \phi(b)`, và nếu :math:`b \sim c
 
 Kết luận: quan hệ :math:`\sim` xác định như trên là quan hệ tương đương.
 
-Để xây dựng các lớp tương đương, đặt :math:`I = \{ i_1, i_2, \ldots, i_m \}` là ảnh của homomorphism :math:`\phi`. Rõ ràng :math:`I \subset H`. Khi đó các lớp tương đương ứng với các phần tử :math:`i_1, i_2, \ldots, i_m`, hay
+Các lớp tương đương ứng một-một với các phần tử của ảnh :math:`\phi(G) \subseteq H`: với mỗi :math:`y \in \phi(G)`, lớp tương ứng là
 
-.. math:: \bar{i}_j = \{ g \in G : \phi(g) = i_j \}, \quad 1 \leqslant i \leqslant m.
+.. math:: \phi^{-1}(y) = \{ g \in G : \phi(g) = y \}.
+
+Hơn nữa :math:`\phi(a) = \phi(b)` khi và chỉ khi :math:`\phi(a^{-1} b) = e`, tức :math:`a^{-1} b \in \ker \phi`. Do đó lớp tương đương chứa :math:`a` chính là coset :math:`a \ker \phi`.
