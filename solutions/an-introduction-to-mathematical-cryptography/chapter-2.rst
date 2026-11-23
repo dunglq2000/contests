@@ -11,17 +11,15 @@ Chapter 2. Discrete Logarithms and Diffie-Hellman
 
     (c) Prove that :math:`\log_g(h^n) = n\log_g(h)` for all :math:`h \in \mathbb{F}^{*}_p` and :math:`n \in \mathbb{Z}`
 
-Các tính chất cơ bản của hàm Euler.
-
 (a) Cả :math:`a` and :math:`b` là nghiệm của đồng dư :math:`g^x \equiv h` (mod :math:`p`) nên :math:`g^a \equiv h \pmod p` và :math:`g^b \equiv h \pmod p`.
 
 Suy ra ta có :math:`g^{-b} \equiv h^{-1} \pmod p`.
 
 Ta nhân kết quả với đồng dư đầu thì được :math:`g^a g^{-b} \equiv h h^{-1} \equiv 1 \pmod p`, hay :math:`g^{a-b} \equiv 1 \pmod p`.
 
-Do :math:`g` là primitive root of :math:`\mathbb{F}_p` tên ta có :math:`\phi(p) \mid (a-b)`, tương đương với :math:`(p-1) \mid (a-b)`.
+Do :math:`g` là primitive root của :math:`\mathbb{F}_p` nên order của :math:`g` bằng :math:`p-1`, suy ra :math:`(p-1) \mid (a-b)`.
 
-Như vậy :math:`a - b \equiv 0 \pmod{p-1}` hay :math:`a \equiv b \pmod {p-1}` (đpcm).
+Như vậy :math:`a - b \equiv 0 \pmod{p-1}` hay :math:`a \equiv b \pmod {p-1}` (đpcm). Do đó giá trị :math:`\log_g h` được xác định duy nhất như một phần tử của :math:`\mathbb{Z}/(p-1)\mathbb{Z}`, tức ánh xạ (2.1) well-defined.
 
 (b) Giả sử :math:`h_1 \equiv g^{x_1} \pmod p` và :math:`h_2 \equiv g^{x_2} \pmod p`.
 
@@ -31,7 +29,7 @@ Do :math:`h_1 h_2 \equiv g^{x_1 + x_2} \pmod p` nên :math:`x_1 + x_2 = \log_g(h
 
 Từ (1) và (2), :math:`\log_g h_1 + \log_g h_2 = \log_g (h_1 h_2)`.
 
-(c) tương tự (b).
+(c) Nếu :math:`h \equiv g^x \pmod p` thì :math:`h^n \equiv g^{nx} \pmod p` với mọi :math:`n \in \mathbb{Z}` (với :math:`n < 0` ta dùng :math:`h^{-1} \equiv g^{-x}`), nên :math:`\log_g(h^n) = nx = n \log_g h` trong :math:`\mathbb{Z}/(p-1)\mathbb{Z}`.
 
 .. admonition:: Câu 2.5
 
@@ -39,27 +37,15 @@ Từ (1) và (2), :math:`\log_g h_1 + \log_g h_2 = \log_g (h_1 h_2)`.
 
     Prove that :math:`a` has a square root modulo :math:`p` if and only if its discrete logarithm :math:`\log_g(a)` modulo :math:`p-1` is even.
 
-Ta có :math:`g^{p-1} \equiv 1 \pmod p` do :math:`g` là primitive root modulo :math:`p`.
+Vì :math:`p-1` chẵn nên tính chẵn lẻ của :math:`\log_g a` (một phần tử của :math:`\mathbb{Z}/(p-1)\mathbb{Z}`) được xác định rõ.
 
-**Điều kiện đủ.** Nếu  :math:`a` là số chính phương modulo :math:`p` thì tồn tại số :math:`b` sao cho :math:`b \equiv a^2 \pmod p`, suy ra
+**Điều kiện cần.** Nếu :math:`a` có căn bậc hai modulo :math:`p`, tức tồn tại :math:`b` sao cho :math:`a \equiv b^2 \pmod p`, thì theo Câu 2.3(c)
 
-.. math:: \log_g a = \log_g(b^2) = 2 \log_g b \pmod{p-1},
+.. math:: \log_g a = \log_g(b^2) \equiv 2 \log_g b \pmod{p-1},
 
-như vậy :math:`\log_ga` chẵn.
+nên :math:`\log_g a` chẵn.
 
-**Điều kiện cần.** Nếu :math:`\log_g a` modulo :math:`p-1` chẵn.
-
-Điều này xảy ra khi
-
-.. math:: \log_ga = 2\log_g b \pmod{p-1}
-
-với số :math:`b \in \mathbb{F}_p` nào đó, suy ra
-
-.. math:: \log_ga = \log_g (b^2) \pmod{p-1},
-
-hay :math:`a \equiv b^2 \pmod{p-1}`.
-
-Như vậy :math:`a` có căn bậc hai modulo :math:`p-1`.
+**Điều kiện đủ.** Nếu :math:`\log_g a = 2k` thì :math:`a \equiv g^{2k} = (g^k)^2 \pmod p`, tức :math:`g^k` là một căn bậc hai của :math:`a` modulo :math:`p`.
 
 .. admonition:: Câu 2.10
 
@@ -85,7 +71,9 @@ Như vậy :math:`a` có căn bậc hai modulo :math:`p-1`.
 
 (a) Ta có
 
-.. math:: 3589 \cdot 15619 \equiv 4073 \cdot 31883 \equiv 1 \pmod{p-1}.
+.. math:: 3589 \cdot 15619 \equiv 4037 \cdot 31883 \equiv 1 \pmod{p-1}.
+
+Nói cách khác, :math:`15619` là nghịch đảo của :math:`a` và :math:`31883` là nghịch đảo của :math:`b` modulo :math:`p-1 = 32610`. Theo định lý Fermat nhỏ, :math:`m^{k(p-1)+1} \equiv m \pmod p`, nên lũy thừa với số mũ :math:`a` rồi :math:`15619` (tương tự :math:`b` rồi :math:`31883`) triệt tiêu nhau.
 
 (b) Alice chọn :math:`a` và :math:`a'` sao cho :math:`aa' \equiv 1 \pmod{p-1}`.
 
@@ -97,7 +85,13 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
     & \Rightarrow v \equiv u^b \equiv (m^a)^b \equiv m^{ab} \pmod p \\
     & \Rightarrow w \equiv v^{a'} \equiv (m^{ab})^{a'} \equiv m^{aa'b} \pmod p \\
-    & \Rightarrow w^{b'} \equiv m^{aa'bb'} \equiv m^{[k(p-1)+1]x[l(p-1)+1]} \equiv m^{D(p-1)+1} \equiv m \pmod p.
+    & \Rightarrow w^{b'} \equiv m^{aa'bb'} \equiv m^{[k(p-1)+1] \cdot [l(p-1)+1]} \equiv m^{D(p-1)+1} \equiv m \pmod p,
+
+với :math:`D` là một số nguyên nào đó (đẳng thức cuối dùng định lý Fermat nhỏ, với :math:`p \nmid m`).
+
+(c) Alice và Bob phải trao đổi :math:`3` lần (:math:`u`, :math:`v`, :math:`w`) cho mỗi thông điệp, trong khi với Elgamal Alice chỉ cần gửi một bản mã duy nhất (khóa công khai của Bob được công bố trước).
+
+(d) Ưu điểm là không cần khóa công khai cố định. Tuy nhiên nếu Eve giải được bài toán logarit rời rạc thì từ :math:`u` và :math:`v = u^b` cô tìm được :math:`b = \log_u v` (theo modulo order của :math:`u`), suy ra :math:`b'` và :math:`m = w^{b'}`. Nếu Eve giải được bài toán Diffie-Hellman thì cũng phá được: đặt :math:`h = v = m^{ab}`, khi đó :math:`u = h^{b'}`, :math:`w = h^{a'}` và :math:`m = h^{a'b'}`; như vậy từ :math:`h, h^{a'}, h^{b'}` cần tính :math:`h^{a'b'}`, chính là bài toán Diffie-Hellman với cơ sở :math:`h`.
 
 .. admonition:: Câu 2.11
 
@@ -123,7 +117,7 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
 (a)
 
-.. math:: \tau\sigma^2 = \tau\sigma\sigma = \sigma^2\tau\sigma = \sigma\sigma^2\tau = \sigma^3\tau = e\tau = \tau.
+.. math:: \tau\sigma^2 = (\tau\sigma)\sigma = \sigma^2(\tau\sigma) = \sigma^2\sigma^2\tau = \sigma^4\tau = \sigma\tau.
 
 (b)
 
@@ -137,11 +131,7 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
 .. math:: (\sigma\tau)(\sigma^2\tau) = (\sigma\tau)(\tau\sigma) = \sigma\tau^2\sigma=\sigma e \sigma = \sigma^2.
 
-:math:`S_3` không là nhóm giao hoán vì:
-
-.. math:: \sigma\tau = \sigma\tau, \quad \tau\sigma = \sigma^2\tau,
-
-đây là hai phần tử phân biệt trong :math:`S_3`.
+:math:`S_3` không là nhóm giao hoán vì :math:`\tau\sigma = \sigma^2\tau`, trong khi :math:`\sigma\tau` và :math:`\sigma^2\tau` là hai phần tử phân biệt của :math:`S_3`.
 
 .. admonition:: Câu 2.12
 
@@ -157,26 +147,11 @@ Do đó ta có :math:`aa' = k(p-1)+1` và :math:`bb' = l(p-1) + 1`.
 
     (d) Show by an example that is :math:`G` is not a commutative group, then :math:`G[d]` need not be a group. (*Hint.* Use Exercise 2.11.)
 
-(a) Vì :math:`g \star g^{-1} = e` nên
+(a) Vì :math:`g` và :math:`g^{-1}` giao hoán với nhau nên :math:`g^d \star (g^{-1})^d = (g \star g^{-1})^d = e`, suy ra :math:`(g^{-1})^d = (g^d)^{-1} = e^{-1} = e`. Vậy :math:`g^{-1} \in G[d]`.
 
-.. math::
+(b) Ta có :math:`g_1^d = e` và :math:`g_2^d = e`.
 
-    & g \star e \star g^{-1} = e \\
-    \Rightarrow & g \star g \star g^{-1} \star g^{-1} = e \\
-    \Rightarrow & g^2 \star (g^{-1})^2 = e.
-
-Thực hiện thêm :math:`d-2` lần nữa và ta nhận được
-
-.. math::
-
-    & g^d \star (g^{-1})^d = e \\
-    \Rightarrow & e \star (g^{-1})^2 = e \\
-    \Rightarrow & (g^{-1})^2 = e \\
-    \Rightarrow & g^{-1} \in G[d]
-
-(b) Ta có :math:`g_1^d = e` and :math:`g_2^d = e`.
-
-Do :math:`G` là nhóm hoán vị nên :math:`g_1^d \star g_2^d = (g_1 \star g_2)^d`, suy ra :math:`(g_1 \star g_2)^d = e \star e = e`.
+Do :math:`G` là nhóm giao hoán nên :math:`g_1^d \star g_2^d = (g_1 \star g_2)^d`, suy ra :math:`(g_1 \star g_2)^d = e \star e = e`.
 
 Như vậy :math:`g_1 \star g_2 \in G[d]`.
 
@@ -186,20 +161,13 @@ Do :math:`e` là phần tử đơn vị của :math:`G` nên cũng là phần t�
 
 Từ câu (a) ta chứng minh được sự tồn tại của phần tử nghịch đảo.
 
-Với :math:`a, b, c \in G[d]` thì :math:`a^d = b^d = c^d = e`.
-
-Ta có :math:`b^d \star c^d = (b \star c)^d` do tính giao hoán, suy ra
-
-.. math::
-
-    a^d \star (b^d \star c^d) & = a^d \star (b \star c)^d = (a \star b \star c)^d \\
-    & = (a \star b)^d \star c^d = (a^d \star b^d) \star c^d.
-
-Như vậy ta chứng minh được tính kết hợp. Và từ đó :math:`G[d]` là nhóm.
+Tính kết hợp của phép toán trên :math:`G[d]` được thừa hưởng từ :math:`G`, và :math:`e \in G[d]` vì :math:`e^d = e`. Từ đó :math:`G[d]` là nhóm (nhóm con của :math:`G`).
 
 (d) Sử dụng kết quả câu 2.11
 
-.. math:: S_3[2] = \{\tau, \sigma\tau, \sigma^2, \tau, e \}.
+.. math:: S_3[2] = \{e, \tau, \sigma\tau, \sigma^2\tau \}
+
+(:math:`\sigma` và :math:`\sigma^2` có order :math:`3` nên không thuộc :math:`S_3[2]`).
 
 Vì
 
@@ -246,7 +214,7 @@ Trong nhóm :math:`G`, :math:`g \star g^{-1} = e_G`. Suy ra
 
 .. math:: \phi(g_1 \star g_2) = (g_1 \star g_2)^2 = g_1^2 \star g_2^2
 
-Ta có :math:`g_1^2 \star g_2^2 = \phi(g_1) \star \phi(g_2)` nên :math:`\phi(g_1 \star g_2) = \phi(g_1) \star \phi(g_2)`. Như vậy :math:`G` là homomorphism.
+Ta có :math:`g_1^2 \star g_2^2 = \phi(g_1) \star \phi(g_2)` nên :math:`\phi(g_1 \star g_2) = \phi(g_1) \star \phi(g_2)`. Như vậy :math:`\phi` là homomorphism.
 
 Xét nhóm ở Câu 2.11 và ánh xạ :math:`\phi: G \rightarrow G`, :math:`\phi(g)=g^2`.
 
@@ -261,17 +229,17 @@ Vì
 
 .. math:: \phi(\sigma\tau) = e \neq \sigma^2 = \phi(\sigma)\phi(\tau),
 
-nên :math:`G` không là homomorphism.
+nên :math:`\phi` không là homomorphism.
 
 (c) :math:`\phi: G \rightarrow G`, :math:`\phi(g) = g^{-1}`.
 
 Với mọi :math:`g_1, g_2 \in G` thì :math:`g_1 g_1^{-1} = e` và :math:`g_2 g_2^{-1} = e`
 
-Do đó :math:`g_1 g_1^{-1} g_2 g_2^{-1} = e`, mà :math:`G` là nhóm hoán vị nên :math:`(g_1 g_2)(g_1^{-1} g_2^{-1}) = e`, tương đương với :math:`g_1^{-1} g_2^{-1} = (g_1 g_2)^{-1}`. Như vậy
+Do đó :math:`g_1 g_1^{-1} g_2 g_2^{-1} = e`, mà :math:`G` là nhóm giao hoán nên :math:`(g_1 g_2)(g_1^{-1} g_2^{-1}) = e`, tương đương với :math:`g_1^{-1} g_2^{-1} = (g_1 g_2)^{-1}`. Như vậy
 
 .. math:: \phi(g_1 g_2) = (g_1 g_2)^{-1} = g_1^{-1} g_2^{-1} = \phi(g_1) \phi(g_2)
 
-Kết luận: :math:`G` là homomorphism.
+Kết luận: :math:`\phi` là homomorphism.
 
 Xét nhóm ở Câu 2.11 và ánh xạ :math:`\phi: G \rightarrow G`, :math:`\phi(g) = g^{-1}`. Ta có
 
@@ -283,7 +251,7 @@ suy ra
 
 .. math:: \phi(\sigma\tau) = \sigma\tau, \quad \phi(\sigma) = \sigma^2, \quad \phi(\tau) = \tau
 
-Vì :math:`\phi(\sigma\tau) = \sigma\tau \neq \sigma^2\tau = \phi(\sigma)\phi(\tau)` nên :math:`G` không là homomorphism.
+Vì :math:`\phi(\sigma\tau) = \sigma\tau \neq \sigma^2\tau = \phi(\sigma)\phi(\tau)` nên :math:`\phi` không là homomorphism.
 
 .. admonition:: Câu 2.14
 
@@ -295,13 +263,13 @@ Vì :math:`\phi(\sigma\tau) = \sigma\tau \neq \sigma^2\tau = \phi(\sigma)\phi(\t
 
     (c) The discrete logarithm map :math:`\log_g: \mathbb{F}_p^* \rightarrow \mathbb{Z}/(p-1)\mathbb{Z}`, where :math:`g` is a primitive root modulo :math:`p`.
 
-(a) Với mọi :math:`a, b \in \mathbb{Z}`,
+(a) Phép toán nhóm trên :math:`\mathbb{Z}` và :math:`\mathbb{Z}/N\mathbb{Z}` là phép cộng. Với mọi :math:`a, b \in \mathbb{Z}`,
 
 .. math::
 
-    \phi(ab) & = (ab) \pmod N \\
-    & = (a \bmod N) \ (b \bmod N) \pmod N \\
-    & = \phi(a) \phi(b) \\
+    \phi(a + b) & = (a + b) \bmod N \\
+    & = \big((a \bmod N) + (b \bmod N)\big) \bmod N \\
+    & = \phi(a) + \phi(b).
 
 Do đó :math:`\phi` là homomorphism.
 
@@ -323,9 +291,7 @@ Trong :math:`\mathbb{R}^*` ta có tính chất :math:`(ab)^{-1} = a^{-1}b^{-1}`,
 
 Khi đó, với mọi :math:`a, b \in \mathbb{F}_p^*`, :math:`\phi(a) = x`, hay :math:`g^x \equiv a \pmod p`, và :math:`\phi(b) = y`, hay :math:`g^y \equiv b \pmod p`.
 
-Ta có :math:`\phi(a) \phi(b) = x+y` vì :math:`x`, :math:`y \in \mathbb{Z}/(p-1)\mathbb{Z}`, đây là phép cộng trong modulo :math:`p-1`.
-
-Ta lại có :math:`g^{x+y} \equiv ab \pmod p`, suy ra :math:`\phi(ab) = x + y`. Như vậy :math:`\phi(a)\phi(b) = \phi(ab)` và :math:`\phi` là homomorphism.
+Phép toán nhóm trên :math:`\mathbb{Z}/(p-1)\mathbb{Z}` là phép cộng modulo :math:`p-1`. Ta có :math:`g^{x+y} \equiv ab \pmod p`, suy ra :math:`\phi(ab) = x + y = \phi(a) + \phi(b)` (theo Câu 2.3, giá trị này được xác định duy nhất modulo :math:`p-1`). Như vậy :math:`\phi` là homomorphism.
 
 .. admonition:: Câu 2.15
 
@@ -349,15 +315,17 @@ Với mọi :math:`A, B, C \in GL_2(\mathbb{F}_p)` ta đều có :math:`(AB)C=A(
 
 Kết luận: :math:`GL_2(\mathbb{F}_p)` là nhóm.
 
-Giả sử ta có :math:`A = \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22}\end{pmatrix}` và :math:`B=\begin{pmatrix}b_{11} & b_{12} \\ b_{21} & b_{22}\end{pmatrix}` với :math:`A, B \in GL_2(\mathbb{F}_p)`.
+(b) Xét
 
-Phần tử ở hàng :math:`1` và cột :math:`1` của tích :math:`AB` là :math:`(a_{11}b_{11}+a_{12}b_{21}) \pmod p`.
+.. math:: A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}.
 
-Phần tử ở hàng :math:`1` và cột :math:`1` của tích :math:`BA` là :math:`(b_{11}a_{11} + b_{12}a_{21}) \pmod p`.
+Cả hai đều có định thức :math:`1` nên thuộc :math:`\mathrm{GL}_2(\mathbb{F}_p)` với mọi :math:`p`. Ta có
 
-Nếu ta chọn :math:`a_{12} \not\equiv b_{21}^{-1}a_{21}b_{21} \pmod p` thì :math:`AB \neq BA`, do đó nhóm không có tính giao hoán.
+.. math:: AB = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}, \quad BA = \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}.
 
-(c) Ta liệt kê tất cả ma trận:
+Phần tử ở hàng :math:`1`, cột :math:`1` khác nhau (:math:`2 \not\equiv 1 \pmod p`), nên :math:`AB \neq BA`. Do đó nhóm không giao hoán với mọi :math:`p`.
+
+(c) Với :math:`p = 2`, ta liệt kê tất cả ma trận khả nghịch:
 
 .. math::
 
@@ -406,6 +374,8 @@ Kết luận: có tất cả :math:`(p^n-1)(p^n-p) \cdots (p^n-p^{n-1})` phần 
 
     (b) :math:`x \equiv 137 \pmod {423}` and :math:`x \equiv 87 \pmod {191}`
 
+    (c) :math:`x \equiv 133 \pmod {451}` and :math:`x \equiv 237 \pmod {697}`
+
     (d) :math:`x \equiv 5 \pmod 9`, :math:`x \equiv 6 \pmod {10}` and :math:`x \equiv 7 \pmod {11}`
 
     (e) :math:`x \equiv 37 \pmod {43}`, :math:`x \equiv 22 \pmod {49}` and :math:`x \equiv 18 \pmod {71}`
@@ -418,7 +388,7 @@ Kết luận: có tất cả :math:`(p^n-1)(p^n-p) \cdots (p^n-p^{n-1})` phần 
 
 .. math:: \Rightarrow x \equiv 137 \cdot 191 \cdot 392 + 87 \cdot 423 \cdot 14 \equiv 27209 \pmod N
 
-(c) Không thể tính vì :math:`\gcd(451, 697) = 41 \neq 1`.
+(c) Ta có :math:`451 = 11 \cdot 41` và :math:`697 = 17 \cdot 41`, nên :math:`\gcd(451, 697) = 41` và không thể áp dụng trực tiếp định lý thặng dư Trung Hoa. Hệ có nghiệm khi và chỉ khi hai đồng dư tương thích modulo :math:`41`. Ở đây :math:`133 \equiv 10` và :math:`237 \equiv 32 \pmod{41}`, không bằng nhau, nên hệ vô nghiệm.
 
 (d) Vì :math:`N = 9 \cdot 10 \cdot 11 = 990`, đặt :math:`T_1=N / 9=110`, :math:`T_1^{-1} \bmod 9 = 5`, :math:`T_2=N/10=99`, :math:`T_2^{-1} \bmod 10=9`, :math:`T_3=N/11=90`, :math:`T_3^{-1} \bmod 11 = 6`
 
@@ -460,11 +430,11 @@ Do :math:`b \mid c` nên tồn tại :math:`l \in \mathbb{Z}` sao cho :math:`c =
 
 Như vậy :math:`ka = lb`.
 
-Tuy nhiên do :math:`\gcd(a,b) = 1` nên :math:`a \mid l`, hay :math:`l = ma` với :math:`m \in \mathbb{Z}`
+Như vậy :math:`a \mid lb`, và do :math:`\gcd(a,b) = 1` nên :math:`a \mid l`, hay :math:`l = ma` với :math:`m \in \mathbb{Z}`
 
-Như vậy :math:`c=lb=lma`, hay :math:`ab \mid c`.
+Như vậy :math:`c=lb=mab`, hay :math:`ab \mid c`.
 
-(b) Nếu :math:`c \equiv c' (\equiv a_i) \pmod m_i` thì :math:`c \equiv c' \pmod{m_1 m_2 \cdots m_k}`.
+(b) Với mọi :math:`i` ta có :math:`c \equiv a_i \equiv c' \pmod{m_i}`, tức :math:`m_i \mid c - c'`. Các :math:`m_i` đôi một nguyên tố cùng nhau, nên áp dụng (a) liên tiếp (vì :math:`\gcd(m_1 \cdots m_{j}, m_{j+1}) = 1`) ta được :math:`m_1 m_2 \cdots m_k \mid c - c'`, tức :math:`c \equiv c' \pmod{m_1 m_2 \cdots m_k}`.
 
 .. admonition:: Câu 2.24
 
@@ -480,61 +450,31 @@ Như vậy :math:`c=lb=lma`, hay :math:`ab \mid c`.
 
     (e) Use the method in (c) to compute the square root of 3 modulo :math:`13^3`, given that :math:`9^2\equiv 3 \pmod{13}`
 
-(a) Đặt :math:`f(b_n)=b_n^2-a \pmod{p^n}` với :math:`b_1 = b`. Suy ra :math:`f(b_1) = b^2-a \equiv 0 \pmod p`.
+(a) Đặt :math:`f(x)=x^2-a`. Ta có :math:`f(b) = b^2-a \equiv 0 \pmod p`, tức :math:`b^2 - a = cp` với :math:`c \in \mathbb{Z}`. Ta tìm :math:`k` sao cho
 
-Ta cần tìm :math:`b_2` thỏa :math:`f(b_2)=b_2^2-a \equiv 0 \pmod{p^2}`.
+.. math:: f(b + kp) = (b + kp)^2 - a = (b^2 - a) + 2bkp + k^2p^2 \equiv 0 \pmod{p^2}.
 
-Nói cách khác, :math:`b_2 = b_1 + kp` nên suy ra
+Vì :math:`k^2p^2 \equiv 0 \pmod{p^2}`, điều kiện trên tương đương với :math:`cp + 2bkp \equiv 0 \pmod{p^2}`, tức
 
-.. math:: f(b_1 + kp) = (b_1 + kp)^2 - a = b_1^2 + 2 b_1 kp + (kp)^2 - a \equiv 0 \pmod{p^2}
+.. math:: 2bk \equiv -c = -\frac{b^2-a}{p} \pmod{p}.
 
-Tương đương với
+Do :math:`p` lẻ và :math:`p \nmid a` nên :math:`p \nmid 2b`, tức :math:`2b` khả nghịch modulo :math:`p`, và ta chọn được :math:`k \equiv -\dfrac{b^2-a}{p} (2b)^{-1} \pmod p`.
 
-.. math:: 2b_1k \equiv -(b_1^2-a)/p \pmod{p^2},
+(b) Theo công thức ở (a),
 
-vì :math:`b_1^2-a \equiv 0 \pmod p`.
+.. math:: k \equiv -\frac{b^2-a}{p} \cdot (2b)^{-1} \equiv 239 \pmod{1291},
 
-Do :math:`2b_1 \not\equiv 0 \pmod{p^2}` nên tồn tại :math:`k` thỏa mãn đẳng thức.
+nên :math:`b + kp = 537 + 239 \cdot 1291 = 309086`. Kiểm tra: :math:`309086^2 \equiv 476 \pmod{1291^2}`. (Căn bậc hai còn lại là :math:`1291^2 - 309086 = 1357595`.)
 
-(b) Ta có công thức
+(c) Giả sử :math:`b^2 - a = c p^n`. Tương tự (a), với :math:`n \geqslant 1` thì :math:`2n \geqslant n+1`, nên
 
-.. math:: k = -(b^2-a)/p \times (2b)^{-1} \pmod{p^2}
+.. math:: (b + jp^n)^2 - a = cp^n + 2bjp^n + j^2p^{2n} \equiv p^n(c + 2bj) \pmod{p^{n+1}}.
 
-(c) Ta chứng minh theo quy nạp với mọi :math:`n \geqslant 1`, tồn tại :math:`b_n \in \mathbb{Z}` sao cho
+Ta cần :math:`2bj \equiv -c \pmod p`. Vì :math:`b^2 \equiv a \pmod p` và :math:`p \nmid a` nên :math:`p \nmid 2b`, do đó luôn chọn được :math:`j \equiv -c (2b)^{-1} \pmod p`, và :math:`b + jp^n` là căn bậc hai của :math:`a` modulo :math:`p^{n+1}`.
 
-.. math::
+(d) Áp dụng (c) quy nạp theo :math:`n`, bắt đầu từ căn bậc hai modulo :math:`p`, ta được căn bậc hai modulo :math:`p^n` với mọi :math:`n`. Mệnh đề không còn đúng với :math:`p = 2`, vì khi đó :math:`2b \equiv 0 \pmod 2` không khả nghịch. Ví dụ :math:`a = 3` có căn bậc hai modulo :math:`2` (:math:`1^2 \equiv 3`), nhưng không có căn bậc hai modulo :math:`4` vì mọi số chính phương modulo :math:`4` đều là :math:`0` hoặc :math:`1`.
 
-    f(b_n) & = b_n^2-a \equiv 0 \pmod{p^n} \\
-    b_n & = b \pmod{p^n}
-
-Trường hợp :math:`n = 1` là điều kiện ban đầu với :math:`b_1 = b`. Giả sử mệnh đề đúng tới :math:`n`, nghĩa là:
-
-.. math::
-
-    f(b_n) & = b_n^2 - a \pmod{p^n} \\
-    b_n & = b \pmod{p^n}
-
-Xét :math:`b_{n+1}`
-
-.. math:: f(b_{n+1}) = b_{n+1}^2-a \equiv 0 \pmod{p^{n+1}}.
-
-Ta viết :math:`b_{n+1}=b_n+p^nt_n`.
-
-.. math::
-
-    \Rightarrow f(b_{n+1})=b_n^2+2b_np^nt_n+p^{2n}t_n^2 - a \equiv 0 \pmod{p^{n+1}}
-
-    \Rightarrow b_n^2+2b_np^nt_n-a \equiv 0 \pmod{p^{n+1}} \ (\text{vì} \ 2n \geqslant n+1)
-
-    \Rightarrow 2 b_n t_n \equiv -(b_n^2-a)/p^n \pmod{p^{n+1}} \ \text{từ} \ (2)
-
-Nghiệm :math:`t_n` tồn tại vì ta đã giả sử :math:`2b_n \equiv 0 \pmod{p^{n}}`. Như vậy
-
-.. math:: f(b_{n+1}) \equiv 0 \pmod{p^{n+1}}, \quad \text{và} \quad b_{n+1} \equiv b_n \pmod{p^n}.
-
-Chứng minh này dùng cho :math:`b+jp^n` modulo :math:`p^n`, không phải cho :math:`p^{n+1}`.
-
-(d) Sử dụng quy nạp. Đặc biệt, nếu :math:`p=2` thì mọi số nguyên đều thỏa.
+(e) Bắt đầu với :math:`b_1 = 9`. Áp dụng (c) với :math:`n = 1` được :math:`b_2 = 9 + 13j_1` với :math:`j_1 \equiv -\dfrac{9^2-3}{13} \cdot 18^{-1} \equiv -6 \cdot 8 \equiv 4 \pmod{13}`, tức :math:`b_2 = 61`. Áp dụng tiếp với :math:`n = 2` được :math:`b_3 = 61 + 169 j_2` với :math:`j_2 \equiv -\dfrac{61^2-3}{169} \cdot 122^{-1} \equiv -22 \cdot 8 \equiv 6 \pmod{13}`, tức :math:`b_3 = 1075`. Kiểm tra: :math:`1075^2 \equiv 3 \pmod{13^3}`. (Căn bậc hai còn lại là :math:`2197 - 1075 = 1122`.)
 
 .. admonition:: Câu 2.31
 
@@ -576,19 +516,7 @@ hay
 
 nên suy ra :math:`\phi(0_R) = 0_S`.
 
-Trong :math:`R`, với mọi :math:`a \in R` thì
-
-.. math:: a \star 1_R = 1_R \star a = a.
-
-Khi đó
-
-.. math:: \phi(a \star 1_R) = \phi(1_R \star a) = \phi(a)
-
-nên suy ra
-
-.. math:: \phi(a) \star \phi(1_R) = \phi(1_R) \star \phi(a) = \phi(a),
-
-hay :math:`\phi(1_R) = 1_S`.
+Với phần tử đơn vị của phép nhân, từ :math:`1_R \star 1_R = 1_R` ta có :math:`\phi(1_R) \star \phi(1_R) = \phi(1_R)`, và với mọi :math:`a \in R` thì :math:`\phi(a) \star \phi(1_R) = \phi(a)`. Nếu :math:`\phi` toàn ánh thì mọi :math:`s \in S` đều có dạng :math:`\phi(a)`, nên :math:`s \star \phi(1_R) = s` với mọi :math:`s`, tức :math:`\phi(1_R) = 1_S`. Tương tự, nếu :math:`S` là miền nguyên và :math:`\phi \not\equiv 0` thì :math:`\phi(1_R)(\phi(1_R) - 1_S) = 0_S` kéo theo :math:`\phi(1_R) = 1_S` (vì :math:`\phi(1_R) = 0_S` sẽ cho :math:`\phi(a) = \phi(a)\phi(1_R) = 0_S` với mọi :math:`a`). Lưu ý rằng nếu không có thêm giả thiết như vậy thì đẳng thức này có thể sai: ánh xạ :math:`\phi \equiv 0` thỏa cả hai điều kiện của homomorphism nhưng :math:`\phi(1_R) = 0_S`. Vì vậy nhiều tài liệu đưa điều kiện :math:`\phi(1_R) = 1_S` vào định nghĩa ring homomorphism; từ đây ta giả sử điều kiện này.
 
 Với :math:`\phi(-a) = -\phi(a)`, trong :math:`R` ta có
 
@@ -616,13 +544,15 @@ tương đương với
 
 .. math:: \phi(a) \star \phi(a^{-1}) = \phi(a^{-1}) \star \phi(a) = \phi(1_R) = 1_S.
 
-Như vậy :math:`\phi(a^{-1})=\phi(a)^{-1}`.
+Như vậy :math:`\phi(a^{-1})=\phi(a)^{-1}` (đẳng thức :math:`\phi(1_R) = 1_S` được dùng ở bước cuối).
 
 (b) Ánh xạ :math:`\phi: R \rightarrow R` cho bởi :math:`\phi(a)=a^p`, suy ra
 
-.. math:: \phi(a+b) = (a+b)^p = \sum_{i=0}^{p} \binom{p}{i} a^i b^{p-1}.
+.. math:: \phi(a+b) = (a+b)^p = \sum_{i=0}^{p} \binom{p}{i} a^i b^{p-i}.
 
-Vì :math:`p \mid \displaystyle{\binom{p}{i}} = \dfrac{p!}{(p-i)! \cdot i!}` (:math:`p` là số nguyên tố) nên suy ra với mọi :math:`1 \leqslant i \leqslant p-1`, ta có :math:`\displaystyle{\binom{p}{i}} = 0` (do :math:`pa=0`).
+(Ở đây vành :math:`R` giao hoán, theo quy ước của sách.)
+
+Vì :math:`p \mid \displaystyle{\binom{p}{i}} = \dfrac{p!}{(p-i)! \cdot i!}` (:math:`p` là số nguyên tố) nên suy ra với mọi :math:`1 \leqslant i \leqslant p-1`, hạng tử :math:`\displaystyle{\binom{p}{i}} a^i b^{p-i}` là bội của :math:`p` lần phần tử :math:`a^i b^{p-i}`, nên bằng :math:`0` (do :math:`pa=0` với mọi :math:`a \in R`).
 
 :math:`\Rightarrow \phi(a+b)=a^p+b^p=\phi(a)+\phi(b)` (1)
 
@@ -690,7 +620,7 @@ Nói cách khác
 
 .. math:: a'+b' \in \overline{a+b} \quad \text{và} \quad a' \star b' \in \overline{a \star b},
 
-nói cách khác phép tính cộng và nhân đóng trên :math:`R` (closed).
+nói cách khác phép cộng và phép nhân trên :math:`R/(m)` được định nghĩa tốt (không phụ thuộc cách chọn đại diện).
 
 Với mọi :math:`a \in R` ta có
 
@@ -760,7 +690,7 @@ với :math:`a_i \in \mathbb{F}` và :math:`\deg(\mathbf{a}) = n`.
 
 với :math:`b_i \in \mathbb{F}` và :math:`\deg(\mathbf{b}) = m`.
 
-Hạng tử với bậc cao nhất trong phép nhân :math:`\mathbf{a} \cdot \mathbf{b}` là :math:`x^{n+m}`, do đó
+Hạng tử với bậc cao nhất trong phép nhân :math:`\mathbf{a} \cdot \mathbf{b}` là :math:`a_n b_m x^{n+m}`, với :math:`a_n b_m \neq 0` vì :math:`a_n, b_m \neq 0` và trường không có ước của không, do đó
 
 .. math:: \deg(\mathbf{a} \cdot \mathbf{b}) = n + m = \deg(\mathbf{a}) + \deg(\mathbf{b}).
 
@@ -774,9 +704,11 @@ Giả sử :math:`\mathbf{a}` có nghịch đảo trong :math:`\mathbb{F}[x]` l�
 
 Vì
 
-.. math:: \mathbf{ab} =\sum_{i=0}^n a_i x_i \sum_{j=0}^m b_j x^j = \sum_{i=0}^n \sum_{j=0}^m a_i b_j x^{i+j} = 1.
+.. math:: \mathbf{ab} = 1,
 
-Đồng nhất hệ số ta có :math:`a_0 b_0 = 1`, các tích khác bằng :math:`0`. Như vậy :math:`\mathbf{a}` là đa thức hằng.
+theo (a) ta có :math:`\deg(\mathbf{a}) + \deg(\mathbf{b}) = \deg(1) = 0`, nên :math:`\deg(\mathbf{a}) = 0`, tức :math:`\mathbf{a}` là đa thức hằng (khác :math:`0`). Ngược lại, mọi hằng số khác :math:`0` của :math:`\mathbb{F}` khả nghịch vì :math:`\mathbb{F}` là trường.
+
+(c) Quy nạp theo bậc. Đa thức bậc :math:`0` là phần tử khả nghịch (theo (b)), xem như tích rỗng các đa thức tối giản nhân với một hằng số. Giả sử mọi đa thức khác :math:`0` có bậc nhỏ hơn :math:`n` đều phân tích được, và xét :math:`\mathbf{a}` bậc :math:`n \geqslant 1`. Nếu :math:`\mathbf{a}` tối giản thì xong. Ngược lại :math:`\mathbf{a} = \mathbf{bc}` với :math:`\mathbf{b}`, :math:`\mathbf{c}` không khả nghịch, tức (theo (b)) có bậc ít nhất :math:`1`; theo (a), cả hai có bậc nhỏ hơn :math:`n`. Áp dụng giả thiết quy nạp cho :math:`\mathbf{b}` và :math:`\mathbf{c}` ta được phân tích của :math:`\mathbf{a}`.
 
 (d) :math:`\mathbf{a} = 2x^2 + 3x + 1`, :math:`\mathbf{b} = 3x + 2`.
 
@@ -790,13 +722,7 @@ Như vậy :math:`\deg(\mathbf{a} \mathbf{b}) = 2 < 3 = \deg(\mathbf{a}) + \deg(
 
     Prove that the polynomial :math:`x^3+x+1` is irreducible in :math:`\mathbb{F}_2[x]`
 
-Nếu :math:`f(x) = x^3+x+1` có nhân tử nào khác :math:`1` và chính nó thì đa thức đó phải có bậc nhỏ hơn :math:`3`.
-
-Các đa thức như vậy trong :math:`\mathbb{F}_2[x]` là
-
-.. math:: 0, x+1, x^2, x^2+1, x^2+x, x^2+x+1, x.
-
-Tuy nhiên :math:`f(x)` không chia hết cho bất kì đa thức nào kể trên nên :math:`f(x)` là đa thức tối giản.
+Nếu :math:`f(x) = x^3+x+1` khả quy thì nó là tích của hai đa thức bậc dương có tổng bậc bằng :math:`3`, nên có một nhân tử bậc :math:`1`, tức :math:`f` có nghiệm trong :math:`\mathbb{F}_2`. Nhưng :math:`f(0) = 1` và :math:`f(1) = 1 + 1 + 1 = 1` trong :math:`\mathbb{F}_2`, nên :math:`f` không có nghiệm. Vậy :math:`f(x)` là đa thức tối giản.
 
 .. admonition:: Câu 2.39
 

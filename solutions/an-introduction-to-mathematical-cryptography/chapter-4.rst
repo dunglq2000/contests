@@ -34,7 +34,7 @@ Chapter 4. Digital Signatures
 .. admonition:: Câu 4.6
 
 
-    Đáp án: :math:`A^{S_1} \cdot S_1^{S_2} \equiv g^D \pmod p`, so :math:`(S_1^", S_2^")` is valid signature.
+    Đáp án: :math:`A^{S_1} \cdot S_1^{S_2} \equiv g^D \pmod p`, so :math:`(S_1, S_2)` is valid signature.
 
 .. admonition:: Câu 4.8
 
@@ -43,15 +43,19 @@ Chapter 4. Digital Signatures
 
     With :math:`S_2 = (D-a S_1) k^{-1} \pmod{p-1}`, :math:`S_2' = (D'-aS_1')k^{-1} \pmod{p-1}`, then
 
-    .. math::
+    .. math:: S_2 - S_2' \equiv (D - D')k^{-1} \pmod{p-1}
 
-        S_2 - S_2' \equiv (D - D')k^{-1} \pmod{p-1}` (as :math:`aS_1 = aS_2`)
+    (as :math:`aS_1 = aS_1'`), so if :math:`\gcd(S_2 - S_2', p-1) = 1` then
 
-        k = (D-D')(S_2-S_2')^{-1} \pmod{p-1}.
+    .. math:: k \equiv (D-D')(S_2-S_2')^{-1} \pmod{p-1}.
+
+    (If the gcd is :math:`d > 1`, there are :math:`d` candidates for :math:`k`, each checked by :math:`g^k \equiv S_1`.)
 
     Here we get :math:`D - aS_1 = S_2 k \pmod{p-1}`
 
-    .. math:: \Rightarrow \begin{cases} a = (D - S_2 k) S_1{-1} \pmod{p-1} \\ a = (D'-S_2' k) S_1^{-1} \pmod{p-1} \end{cases}.
+    .. math:: \Rightarrow a \equiv (D - S_2 k) S_1^{-1} \pmod{p-1}
+
+    when :math:`\gcd(S_1, p-1) = 1` (otherwise again there are finitely many candidates, checked by :math:`g^a \equiv A`).
 
 .. admonition:: Câu 4.9
 
@@ -73,7 +77,7 @@ Chapter 4. Digital Signatures
 .. admonition:: Câu 4.10
 
 
-    Đáp án: :math:`(p, q, g) = (22531, 751, 4488)`. Public key :math:`A = 22476` is not valid.
+    :math:`(p, q, g) = (22531, 751, 4488)`. The key :math:`A = 22476` lies in the subgroup of order :math:`q`, since :math:`A^q \equiv 1 \pmod p` (in fact :math:`A = g^{38}`), so it is a valid DSA public key. A signature :math:`(S_1, S_2)` on :math:`D` is then checked with the verification formula of Câu 4.9.
 
 
 .. admonition:: Câu 4.11

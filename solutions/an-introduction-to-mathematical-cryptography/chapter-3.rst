@@ -56,7 +56,7 @@ Như vậy :math:`c^d \equiv x \pmod{N}`.
 
     Decryption is extreamly fast and essy. Alice uses the Chinese remainder theorem to solve the pair of congruences
 
-    .. math:: x \equiv c_2 \pmod{p} \qquad \text{and} \qquad x \equiv c_2 \pmod{q}
+    .. math:: x \equiv c_1 \pmod{p} \qquad \text{and} \qquad x \equiv c_2 \pmod{q}
 
     Prove that Alice's solution :math:`x` is equal to Bob's plaintext :math:`m`.
 
@@ -64,7 +64,7 @@ Ta có
 
 .. math:: c_1 \equiv mg_1^{s_1} \pmod{N} \equiv mg_1^{s_1} \pmod{p} \equiv m \pmod{p}
 
-do :math:`g_1^{s_1} = (g_1^{s_1 r_1})^{(p-1)} \equiv 1 \pmod{p}`.
+do :math:`g_1^{s_1} = g^{r_1 s_1 (p-1)} = (g^{r_1 s_1})^{p-1} \equiv 1 \pmod{p}` theo định lý Fermat nhỏ (giả sử :math:`p \nmid g`).
 
 Tương tự ta có :math:`c_2 \equiv m \pmod{q}`.
 
@@ -76,11 +76,11 @@ với :math:`p p' + q q' = 1`.
 
 .. math:: \Rightarrow x \equiv m p p' + m q q' \equiv m(p p' + q q') \equiv m \pmod N
 
-Ta có
+Hệ mật này không an toàn: ta có
 
 .. math:: g_1 \equiv g^{r_1 (p-1)} \pmod N \equiv g^{r_1 (p-1)} \pmod p \equiv 1 \pmod p.
 
-Suy ra :math:`p = \gcd(g_1-1, N)`. Tương tự, :math:`q = \gcd(g_2-1, N)`.
+Suy ra :math:`p \mid \gcd(g_1-1, N)`, và với xác suất rất cao (khi :math:`g_1 \not\equiv 1 \pmod q`) thì :math:`p = \gcd(g_1-1, N)`. Tương tự, :math:`q = \gcd(g_2-1, N)`.
 
 Như vậy ta đã khôi phục lại private key.
 
@@ -102,9 +102,9 @@ Because 3, 11 and 17 are primes number, :math:`a \equiv a^3 \pmod 3`, :math:`a \
 
     a & \equiv a^3 \pmod 3 \\ a & \equiv a^{11} \pmod{11} \\ a & \equiv a^{17} \pmod{17}
 
-Consider that :math:`a^3 \equiv a \pmod 3`, :math:`a^{3^2} \equiv a^3 \equiv a \pmod 3`, :math:`\cdots`, :math:`a^{3^i} \equiv a \pmod 3`. And :math:`561 = 2 \cdot 3^5 + 2 \cdot 3^3 + 2 \cdot 3^2 + 3^1`, :math:`a^{561} \equiv a^2 \cdot a^2 \cdot a^2 \cdot a \equiv a^9 \equiv a \pmod 3`.
+Note that :math:`561 - 1 = 560` is divisible by :math:`3 - 1 = 2`. If :math:`3 \nmid a`, Fermat's little theorem gives :math:`a^{2} \equiv 1 \pmod 3`, so :math:`a^{561} = a \cdot (a^2)^{280} \equiv a \pmod 3`; if :math:`3 \mid a` both sides are :math:`0`. Hence :math:`a^{561} \equiv a \pmod 3`.
 
-Similarly, :math:`a^{561} \equiv a \pmod{11}`, :math:`a^{561} \equiv a \pmod{17}`. From system congruence:
+Similarly, since :math:`10 \mid 560` and :math:`16 \mid 560`, we get :math:`a^{561} \equiv a \pmod{11}` and :math:`a^{561} \equiv a \pmod{17}`. From system congruence:
 
 .. math::
 
@@ -118,7 +118,7 @@ Suppose that :math:`n` is even (:math:`n \geqslant 4`), we have
 
 but :math:`a^{n-1} \equiv 1 \pmod n` for all :math:`a`, which is contrary. So :math:`n` must be odd.
 
-Suppose that :math:`n = p_1^{e_1} p_2^{e_2} \cdots p_r^{e_r}` (:math:`p_i` is odd prime). Because :math:`a^{p^{e-1} (p-1)} \equiv 1 \pmod{p^e}` and :math:`a^{n-1} \equiv 1 \pmod n`, we have :math:`a^{n-1} \equiv 1 \pmod{p^e}`.
+Suppose that :math:`n = p_1^{e_1} p_2^{e_2} \cdots p_r^{e_r}` (:math:`p_i` is odd prime), and let :math:`p^e` be one of the factors. Since :math:`p` is odd, there is a primitive root modulo :math:`p^e`, i.e. an element of order :math:`p^{e-1}(p-1)`; by the Chinese remainder theorem choose :math:`a` congruent to it modulo :math:`p^e` and to :math:`1` modulo the other factors, so :math:`\gcd(a, n) = 1`. Because :math:`a^{n-1} \equiv 1 \pmod n`, we have :math:`a^{n-1} \equiv 1 \pmod{p^e}`.
 
 :math:`\Rightarrow p^{e-1}(p-1) \mid (n-1) \Rightarrow p^{e-1} \mid (n-1)`, but :math:`p^{e-1} \mid n`, which is contrary if :math:`e \geqslant 2`. Hence :math:`e` must be 1.
 
@@ -133,7 +133,7 @@ Therefore :math:`n = p_1 p_2 \cdots p_r`
 
     \left(a^{\frac{p-1}{2}}\right)^2 \equiv a^{p-1} \equiv 1 \pmod p
 
-    \Rightarrow \binom{a}{p} = \pm 1
+    \Rightarrow \left(\frac{a}{p}\right) = \pm 1
 
     \Rightarrow \left(a^{\frac{p-1}{2}} - 1\right)\left(a^{\frac{p-1}{2}} + 1\right) \equiv 0 \pmod p
 
@@ -151,7 +151,7 @@ If :math:`m` is even :math:`\Rightarrow a \equiv g^{2k} \pmod p \Rightarrow a^{\
 
 If :math:`m` is odd :math:`\Rightarrow a = g^{2k+1} \pmod p \Rightarrow a^{\frac{p-1}{2}} \equiv g^{(2k+1)\frac{p-1}{2}} \equiv g^{p-1} g^{\frac{p-1}{2}} \equiv g^{\frac{p-1}{2}}\not\equiv 1 \pmod p`, because :math:`p-1` is smallest number that :math:`g^{p-1} \equiv 1 \pmod p`
 
-From (a) and (b) :math:`\binom{-1}{p} \equiv (-1)^{\frac{p-1}{2}} \pmod p`, if :math:`p=4k+1 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k} \equiv 1 \pmod p` \\ If :math:`p=4k+3 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k+1} \equiv -1 \pmod p`
+From (a) and (b) :math:`\left(\frac{-1}{p}\right) \equiv (-1)^{\frac{p-1}{2}} \pmod p`, if :math:`p=4k+1 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k} \equiv 1 \pmod p`. If :math:`p=4k+3 \Rightarrow (-1)^{\frac{p-1}{2}} \equiv (-1)^{2k+1} \equiv -1 \pmod p`
 
 .. admonition:: Câu 3.38
 
@@ -168,7 +168,7 @@ First we need a lemma (**Gauss lemma**): suppose :math:`p` is an odd prime, and 
 
 .. math:: a, 2a, 3a, \cdots, \frac{p-1}{2} a.
 
-If :math:`s` of those residues are greater than :math:`\frac{p}{2}`, then :math:`\binom{a}{p} = (-1)^s`
+If :math:`s` of those residues are greater than :math:`\frac{p}{2}`, then :math:`\left(\frac{a}{p}\right) = (-1)^s`
 
 .. admonition:: Proof of lemma
     :class: danger, dropdown
@@ -202,7 +202,7 @@ If :math:`s` of those residues are greater than :math:`\frac{p}{2}`, then :math:
 
     On the other hand, :math:`u_1`, :math:`u_2`, ..., :math:`u_s`, :math:`v_1`,
     :math:`v_2`, ..., :math:`v_t` are smallest residues of :math:`a`, :math:`2a`,
-    :math:`3a`, ..., :math:`\dfrac{p-1}{2}`, so
+    :math:`3a`, ..., :math:`\dfrac{p-1}{2}a`, so
 
     .. math:: u_1 u_2 \cdots u_s v_1 v_2 \cdots v_t \equiv a^{\frac{p-1}{2}} \left(\frac{p-1}{2}\right)! \pmod p.
 
@@ -218,9 +218,9 @@ If :math:`s` of those residues are greater than :math:`\frac{p}{2}`, then :math:
 
     .. math::
 
-        a^{\frac{p-1}{2}} \equiv (-1)^s \pmod p, \ \binom{a}{p} = a^{\frac{p-1}{2}},
+        a^{\frac{p-1}{2}} \equiv (-1)^s \pmod p, \ \left(\frac{a}{p}\right) = a^{\frac{p-1}{2}},
 
-    and :math:`\binom{a}{p} = (-1)^s \pmod p`.
+    and :math:`\left(\frac{a}{p}\right) = (-1)^s \pmod p`.
 
 Return to problem: using theorem above, we need to find the number of residues, which are greater than :math:`\frac{p}{2}` among :math:`1 \cdot 2`, :math:`2 \cdot 2`, :math:`\cdots`, :math:`\frac{p-1}{2} \cdot 2`. Therefore we only need to know which numbers are greater than :math:`\frac{p}{2}`
 
@@ -261,9 +261,9 @@ We need a lemma: Suppose :math:`p` is an odd prime, :math:`a` is odd and :math:`
 
     Because :math:`a`, :math:`p` are odd, :math:`T(a, p) \equiv s \pmod 2`. From Gauss's lemma we finish.
 
-Return to problem: Consider pairs :math:`(x, y)`, where :math:`1 \leqslant x \leqslant \frac{p-1}{2}` and :math:`1 \leqslant y \leqslant \frac{q-1}{2}`, there are :math:`\frac{p-1}{2}\cdot\frac{q-1}{2}` pairs. We divide those pairs into 2 groups, depending on the magnitude of :math:`px` and :math:`qy`.
+Return to problem: Consider pairs :math:`(x, y)`, where :math:`1 \leqslant x \leqslant \frac{p-1}{2}` and :math:`1 \leqslant y \leqslant \frac{q-1}{2}`, there are :math:`\frac{p-1}{2}\cdot\frac{q-1}{2}` pairs. We divide those pairs into 2 groups, depending on the magnitude of :math:`qx` and :math:`py`.
 
-Because :math:`p`, :math:`q` are two different primes, :math:`px \neq qy`, :math:`\forall (x, y)`.
+Because :math:`p`, :math:`q` are two different primes and :math:`x < p`, :math:`y < q`, we have :math:`qx \neq py`, :math:`\forall (x, y)`.
 
 We consider pairs with :math:`qx > py`. With every fixed element of :math:`x` (:math:`1 \leqslant x \leqslant \frac{p-1}{2}`), exist :math:`\left[\frac{qx}{p}\right]` elements :math:`y` satisfying :math:`1 \leqslant y \leqslant \frac{qx}{p}`. Therefore, there are :math:`\sum_{i=1}^{\frac{p-1}{2}}\left[\frac{iq}{p}\right]` pairs. When :math:`qx < py`, similarly, there are :math:`\sum_{j=1}^{\frac{q-1}{2}}\left[\frac{jp}{q}\right]` pairs. Because there are :math:`\frac{p-1}{2} \cdot \frac{q-1}{2}` pairs, we have equation
 
@@ -288,14 +288,14 @@ Dùng Câu 3.37, :math:`a^{\frac{p-1}{2}} \equiv 1 \pmod p` vì :math:`a` là th
 
 Khi đó
 
-.. math:: b^2 \equiv a^{\frac{p+1}{2}} \equiv a^{1+\frac{p-1}{2}} \equiv a \cdot a^{\frac{p-1}{2}} \equiv a \cdot 1 \equiv 1 \pmod p
+.. math:: b^2 \equiv a^{\frac{p+1}{2}} \equiv a^{1+\frac{p-1}{2}} \equiv a \cdot a^{\frac{p-1}{2}} \equiv a \cdot 1 \equiv a \pmod p
 
 .. admonition:: Câu 3.40
 
 
     Let :math:`p` be and odd prime, let :math:`g \in \mathbb{F}^{*}_p` be a primitive root, and let :math:`h \in \mathbb{F}^{*}_p`. Write :math:`p - 1 = 2^sm` with :math:`m` odd and :math:`s \geqslant 1`, and write the binary expansion of :math:`\log_g(h)` as
 
-    .. math:: log_g(h) = \varepsilon_0 + 2\varepsilon_1 + 4\varepsilon_2 + 8\varepsilon_3 + \cdots \quad \text{with} \quad \varepsilon_0, \varepsilon_1, \cdots \in \{0, 1\}
+    .. math:: \log_g(h) = \varepsilon_0 + 2\varepsilon_1 + 4\varepsilon_2 + 8\varepsilon_3 + \cdots \quad \text{with} \quad \varepsilon_0, \varepsilon_1, \cdots \in \{0, 1\}
 
     Give an algorithm that generalizes Example 3.69 and allows you to rapidly compute :math:`\varepsilon_0, \varepsilon_1, \cdots, \varepsilon_{s-1}`, thereby proving that the first :math:`s` bits of the discrete logarithm are insecure.
 
@@ -304,22 +304,22 @@ Khi đó
 
     **Input:** :math:`g`, :math:`h`, :math:`p` (:math:`p-1=2^s m`)
 
-    **Output:** :math:`s` least significant bits của :math:`x` trong :math:`g^x \equiv h \pmod p`
+    **Output:** :math:`s` least significant bits :math:`\varepsilon_0, \ldots, \varepsilon_{s-1}` của :math:`x = \log_g h`
 
-    1. Ta sẽ tìm mảng :math:`\varepsilon_0, \varepsilon_1, \cdots, \varepsilon_{s-1}`
+    1. Đặt :math:`h_0 = h`.
     2. For :math:`i = 0, \ldots, s-1`
 
-       1. If :math:`h` là thặng dư chính phương
-
-          1. :math:`\varepsilon_i = 0`, :math:`h = \sqrt{h} \pmod p`
-
-       2. ElseIf :math:`\varepsilon_i = 1`
-
-          1. :math:`h = \sqrt{g^{-1}h} \pmod p`
-
-       3. EndIf
+       1. Tính :math:`t = h_i^{(p-1)/2^{i+1}} \bmod p`.
+       2. If :math:`t = 1` thì :math:`\varepsilon_i = 0`, ngược lại (:math:`t = -1`) thì :math:`\varepsilon_i = 1`.
+       3. Đặt :math:`h_{i+1} = h_i \cdot g^{-2^i \varepsilon_i} \bmod p`.
 
     3. EndFor
+
+Giải thích: bằng quy nạp, :math:`h_i = g^{x - (\varepsilon_0 + 2\varepsilon_1 + \cdots + 2^{i-1}\varepsilon_{i-1})} = g^{2^i z_i}` với :math:`z_i = \varepsilon_i + 2\varepsilon_{i+1} + \cdots`. Vì :math:`i \leqslant s-1` nên :math:`(p-1)/2^{i+1}` là số nguyên, và
+
+.. math:: h_i^{(p-1)/2^{i+1}} = g^{z_i (p-1)/2} = \left(g^{(p-1)/2}\right)^{z_i} = (-1)^{z_i} = (-1)^{\varepsilon_i}
+
+(vì :math:`g` là primitive root nên :math:`g^{(p-1)/2} \equiv -1`). Mỗi bước chỉ cần một phép lũy thừa modulo :math:`p`, nên thuật toán chạy trong thời gian đa thức. Trường hợp :math:`i = 0` chính là tiêu chuẩn Euler (Câu 3.37) cho bit thấp nhất.
 
 .. admonition:: Câu 3.41
 
@@ -334,7 +334,7 @@ Khi đó
 
     (d) Suppose instead that :math:`p \equiv 2 \pmod 3`. Prove that for every integer :math:`a` there is an integerr :math:`c` satisfying :math:`a \equiv c^3 \pmod p`. In other words, if :math:`p \equiv 2 \pmod 3`, show that every number is a cube modulo :math:`p`.
 
-(a) Ta có :math:`a \equiv x^3 \pmod p` và :math:`y \equiv y^3 \pmod p` với :math:`x` và :math:`y` nào đó thuộc :math:`\mathbb{F}_p`.
+(a) Ta có :math:`a \equiv x^3 \pmod p` và :math:`b \equiv y^3 \pmod p` với :math:`x` và :math:`y` nào đó thuộc :math:`\mathbb{F}_p`.
 
 Suy ra :math:`ab \equiv x^3 y^3 = (xy)^3 \pmod p` cũng là thặng dư bậc ba.
 
@@ -342,18 +342,16 @@ Suy ra :math:`ab \equiv x^3 y^3 = (xy)^3 \pmod p` cũng là thặng dư bậc ba
 
 Ta chọn :math:`a \equiv g^{3k+1} \pmod p` và :math:`b \equiv g^{3k'+1} \pmod p`.
 
-Khi đó :math:`ab \equiv g^{(3k+1)+(3k'+1)} \equiv g^{3(k+k')+2} \pmod p` không phải thặng dư bậc ba.
+Khi đó :math:`ab \equiv g^{(3k+1)+(3k'+1)} \equiv g^{3(k+k')+2} \pmod p`. Theo (c), cả :math:`a`, :math:`b` và :math:`ab` đều không phải thặng dư bậc ba. Ví dụ cụ thể: :math:`p = 7`, các lập phương khác :math:`0` modulo :math:`7` chỉ gồm :math:`1` và :math:`6`; lấy :math:`a = b = 3` thì :math:`ab = 9 \equiv 2`, cả ba đều không là thặng dư bậc ba.
 
-(c) Quên làm.
+(c) Vì :math:`3 \mid p - 1`, tính chia hết cho :math:`3` của :math:`\log_g a` (một phần tử của :math:`\mathbb{Z}/(p-1)\mathbb{Z}`) được xác định rõ.
 
-**Điều kiện đủ**. Nếu :math:`a` là thặng dư bậc ba modulo :math:`p`, giả sử :math:`a \equiv c^3 \pmod 3` và :math:`c \equiv g^u = \pmod p`.
+**Điều kiện cần.** Nếu :math:`a` là thặng dư bậc ba modulo :math:`p`, giả sử :math:`a \equiv c^3 \pmod p` và :math:`c \equiv g^u \pmod p`. Khi đó :math:`a \equiv g^{3u} \pmod p`, nên :math:`\log_g a \equiv 3u \pmod{p-1}`, và vì :math:`3 \mid p-1` nên :math:`3 \mid \log_g(a)`.
 
-Khi đó :math:`a = g^{3u} \pmod p` và theo định lý Lagrange thì :math:`3 \mid \log_g(a)`.
-
-**Điều kiện cần.** Nếu :math:`3 \mid \log_g(a)` thì làm ngược lại bước chứng minh điều kiện đủ.
+**Điều kiện đủ.** Nếu :math:`\log_g a = 3k` thì :math:`a \equiv g^{3k} = (g^k)^3 \pmod p`, nên :math:`a` là thặng dư bậc ba.
 
 (d) Vì :math:`p \equiv 2 \pmod 3` nên :math:`\gcd(p-1, 3) = 1`. Khi đó tồn tại phần tử :math:`d` là nghịch đảo của :math:`3` modulo :math:`p-1`.
 
-Suy ra phương trình :math:`x^3 \equiv a \pmod p` có nghiệm :math:`a^d = x \pmod p`.
+Suy ra phương trình :math:`x^3 \equiv a \pmod p` có nghiệm :math:`x \equiv a^d \pmod p`, vì :math:`(a^d)^3 = a^{3d} = a^{1 + t(p-1)} \equiv a \pmod p` (trường hợp :math:`p \mid a` hiển nhiên).
 
 Nói cách khác mọi phần tử đều là số bậc ba modulo :math:`p`.
