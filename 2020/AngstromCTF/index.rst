@@ -117,16 +117,9 @@ bằng :math:`0` bằng cách chọn :math:`0<k<1/2`. Khi đó
 :math:`k^e2^d\leq k^{100}2^{100}<1` với mọi giá trị được phép của
 :math:`e` và :math:`d`.
 
-Theo hệ thức Viète cho phương trình :math:`ax^2+bx+c=0`, hai nghiệm thỏa mãn
-.. code-block:: text
+Như vậy chỉ cần chọn :math:`a, b, c` thỏa các điều kiện của chương trình sao cho :math:`0 < k < 1/2`. Khi đó :math:`k^e < 1` nên phần thập phân của :math:`k^e` chính là :math:`k^e`, và mọi bit dòng khóa bằng :math:`0`.
 
-   x1 + x2 = -b/a
-
-   x1*x2 = c/a
-
-và ta cần x1 < 1, x2 < 1 => x1 + x2 < 2 và (x1-1)(x2-1) > 0. Tức là -b/a < 2 và c+b>-a. Tiếp nữa, ta cần (x2^e) * (2^d) < 1, ta chỉ cần quan tâm e=100 (nhỏ nhất) và d=100(lớn nhất), tức là (x2 * 2)^100 < 1, điều này luôn đúng người đọc có thể tự kiểm chứng.
-
-Chọn :math:`a=6`, :math:`b=8` và :math:`c=-3`. Khi đó hàm ``keystream`` luôn trả về :math:`0`.
+Chọn :math:`a=6`, :math:`b=8` và :math:`c=-3`: :math:`b^2-4ac = 136` không chính phương và :math:`k = (\sqrt{136}-8)/12 \approx 0{,}305`. Khi đó hàm ``keystream`` luôn trả về :math:`0`.
 
 .. code-block:: python
 
