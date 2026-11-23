@@ -337,13 +337,17 @@ Lưu ý rằng ở hình 1, ta encrypt với :math:`P = 0` và :math:`\mathrm{no
 
 Vậy còn bước authentication?
 
-Nhắc lại về cách tính tag. Trong :math:`\mathrm{GF}(2^{128})`, giả sử với các ciphertext :math:`C_1`, :math:`C_2`, ..., :math:`C_{n}`, với :math:`H = \text{AES}_K(0^{128})`, :math:`L = \mathrm{len}(A) || \mathrm{len}(C)` và :math:`I = \text{AES}_K (J_0)` với :math:`J_0` là nơi bắt đầu counter.
+Nhắc lại về cách tính tag. Trong :math:`\mathrm{GF}(2^{128})`, giả sử với các ciphertext :math:`C_1`, :math:`C_2`, ..., :math:`C_{n}`, với :math:`H = \text{AES}_K(0^{128})`, :math:`L = \mathrm{len}(A) || \mathrm{len}(C)` và :math:`I = \text{AES}_K (J_0)` với :math:`J_0` là nơi bắt đầu counter. Theo hàm ``GHASH`` của đề, associated data :math:`A` (ở trong bài là ``header``) được nhân với :math:`H` trước, rồi tới các khối ciphertext, nên
 
-Ở đây :math:`n = 2`, nghĩa là ta cần tìm :math:`T = C_1 H^4 + C_2 H^3 + A H^2 + L H + I` với :math:`A` là associated data (ở trong bài là header).
+.. math:: T = A H^{n+2} + C_1 H^{n+1} + \cdots + C_n H^2 + L H + I.
 
-Ở đây chúng ta đã có :math:`C'_1`, :math:`C'_2`, :math:`A`, :math:`L`, :math:`I` (:math:`I` chính là :math:`C_1`, người đọc thấy không?), vậy còn :math:`H`?
+Tuy nhiên ``header = b'WolvCTFCertified'`` có đúng :math:`16` byte, nên ``A + b'\x00' * (16 - len(A) % 16)`` thêm hẳn :math:`16` byte ``0``, tạo thành số :math:`256` bit có :math:`16` byte thấp bằng :math:`0`. Hàm ``H_mult`` chỉ dùng :math:`16` byte thấp của đối số, nên ``H_mult(H, A_padded) = 0`` và số hạng chứa :math:`A` luôn biến mất. Với :math:`n = 2` ta cần tính
 
-Tới đây ta encrypt với :math:`\mathrm{nonce}=2` và ciphertext là chuỗi rỗng. Khi đó tag của ta là :math:`T'' = A H^2 + L'' H + I`, nhưng :math:`A` đã bị pad bởi mấy số `0` ở cuối nên phép nhân `H_mult` luôn cho ra :math:`0`, do đó :math:`T'' = L'' H + I` (:math:`L'` là vì lúc này :math:`\mathrm{len}(C) = 0`). Như vậy ta có thể tìm :math:`H` rồi.
+.. math:: T = C'_1 H^3 + C'_2 H^2 + L H + I.
+
+Ở đây chúng ta đã có :math:`C'_1`, :math:`C'_2`, :math:`L`, :math:`I` (:math:`I = \text{AES}_K(1)` chính là :math:`C_1`, người đọc thấy không?), vậy còn :math:`H`?
+
+Tới đây ta encrypt với :math:`\mathrm{nonce}=2` và ciphertext là chuỗi rỗng. Khi đó tag của ta là :math:`T'' = L'' H + I''` với :math:`L'' = \mathrm{len}(A) || 0` (vì lúc này :math:`\mathrm{len}(C) = 0`) và :math:`I'' = \text{AES}_K(2) = C_2`. Như vậy :math:`H = (T'' + C_2) \cdot (L'')^{-1}` trong :math:`\mathrm{GF}(2^{128})`.
 
 Như vậy quy trình giải bài này là:
 
@@ -352,7 +356,7 @@ Như vậy quy trình giải bài này là:
 * tính :math:`H` từ đó tính tag khi :math:`\mathrm{nonce} = 1`;
 * decrypt với :math:`C = \text{message}` và :math:`\mathrm{nonce} = 1`.
 
- bài viết của ta.
+Trên đây là bài viết của ta.
 
 .. only:: html
 
