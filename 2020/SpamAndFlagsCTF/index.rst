@@ -42,7 +42,7 @@ Dễ dàng kiểm tra thấy ước chung lớn nhất của mỗi base với N 
 
 Ở bước 6, nếu a^(r/2) = -1 (mod N) thì quay lại bước 1. Lúc này thuật toán cũng fail, cần chọn base khác. Trong 2 order còn lại thì bộ (a2, r2) là vi phạm điều này, ta sẽ xét sau.
 
-Với ord1, theo bước 7 ta tính gcd(a1^(r1/2) + 1, r1) = p, đây là 1 thừa số của N1. Từ đó ta có q = N1 / p, theo thuật toán RSA gốc thì ta giải mã được c1.
+Với bộ thứ nhất, theo bước 7 ta tính p = gcd(a1^(r1/2) - 1, N1) (hoặc gcd(a1^(r1/2) + 1, N1)), đây là 1 thừa số không tầm thường của N1. Từ đó ta có q = N1 / p, theo thuật toán RSA gốc thì ta giải mã được c1.
 
 .. code-block:: python
 
@@ -71,7 +71,7 @@ Và đây là lý do, dùng hằng đẳng thức đáng nhớ a^2 - b^2 = (a-b)
 
 **a^r - 1 = (a^(r/2) - 1) * (a^(r/2) + 1) = 0 (mod N) vì a^r = 1 (mod N)** (theo định nghĩa số r ở trên)
 
-Từ đó, (a^(r/2) - 1) * (a^(r/2) + 1) chia hết cho N, nhưng a^(r/2) - 1 không thể chia hết N vì khi đó, a^(r/2) = 1 (mod N), điều này vi phạm ở việc chọn r là số nhỏ nhất để a^r = 1 (mod N). Nghĩa là, a^(r/2) - 1 chỉ chia hết cho 1 ước nguyên tố nào đó của N, giả sử là p. Vậy khi đó a^(r/2) + 1 cũng không thể chia hết cho N mà chỉ chia hết cho ước nguyên tố còn lại của N (vì N = p*q với p, q nguyên tố).
+Từ đó, (a^(r/2) - 1) * (a^(r/2) + 1) chia hết cho N, nhưng a^(r/2) - 1 không thể chia hết N vì khi đó, a^(r/2) = 1 (mod N), điều này vi phạm ở việc chọn r là số nhỏ nhất để a^r = 1 (mod N). Nghĩa là, a^(r/2) - 1 chỉ chia hết cho 1 ước nguyên tố nào đó của N, giả sử là p. Nếu thêm điều kiện a^(r/2) ≢ -1 (mod N) (bước 6) thì a^(r/2) + 1 cũng không chia hết cho N mà chỉ chia hết cho ước nguyên tố còn lại của N (vì N = p*q với p, q nguyên tố). Do đó gcd(a^(r/2) - 1, N) là một thừa số không tầm thường của N. tố).
 
 Tới đây thì ta bắt đầu nghĩ, nếu như ta dùng "hằng đẳng thức đáng nhớ" khác thì sao? Ví dụ như x^3 - y^3 = (x-y)*(x^2 + xy + y^2) nè. (r2 cũng chia hết cho 3 nhé)
 
