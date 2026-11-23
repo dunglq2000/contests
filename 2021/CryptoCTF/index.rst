@@ -41,13 +41,13 @@ Bài này không dùng biến chữ để chạy loop và dùng dấu gạch dư
 
 Kế tiếp hai số :math:`a` và :math:`b` được tạo là hai số nguyên tố kế tiếp tính từ :math:`\mathrm{len}(f)` là độ dài :math:`f`.
 
-Sau đó, :math:`g` và :math:`h` là hai list tạo ra từ việc lặp :math:`f` lần lượt với :math:`a` và :math:`b` lần. Như vậy độ dài của :math:`g` là :math:`a \cdot \mathrm{len}(f)` và độ dài của :math:`h` là :math:`b \cdot \mathrm{len}(f)`.
+Sau đó, :math:`g` và :math:`h` là hai list tạo ra từ việc lặp :math:`f` lần lượt với :math:`a` và :math:`b` lần. Như vậy độ dài của :math:`g` là :math:`a \cdot \mathrm{len}(f)` và độ dài của :math:`h` là :math:`b \cdot \mathrm{len}(f)` (trước khi thêm các bit ``0`` ở bước sau).
 
-Tiếp theo, :math:`c` là số nguyên tố kế tiếp tính từ :math:`\mathrm{len}(f) \gg 2`. Thêm :math:`c` bit ``0`` vào đầu :math:`g` và thực hiện :math:`g_i = g_i + g_{i+c}` với :math:`i = 0, 1, \ldots, \mathrm{len}(f) - c - 1`. Làm tương tự với :math:`h`.
+Tiếp theo, :math:`c` là số nguyên tố kế tiếp tính từ :math:`\mathrm{len}(f) \gg 2`. Thêm :math:`c` bit ``0`` vào đầu :math:`g` và thực hiện :math:`g_i = g_i + g_{i+c}` với :math:`i = 0, 1, \ldots, \mathrm{len}(g) - c - 1` (ở đây :math:`\mathrm{len}(g)` là độ dài sau khi đã thêm :math:`c` bit). Làm tương tự với :math:`h`.
 
 Cuối cùng là chuyển :math:`g` và :math:`h` sang số int base :math:`5` và viết lên file dưới dạng byte. Nên đầu tiên ta sẽ làm ngược lại và tìm được :math:`g` và :math:`h`, sau đó ta duyệt vét cạn :math:`\mathrm{len}(f)` để tìm :math:`a`, :math:`b` và :math:`c` và xem thử bộ nào thỏa :math:`a \cdot \mathrm{len}(f) + c = \mathrm{len}(g)` và :math:`b \cdot \mathrm{len}(f) + c = \mathrm{len}(h)`.
 
-Sau đó là làm ngược lại quá trình, với :math:`i = \mathrm{len}(f) - c - 1, \ldots, 0` thì :math:`g_i = g_i - g_{i+c}`. Tương tự với :math:`h`. Có thể kiểm chứng cách đúng nếu đầu :math:`g` có đúng :math:`c` số ``0``.
+Sau đó là làm ngược lại quá trình, với :math:`i = \mathrm{len}(g) - c - 1, \ldots, 0` thì :math:`g_i = g_i - g_{i+c}`. Tương tự với :math:`h`. Có thể kiểm chứng cách đúng nếu đầu :math:`g` có đúng :math:`c` số ``0``.
 
 Giờ thì, lấy :math:`\mathrm{len}(f)` số đầu của :math:`g` và tiếp tục làm ngược lại sẽ ra các bit của flag.
 
