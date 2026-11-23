@@ -815,4 +815,4 @@ Sau đó với mỗi ``k2`` chúng ta duyệt vét cạn các ``k1`` và kiểm 
         return 0;
     }
 
- bài viết dài lê thê của ta.
+Hết bài viết dài lê thê của ta.
