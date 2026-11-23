@@ -61,13 +61,13 @@ Theo định lí Lagrange, tồn tại :math:`\xi \in (a, b)` để :math:`g(a) 
 
 Như vậy
 
-.. math:: g'(\xi) \cdot (19 - 13) = g'(\eta) \cdot (9 - 6)
+.. math:: g'(\xi) \cdot (19 - 13) = g(19) - g(13) = g(9) - g(3) = g'(\eta) \cdot (9 - 3)
 
-với :math:`\xi \in (13, 19)` và :math:`\eta \in (6, 9)`. Suy ra :math:`g'(\xi) = g'(\eta)`, nói cách khác là
+với :math:`\xi \in (13, 19)` và :math:`\eta \in (3, 9)`. Suy ra :math:`g'(\xi) = g'(\eta)`, nói cách khác là
 
 .. math:: x \cdot \xi^{x-1} = x \cdot \eta^{x-1}
 
-mà :math:`x \neq 0` nên :math:`\left(\dfrac{\xi}{\eta}\right)^{x-1} = 1`. Điều này chỉ xảy ra khi :math:`x-1 = 0`, hay :math:`x = 1`.
+mà :math:`x \neq 0` nên :math:`\left(\dfrac{\xi}{\eta}\right)^{x-1} = 1`. Vì :math:`\xi > 13 > 9 > \eta` nên :math:`\xi / \eta > 1`, do đó điều này chỉ xảy ra khi :math:`x-1 = 0`, hay :math:`x = 1`. Thử lại: :math:`19 - 13 = 6 = 9 - 3`.
 
 Kết luận: phương trình có hai nghiệm là :math:`x = 0` và :math:`x = 1`.
 
@@ -84,7 +84,7 @@ Tính tổng
 
    \alpha & = e^{ix} = \cos(x) + i \sin(x) \\
    \alpha^2 & = e^{2ix} = \cos(2x) + i \sin(2x) \\
-   \cdots & \cdots \\\
+   \cdots & \cdots \\
    \alpha^n & = e^{nix} = \cos(nx) + i \sin(nx)
 
 Ta có
