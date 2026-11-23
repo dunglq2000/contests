@@ -101,7 +101,7 @@ I was totally stucked in here, and then I got the hint from author about the cha
    			ans.pop()
    keygen(16)
 
-And there we are, input is **CYb3r_:math:`3CuriTy_is_@_`#@r3d_R3:math:`p0^`ibiliTy**. Of course, when you put this to input box, it reponses *Wrong input* because the **Message** function do it.
+And there we are, input is ``CYb3r_$3CuriTy_is_@_$#@r3d_R3$p0^$ibiliTy``. Of course, when you put this to input box, it reponses *Wrong input* because the **Message** function do it.
 
 Now look at **Decrypter**, it's quite simple. First, it creates a MD5 hash from input + process_name (in base64) ans stores it in **text**. You should try to figure out what next functions do . Finally, the **Drop** function creates a file with filename **encrypterXX.exe** in temporary directory of your computer (this path can be gotten from **GetTempPath** function). XX are 2 random characters. That is the encrypting file!!! It's time to find out how the data encrypted and exported to **Image.png**.
 
