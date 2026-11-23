@@ -20,9 +20,9 @@ Lời giải
 
 Đặt :math:`x` là số dollar ban đầu đứa trẻ có, và :math:`y` là số lượt 5 dollar mà đứa trẻ mua, tương đương :math:`y` viên kẹo. Suy ra số lần chơi mà đứa trẻ bỏ lại 2 lượt là :math:`50-y`.
 
-Nếu chơi hết 3 lượt thì đứa trẻ mất 5 dollar, nếu chơi 1 lượt (trả lại 2) thì đứa trẻ mất  :math:`5-3=2` dollar. Theo giả thiết là không còn lượt chơi sót lại, như vậy số lần chơi hết 3 lượt phải bằng bù lại số lần bỏ 2 lượt.
+Nếu chơi hết 3 lượt thì đứa trẻ mất 5 dollar, nếu chơi 1 lượt (trả lại 2) thì đứa trẻ mất  :math:`5-3=2` dollar. Theo giả thiết là không còn lượt chơi sót lại; lời giải dưới đây hiểu (theo đáp án của đề) là đứa trẻ chỉ đổi lượt chơi chứ không dùng lượt nào, nên tổng số lượt mua vào phải bằng tổng số lượt trả lại.
 
-Nói cách khác :math:`3y = 2(50-y)`. Vậy :math:`y=20` và :math:`50-y=30`. Nghĩa là số lần đứa trẻ trả lại 2 lượt chơi là :math:`3 \cdot 30 = 90` dollar, và số tiền trả là :math:`5 y = 100`. Như vậy để có 50 viên kẹo thì đứa trẻ cần :math:`100 - 90 = 10` dollar.
+Nói cách khác :math:`3y = 2(50-y)`. Vậy :math:`y=20` và :math:`50-y=30`. Nghĩa là số tiền đứa trẻ nhận lại khi trả lại 2 lượt chơi là :math:`3 \cdot 30 = 90` dollar, và số tiền đã trả là :math:`5 y = 100`. Như vậy để có 50 viên kẹo thì đứa trẻ cần :math:`100 - 90 = 10` dollar.
 
 Bài 2
 =====
@@ -30,7 +30,7 @@ Bài 2
 Đề bài
 ------
 
-Gọi :math:`x_0` là cực tiểu địa phương của hàm số khả vi :math:`f(x)` thỏa mãn :math:`f'(x) = 1 - x f^2(x)` với mọi :math:`x`. Hỏi có thể xác định nó là cực đại hay cực tiểu không?
+Gọi :math:`x_0` là cực trị địa phương của hàm số khả vi :math:`f(x)` thỏa mãn :math:`f'(x) = 1 - x f^2(x)` với mọi :math:`x`. Hỏi có thể xác định nó là cực đại hay cực tiểu không?
 
 Lời giải
 --------
@@ -128,9 +128,9 @@ Lời giải
 
 Không mất tính tổng quát, ta chọn :math:`A_1` ở gốc tọa độ :math:`Oxyz`,
 :math:`B_1 = (1, 0, 0)` và :math:`C_1 = (0, 1, 0)`. Khi đó :math:`A_1` là hình
-chiếu của :math:`A` lên mặt phẳng :math:`Oxy` nên :math:`A = (0, 0, 1)`. Tương
+chiếu của :math:`A` lên mặt phẳng :math:`Oxy` nên (sau khi tịnh tiến theo phương :math:`Oz`, không làm thay đổi hình chiếu) có thể giả sử :math:`A = (0, 0, 1)`. Tương
 tự, :math:`B_1` là hình chiếu của :math:`B` lên mặt :math:`Oxy` nên :math:`B` nằm
-trên đường thẳng qua :math:`B` song song :math:`Oz`, vậy :math:`B = (1, 0, x)`.
+trên đường thẳng qua :math:`B_1` song song :math:`Oz`, vậy :math:`B = (1, 0, x)`.
 Tương tự :math:`C = (0, 1, y)`.
 
 Từ giả thiết :math:`AB` và :math:`A_1 B_1` là cạnh góc vuông, vậy :math:`\angle A = 90`
@@ -186,7 +186,7 @@ Tiếp theo nhân hai vế :math:`A^2 B + B A^2 = 2A^3` vào bên trái và bên
 
 Khi đó
 
-.. math:: A^5 B & = A \cdot A^4 B = A \cdot BA^4 = A \cdot BA^3 \cdot A \\ & = A \cdot A^3 \cdot A = A^4 B \cdot A = B A^4 A = B A^5.
+.. math:: A^5 B & = A \cdot A^4 B = A \cdot BA^4 = A \cdot BA^3 \cdot A \\ & = A \cdot A^3 B \cdot A = A^4 B \cdot A = B A^4 A = B A^5.
 
 Như vậy :math:`A^5 B = B A^5`.
 
@@ -235,7 +235,7 @@ Lời giải
 Do :math:`a`, :math:`b`, :math:`c` dương nên ta có thể chia 2 vế cho :math:`abc` và có
 :math:`\dfrac{\sin a}{a} \cdot \dfrac{\sin b}{b} \cdot \dfrac{\sin c}{c} = \dfrac{3}{\pi}`.
 
-Xét hàm :math:`f(x) = \ln \left(\dfrac{\sin x}{x}\right)`. Do :math:`a`, :math:`b`, :math:`c` dương nên vế trái cũng dương, do đó ta chỉ cần xét các số trong khoảng :math:`\left(0, \frac{\pi}{2}\right)` là đủ. Khi đó, đặt
+Nếu :math:`a + b + c \geqslant \dfrac{\pi}{2}` thì hiển nhiên :math:`a + b + c > \dfrac{\pi}{6}`. Do đó ta giả sử :math:`a + b + c < \dfrac{\pi}{2}`; khi đó :math:`a`, :math:`b`, :math:`c`, :math:`a+b` và :math:`a+b+c` đều thuộc khoảng :math:`\left(0, \frac{\pi}{2}\right)`, nơi :math:`\dfrac{\sin x}{x} > 0`. Đặt
 
 .. math::
 
@@ -244,12 +244,14 @@ Xét hàm :math:`f(x) = \ln \left(\dfrac{\sin x}{x}\right)`. Do :math:`a`, :math
     0, \quad & x = 0
     \end{cases}
 
+(hàm này liên tục tại :math:`0` vì :math:`\sin x / x \to 1`).
+
 Từ giả thiết suy ra:
 
 .. math::
 
     f(a) + f(b) + f(c) & = \ln \left(\frac{\sin a}{a}\right)
-    + \left(\frac{\sin b}{b}\right) + \left(\frac{\sin c}{c}\right) \\
+    + \ln \left(\frac{\sin b}{b}\right) + \ln \left(\frac{\sin c}{c}\right) \\
     & = \ln\left(\frac{\sin a}{a} \cdot \frac{\sin b}{b}
     \cdot \frac{\sin c}{c}\right) \\
     & = \ln\left(\frac{3}{\pi}\right) = f\left(\frac{\pi}{6}\right)
@@ -277,11 +279,11 @@ tồn tại số :math:`\xi_1 \in (0, a)` sao cho
 
 .. math:: f(a) - f(0) = f'(\xi_1) \cdot (a - 0) \Leftrightarrow f(a) - f(0) = f'(\xi_1) \cdot a.
 
-Tương tự tồn tại số :math:`\xi_2 \in (a, a+b)` sao cho
+Tương tự tồn tại số :math:`\xi_2 \in (b, a+b)` sao cho
 
 .. math:: f(a+b) - f(b) = f'(\xi_2) \cdot (a + b - b) = f'(\xi_2) \cdot a.
 
-Do :math:`\xi_1 < \xi_2` và :math:`f'(x)` nghịch biến nên :math:`f'(\xi_1) > f'(\xi_2)`.
+Do :math:`\xi_1 < a \leqslant b < \xi_2` và :math:`f'(x)` nghịch biến nên :math:`f'(\xi_1) > f'(\xi_2)`.
 
 Suy ra :math:`f(a) - f(0) > f(a+b) - f(b)`, hay :math:`f(a) + f(b) > f(a+b) + f(0).`
 
@@ -293,7 +295,7 @@ Như vậy
 
 .. math::
 
-    f\left(\frac{\pi}{6}\right) = f(a) + f(b) + f(c) & > f(a+b) + f(0) + f(c) \\ & > f(a+b+c) + f(0) + f(0) > f(a + b + c)
+    f\left(\frac{\pi}{6}\right) = f(a) + f(b) + f(c) & > f(a+b) + f(0) + f(c) \\ & > f(a+b+c) + f(0) + f(0) = f(a + b + c)
 
 Do :math:`f(x)` nghịch biến nên :math:`a + b + c > \dfrac{\pi}{6}` là điều cần chứng minh.
 
@@ -324,12 +326,12 @@ cũng là một đa thức hệ số nguyên. Ta nhận thấy rằng
 .. math::
 
     P_n(x) & = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0 \\
-    & = (qx - p) \left(\dfrac{a_n}{q} x^{n-1} + \ldots + \dfrac{-a_0}{q}\right).
+    & = (qx - p) \left(\dfrac{a_n}{q} x^{n-1} + \ldots + \dfrac{-a_0}{p}\right).
 
 Ở đây ta có thể xét hệ số bậc cao nhất và thấp nhất, và từ
-đó suy ra :math:`\dfrac{a_n}{q}` và :math:`\dfrac{a_0}{q}` là các số nguyên.
+đó suy ra :math:`\dfrac{a_n}{q}` và :math:`\dfrac{a_0}{p}` là các số nguyên.
 
-Vậy với số nguyên :math:`m` bất kì thì :math:`\dfrac{P_n(m)}{qm - p} = N(m)` cũng là một số nguyên. Mà từ giả thiết :math:`a_n`, :math:`P_n(k)` và :math:`P_n(k+1)` là các số lẻ thì :math:`qk - p = 2m_1 - 1` (số lẻ không thể chia hết cho số chẵn). Tương tự :math:`q(k+1) - p = 2m_2 - 1`.
+Vậy với số nguyên :math:`m` bất kì thì :math:`\dfrac{P_n(m)}{qm - p} = N(m)` cũng là một số nguyên. Mà từ giả thiết :math:`P_n(k)` và :math:`P_n(k+1)` là các số lẻ, đồng thời :math:`qk - p` là ước của :math:`P_n(k)`, nên :math:`qk - p = 2m_1 - 1` là số lẻ (số lẻ không thể chia hết cho số chẵn). Tương tự :math:`q(k+1) - p = 2m_2 - 1`.
 
 Trừ vế theo vế ta có
 
