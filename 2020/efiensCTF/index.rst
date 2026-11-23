@@ -22,7 +22,7 @@ Flag: **EFIENSCTF{\_\_\_Basic_RSA_chall____}**
 
 Người đọc xem đề bài ở `đây <ecbc.py>`_
 
-Hàm **encrypt** sẽ theo biểu diễn nhị phân của flag mà mã hóa input của ta. Với mỗi bit của flag, nếu là 0 thì sẽ mã hóa input bằng AES với mode là CBC, nếu là 1 sẽ mã hóa bằng AES với mode ECB. Mỗi lần như vậy key random. Tuy nhiên, nếu ta truyền vào 2 blocks plaintext P1 và P2 giống nhau (P1 và P2 là các block 16 bytes) thì AES sẽ cho 2 ciphertext C1 và C2 giống nhau, còn CBC thì không. Vì vậy ta gửi lên server 32 ký tự giống nhau Ở đây ta truyền b'a' * 32.
+Hàm **encrypt** sẽ theo biểu diễn nhị phân của flag mà mã hóa input của ta. Với mỗi bit của flag, nếu là 0 thì sẽ mã hóa input bằng AES với mode là CBC, nếu là 1 sẽ mã hóa bằng AES với mode ECB. Mỗi lần như vậy key random. Tuy nhiên, nếu ta truyền vào 2 blocks plaintext P1 và P2 giống nhau (P1 và P2 là các block 16 bytes) thì AES ở mode ECB sẽ cho 2 ciphertext C1 và C2 giống nhau, còn mode CBC thì không. Vì vậy ta gửi lên server 32 ký tự giống nhau Ở đây ta truyền b'a' * 32.
 
 Dựa vào nhận xét trên, ta recover được flag
 
