@@ -47,25 +47,15 @@ Ban đầu, :math:`(a, b)` được khai báo là :math:`(20, 20)`. Chứng minh
 Giải
 ------
 
-Phép biến đổi tương đương với phép nhân ma trận :math:`(a, b) \to (a, b) \bm{A}` với :math:`\bm{A}` là ma trận xác định bởi
+Ta xét :math:`a` và :math:`b` theo modulo :math:`3`. Vì :math:`18 \equiv 6 \equiv 15 \equiv 0` và :math:`17 \equiv -10 \equiv -1 \pmod 3` nên
 
-1. :math:`\bm{A} = \begin{pmatrix} 1 & 18 \\ 18 & -1 \end{pmatrix}` khi query là "RED".
-2. :math:`\bm{A} = \begin{pmatrix} 17 & -6 \\ 6 & 17 \end{pmatrix}` khi query là "GREEN".
-3. :math:`\bm{A} = \begin{pmatrix} -10 & 15 \\ -15 & -10 \end{pmatrix}` khi query là "BLUE".
+- "RED": :math:`(a, b) \mapsto (a + 18b, 18a - b) \equiv (a, -b) \pmod 3`;
+- "GREEN": :math:`(a, b) \mapsto (17a + 6b, -6a + 17b) \equiv (-a, -b) \pmod 3`;
+- "BLUE": :math:`(a, b) \mapsto (-10a - 15b, 15a - 10b) \equiv (-a, -b) \pmod 3`.
 
-Kết quả cuối là việc thực hiện liên tiếp các phép nhân có dạng
+Như vậy mỗi query chỉ có thể đổi dấu :math:`a` và :math:`b` theo modulo :math:`3`; nói riêng, :math:`a \not\equiv 0 \pmod 3` khi và chỉ khi giá trị mới của :math:`a` cũng vậy, và tương tự với :math:`b`.
 
-.. math::
-
-    (a, b) \cdot \bm{A}_1 \bm{A}_2 \cdots \bm{A}_r
-
-với :math:`\bm{A}_i` là một trong ba ma trận trên.
-
-Đặt :math:`\bm{A}_1 \cdots \bm{A}_r = B` thì phép nhân tương đương với :math:`(a, b) \cdot \begin{pmatrix} X & Y \\ Z & T \end{pmatrix} = (324, 324)`. Trong đó :math:`X, Y, Z, T \in \mathbb{Z}`.
-
-Điều này tương đương với :math:`a \cdot X + b \cdot Z = 324` và :math:`a \cdot Y + b \cdot T = 324`. Suy ra :math:`20 (X + Z) = 324` và :math:`20 (Y + T) = 324`. Nhưng điều này không thể xảy ra vì :math:`324` không chia hết :math:`20`.
-
-Như vậy server không bao giờ crash dù có thực hiện bao nhiêu query đi nữa.
+Ban đầu :math:`a = b = 20 \equiv 2 \pmod 3`. Một bội của :math:`324 = 4 \cdot 81` luôn chia hết cho :math:`3`, nên bằng quy nạp theo số query, :math:`a` và :math:`b` không bao giờ là bội của :math:`324`: phép reset không bao giờ xảy ra và :math:`a, b \not\equiv 0 \pmod 3` sau mỗi query. Do đó :math:`(a, b)` không bao giờ bằng :math:`(0, 0)`, tức server không bao giờ crash dù có bao nhiêu query được gửi tới.
 
 Problem 1. Poly
 ===============
@@ -157,15 +147,15 @@ Tương tự, gọi :math:`f_5`, :math:`f_7` và :math:`f_{35}` là kết quả 
     f_7 & = 25469333231403648059708659888338792850140504272696299331424365245642760908571 \\
     f_{35} & = 25850860693609575302160565920815769473222469094759983686766869114847002714718.
 
-Tương tự :math:`n \mid (f_3 \cdot f_5 - f_{35})`.
+Tương tự, vì :math:`35 = 5 \cdot 7` nên :math:`n \mid (f_5 \cdot f_7 - f_{35})`.
 
-Như vậy
+Như vậy :math:`n` là ước của
 
 .. math::
 
-    n = \gcd(f_2 \cdot f_3 - f_6, f_3 \cdot f_5 - f_{35}).
+    \gcd(f_2 \cdot f_3 - f_6, f_5 \cdot f_7 - f_{35}).
 
-Ta thu được
+Nói chung ước chung lớn nhất này có thể là một bội nhỏ của :math:`n`, nhưng ở đây ta thu được đúng
 
 .. math::
 
