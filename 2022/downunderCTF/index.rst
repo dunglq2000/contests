@@ -105,11 +105,11 @@ Từ cấu trúc trên, ta xác định được :math:`IV2` và thực hiện g
 
 Cách giải bài này nằm ở hai dấu chấm đỏ lòm trên hình vẽ.
 
-Trong mode OFB, :math:`C_i = P_i \oplus O_i` với :math:`O_i` là encrypt AES của :math:`O_{i-1}`. Như vậy nếu ta chọn :math:`IV2` sao cho sau khi encrypt thì nó bằng đúng :math:`O_2` ở lần encrypt đầu, thì tất cả các :math:`O'_i` sau đó luôn giống với :math:`O_i` sau một đơn vị. Tức là :math:`O'_i = O_{i+1}`, :math:`i = 1, 2, \ldots`
+Trong mode OFB, :math:`C_i = P_i \oplus O_i` với :math:`O_i` là encrypt AES của :math:`O_{i-1}`. Như vậy nếu ta chọn :math:`IV2` sao cho sau khi encrypt thì nó bằng đúng :math:`O_2` ở lần encrypt đầu, tức :math:`IV2 = O_1 = C_1 \oplus P_1` (tính được vì :math:`P_1` = ``Decrypt this... `` đã biết), thì tất cả các :math:`O'_i` sau đó luôn giống với :math:`O_i` sau một đơn vị. Tức là :math:`O'_i = O_{i+1}`, :math:`i = 1, 2, \ldots`
 
-Trong OFB thì :math:`C_i = P_i \oplus O_i` và :math:`C'_i = P'_i \oplus O'_i`. Do :math:`O'_i = O_{i+1}` theo cách chọn :math:`IV2` của ta nên ta sẽ có
+Trong OFB thì :math:`C_i = P_i \oplus O_i` và :math:`C'_i = P'_i \oplus O'_i`. Hai lần encrypt cùng một ``MESSAGE`` nên :math:`P'_i = P_i`. Do :math:`O'_i = O_{i+1}` theo cách chọn :math:`IV2` của ta nên ta sẽ có
 
-.. math:: C_{i+1} \oplus P_{i+1} = C'_i \oplus P'_i \Longleftrightarrow P_{i+1} = C_{i+1} \oplus C'_i \oplus P_i,
+.. math:: C_{i+1} \oplus P_{i+1} = C'_i \oplus P_i \Longleftrightarrow P_{i+1} = C_{i+1} \oplus C'_i \oplus P_i,
 
 mà :math:`P_1` ta có rồi nên ta sẽ suy ra được tất cả :math:`P_i` còn lại với :math:`i = 2, 3, \ldots`
 
@@ -161,7 +161,7 @@ Một bài discrete logarithm trên modulo đa thức.
 
 Ở đây đề cho chúng ta hai đa thức được random là :math:`A` và :math:`B` (cả hai đều nằm trong modulo :math:`f(x)` trên :math:`\mathbb{Z}_p[x]`. Với hai số random :math:`n` và :math:`m` bị giấu, đề cho ta đa thức :math:`C = A^n \cdot B^m`.
 
-Nhiệm vụ của ta phải tìm ba vector trong :math:`\mathbb{F}_p` là :math:`\varphi_A`, :math:`\varphi_B` và :math:`\varphi_C` sao cho tích có hướng của :math:`\varphi^n_A` và :math:`\varphi^m_B` bằng đúng :math:`\varphi_C`. Ở đây :math:`\varphi^n_A` nghĩa là mỗi phần tử của :math:`\varphi_A` được mũ :math:`n \pmod p`, :math:`\varphi_A = (x_A, y_A, z_A)` thì
+Nhiệm vụ của ta phải tìm ba vector trong :math:`\mathbb{F}_p` là :math:`\varphi_A`, :math:`\varphi_B` và :math:`\varphi_C` sao cho tích từng thành phần của :math:`\varphi^n_A` và :math:`\varphi^m_B` bằng đúng :math:`\varphi_C`. Ở đây :math:`\varphi^n_A` nghĩa là mỗi phần tử của :math:`\varphi_A` được mũ :math:`n \pmod p`, :math:`\varphi_A = (x_A, y_A, z_A)` thì
 
 .. math:: \varphi_A^n = (x^n_A \bmod p, y^n_A \bmod p, z^n_A \bmod p).
 
@@ -169,6 +169,6 @@ Như vậy ta cần giải bài toán discrete logarithm cho polynomial ring. Ph
 
 Nhưng ta không biết cách tìm order của mỗi đa thức .........
 
-Chọn :math:`\varphi_A=\varphi_B=\varphi_C=(0,0,0)` luôn thỏa điều kiện với mọi :math:`n` và :math:`m`. Đây là một lời giải ngoài dự kiến.
+Chọn :math:`\varphi_A=\varphi_B=\varphi_C=(0,0,0)` luôn thỏa điều kiện với mọi :math:`n, m \geqslant 1` vì :math:`0^n = 0`. Đây là một lời giải ngoài dự kiến: server chỉ kiểm tra đẳng thức chứ không kiểm tra :math:`\varphi` có phải là đồng cấu từ :math:`Q` sang :math:`\mathbb{F}_p^3` (qua CRT) hay không.
 
 Cám ơn mọi người đã đọc bài viết của ta. Hẹn gặp lại.
