@@ -17,12 +17,12 @@ Tạo public key
 
 Ta gọi hàm hash là :math:`H(x)` cho input :math:`x` và độ dài (cố định) của hàm hash là :math:`L`. Ta kí hiệu việc thực hiện hash :math:`k` lần là :math:`H^{(k)}(x)`. Tức là :math:`H^{(k)}(x) = H(H(\cdots (H(x))\cdots))` (:math:`k` lần). Như vậy public key tương ứng với secret :math:`s` đầu vào là :math:`[H^{(1)}(s), H^{(2)}(s), \ldots, H^{(4*L)}(s)]`.
 
-Prototype của hàm tạo public key dùng SHA512 nhưng ở chương trình chính dùng SHA256. Do đó :math:`L = 32` bytes và độ dài public key là :math:`64`.
+Prototype của hàm tạo public key dùng SHA512 nhưng ở chương trình chính dùng SHA256. Do đó :math:`L = 32` bytes và public key gồm :math:`4L = 128` số. Lưu ý rằng chương trình in ra ``secret``, nên ta tính lại được toàn bộ public key.
 
 Encode message
 --------------
 
-Bước vào hàm encrypt, message ban đầu sẽ được pad thành bội của :math:`32` (theo ``độ dài public key / 4 - độ dài hàm hash``) và được chia thành từng chunk :math:`32` bytes.
+Bước vào hàm encrypt, message ban đầu sẽ được pad thành bội của :math:`32` (``độ dài public key / 4 = 128 / 4``) và được chia thành từng chunk :math:`32` bytes.
 
 Happiness
 --------------
@@ -88,8 +88,8 @@ Do đó với 128 public key ta có thể viết dưới dạng ma trận như s
 
 Ma trận :math:`P` không vuông, do đó không thể tính nghịch đảo theo cách trực tiếp.
 
-Để ý rằng :math:`m` luôn không đổi mỗi lần netcat nên ta chỉ cần request thêm một lần nữa và có thêm :math:`64` public key nữa. Khi đó ghép các public key đó nối tiếp xuống dưới ma trận :math:`P` cũng như ghép thêm các ciphertext mới xuống dưới cột :math:`c` thì ta đã đủ ma trận vuông để giải.
+Ma trận :math:`P` có kích thước :math:`128 \times 256`. Để ý rằng :math:`m` luôn không đổi mỗi lần netcat (còn ``secret`` thì mới) nên ta chỉ cần request thêm một lần nữa và có thêm :math:`128` public key nữa. Khi đó ghép các public key đó nối tiếp xuống dưới ma trận :math:`P` cũng như ghép thêm các ciphertext mới xuống dưới cột :math:`c` thì ta có ma trận vuông :math:`256 \times 256`, và (nếu ma trận khả nghịch, điều xảy ra với xác suất cao) giải được :math:`m` bằng hệ phương trình tuyến tính trên :math:`\mathbb{Q}`.
 
 Code giải người đọc xem ở :download:`solve.py <FalLProoF/solve.py>`.
 
- bài viết siêu dài cho một bài ... không dài lắm.
+Một bài viết siêu dài cho một bài ... không dài lắm.
