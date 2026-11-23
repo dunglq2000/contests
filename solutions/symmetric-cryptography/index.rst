@@ -51,13 +51,11 @@ Lời giải cho quyển sách :cite:`Tokareva1` của Н.Н. Токарева.
 .. admonition:: Chứng minh cho hàm affine
    :class: danger, dropdown
 
-   **Chiều thuận.** Nếu :math:`f` là hàm tuyến tính thì nó có dạng
+   Đặt :math:`g(\bm{x}) = f(\bm{x}) \oplus f(\bm{0})`. Khi đó :math:`f` affine khi và chỉ khi :math:`g` tuyến tính (vì :math:`f = g \oplus f(\bm{0})`, còn hàm affine :math:`a_n x_n \oplus \cdots \oplus a_1 x_1 \oplus a_0` có :math:`a_0 = f(\bm{0})`). Mặt khác
 
-   .. math:: f(x_1, \ldots, x_n) = a_n x_n \oplus \cdots \oplus a_1 x_1 \oplus a_0
+   .. math:: f(\bm{x} \oplus \bm{y}) = f(\bm{x}) \oplus f(\bm{y}) \oplus f(\bm{0}) \Longleftrightarrow g(\bm{x} \oplus \bm{y}) = g(\bm{x}) \oplus g(\bm{y}).
 
-   và ta chứng minh tương tự cho trường hợp hàm tuyến tính với lưu ý :math:`f(\bm{0}) = a_0`.
-
-   **Chiều nghịch.** Chứng minh tương tự cho trường hợp hàm tuyến tính.
+   Áp dụng kết quả cho hàm tuyến tính với :math:`g` ta có điều phải chứng minh.
 
 .. admonition:: Câu 17
     
@@ -83,18 +81,15 @@ Do đó có :math:`2^k` cách chọn cho các vị trí khác nhau, còn :math:`
     
    Tìm lực lượng của *mặt cầu* :math:`S_r(\bm{x}) = \{ \bm{y} : d(\bm{x}, \bm{y}) = r \}` và *hình cầu* :math:`B_r(\bm{x}) = \{ \bm{y} : d(\bm{x}, \bm{y}) \leqslant r \}`.
 
-Đối với mặt cầu thì đáp án chính là bài 17, nghĩa là :math:`\lvert S_r(\bm{x}) \rvert = 2^r \cdot C_n^r`.
+Cố định :math:`\bm{x}`. Vector :math:`\bm{y}` thỏa :math:`d(\bm{x}, \bm{y}) = r` được xác định duy nhất bởi tập :math:`r` vị trí mà :math:`\bm{y}` khác :math:`\bm{x}` (ở mỗi vị trí đó :math:`y_i = x_i \oplus 1`). Do đó
 
-Đối với hình cầu :math:`B_r(\bm{x})` ta xét tất cả giá trị từ :math:`0` tới :math:`r`:
+.. math:: \lvert S_r(\bm{x}) \rvert = C_n^r.
 
-- khi :math:`d(\bm{x}, \bm{y}) = 0` thì có :math:`2^n \cdot C_n^0` cách chọn;
-- khi :math:`d(\bm{x}, \bm{y}) = 1` thì có :math:`2^n \cdot C_n^1` cách chọn;
-- tương tự, khi :math:`d(\bm{x}, \bm{y}) = i` thì có :math:`2^n \cdot C_n^i` cách chọn;
-- cho tới khi :math:`d(\bm{x}, \bm{y}) = r` thì có :math:`2^n \cdot C_n^r` cách chọn.
+(Khác với bài 17, ở đây :math:`\bm{x}` đã cố định nên không nhân thêm :math:`2^n`.)
 
-Như vậy lực lượng của hình cầu là tổng tất cả giá trị trên:
+Đối với hình cầu :math:`B_r(\bm{x})` ta cộng lực lượng các mặt cầu bán kính :math:`0, 1, \ldots, r`:
 
-.. math:: \lvert B_r(\bm{x}) \rvert = 2^n \cdot (C_n^0 + C_n^1 + \cdots + C_n^r).
+.. math:: \lvert B_r(\bm{x}) \rvert = \sum_{i=0}^{r} \lvert S_i(\bm{x}) \rvert = C_n^0 + C_n^1 + \cdots + C_n^r.
 
 Глава 5. Криптографические свойства булевых функций
 ===================================================
@@ -168,7 +163,7 @@ Chứng minh cho các định lí Siegenthaler có thể tìm ở :cite:`Agibalo
 
    suy ra :math:`f` là correlation bậc :math:`r - 1`.
 
-Đối với điều kiện cần, Xiao và Massey :cite:`Xiao88` có một chứng minh năm 1988. Ta cần bổ đề sau.
+Đối với chiều đảo, Xiao và Massey :cite:`Xiao88` có một chứng minh năm 1988. Ta cần bổ đề sau.
 
 .. prf:lemma:: 
    :label: lem-random-var-sum-1
@@ -178,23 +173,13 @@ Chứng minh cho các định lí Siegenthaler có thể tìm ở :cite:`Agibalo
 .. admonition:: Chứng minh bổ đề
    :class: danger, dropdown
 
-   **Điều kiện đủ.** Giả sử với hai biến ngẫu nhiên độc lập (BNN) :math:`Y_1` và :math:`Y_2`, vì BNN :math:`Z` độc lập với :math:`Y_1` và :math:`Y_2` nên
+   **Chiều thuận.** Nếu :math:`Z` độc lập với bộ biến ngẫu nhiên (BNN) :math:`(Y_1, \ldots, Y_r)` thì :math:`Z` độc lập với mọi hàm của bộ này, nói riêng với mọi tổng :math:`\lambda_1 Y_1 + \cdots + \lambda_r Y_r`. Thật vậy, với :math:`S = \{(y_1, \ldots, y_r) : \lambda_1 y_1 + \cdots + \lambda_r y_r = b\}` ta có
 
-   .. math:: 
-      
-      P(Y_1 = 0, Y_2 = 0, Z = 0) + P(Y_1 = 1, Y_2 = 1, Z = 0) & = P(Y_1 = 0) \cdot P(Y_2 = 0) \cdot P(Z = 0) + P(Y_1 = 1) \cdot P(Y_2 = 1) \cdot P(Z = 0) \\ 
-      & = \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} \\ 
-      & = \frac{1}{4} = P(Y_1 + Y_2 = 0) \cdot P(Z = 0) = P(Y_1 + Y_2 = 0, Z = 0).
+   .. math:: P\Big(\sum_i \lambda_i Y_i = b, Z = z\Big) = \sum_{\bm{y} \in S} P(\bm{Y} = \bm{y}, Z = z) = \sum_{\bm{y} \in S} P(\bm{Y} = \bm{y}) P(Z = z) = P\Big(\sum_i \lambda_i Y_i = b\Big) P(Z = z).
 
-   Chứng minh tương tự cho :math:`Y_1 + Y_2 = 1` ta có 
-   
-   .. math:: P(Y_1 + Y_2 = y, Z = z) = P(Y_1 + Y_2 = y) \cdot P(Z = z) \ \text{với mọi} \ y, z \in \mathbb{F}_2,
+   **Chiều đảo.** BNN rời rạc :math:`Z` độc lập với tổng :math:`\lambda_1 Y_1 + \lambda_2 Y_2 + \cdots + \lambda_r Y_r` với mọi :math:`\lambda_1`, :math:`\lambda_2`, ..., :math:`\lambda_r` không đồng thời bằng :math:`0` và thuộc :math:`\mathbb{F}_2`. Ta sẽ chứng minh :math:`Z` độc lập với hệ độc lập :math:`Y_1`, :math:`Y_2`, ..., :math:`Y_r`.
 
-   như vậy :math:`Z` độc lập với :math:`Y_1 + Y_2`, và vì :math:`Z` đã độc lập với :math:`Y_1` và :math:`Y_2` nên ta có điều phải chứng minh. Sử dụng quy nạp ta dễ dàng chứng minh :math:`Z` độc lập với hệ độc lập :math:`m` BNN bất kì.
-
-   **Điều kiện cần.** BNN rời rạc :math:`Z` độc lập với tổng :math:`\lambda_1 Y_1 + \lambda_2 Y_2 + \cdots + \lambda_r Y_r` với mọi :math:`\lambda_1`, :math:`\lambda_2`, ..., :math:`\lambda_r` không đồng thời bằng :math:`0` và thuộc :math:`\mathbb{F}_2`. Ta sẽ chứng minh :math:`Z` độc lập với hệ độc lập :math:`Y_1`, :math:`Y_2`, ..., :math:`Y_r`.
-
-   Với :math:`m = 1` thì điều này hiển nhiên. Với :math:`m = 2`, vì :math:`Z` độc lập với :math:`Y_1`, :math:`Y_2` và :math:`Y_1 + Y_2` nên ta có phân bố xác suất sau với mọi giá trị :math:`z \in Z`: với mọi :math:`P(Z = z) > 0` ta có
+   Với :math:`r = 1` thì điều này hiển nhiên. Với :math:`r = 2`, vì :math:`Z` độc lập với :math:`Y_1`, :math:`Y_2` và :math:`Y_1 + Y_2` nên ta có phân bố xác suất sau với mọi giá trị :math:`z \in Z`: với mọi :math:`P(Z = z) > 0` ta có
 
    .. math:: 
       :label: eqs-y1-y2-z-cond
@@ -239,11 +224,11 @@ Chứng minh cho các định lí Siegenthaler có thể tìm ở :cite:`Agibalo
 
    .. math:: P((Y_1 = y_1, Y_2 = y_2) \mid (Y_3 = y_3, \ldots, Y_R = y_R, Z = z)),
 
-   khi đó :eq:`eqs-y1-y2-z-result` được viết lại thành :math:`Y_1`, :math:`Y_2` độc lập với :math:`Y_3`, ..., :math:`Y_m`, :math:`Z`. Như vậy :math:`Y_1`, :math:`Y_2`, ..., :math:`Y_m`, :math:`Z` độc lập.
+   khi đó :eq:`eqs-y1-y2-z-result` được viết lại thành :math:`Y_1`, :math:`Y_2` độc lập với :math:`Y_3`, ..., :math:`Y_R`, :math:`Z`. Như vậy :math:`Y_1`, :math:`Y_2`, ..., :math:`Y_R`, :math:`Z` độc lập.
 
 Ta quay lại chứng minh điều kiện cần và đủ của câu 38.
 
-.. admonition:: Chứng minh điều kiện đủ
+.. admonition:: Chứng minh chiều thuận
    :class: danger, dropdown
    
    Ta chứng minh: nếu :math:`f` là correlation immune bậc :math:`r` thì :math:`W_f(\bm{y}) = 0` với mọi :math:`\bm{y}` thỏa :math:`1 \leqslant \operatorname{wt}(\bm{y}) \leqslant r`.
@@ -265,7 +250,7 @@ Ta quay lại chứng minh điều kiện cần và đủ của câu 38.
 
    .. math:: E_{\bm{a}} = \{ \bm{x} \in \mathbb{F}_2^n : x_i = a_i \ \text{với mọi} \ i \in S \}.
 
-   Vì các vector :math:`\bm{x}` trong :math:`E_{\bm{a}}` được cố định :math:`s` vị trí, còn :math:`n - s` vị trí được chọn tùy ý, nên :math:`\lvert E_{\bm{a}} = 2^{n - s}`. Khi đó
+   Vì các vector :math:`\bm{x}` trong :math:`E_{\bm{a}}` được cố định :math:`s` vị trí, còn :math:`n - s` vị trí được chọn tùy ý, nên :math:`\lvert E_{\bm{a}} \rvert = 2^{n - s}`. Khi đó
 
    .. math:: 
 
@@ -279,7 +264,7 @@ Ta quay lại chứng minh điều kiện cần và đủ của câu 38.
 
       N_{\bm{a}} = \lvert \{ \bm{x} \in E_{\bm{a}} : f(\bm{x}) = 1 \} \rvert \Longrightarrow \sum_{\bm{x} \in E_{\bm{a}}} (-1)^{f(\bm{x})} = \lvert E_\bm{a} \rvert - 2 N_{\bm{a}},
 
-   vì :math:`(-1)^0 = 1` và :math:`(-1)^1 = -1`. Hơn nữa :math:`N_{\bm{a}}` là số lượng các vector :math:`\bm{x} \in \mathbb{F}_2^n` mà được cố định :math:`s` biến, và khiến :math:`f(\bm{x}) = 1`, nói cách khác là correlation immune bậc :math:`s`. Do đó ta có
+   vì :math:`(-1)^0 = 1` và :math:`(-1)^1 = -1`. Hơn nữa :math:`N_{\bm{a}}` là số lượng các vector :math:`\bm{x} \in \mathbb{F}_2^n` mà được cố định :math:`s` biến, và khiến :math:`f(\bm{x}) = 1`, tức là trọng số của một hàm con với :math:`s` biến bị cố định. Vì :math:`f` correlation immune bậc :math:`r` nên theo bổ đề trên nó correlation immune bậc :math:`s \leqslant r`. Do đó ta có
 
    .. math:: N_{\bm{a}} = \frac{\operatorname{wt}(f)}{2^s} \Longrightarrow \sum_{\bm{x} \in E_{\bm{a}}} (-1)^{f(\bm{x})} = 2^{n-s} - 2 \cdot \frac{\operatorname{wt}(f)}{2^s} = 2^{n-s} - \frac{\operatorname{wt}(f)}{2^{s-1}}.
 
@@ -295,7 +280,7 @@ Ta quay lại chứng minh điều kiện cần và đủ của câu 38.
 
    .. math:: \sum_{\bm{a} \in \mathbb{F}_2^s} (-1)^{\sum\limits_{i \in S} a_i} = 0 \Longrightarrow W_f(\bm{y}) = 0.
 
-.. admonition:: Chứng minh điều kiện cần (Xiao, Massey)
+.. admonition:: Chứng minh chiều đảo (Xiao, Massey)
    :class: danger, dropdown
 
    Đặt
@@ -305,9 +290,11 @@ Ta quay lại chứng minh điều kiện cần và đủ của câu 38.
       N_{f, 0}(\bm{a}) = \lvert \{ \bm{x} \in \mathbb{F}_2^n : f(\bm{x}) = 1, \langle \bm{a}, \bm{x} \rangle = 0 \} \rvert \\ 
       N_{f, 1}(\bm{a}) = \lvert \{ \bm{x} \in \mathbb{F}_2^n : f(\bm{x}) = 1, \langle \bm{a}, \bm{x} \rangle = 1 \} \rvert
 
-   Tính chất của biến đổi Walsh-Hadamard cho ta đẳng thức
+   Hệ số Fourier :math:`F_f(\bm{a}) = \sum_{\bm{x}} f(\bm{x}) (-1)^{\langle \bm{a}, \bm{x} \rangle}` thỏa
 
-   .. math:: F(\bm{a}) = N_{f, 0}(\bm{a}) - N_{f, 1}(\bm{a}), \quad \bm{a} \in \mathbb{F}_2^n.
+   .. math:: F_f(\bm{a}) = N_{f, 0}(\bm{a}) - N_{f, 1}(\bm{a}), \quad \bm{a} \in \mathbb{F}_2^n,
+
+   và với :math:`\bm{a} \neq \bm{0}` thì :math:`W_f(\bm{a}) = -2 F_f(\bm{a})`. Do đó :math:`W_f(\bm{a}) = 0` khi và chỉ khi :math:`N_{f,0}(\bm{a}) = N_{f,1}(\bm{a})`.
 
    Đặt :math:`\bm{w} \in \mathbb{F}_2^n` và :math:`\bm{X}` là :math:`n` BNN :math:`X_1`, :math:`X_2`, ..., :math:`X_n`. Khi đó với mọi :math:`\bm{w} \neq \bm{0}` thì 
 
@@ -315,22 +302,22 @@ Ta quay lại chứng minh điều kiện cần và đủ của câu 38.
 
    là tổng gồm :math:`\operatorname{wt}(\bm{w})` BNN trong số :math:`X_1`, :math:`X_2`, ..., :math:`X_n`.
 
-   Vì tất cả :math:`2^{n-1}` giá trị :math:`\bm{x}` của :math:`\bm{X}` mà :math:`\langle \bm{x}, \bm{w} \rangle = b` bằng nhau, ta có
+   Mỗi giá trị :math:`\bm{x}` của :math:`\bm{X}` có xác suất :math:`2^{-n}`, nên
 
    .. math:: 
       :label: eq-z-to-nfb
 
-      P(Z = 1, \langle \bm{w}, \bm{X} \rangle = b) = 2^{-n+1} N_{f, b}(\bm{w}), \ \text{với} \ \bm{w} \neq \bm{0}
+      P(Z = 1, \langle \bm{w}, \bm{X} \rangle = b) = 2^{-n} N_{f, b}(\bm{w}), \ \text{với} \ \bm{w} \neq \bm{0}
 
    với :math:`b \in \{ 0, 1 \}`.
 
    Quay lại bài toán, ta chứng minh nếu :math:`W_f(\bm{y}) = 0` với mọi :math:`\bm{y}` thỏa mãn :math:`1 \leqslant \operatorname{wt}(\bm{y}) \leqslant r` thì hàm Boolean :math:`f(\bm{x})` là correlation immune bậc :math:`r`.
 
-   Theo định nghĩa, vì :math:`f` là correlation immune bậc :math:`r` nên :math:`Z` độc lập với mọi tập con có :math:`r` phần tử hoặc ít hơn trong các BNN :math:`X_1`, :math:`X_2`, ..., :math:`X_n`. Khi đó, từ bổ đề trên, điều cần chứng minh tương đương với :math:`f` là correlation immune bậc :math:`r` khi và chỉ khi :math:`Z` độc lập với mọi BNN :math:`\langle \bm{w}, \bm{X} \rangle` với :math:`1 \leqslant \wt(\bm{w}) \leqslant r`. Từ :eq:`eq-z-to-nfb`, :math:`Z` độc lập với :math:`\langle \bm{w}, \bm{X} \rangle` khi và chỉ khi :math:`N_{f, 0}(\bm{w}) = N_{f, 1}(\bm{w})` với :math:`1 \leqslant \wt(\bm{w}) \leqslant r`. Như vậy :math:`W_f(\bm{w}) = 0` với :math:`1 \leqslant \wt(\bm{w}) \leqslant r`. Ta có điều phải chứng minh.
+   Theo định nghĩa, :math:`f` là correlation immune bậc :math:`r` khi và chỉ khi :math:`Z = f(\bm{X})` độc lập với mọi bộ gồm không quá :math:`r` biến trong :math:`X_1, \ldots, X_n`. Các biến :math:`X_i` độc lập nên theo bổ đề trên, điều này tương đương với: :math:`Z` độc lập với mọi BNN :math:`\langle \bm{w}, \bm{X} \rangle` với :math:`1 \leqslant \wt(\bm{w}) \leqslant r`. Với :math:`\bm{w} \neq \bm{0}`, BNN :math:`B = \langle \bm{w}, \bm{X} \rangle` nhận mỗi giá trị với xác suất :math:`1/2`, nên :math:`Z` độc lập với :math:`B` khi và chỉ khi :math:`P(Z = 1, B = 0) = P(Z = 1, B = 1)` (khi đó cả hai bằng :math:`P(Z = 1)/2`; trường hợp :math:`Z = 0` suy ra bằng cách lấy phần bù). Theo :eq:`eq-z-to-nfb`, điều này tương đương với :math:`N_{f, 0}(\bm{w}) = N_{f, 1}(\bm{w})`, tức :math:`W_f(\bm{w}) = 0`. Vậy nếu :math:`W_f(\bm{w}) = 0` với mọi :math:`1 \leqslant \wt(\bm{w}) \leqslant r` thì :math:`f` là correlation immune bậc :math:`r`. Ta có điều phải chứng minh.
 
-Năm 2007 Д. Г. Фон–Дер–Флаасс tìm được chặn trên cho correlation immune của hàm Boolean không cân bằng.
+Năm 2007 Д. Г. Фон-Дер-Флаасс tìm được chặn trên cho correlation immune của hàm Boolean không cân bằng.
 
-.. admonition:: [TODO] Câu 39 (**Định lí Д. Г. Фон–Дер–Флаасс**, :cite:`Flaass`)
+.. admonition:: [TODO] Câu 39 (**Định lí Д. Г. Фон-Дер-Флаасс**, :cite:`Flaass`)
    
    Gọi :math:`f` là hàm Boolean không cân bằng có correlation immune bậc :math:`r` khác :math:`0`. Chứng minh rằng :math:`r \leqslant (2n/3) - 1`.
 
