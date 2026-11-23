@@ -278,7 +278,9 @@ Ta thử in ra :math:`k_1` và :math:`k_2` tương ứng với khóa tìm đư�
 
 Hai trường hợp có thể xảy ra cho cặp :math:`(k_1, k_2)` là :math:`([1, 0, 0, 1], [124, 99, 99, 124])` và :math:`([1, 0, 175, 1], [124, 99, 121, 124])`. Ta chỉ cần xét trường hợp 1 là được.
 
-Khi nhìn vào hàm ``final_add`` thì ta biết chắc rằng ``k[k[k[k[i*2+1]]]`` chắc chắn nằm trong ``[124, 99]`` nên ta *bốc* đại :math:`k_2 = [124, 124, 124, 124]`, và nó đã thành công (????).
+Khi nhìn vào hàm ``final_add`` thì ta biết chắc rằng ``k[k[k[k[i*2+1]%4]%4]%4]`` chắc chắn nằm trong ``[124, 99]`` nên ta *bốc* đại :math:`k_2 = [124, 124, 124, 124]`, và nó đã thành công.
+
+Giải thích: chỉ số trong ``final_add`` (và ``add_round_key``) được tính lồng nhau qua chính các giá trị của khóa modulo :math:`4`. Với :math:`k_2 = [124, 99, 99, 124]` ta có :math:`124 \equiv 0` và :math:`99 \equiv 3 \pmod 4`, nên bắt đầu từ vị trí nào thì chuỗi ``k[...] % 4`` cũng dẫn tới ``k[0] = 124`` (ví dụ :math:`1 \to k[1] = 99 \to 3 \to k[3] = 124 \to 0 \to k[0] = 124 \to 0 \to k[0] = 124`). Như vậy mọi byte đều được XOR với :math:`124`, tức :math:`k_2 = [124, 99, 99, 124]` tương đương với :math:`[124, 124, 124, 124]`. Sai lệch ở vị trí 1 và 3 trong lần thử đầu nhiều khả năng đến từ việc dùng nhầm biến (``k2`` thay cho ``k2_``, hay ``inv_mix_columns`` ở Phase 3) trong code tìm khóa ở trên.
 
 Hàm ``decrypt`` ta fix cứng :math:`k_1` và :math:`k_2` luôn, và decrypt ra toàn bộ flag ban đầu.
 
@@ -338,7 +340,7 @@ Vì :math:`\gcd(l, n) = 1` nên ta nhớ tới một tính chất mà chúng ta 
 
 .. math:: \{ a g_1 \bmod n, a g_2 \bmod n, \ldots, a g_{\phi(n)} \bmod n \}
 
-cũng là hệ thặng dư thu gọn modulo :math:`n`. Nói cách khác hai tập hợp
+cũng là hệ thặng dư thu gọn modulo :math:`n`. Tương tự, với :math:`\gcd(a, l) = 1` thì :math:`\{ 0, a, 2a, \ldots, (l-1)a \}` modulo :math:`l` là một hệ thặng dư đầy đủ modulo :math:`l`. Nói cách khác hai tập hợp
 
 .. math:: \{ g_1, g_2, \ldots, g_{\phi(n)} \} \ \text{và} \ \{ a g_1 \bmod n, a g_2 \bmod n, \ldots, a g_{\phi(n)} \bmod n \}
 
@@ -354,10 +356,10 @@ Ta thử như sau:
 
 Nhìn chuỗi :math:`(0, 3, 1, 4, 2)` quen quen. Đó chính là :math:`p_0`, :math:`p_3`, :math:`p_1`, :math:`p_4`, :math:`p_2` ở trên.
 
-Như vậy ta có công thức tổng quát là :math:`p_{i \cdot 3 \bmod 5} = c_{i \cdot 3}`, hay tổng quát hơn :math:`p_{i \cdot n \bmod l} = c_{i \cdot n}` với :math:`i = 0, 1, \ldots, l-1`.
+Như vậy ta có công thức tổng quát là :math:`p_{i \cdot 3 \bmod 5} = c_{i \cdot 3} \oplus k_0`, hay tổng quát hơn :math:`p_{i \cdot n \bmod l} = c_{i \cdot n} \oplus k_0` với :math:`i = 0, 1, \ldots, l-1`. Vì :math:`\{ i n \bmod l \}` chạy qua mọi chỉ số :math:`0, \ldots, l-1`, ta khôi phục được toàn bộ plaintext chỉ với một byte khóa :math:`k_0`.
 
 Sau đó ta chỉ cần duyệt vét cạn 256 trường hợp :math:`k_0` nữa. Ở đây ta thấy với :math:`k_0 = 165` thì có chuỗi ``PNG`` (?).
 
-Như vậy XOR với :math:`165` sẽ có flag. Code giải ta để ở :download:`main.py <OwO Time Pad/solve.py>`.
+Như vậy XOR với :math:`165` sẽ có flag. Code giải ta để ở :download:`solve.py <OwO Time Pad/solve.py>`.
 
 Okay vậy là xong bài.
