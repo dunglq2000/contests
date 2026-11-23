@@ -25,6 +25,7 @@ html_title = "Contests"
 html_theme = 'furo'
 html_static_path = ['_static']
 html_css_files = ['mystyles.css']
+html_copy_source = False
 
 only_build_toc_files = True
 
@@ -48,7 +49,9 @@ mathjax3_config = {
             "ZZ": r"\mathbb{Z}",
             "NN": r"\mathbb{N}",
             "FF": r"\mathbb{F}",
-            "KK": r"\mathbb{K}"
+            "KK": r"\mathbb{K}",
+            "tg": r"\operatorname{tg}",
+            "arctg": r"\operatorname{arctg}"
             }                       
         },
     "chtml": {
