@@ -160,5 +160,3 @@ Code exploit ở `chall05.py <chall05.py>`_
    :alt: exploit
 
 Flag: **sun{chapter-four-9ca97769b74345b1}**
-
- bài viết của ta
