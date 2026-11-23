@@ -49,4 +49,4 @@ Sau nhiều nỗ lực nghĩ LLL thì ta phát hiện rằng ta cứ gửi :math
 
 Bài cuối ta không thấy sự liên quan hay gì từ đề nên ngậm ngùi chịu chết.
 
- bài viết của ta.
+Trên đây là bài viết của ta.
