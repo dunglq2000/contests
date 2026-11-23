@@ -7,7 +7,7 @@ Elliptic curve points
 Đề bài
 ------
 
-Đặt :math:`E / \mathbb{F}_p` là đường cong elliptic với dạng Weiertrass. Đường cong này có phương trình :math:`y^2 = x^3 + ax + b`, với :math:`a, b \in \mathbb{F}_p` và :math:`4a^3 + 27a^2 \neq 0`. Các điểm affine trong :math:`E` và điểm vô cực :math:`\mathcal{O}` tạo thành một nhóm Abel, đặt
+Đặt :math:`E / \mathbb{F}_p` là đường cong elliptic với dạng Weiertrass. Đường cong này có phương trình :math:`y^2 = x^3 + ax + b`, với :math:`a, b \in \mathbb{F}_p` và :math:`4a^3 + 27b^2 \neq 0`. Các điểm affine trong :math:`E` và điểm vô cực :math:`\mathcal{O}` tạo thành một nhóm Abel, đặt
 
 .. math:: E(\mathbb{F}_p) = \{ (x, y) \in \mathbb{F}_p^2 : y^2 = x^3 + ax + b \} \cup \{ \mathcal{O} \}
 
@@ -22,14 +22,14 @@ Gọi :math:`Q = (x', y') \in H`. Do :math:`R` có order lẻ nên :math:`Q` cũ
 
 Giả sử order của :math:`Q` là :math:`n` lẻ. Xét điểm :math:`P = \dfrac{n+1}{2} Q`, do :math:`n` lẻ nên dễ thấy :math:`P \in H`. Đặt :math:`P = (x, y)`.
 
-Do :math:`2P = (n+1) Q = Q` (do :math:`Q` có order là :math:`n`) nên theo công thức cộng hai điểm trên elliptic ta có
+Do :math:`2P = (n+1) Q = Q` (do :math:`Q` có order là :math:`n`) nên theo công thức nhân đôi điểm trên elliptic ta có (ở đây :math:`y \neq 0`, vì nếu :math:`y = 0` thì :math:`P` có order :math:`2`, trái với việc :math:`P \in H` có order lẻ; ta cũng dùng :math:`y^2 = x^3 + ax` do :math:`b = 0`)
 
 .. math::
 
-   x' & = \left(\frac{3x^2 + a}{2y}\right) - 2x \\
+   x' & = \left(\frac{3x^2 + a}{2y}\right)^2 - 2x \\
       & = \frac{9x^4 + 6x^2 a + a^2 - 8x(x^3 + ax)}{(2y)^2} \\
       & = \frac{x^4 - 2x^2 a + a^2}{(2y)^2} \\
-      & = \left(\frac{x^2-a}{2y}\right).
+      & = \left(\frac{x^2-a}{2y}\right)^2.
 
 Biểu thức cuối cho thấy rằng :math:`x'` là số chính phương modulo :math:`p`.
 
@@ -78,6 +78,6 @@ Quá trình sẽ diễn ra theo bảng sau.
 
 Từ :math:`21` trở đi không thể áp dụng quy tắc trên nữa vì theo chứng minh trên chiến thuật chỉ hiệu quả với :math:`l > 6`.
 
-Ta khai triển :math:`21 = 1 + 4 + 4 + 4 + 4 + 4`, thực hiện :math:`4` phép trừ (động tác đầu) tốn :math:`5 \cdot 2 = 10` *nsucoin* và trừ :math:`1` tốn :math:`1` *nsucoin*.
+Ta khai triển :math:`21 = 1 + 4 + 4 + 4 + 4 + 4`: khởi tạo dãy độ dài :math:`1` tốn :math:`1` *nsucoin*, rồi thực hiện :math:`5` lần động tác thứ nhất tốn :math:`5 \cdot 2 = 10` *nsucoin*.
 
-Như vậy tổng số *nsucoin* nhỏ nhất cần là :math:`47`.
+Như vậy tổng số *nsucoin* nhỏ nhất cần là :math:`36 + 10 + 1 = 47`. Lập luận tham lam ở trên chưa phải là chứng minh chặt chẽ, nhưng có thể kiểm chứng bằng quy hoạch động (tính chi phí nhỏ nhất cho mọi độ dài :math:`\leqslant 2021`) rằng :math:`47` đúng là giá trị tối ưu.
